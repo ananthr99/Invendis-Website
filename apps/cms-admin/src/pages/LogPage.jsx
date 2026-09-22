@@ -28,6 +28,66 @@ function changesSummary(changes = []) {
 
 const entryKey = (e) => (e.timestamp ?? "") + (e.userEmail ?? "");
 
+function ConfirmModal({ title, message, onConfirm, onCancel, confirmLabel = "Delete" }) {
+  return (
+    <div
+      style={{
+        position: "fixed", inset: 0, zIndex: 1000,
+        background: "rgba(0,0,0,0.45)",
+        display: "flex", alignItems: "center", justifyContent: "center",
+      }}
+      onClick={onCancel}
+    >
+      <div
+        style={{
+          background: "white", borderRadius: 14, padding: "36px 36px 28px",
+          maxWidth: 420, width: "90%",
+          boxShadow: "0 12px 40px rgba(0,0,0,0.22)",
+          display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center",
+        }}
+        onClick={(e) => e.stopPropagation()}
+      >
+        {/* Warning icon */}
+        <div style={{
+          width: 56, height: 56, borderRadius: "50%",
+          background: "#fef2f2", border: "1.5px solid #fca5a5",
+          display: "flex", alignItems: "center", justifyContent: "center",
+          fontSize: 26, marginBottom: 20,
+        }}>
+          🗑️
+        </div>
+
+        <h3 style={{ margin: "0 0 10px", fontSize: 17, fontWeight: 700, color: "var(--admin-text)" }}>
+          {title}
+        </h3>
+        <p style={{ margin: "0 0 28px", color: "var(--admin-muted)", lineHeight: 1.65, fontSize: 14 }}>
+          {message}
+        </p>
+
+        <div style={{ display: "flex", gap: 10, width: "100%", justifyContent: "center" }}>
+          <button
+            className="admin-btn admin-btn--ghost"
+            style={{ flex: 1, maxWidth: 160 }}
+            onClick={onCancel}
+          >
+            Cancel
+          </button>
+          <button
+            className="admin-btn"
+            style={{
+              flex: 1, maxWidth: 160,
+              background: "var(--admin-red, #d32f2f)", color: "#fff", border: "none",
+            }}
+            onClick={onConfirm}
+          >
+            {confirmLabel}
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function LogPage() {
   const { token } = useAdmin();
   const [entries, setEntries] = useState([]);
@@ -38,6 +98,7 @@ export default function LogPage() {
   const [expandedIdx, setExpandedIdx] = useState(null);
   const [selected, setSelected] = useState(new Set());
   const [deleting, setDeleting] = useState(false);
+  const [confirmModal, setConfirmModal] = useState(null); // { title, message, onConfirm }
 
   useEffect(() => {
     if (!token) return;
@@ -113,47 +174,66 @@ export default function LogPage() {
     setSelected(new Set());
   }
 
-  async function deleteSelected() {
-    if (!selected.size) return;
-    if (!window.confirm(`Delete ${selected.size} log ${selected.size === 1 ? "entry" : "entries"}? This cannot be undone.`)) return;
-    setDeleting(true);
-    try {
-      const { sha } = await github.readFile(CHANGELOG_PATH, { branch: "main", token });
-      const remaining = entries.filter((e) => !selected.has(entryKey(e)));
-      await github.writeFile(CHANGELOG_PATH, JSON.stringify(remaining, null, 2), {
-        message: "CMS: delete log entries [skip ci]",
-        sha,
-        branch: "main",
-        token,
-      });
-      setEntries(remaining);
-      setSelected(new Set());
-    } catch (err) {
-      alert("Failed to delete: " + err.message);
-    } finally {
-      setDeleting(false);
-    }
+  function askConfirm({ title, message, onConfirm }) {
+    setConfirmModal({ title, message, onConfirm });
   }
 
-  async function deleteAll() {
-    if (!entries.length) return;
-    if (!window.confirm("Delete ALL log entries? This cannot be undone.")) return;
-    setDeleting(true);
-    try {
-      const { sha } = await github.readFile(CHANGELOG_PATH, { branch: "main", token });
-      await github.writeFile(CHANGELOG_PATH, "[]", {
-        message: "CMS: clear activity log [skip ci]",
-        sha,
-        branch: "main",
-        token,
-      });
-      setEntries([]);
-      setSelected(new Set());
-    } catch (err) {
-      alert("Failed to delete: " + err.message);
-    } finally {
-      setDeleting(false);
-    }
+  function closeModal() {
+    setConfirmModal(null);
+  }
+
+  function confirmDeleteSelected() {
+    const count = selected.size;
+    askConfirm({
+      title: `Delete ${count} ${count === 1 ? "entry" : "entries"}?`,
+      message: `You are about to permanently delete ${count} activity log ${count === 1 ? "entry" : "entries"}. This action cannot be reversed.`,
+      onConfirm: async () => {
+        closeModal();
+        setDeleting(true);
+        try {
+          const { sha } = await github.readFile(CHANGELOG_PATH, { branch: "main", token });
+          const remaining = entries.filter((e) => !selected.has(entryKey(e)));
+          await github.writeFile(CHANGELOG_PATH, JSON.stringify(remaining, null, 2), {
+            message: "CMS: delete log entries [skip ci]",
+            sha,
+            branch: "main",
+            token,
+          });
+          setEntries(remaining);
+          setSelected(new Set());
+        } catch (err) {
+          alert("Failed to delete: " + err.message);
+        } finally {
+          setDeleting(false);
+        }
+      },
+    });
+  }
+
+  function confirmDeleteAll() {
+    askConfirm({
+      title: "Delete all log entries?",
+      message: "You are about to permanently delete every entry in the activity log. This action cannot be reversed.",
+      onConfirm: async () => {
+        closeModal();
+        setDeleting(true);
+        try {
+          const { sha } = await github.readFile(CHANGELOG_PATH, { branch: "main", token });
+          await github.writeFile(CHANGELOG_PATH, "[]", {
+            message: "CMS: clear activity log [skip ci]",
+            sha,
+            branch: "main",
+            token,
+          });
+          setEntries([]);
+          setSelected(new Set());
+        } catch (err) {
+          alert("Failed to delete: " + err.message);
+        } finally {
+          setDeleting(false);
+        }
+      },
+    });
   }
 
   function exportCSV() {
@@ -196,6 +276,16 @@ export default function LogPage() {
 
   return (
     <div>
+      {confirmModal && (
+        <ConfirmModal
+          title={confirmModal.title}
+          message={confirmModal.message}
+          onConfirm={confirmModal.onConfirm}
+          onCancel={closeModal}
+          confirmLabel="Delete"
+        />
+      )}
+
       <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 20, flexWrap: "wrap", gap: 8 }}>
         <h2 style={{ margin: 0 }}>Activity Log</h2>
         <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
@@ -203,7 +293,7 @@ export default function LogPage() {
             <button
               className="admin-btn"
               style={{ background: "var(--admin-red, #d32f2f)", color: "#fff", border: "none" }}
-              onClick={deleteSelected}
+              onClick={confirmDeleteSelected}
               disabled={deleting}
             >
               {deleting ? "Deleting…" : `Delete selected (${selected.size})`}
@@ -215,7 +305,7 @@ export default function LogPage() {
           <button
             className="admin-btn admin-btn--ghost"
             style={{ color: "var(--admin-red, #d32f2f)", borderColor: "var(--admin-red, #d32f2f)" }}
-            onClick={deleteAll}
+            onClick={confirmDeleteAll}
             disabled={!entries.length || deleting}
           >
             Delete All
@@ -249,7 +339,6 @@ export default function LogPage() {
         </div>
       ) : (
         <>
-          {/* Select-all-results banner */}
           {somePageSelected && !allFilteredSelected && filtered.length > pageSize && (
             <div style={{ fontSize: 13, marginBottom: 8, color: "var(--admin-muted)" }}>
               {selected.size} {selected.size === 1 ? "entry" : "entries"} selected on this page.{" "}
