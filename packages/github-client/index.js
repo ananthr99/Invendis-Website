@@ -30,6 +30,7 @@ export function createGithubClient({ owner, repo, defaultBranch = "main" }) {
 	async function request(path, { method = "GET", token, body } = {}) {
 		const res = await fetch(`${API_BASE}${path}`, {
 			method,
+			cache: "no-store",
 			headers: {
 				...authHeaders(token),
 				...(body ? { "Content-Type": "application/json" } : {}),
