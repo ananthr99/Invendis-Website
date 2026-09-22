@@ -10,11 +10,22 @@ function formatDate(iso) {
   return new Date(iso).toLocaleString();
 }
 
+function formatKey(key) {
+  if (!key) return "—";
+  return key.replace(/([A-Z])/g, " $1").replace(/^./, (s) => s.toUpperCase()).trim();
+}
+
+function sectionsSummary(changes = []) {
+  const sections = [...new Set(changes.map((c) => c.section).filter(Boolean))];
+  return sections.length ? sections.map(formatKey).join(", ") : "—";
+}
+
 function changesSummary(changes = []) {
   if (!changes.length) return "—";
-  const fields = [...new Set(changes.map((c) => c.field))];
-  return fields.join(", ");
+  const fields = [...new Set(changes.map((c) => c.field).filter(Boolean))];
+  return fields.map(formatKey).join(", ");
 }
+
 
 export default function LogPage() {
   const { token } = useAdmin();
@@ -65,17 +76,17 @@ export default function LogPage() {
   function exportCSV() {
     const headers = ["Date / Time", "User", "Page", "Section", "Field", "Action", "Label", "Before", "After"];
     const rows = filtered.flatMap((e) =>
-        (e.changes ?? []).map((c) => [
+      (e.changes ?? []).map((c) => [
         formatDate(e.timestamp),
         e.userEmail ?? "",
         e.page ?? "",
-        e.section ?? "",
-        c.field ?? "",
+        c.section ? formatKey(c.section) : "",
+        c.field ? formatKey(c.field) : "",
         c.action ?? "changed",
         c.label ?? "",
         c.before != null ? JSON.stringify(c.before) : "",
         c.after != null ? JSON.stringify(c.after) : "",
-        ])
+      ])
     );
 
     const csv = [headers, ...rows]
@@ -158,7 +169,7 @@ export default function LogPage() {
                         <td style={{ padding: "12px 16px", whiteSpace: "nowrap" }}>{formatDate(entry.timestamp)}</td>
                         <td style={{ padding: "12px 16px" }}>{entry.userEmail ?? "—"}</td>
                         <td style={{ padding: "12px 16px" }}>{entry.page ?? "—"}</td>
-                        <td style={{ padding: "12px 16px" }}>{entry.section ?? "—"}</td>
+                        <td style={{ padding: "12px 16px" }}>{sectionsSummary(entry.changes)}</td>
                         <td style={{ padding: "12px 16px", color: "var(--admin-muted)" }}>{changesSummary(entry.changes)}</td>
                         <td style={{ padding: "12px 16px", textAlign: "right", fontSize: 12, color: "var(--admin-blue)" }}>
                           {expanded ? "▲ Hide" : "▼ Details"}
@@ -179,7 +190,7 @@ export default function LogPage() {
                                 {(entry.changes ?? []).map((c, ci) => (
                                   <tr key={ci} style={{ borderBottom: "1px solid var(--admin-border)" }}>
                                     <td style={{ padding: "6px 10px", fontWeight: 600 }}>
-                                      {c.field}{c.label ? ` › ${c.label}` : ""}
+                                      {[c.section && formatKey(c.section), c.field && formatKey(c.field), c.label].filter(Boolean).join(" › ")}
                                     </td>
                                     <td style={{ padding: "6px 10px", color: c.action === "added" ? "#178a4c" : c.action === "removed" ? "var(--admin-red)" : "var(--admin-muted)" }}>
                                       {c.action ?? "changed"}

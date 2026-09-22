@@ -50,31 +50,54 @@ function diffArray(field, before, after) {
  * @param {{ page: string, section?: string, before: object, after: object, userEmail: string }} entry
  */
 export async function appendChangelogEntry(client, token, { page, section, before, after, userEmail }) {
-	const changes = diffFields(before, after);
-	if (changes.length === 0) return;
+  let changes = [];
 
-	let sha = null;
-	let entries = [];
-	try {
-		const file = await client.readFile(CHANGELOG_PATH, { token });
-		entries = JSON.parse(file.content);
-		sha = file.sha;
-	} catch {
-		// no changelog yet — start a fresh one
-	}
+  if (section) {
+    diffFields(before ?? {}, after ?? {}).forEach((c) => changes.push({ section, ...c }));
+  } else {
+    const pageKeys = new Set([...Object.keys(before ?? {}), ...Object.keys(after ?? {})]);
+    for (const key of pageKeys) {
+      if (key === "sections") continue;
+      const a = (before ?? {})[key];
+      const b = (after ?? {})[key];
+      if (JSON.stringify(a) === JSON.stringify(b)) continue;
+      if (a && b && typeof a === "object" && !Array.isArray(a) && typeof b === "object" && !Array.isArray(b)) {
+        diffFields(a, b).forEach((c) => changes.push({ section: key, ...c }));
+      } else {
+        changes.push({ section: key, field: key, before: a, after: b });
+      }
+    }
+    const sA = (before ?? {}).sections ?? [];
+    const sB = (after ?? {}).sections ?? [];
+    if (JSON.stringify(sA) !== JSON.stringify(sB)) {
+      changes.push({ section: "page", field: "visibility", before: sA, after: sB });
+    }
+  }
 
-	entries.unshift({
-		timestamp: new Date().toISOString(),
-		userEmail,
-		page,
-		section: section ?? null,
-		changes,
-	});
-	if (entries.length > MAX_ENTRIES) entries = entries.slice(0, MAX_ENTRIES);
+  if (changes.length === 0) return;
 
-	await client.writeFile(CHANGELOG_PATH, JSON.stringify(entries, null, 2), {
-		message: "CMS: update changelog [skip ci]",
-		sha,
-		token,
-	});
+  let sha = null;
+  let entries = [];
+  try {
+    const file = await client.readFile(CHANGELOG_PATH, { token });
+    entries = JSON.parse(file.content);
+    sha = file.sha;
+  } catch {
+    // no changelog yet — start fresh
+  }
+
+  entries.unshift({
+    timestamp: new Date().toISOString(),
+    userEmail,
+    page,
+    section: section ?? null,
+    changes,
+  });
+  if (entries.length > MAX_ENTRIES) entries = entries.slice(0, MAX_ENTRIES);
+
+  await client.writeFile(CHANGELOG_PATH, JSON.stringify(entries, null, 2), {
+    message: "CMS: update changelog [skip ci]",
+    sha,
+    token,
+  });
 }
