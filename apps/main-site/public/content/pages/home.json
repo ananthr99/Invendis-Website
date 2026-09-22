@@ -1,135 +1,180 @@
 {
-	"sections": ["topBar", "hero", "stats", "trustedBy", "whatWeDo", "testimonials", "cta"],
-	"topBar": {
-		"tags": ["OEM/ODM", "NETWORKING DEVICES", "INDUSTRIAL IOT", "EDGE AI"],
-		"cta": {
-			"label": "Browse Products →",
-			"href": "/products"
-		}
-	},
-	"hero": {
-		"title": "Networking & Edge AI Devices for a",
-		"titleHighlight": " Smarter World",
-		"subtitle": "Invendis is an OEM/ODM pioneer in the design and manufacture of Routers, Gateways, Switches, and Edge AI devices — paired with our own software - delivering end-to-end Industrial IoT solutions for telecom, energy, and industrial sectors.",
-		"cta": {
-			"label": "Browse products →",
-			"href": "/products"
-		},
-		"productGroups": [
-			{
-				"heading": "HARDWARE PRODUCTS",
-				"items": [
-					"Routers & Gateways",
-					"iSense RMS Controller",
-					"Energy Meters",
-					"Protocol Converters",
-					"Network Switches",
-					"5G Ready",
-					"Wi-Fi 6 Devices"
-				]
-			},
-			{
-				"heading": "SOFTWARE PRODUCTS",
-				"items": ["PizGloria RMS Platform", "Mobile Apps", "Utility Billing", "NMS", "Silbo Health Monitoring (SHM)"]
-			},
-			{
-				"heading": "KEY CLIENTS",
-				"items": [
-					"Telecel",
-					"Jio",
-					"Airtel",
-					"Econet",
-					"American Tower Corporation (ATC)",
-					"Irrawaddy Green Towers (IGT)",
-					"Ison Towers",
-					"Altius",
-					"Tower of Africa (TOA)",
-					"Tawal Saudi",
-					"Indus Africa",
-					"OMC Power",
-					"MicroScan",
-					"Savanna Fibre"
-				]
-			}
-		]
-	},
-	"stats": [
-		{ "value": "150K+", "label": "Sites Deployed" },
-		{ "value": "32+", "label": "Countries" },
-		{ "value": "18+", "label": "Years in IIoT" },
-		{ "value": "1 Trillion+", "label": "Data Points" }
-	],
-	"trustedBy": {
-		"heading": "TRUSTED BY GLOBAL INDUSTRY LEADERS",
-		"clients": ["TELECEL", "AMERICAN TOWER CORP.", "RELIANCE JIO", "AIRTEL", "ECONET", "ALTIUS"]
-	},
-	"whatWeDo": {
-		"eyebrow": "WHAT WE DO",
-		"title": "End-to-End ",
-		"titleHighlight": "IIoT Solutions",
-		"subtitle": "From hardware design to cloud platforms, we cover every layer of the industrial IoT stack — built in Bangalore, deployed globally.",
-		"cards": [
-			{
-				"icon": "tower",
-				"title": "Telecom Tower OA",
-				"description": "Remote monitoring of passive infrastructure — batteries, rectifiers, generators, fuel levels, security, and environmental sensors, all in one platform."
-			},
-			{
-				"icon": "solar",
-				"title": "Solar & Energy Monitoring",
-				"description": "Solar monitoring solutions with integrated energy measurement and billing. Real-time visibility over renewable assets from edge to cloud."
-			},
-			{
-				"icon": "meter",
-				"title": "Digital Energy Meters",
-				"description": "Smart tariff-grade meters, multi-function meters, and GSM energy meters for utility billing and consumption analytics."
-			},
-			{
-				"icon": "network",
-				"title": "Industrial Networking — SILBO",
-				"description": "Industrial routers, SD-WAN gateways, protocol converters, and network switches designed for harsh industrial environments."
-			},
-			{
-				"icon": "platform",
-				"title": "PizGloria RMS Platform",
-				"description": "Cloud-based Remote Monitoring System with graphical dashboards, Power BI analytics, mobile app, and automated alerting."
-			},
-			{
-				"icon": "design",
-				"title": "OEM / ODM & Design Services",
-				"description": "Bespoke hardware design, product development, and 24×7 remote support services for OEM and ODM customers worldwide."
-			}
-		]
-	},
-	"testimonials": {
-		"eyebrow": "TESTIMONIALS",
-		"title": "What Our ",
-		"titleHighlight": "Clients Say",
-		"items": [
-			{
-				"initials": "SI",
-				"name": "Shyam Iyer",
-				"role": "VP Technology, ATC India",
-				"quote": "ATC India is using Invendis to monitor tower operations across ~70,000+ towers. Invendis has provided trouble-ticketing, mobile-based field interface, and real-time alarm monitoring — aiding field efficiency."
-			},
-			{
-				"initials": "AP",
-				"name": "Alexander Pigall",
-				"role": "Director – Managed Services, Ericsson",
-				"quote": "I feel Invendis is a company that listens and does all they can to meet my needs. There is open, honest communication on all levels and a process to improve where things fail. Transparency is key."
-			},
-			{
-				"initials": "HM",
-				"name": "Hans Moritz",
-				"role": "CTO, IGT Myanmar",
-				"quote": "Our enterprise system combines Asset Management (ERP), WO & TT System, RMS (Invendis), and Electronic Key System. Invendis RMS auto-generates trouble tickets with alarms to manage all end-to-end processes."
-			}
-		]
-	},
-	"cta": {
-		"title": "Ready to Digitise Your Operations?",
-		"subtitle": "Talk to our IIoT experts and discover how Invendis can transform your infrastructure.",
-		"primaryBtn": { "label": "Get in Touch →", "href": "/contact" },
-		"secondaryBtn": { "label": "See All Products", "href": "/products" }
-	}
+  "sections": [
+    "topBar",
+    "hero",
+    "stats",
+    "trustedBy",
+    "whatWeDo",
+    "testimonials",
+    "cta"
+  ],
+  "topBar": {
+    "tags": [
+      "OEM/ODM",
+      "NETWORKING DEVICES",
+      "INDUSTRIAL IOT",
+      "EDGE AI",
+      "RMS"
+    ],
+    "cta": {
+      "label": "Browse Products →",
+      "href": "/products"
+    }
+  },
+  "hero": {
+    "title": "Networking & Edge AI Devices for a",
+    "titleHighlight": " Smarter World",
+    "subtitle": "Invendis is an OEM/ODM pioneer in the design and manufacture of Routers, Gateways, Switches, and Edge AI devices — paired with our own software - delivering end-to-end Industrial IoT solutions for telecom, energy, and industrial sectors.",
+    "cta": {
+      "label": "Browse products →",
+      "href": "/products"
+    },
+    "productGroups": [
+      {
+        "heading": "HARDWARE PRODUCTS",
+        "items": [
+          "Routers & Gateways",
+          "iSense RMS Controller",
+          "Energy Meters",
+          "Protocol Converters",
+          "Network Switches",
+          "5G Ready",
+          "Wi-Fi 6 Devices"
+        ]
+      },
+      {
+        "heading": "SOFTWARE PRODUCTS",
+        "items": [
+          "PizGloria RMS Platform",
+          "Mobile Apps",
+          "Utility Billing",
+          "NMS",
+          "Silbo Health Monitoring (SHM)"
+        ]
+      },
+      {
+        "heading": "KEY CLIENTS",
+        "items": [
+          "Telecel",
+          "Jio",
+          "Airtel",
+          "Econet",
+          "American Tower Corporation (ATC)",
+          "Irrawaddy Green Towers (IGT)",
+          "Ison Towers",
+          "Altius",
+          "Tower of Africa (TOA)",
+          "Tawal Saudi",
+          "Indus Africa",
+          "OMC Power",
+          "MicroScan",
+          "Savanna Fibre"
+        ]
+      }
+    ]
+  },
+  "stats": [
+    {
+      "value": "150K+",
+      "label": "Sites Deployed"
+    },
+    {
+      "value": "32+",
+      "label": "Countries"
+    },
+    {
+      "value": "18+",
+      "label": "Years in IIoT"
+    },
+    {
+      "value": "1 Trillion+",
+      "label": "Data Points"
+    }
+  ],
+  "trustedBy": {
+    "heading": "TRUSTED BY GLOBAL INDUSTRY LEADERS",
+    "clients": [
+      "TELECEL",
+      "AMERICAN TOWER CORP.",
+      "RELIANCE JIO",
+      "AIRTEL",
+      "ECONET",
+      "ALTIUS"
+    ]
+  },
+  "whatWeDo": {
+    "eyebrow": "WHAT WE DO",
+    "title": "End-to-End ",
+    "titleHighlight": "IIoT Solutions",
+    "subtitle": "From hardware design to cloud platforms, we cover every layer of the industrial IoT stack — built in Bangalore, deployed globally.",
+    "cards": [
+      {
+        "icon": "tower",
+        "title": "Telecom Tower OA",
+        "description": "Remote monitoring of passive infrastructure — batteries, rectifiers, generators, fuel levels, security, and environmental sensors, all in one platform."
+      },
+      {
+        "icon": "solar",
+        "title": "Solar & Energy Monitoring",
+        "description": "Solar monitoring solutions with integrated energy measurement and billing. Real-time visibility over renewable assets from edge to cloud."
+      },
+      {
+        "icon": "meter",
+        "title": "Digital Energy Meters",
+        "description": "Smart tariff-grade meters, multi-function meters, and GSM energy meters for utility billing and consumption analytics."
+      },
+      {
+        "icon": "network",
+        "title": "Industrial Networking — SILBO",
+        "description": "Industrial routers, SD-WAN gateways, protocol converters, and network switches designed for harsh industrial environments."
+      },
+      {
+        "icon": "platform",
+        "title": "PizGloria RMS Platform",
+        "description": "Cloud-based Remote Monitoring System with graphical dashboards, Power BI analytics, mobile app, and automated alerting."
+      },
+      {
+        "icon": "design",
+        "title": "OEM / ODM & Design Services",
+        "description": "Bespoke hardware design, product development, and 24×7 remote support services for OEM and ODM customers worldwide."
+      }
+    ]
+  },
+  "testimonials": {
+    "eyebrow": "TESTIMONIALS",
+    "title": "What Our ",
+    "titleHighlight": "Clients Say",
+    "items": [
+      {
+        "initials": "SI",
+        "name": "Shyam Iyer",
+        "role": "VP Technology, ATC India",
+        "quote": "ATC India is using Invendis to monitor tower operations across ~70,000+ towers. Invendis has provided trouble-ticketing, mobile-based field interface, and real-time alarm monitoring — aiding field efficiency."
+      },
+      {
+        "initials": "AP",
+        "name": "Alexander Pigall",
+        "role": "Director – Managed Services, Ericsson",
+        "quote": "I feel Invendis is a company that listens and does all they can to meet my needs. There is open, honest communication on all levels and a process to improve where things fail. Transparency is key."
+      },
+      {
+        "initials": "HM",
+        "name": "Hans Moritz",
+        "role": "CTO, IGT Myanmar",
+        "quote": "Our enterprise system combines Asset Management (ERP), WO & TT System, RMS (Invendis), and Electronic Key System. Invendis RMS auto-generates trouble tickets with alarms to manage all end-to-end processes."
+      }
+    ]
+  },
+  "cta": {
+    "title": "Ready to Digitise Your Operations?",
+    "subtitle": "Talk to our IIoT experts and discover how Invendis can transform your infrastructure.",
+    "primaryBtn": {
+      "label": "Get in Touch →",
+      "href": "/contact"
+    },
+    "secondaryBtn": {
+      "label": "See All Products",
+      "href": "/products"
+    }
+  }
 }
