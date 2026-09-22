@@ -82,8 +82,9 @@ export default function HomePageEditor() {
           background: "var(--admin-bg)",
           marginLeft: -40,
           marginRight: -40,
-          padding: "16px 40px 0",
-          marginBottom: 24,
+          padding: "16px 40px 10px",
+          marginBottom: 14,
+          boxShadow: "0 4px 8px -2px rgba(0,0,0,0.07)",
         }}
       >
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 12 }}>
