@@ -74,6 +74,7 @@ export default function Dashboard() {
               {link.label}
             </NavLink>
           ))}
+          <hr className="admin-sidebar-divider" />
           <div className="admin-sidebar-group">Admin</div>
           <NavLink
             to="/log"
