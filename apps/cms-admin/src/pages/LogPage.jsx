@@ -390,7 +390,7 @@ export default function LogPage() {
                   return (
                     <Fragment key={idx}>
                       <tr
-                        style={{ borderBottom: "1px solid var(--admin-border)", cursor: "pointer", background: isSelected ? "#eef2ff" : expanded ? "#f0f2f8" : "white" }}
+                        style={{ borderBottom: "1px solid var(--admin-border)", cursor: "pointer", background: isSelected ? "#eef2ff" : expanded ? "#f0f2f8" : "white", verticalAlign: "middle" }}
                         onClick={() => setExpandedIdx(expanded ? null : idx)}
                       >
                         <td style={{ padding: "12px 16px" }} onClick={(e) => { e.stopPropagation(); toggleSelect(key); }}>
@@ -401,8 +401,15 @@ export default function LogPage() {
                         <td style={{ padding: "12px 16px" }}>{entry.page ?? "—"}</td>
                         <td style={{ padding: "12px 16px" }}>{sectionsSummary(entry.changes)}</td>
                         <td style={{ padding: "12px 16px", color: "var(--admin-muted)" }}>{changesSummary(entry.changes)}</td>
-                        <td style={{ padding: "12px 16px", textAlign: "right", fontSize: 12, color: "var(--admin-blue)" }}>
-                          {expanded ? "▲ Hide" : "▼ Details"}
+                        <td style={{ padding: "12px 16px", textAlign: "right", whiteSpace: "nowrap", width: 90 }}>
+                          <span style={{
+                            display: "inline-flex", alignItems: "center", gap: 4,
+                            padding: "3px 10px", border: "1px solid var(--admin-border)", borderRadius: 6,
+                            fontSize: 12, color: "var(--admin-blue)", fontWeight: 500,
+                            background: expanded ? "var(--admin-bg)" : "white",
+                          }}>
+                            {expanded ? "▲ Hide" : "▼ Details"}
+                          </span>
                         </td>
                       </tr>
                       {expanded && (
