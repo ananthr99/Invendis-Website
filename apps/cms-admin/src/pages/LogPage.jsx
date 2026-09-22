@@ -63,15 +63,20 @@ export default function LogPage() {
   }
 
   function exportCSV() {
-    const headers = ["Date / Time", "User", "Page", "Section", "Fields Changed", "# Changes"];
-    const rows = filtered.map((e) => [
+    const headers = ["Date / Time", "User", "Page", "Section", "Field", "Action", "Label", "Before", "After"];
+    const rows = filtered.flatMap((e) =>
+        (e.changes ?? []).map((c) => [
         formatDate(e.timestamp),
         e.userEmail ?? "",
         e.page ?? "",
         e.section ?? "",
-        changesSummary(e.changes),
-        e.changes?.length ?? 0,
-    ]);
+        c.field ?? "",
+        c.action ?? "changed",
+        c.label ?? "",
+        c.before != null ? JSON.stringify(c.before) : "",
+        c.after != null ? JSON.stringify(c.after) : "",
+        ])
+    );
 
     const csv = [headers, ...rows]
         .map((row) => row.map((cell) => `"${String(cell).replace(/"/g, '""')}"`).join(","))
@@ -84,7 +89,8 @@ export default function LogPage() {
     a.download = `cms-log-${new Date().toISOString().slice(0, 10)}.csv`;
     a.click();
     URL.revokeObjectURL(url);
-    }
+}
+
 
   if (!token)
     return <p style={{ color: "var(--admin-muted)" }}>Enter a GitHub token in Setup first.</p>;
