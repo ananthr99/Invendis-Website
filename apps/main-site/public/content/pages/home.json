@@ -48,8 +48,7 @@
           "Mobile Apps",
           "Utility Billing",
           "NMS",
-          "Silbo Health Monitoring (SHM)",
-          "Solar Monitoring Platform"
+          "Silbo Health Monitoring (SHM)"
         ]
       },
       {
@@ -87,7 +86,7 @@
       "label": "Years in IIoT"
     },
     {
-      "value": "1.5 Trillion+",
+      "value": "1 Trillion+",
       "label": "Data Points"
     }
   ],

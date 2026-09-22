@@ -1,5 +1,80 @@
 [
   {
+    "timestamp": "2026-09-22T14:55:47.691Z",
+    "userEmail": "ananth.r@invendis.com",
+    "page": "Home",
+    "section": null,
+    "changes": [
+      {
+        "section": "hero",
+        "field": "productGroups",
+        "action": "changed",
+        "label": "#1",
+        "before": {
+          "heading": "SOFTWARE PRODUCTS",
+          "items": [
+            "PizGloria RMS Platform",
+            "Mobile Apps",
+            "Utility Billing",
+            "NMS",
+            "Silbo Health Monitoring (SHM)",
+            "Solar Monitoring Platform"
+          ]
+        },
+        "after": {
+          "heading": "SOFTWARE PRODUCTS",
+          "items": [
+            "PizGloria RMS Platform",
+            "Mobile Apps",
+            "Utility Billing",
+            "NMS",
+            "Silbo Health Monitoring (SHM)"
+          ]
+        }
+      },
+      {
+        "section": "stats",
+        "field": "stats",
+        "before": [
+          {
+            "value": "150K+",
+            "label": "Sites Deployed"
+          },
+          {
+            "value": "32+",
+            "label": "Countries"
+          },
+          {
+            "value": "18+",
+            "label": "Years in IIoT"
+          },
+          {
+            "value": "1.5 Trillion+",
+            "label": "Data Points"
+          }
+        ],
+        "after": [
+          {
+            "value": "150K+",
+            "label": "Sites Deployed"
+          },
+          {
+            "value": "32+",
+            "label": "Countries"
+          },
+          {
+            "value": "18+",
+            "label": "Years in IIoT"
+          },
+          {
+            "value": "1 Trillion+",
+            "label": "Data Points"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "timestamp": "2026-09-22T14:35:29.260Z",
     "userEmail": "ananth.r@invendis.com",
     "page": "Home",
