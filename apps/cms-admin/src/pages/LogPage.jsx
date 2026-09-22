@@ -404,8 +404,8 @@ export default function LogPage() {
                         <td style={{ padding: "12px 16px", color: "var(--admin-muted)" }}>{changesSummary(entry.changes)}</td>
                         <td style={{ padding: "12px 16px", textAlign: "right", whiteSpace: "nowrap", width: 90 }}>
                           <span style={{
-                            display: "inline-flex", alignItems: "center", gap: 4,
-                            padding: "3px 10px", border: "1px solid var(--admin-border)", borderRadius: 6,
+                            display: "inline-flex", alignItems: "center", justifyContent: "center", gap: 4,
+                            width: 76, padding: "3px 10px", border: "1px solid var(--admin-border)", borderRadius: 6,
                             fontSize: 12, color: "var(--admin-blue)", fontWeight: 500,
                             background: expanded ? "var(--admin-bg)" : "white",
                           }}>
