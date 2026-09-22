@@ -26,6 +26,7 @@ function changesSummary(changes = []) {
   return fields.map(formatKey).join(", ");
 }
 
+const entryKey = (e) => (e.timestamp ?? "") + (e.userEmail ?? "");
 
 export default function LogPage() {
   const { token } = useAdmin();
@@ -35,6 +36,8 @@ export default function LogPage() {
   const [pageSize, setPageSize] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);
   const [expandedIdx, setExpandedIdx] = useState(null);
+  const [selected, setSelected] = useState(new Set());
+  const [deleting, setDeleting] = useState(false);
 
   useEffect(() => {
     if (!token) return;
@@ -63,6 +66,11 @@ export default function LogPage() {
   const safePage = Math.min(currentPage, totalPages);
   const pageData = filtered.slice((safePage - 1) * pageSize, safePage * pageSize);
 
+  const pageKeys = pageData.map(entryKey);
+  const allPageSelected = pageKeys.length > 0 && pageKeys.every((k) => selected.has(k));
+  const somePageSelected = pageKeys.some((k) => selected.has(k));
+  const allFilteredSelected = filtered.length > 0 && filtered.every((e) => selected.has(entryKey(e)));
+
   function handleSearch(val) {
     setSearch(val);
     setCurrentPage(1);
@@ -71,6 +79,81 @@ export default function LogPage() {
   function handlePageSize(val) {
     setPageSize(Number(val));
     setCurrentPage(1);
+  }
+
+  function toggleSelect(key) {
+    setSelected((prev) => {
+      const next = new Set(prev);
+      next.has(key) ? next.delete(key) : next.add(key);
+      return next;
+    });
+  }
+
+  function togglePageSelect() {
+    if (allPageSelected) {
+      setSelected((prev) => {
+        const next = new Set(prev);
+        pageKeys.forEach((k) => next.delete(k));
+        return next;
+      });
+    } else {
+      setSelected((prev) => {
+        const next = new Set(prev);
+        pageKeys.forEach((k) => next.add(k));
+        return next;
+      });
+    }
+  }
+
+  function selectAllFiltered() {
+    setSelected(new Set(filtered.map(entryKey)));
+  }
+
+  function clearSelection() {
+    setSelected(new Set());
+  }
+
+  async function deleteSelected() {
+    if (!selected.size) return;
+    if (!window.confirm(`Delete ${selected.size} log ${selected.size === 1 ? "entry" : "entries"}? This cannot be undone.`)) return;
+    setDeleting(true);
+    try {
+      const { sha } = await github.readFile(CHANGELOG_PATH, { branch: "main", token });
+      const remaining = entries.filter((e) => !selected.has(entryKey(e)));
+      await github.writeFile(CHANGELOG_PATH, JSON.stringify(remaining, null, 2), {
+        message: "CMS: delete log entries [skip ci]",
+        sha,
+        branch: "main",
+        token,
+      });
+      setEntries(remaining);
+      setSelected(new Set());
+    } catch (err) {
+      alert("Failed to delete: " + err.message);
+    } finally {
+      setDeleting(false);
+    }
+  }
+
+  async function deleteAll() {
+    if (!entries.length) return;
+    if (!window.confirm("Delete ALL log entries? This cannot be undone.")) return;
+    setDeleting(true);
+    try {
+      const { sha } = await github.readFile(CHANGELOG_PATH, { branch: "main", token });
+      await github.writeFile(CHANGELOG_PATH, "[]", {
+        message: "CMS: clear activity log [skip ci]",
+        sha,
+        branch: "main",
+        token,
+      });
+      setEntries([]);
+      setSelected(new Set());
+    } catch (err) {
+      alert("Failed to delete: " + err.message);
+    } finally {
+      setDeleting(false);
+    }
   }
 
   function exportCSV() {
@@ -90,8 +173,8 @@ export default function LogPage() {
     );
 
     const csv = [headers, ...rows]
-        .map((row) => row.map((cell) => `"${String(cell).replace(/"/g, '""')}"`).join(","))
-        .join("\n");
+      .map((row) => row.map((cell) => `"${String(cell).replace(/"/g, '""')}"`).join(","))
+      .join("\n");
 
     const blob = new Blob(["\uFEFF" + csv], { type: "text/csv;charset=utf-8;" });
     const url = URL.createObjectURL(blob);
@@ -100,8 +183,7 @@ export default function LogPage() {
     a.download = `cms-log-${new Date().toISOString().slice(0, 10)}.csv`;
     a.click();
     URL.revokeObjectURL(url);
-}
-
+  }
 
   if (!token)
     return <p style={{ color: "var(--admin-muted)" }}>Enter a GitHub token in Setup first.</p>;
@@ -110,13 +192,35 @@ export default function LogPage() {
     (p) => p === 1 || p === totalPages || Math.abs(p - safePage) <= 2
   );
 
+  const COL_COUNT = 7;
+
   return (
     <div>
-      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 20 }}>
+      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 20, flexWrap: "wrap", gap: 8 }}>
         <h2 style={{ margin: 0 }}>Activity Log</h2>
-        <button className="admin-btn admin-btn--ghost" onClick={exportCSV} disabled={!filtered.length}>
+        <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+          {selected.size > 0 && (
+            <button
+              className="admin-btn"
+              style={{ background: "var(--admin-red, #d32f2f)", color: "#fff", border: "none" }}
+              onClick={deleteSelected}
+              disabled={deleting}
+            >
+              {deleting ? "Deleting…" : `Delete selected (${selected.size})`}
+            </button>
+          )}
+          <button className="admin-btn admin-btn--ghost" onClick={exportCSV} disabled={!filtered.length}>
             Export CSV
-        </button>
+          </button>
+          <button
+            className="admin-btn admin-btn--ghost"
+            style={{ color: "var(--admin-red, #d32f2f)", borderColor: "var(--admin-red, #d32f2f)" }}
+            onClick={deleteAll}
+            disabled={!entries.length || deleting}
+          >
+            Delete All
+          </button>
+        </div>
       </div>
 
       {/* Search + page size */}
@@ -145,10 +249,42 @@ export default function LogPage() {
         </div>
       ) : (
         <>
+          {/* Select-all-results banner */}
+          {somePageSelected && !allFilteredSelected && filtered.length > pageSize && (
+            <div style={{ fontSize: 13, marginBottom: 8, color: "var(--admin-muted)" }}>
+              {selected.size} {selected.size === 1 ? "entry" : "entries"} selected on this page.{" "}
+              <button
+                onClick={selectAllFiltered}
+                style={{ background: "none", border: "none", color: "var(--admin-blue)", cursor: "pointer", padding: 0, fontSize: 13 }}
+              >
+                Select all {filtered.length} results
+              </button>
+            </div>
+          )}
+          {allFilteredSelected && filtered.length > pageSize && (
+            <div style={{ fontSize: 13, marginBottom: 8, color: "var(--admin-muted)" }}>
+              All {selected.size} entries selected.{" "}
+              <button
+                onClick={clearSelection}
+                style={{ background: "none", border: "none", color: "var(--admin-blue)", cursor: "pointer", padding: 0, fontSize: 13 }}
+              >
+                Clear selection
+              </button>
+            </div>
+          )}
+
           <div className="admin-card" style={{ padding: 0, overflow: "hidden" }}>
             <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 13 }}>
               <thead>
                 <tr style={{ background: "var(--admin-bg)", borderBottom: "2px solid var(--admin-border)" }}>
+                  <th style={{ padding: "10px 16px", width: 36 }}>
+                    <input
+                      type="checkbox"
+                      checked={allPageSelected}
+                      ref={(el) => { if (el) el.indeterminate = somePageSelected && !allPageSelected; }}
+                      onChange={togglePageSelect}
+                    />
+                  </th>
                   {["Date / Time", "User", "Page", "Section", "Fields Changed", ""].map((h) => (
                     <th key={h} style={{ padding: "10px 16px", textAlign: "left", fontSize: 11, fontWeight: 700, color: "var(--admin-muted)", textTransform: "uppercase", letterSpacing: "0.05em", whiteSpace: "nowrap" }}>
                       {h}
@@ -159,13 +295,18 @@ export default function LogPage() {
               <tbody>
                 {pageData.map((entry, i) => {
                   const idx = (safePage - 1) * pageSize + i;
+                  const key = entryKey(entry);
                   const expanded = expandedIdx === idx;
+                  const isSelected = selected.has(key);
                   return (
                     <Fragment key={idx}>
                       <tr
-                        style={{ borderBottom: "1px solid var(--admin-border)", cursor: "pointer", background: expanded ? "#f0f2f8" : "white" }}
+                        style={{ borderBottom: "1px solid var(--admin-border)", cursor: "pointer", background: isSelected ? "#eef2ff" : expanded ? "#f0f2f8" : "white" }}
                         onClick={() => setExpandedIdx(expanded ? null : idx)}
                       >
+                        <td style={{ padding: "12px 16px" }} onClick={(e) => { e.stopPropagation(); toggleSelect(key); }}>
+                          <input type="checkbox" checked={isSelected} onChange={() => toggleSelect(key)} onClick={(e) => e.stopPropagation()} />
+                        </td>
                         <td style={{ padding: "12px 16px", whiteSpace: "nowrap" }}>{formatDate(entry.timestamp)}</td>
                         <td style={{ padding: "12px 16px" }}>{entry.userEmail ?? "—"}</td>
                         <td style={{ padding: "12px 16px" }}>{entry.page ?? "—"}</td>
@@ -177,7 +318,7 @@ export default function LogPage() {
                       </tr>
                       {expanded && (
                         <tr style={{ background: "#f0f2f8" }}>
-                          <td colSpan={6} style={{ padding: "0 16px 16px 32px" }}>
+                          <td colSpan={COL_COUNT} style={{ padding: "0 16px 16px 32px" }}>
                             <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 12 }}>
                               <thead>
                                 <tr style={{ borderBottom: "1px solid var(--admin-border)" }}>
