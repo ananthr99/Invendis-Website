@@ -3,17 +3,18 @@ import { useMsal } from "@azure/msal-react";
 import { useAdmin } from "../context/AdminContext.jsx";
 
 const CONTENT_LINKS = [
-  { path: "content/home",         label: "Home" },
-  { path: "content/contact",      label: "Contact" },
-  { path: "content/company",      label: "Company" },
-  { path: "content/sectors",      label: "Sectors" },
-  { path: "content/products",     label: "Products" },
-  { path: "content/silbo",        label: "SILBO" },
-  { path: "content/case-studies", label: "Case Studies" },
-  { path: "content/resources",    label: "Resources" },
-  { path: "content/gallery",      label: "Gallery" },
-  { path: "content/careers",      label: "Careers" },
+  { path: "/content/home",         label: "Home" },
+  { path: "/content/contact",      label: "Contact" },
+  { path: "/content/company",      label: "Company" },
+  { path: "/content/sectors",      label: "Sectors" },
+  { path: "/content/products",     label: "Products" },
+  { path: "/content/silbo",        label: "SILBO" },
+  { path: "/content/case-studies", label: "Case Studies" },
+  { path: "/content/resources",    label: "Resources" },
+  { path: "/content/gallery",      label: "Gallery" },
+  { path: "/content/careers",      label: "Careers" },
 ];
+
 
 export default function Dashboard() {
   const { instance, accounts } = useMsal();
@@ -75,8 +76,8 @@ export default function Dashboard() {
           ))}
           <div className="admin-sidebar-group">Admin</div>
           <NavLink
-            to="setup"
-            onClick={guardedNavigate("setup")}
+            to="/setup"
+            onClick={guardedNavigate("/setup")}
             className={({ isActive }) => `admin-sidebar-link${isActive ? " active" : ""}`}
           >
             Setup {!token && "⚠️"}

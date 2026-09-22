@@ -37,7 +37,7 @@ export default function App() {
 					</AuthGuard>
 				}
 			>
-				<Route index element={<Navigate to="content/home" replace />} />
+				<Route index element={<Navigate to="/content/home" replace />} />
 				<Route path="setup" element={<Setup />} />
 				<Route path="content/home" element={<HomePageEditor />} />
 				<Route path="content/contact" element={<ContactPageEditor />} />
