@@ -77,7 +77,7 @@ export default function HomePageEditor() {
       <div
         style={{
           position: "sticky",
-          top: 0,
+          top: 56,
           zIndex: 50,
           background: "var(--admin-bg)",
           padding: "16px 0 10px",

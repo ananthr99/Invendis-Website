@@ -11,8 +11,6 @@
 
 * { box-sizing: border-box; }
 
-html, body { height: 100%; }
-
 body {
   margin: 0;
   background: var(--admin-bg);
@@ -26,7 +24,7 @@ body {
 .admin-shell {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 /* ---- top nav ---- */
@@ -39,8 +37,10 @@ body {
   height: 56px;
   background: white;
   border-bottom: 1px solid var(--admin-border);
-  flex-shrink: 0;
+  position: sticky;
+  top: 0;
   z-index: 100;
+  flex-shrink: 0;
 }
 
 .admin-topnav-left {
@@ -77,8 +77,6 @@ body {
 .admin-body {
   display: flex;
   flex: 1;
-  min-height: 0;
-  overflow: hidden;
 }
 
 /* ---- sidebar ---- */
@@ -89,6 +87,9 @@ body {
   background: var(--admin-blue);
   color: white;
   padding: 8px 0;
+  position: sticky;
+  top: 56px;
+  height: calc(100vh - 56px);
   overflow-y: auto;
 }
 
@@ -131,7 +132,6 @@ body {
 .admin-main {
   flex: 1;
   padding: 32px 40px;
-  overflow-y: auto;
 }
 
 /* ---- forms ---- */
