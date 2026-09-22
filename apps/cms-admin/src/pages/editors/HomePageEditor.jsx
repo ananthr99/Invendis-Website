@@ -78,11 +78,9 @@ export default function HomePageEditor() {
         style={{
           position: "sticky",
           top: 0,
-          zIndex: 10,
+          zIndex: 50,
           background: "var(--admin-bg)",
-          marginLeft: -40,
-          marginRight: -40,
-          padding: "16px 40px 10px",
+          padding: "16px 0 10px",
           marginBottom: 14,
           boxShadow: "0 4px 8px -2px rgba(0,0,0,0.07)",
         }}
