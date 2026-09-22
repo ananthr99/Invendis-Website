@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useLayoutEffect, useRef } from "react";
 import { useAdmin } from "../../context/AdminContext.jsx";
 import { loadPageContent, savePageContent } from "../../utils/savePageContent.js";
 import { HOME_SECTION_EDITORS, SECTION_LABELS, ALL_SECTION_KEYS } from "../../sections/home/registry.js";
@@ -13,19 +13,22 @@ export default function HomePageEditor() {
   const [saving, setSaving] = useState(false);
   const [activeTab, setActiveTab] = useState(ALL_SECTION_KEYS[0]);
   const loadedTokenRef = useRef(null);
+  const headerRef = useRef(null);
+  const [headerH, setHeaderH] = useState(110);
 
   useEffect(() => {
     if (!token || loadedTokenRef.current === token) return;
     loadedTokenRef.current = token;
     setLoading(true);
     loadPageContent(CONTENT_PATH, token)
-      .then((data) => {
-        setOriginal(data);
-        setForm(data);
-      })
+      .then((data) => { setOriginal(data); setForm(data); })
       .catch((err) => toast(err.message, "err"))
       .finally(() => setLoading(false));
   }, [token]);
+
+  useLayoutEffect(() => {
+    if (headerRef.current) setHeaderH(headerRef.current.offsetHeight);
+  });
 
   useEffect(() => {
     if (!original || !form) return;
@@ -51,14 +54,7 @@ export default function HomePageEditor() {
   async function handleSave() {
     setSaving(true);
     try {
-      await savePageContent({
-        token,
-        contentPath: CONTENT_PATH,
-        before: original,
-        after: form,
-        page: "Home",
-        userEmail,
-      });
+      await savePageContent({ token, contentPath: CONTENT_PATH, before: original, after: form, page: "Home", userEmail });
       setOriginal(form);
       setDirty(false);
       toast("Home page saved — live in a few seconds", "ok");
@@ -74,15 +70,18 @@ export default function HomePageEditor() {
 
   return (
     <div>
+      {/* Fixed header — always visible regardless of scroll */}
       <div
+        ref={headerRef}
         style={{
-          position: "sticky",
+          position: "fixed",
           top: 56,
+          left: 220,
+          right: 0,
           zIndex: 50,
           background: "var(--admin-bg)",
-          padding: "16px 0 10px",
-          marginBottom: 14,
-          boxShadow: "0 4px 8px -2px rgba(0,0,0,0.07)",
+          padding: "16px 40px 0",
+          boxShadow: "0 2px 8px rgba(0,0,0,0.07)",
         }}
       >
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 12 }}>
@@ -119,6 +118,9 @@ export default function HomePageEditor() {
           ))}
         </div>
       </div>
+
+      {/* Spacer that matches the fixed header height so card starts below it */}
+      <div style={{ height: headerH }} />
 
       {/* Active section editor */}
       <div className="admin-card">
