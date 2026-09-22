@@ -374,11 +374,12 @@ export default function LogPage() {
                       onChange={togglePageSelect}
                     />
                   </th>
-                  {["Date / Time", "User", "Page", "Section", "Fields Changed", ""].map((h) => (
+                  {["Date / Time", "User", "Page", "Section", "Fields Changed"].map((h) => (
                     <th key={h} style={{ padding: "10px 16px", textAlign: "left", fontSize: 11, fontWeight: 700, color: "var(--admin-muted)", textTransform: "uppercase", letterSpacing: "0.05em", whiteSpace: "nowrap" }}>
                       {h}
                     </th>
                   ))}
+                  <th style={{ width: 100, minWidth: 100 }} />
                 </tr>
               </thead>
               <tbody>
