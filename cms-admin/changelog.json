@@ -1,5 +1,123 @@
 [
   {
+    "timestamp": "2026-09-22T14:35:29.260Z",
+    "userEmail": "ananth.r@invendis.com",
+    "page": "Home",
+    "section": null,
+    "changes": [
+      {
+        "section": "topBar",
+        "field": "tags",
+        "action": "removed",
+        "label": "#4",
+        "before": "RMS"
+      },
+      {
+        "section": "hero",
+        "field": "productGroups",
+        "action": "changed",
+        "label": "#1",
+        "before": {
+          "heading": "SOFTWARE PRODUCTS",
+          "items": [
+            "PizGloria RMS Platform",
+            "Mobile Apps",
+            "Utility Billing",
+            "NMS",
+            "Silbo Health Monitoring (SHM)"
+          ]
+        },
+        "after": {
+          "heading": "SOFTWARE PRODUCTS",
+          "items": [
+            "PizGloria RMS Platform",
+            "Mobile Apps",
+            "Utility Billing",
+            "NMS",
+            "Silbo Health Monitoring (SHM)",
+            "Solar Monitoring Platform"
+          ]
+        }
+      },
+      {
+        "section": "stats",
+        "field": "stats",
+        "before": [
+          {
+            "value": "150K+",
+            "label": "Sites Deployed"
+          },
+          {
+            "value": "32+",
+            "label": "Countries"
+          },
+          {
+            "value": "18+",
+            "label": "Years in IIoT"
+          },
+          {
+            "value": "1 Trillion+",
+            "label": "Data Points"
+          }
+        ],
+        "after": [
+          {
+            "value": "150K+",
+            "label": "Sites Deployed"
+          },
+          {
+            "value": "32+",
+            "label": "Countries"
+          },
+          {
+            "value": "18+",
+            "label": "Years in IIoT"
+          },
+          {
+            "value": "1.5 Trillion+",
+            "label": "Data Points"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-09-22T14:26:31.011Z",
+    "userEmail": "ananth.r@invendis.com",
+    "page": "Home",
+    "section": null,
+    "changes": [
+      {
+        "field": "topBar",
+        "before": {
+          "tags": [
+            "OEM/ODM",
+            "NETWORKING DEVICES",
+            "INDUSTRIAL IOT",
+            "EDGE AI"
+          ],
+          "cta": {
+            "label": "Browse Products →",
+            "href": "/products"
+          }
+        },
+        "after": {
+          "tags": [
+            "OEM/ODM",
+            "NETWORKING DEVICES",
+            "INDUSTRIAL IOT",
+            "EDGE AI",
+            "RMS"
+          ],
+          "cta": {
+            "label": "Browse Products →",
+            "href": "/products"
+          }
+        }
+      }
+    ]
+  },
+  {
     "timestamp": "2026-09-22T11:24:28.826Z",
     "userEmail": "ananth.r@invendis.com",
     "page": "Home",
