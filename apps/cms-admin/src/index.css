@@ -87,6 +87,10 @@ body {
   background: var(--admin-blue);
   color: white;
   padding: 16px 0;
+  position: sticky;
+  top: 56px;
+  height: calc(100vh - 56px);
+  overflow-y: auto;
 }
 
 .admin-sidebar-group {
@@ -118,8 +122,8 @@ body {
 .admin-main {
   flex: 1;
   padding: 32px 40px;
-  max-width: 900px;
 }
+
 
 /* ---- forms ---- */
 
@@ -130,6 +134,7 @@ body {
   font-weight: 600;
   font-size: 13px;
   margin-bottom: 6px;
+  overflow-y: auto;
 }
 
 .admin-input,

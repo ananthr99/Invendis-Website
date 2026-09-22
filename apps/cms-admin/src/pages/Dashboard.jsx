@@ -76,6 +76,13 @@ export default function Dashboard() {
           ))}
           <div className="admin-sidebar-group">Admin</div>
           <NavLink
+            to="/log"
+            onClick={guardedNavigate("/log")}
+            className={({ isActive }) => `admin-sidebar-link${isActive ? " active" : ""}`}
+          >
+            Activity Log
+          </NavLink>
+          <NavLink
             to="/setup"
             onClick={guardedNavigate("/setup")}
             className={({ isActive }) => `admin-sidebar-link${isActive ? " active" : ""}`}

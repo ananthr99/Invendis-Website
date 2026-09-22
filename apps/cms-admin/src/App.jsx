@@ -7,6 +7,7 @@ import AccessDenied from "./pages/AccessDenied.jsx";
 import HomePageEditor from "./pages/editors/HomePageEditor.jsx";
 import ContactPageEditor from "./pages/editors/ContactPageEditor.jsx";
 import PlaceholderEditor from "./pages/editors/PlaceholderEditor.jsx";
+import LogPage from "./pages/LogPage.jsx";
 
 // Pages not yet wired to a real editor render the generic
 // PlaceholderEditor — same "coming soon, follow the pattern" idea as the
@@ -41,6 +42,7 @@ export default function App() {
 				<Route path="setup" element={<Setup />} />
 				<Route path="content/home" element={<HomePageEditor />} />
 				<Route path="content/contact" element={<ContactPageEditor />} />
+				<Route path="log" element={<LogPage />} />
 				{PLACEHOLDER_PAGES.map((p) => (
 					<Route
 						key={p.path}
