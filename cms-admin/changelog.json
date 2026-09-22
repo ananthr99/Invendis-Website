@@ -1,5 +1,41 @@
 [
   {
+    "timestamp": "2026-09-22T11:24:28.826Z",
+    "userEmail": "ananth.r@invendis.com",
+    "page": "Home",
+    "section": null,
+    "changes": [
+      {
+        "field": "topBar",
+        "before": {
+          "tags": [
+            "OEM/ODM",
+            "NETWORKING DEVICES",
+            "INDUSTRIAL IOT",
+            "EDGE AI",
+            "RMS"
+          ],
+          "cta": {
+            "label": "Browse Products →",
+            "href": "/products"
+          }
+        },
+        "after": {
+          "tags": [
+            "OEM/ODM",
+            "NETWORKING DEVICES",
+            "INDUSTRIAL IOT",
+            "EDGE AI"
+          ],
+          "cta": {
+            "label": "Browse Products →",
+            "href": "/products"
+          }
+        }
+      }
+    ]
+  },
+  {
     "timestamp": "2026-09-22T11:19:22.130Z",
     "userEmail": "ananth.r@invendis.com",
     "page": "Home",
