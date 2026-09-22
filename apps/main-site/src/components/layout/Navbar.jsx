@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { useContent } from "../../hooks/useContent.js";
+import { publicUrl } from "../../utils/publicUrl.js";
 
 export default function Navbar() {
 	const settings = useContent("siteSettings.json");
@@ -12,13 +13,13 @@ export default function Navbar() {
 			<div className="mx-auto flex max-w-screen-2xl items-center justify-between px-4 py-3 sm:px-8">
 				<Link to="/" className="flex items-center gap-2">
 					<img
-						src={settings?.logo?.src ?? "/invendis_logo.webp"}
+						src={publicUrl(settings?.logo?.srcDark ?? settings?.logo?.src ?? "/invendis_logo.webp")}
 						alt={settings?.logo?.alt ?? "INVENDIS"}
 						className="h-8 w-auto"
 					/>
           {settings?.makeInIndiaBadge?.src && (
             <img
-              src={settings.makeInIndiaBadge.src}
+              src={publicUrl(settings.makeInIndiaBadge.src)}
               alt={settings.makeInIndiaBadge.alt ?? "Make in India"}
               className="h-8 w-auto"
             />
@@ -44,7 +45,7 @@ export default function Navbar() {
 				{settings?.silboBadge && (
 					<Link to={settings.silboBadge.href} className="hidden md:flex items-center">
 						<img
-							src={settings.silboBadge.src ?? "/silbo_logo.png"}
+							src={publicUrl(settings.silboBadge.src ?? "/silbo_logo.png")}
 							alt={settings.silboBadge.label}
 							className="h-8 w-auto"
 						/>

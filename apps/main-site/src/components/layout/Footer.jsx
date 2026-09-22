@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useContent } from "../../hooks/useContent.js";
+import { publicUrl } from "../../utils/publicUrl.js";
 
 function LinkedInIcon() {
 	return (
@@ -24,13 +25,13 @@ export default function Footer() {
         <div className="sm:col-span-2 lg:col-span-1">
           <div className="mb-4 flex items-center gap-4">
             <img
-              src={settings?.logo?.srcDark ?? settings?.logo?.src ?? "/invendis_logo.webp"}
+              src={publicUrl(settings?.logo?.srcDark ?? settings?.logo?.src ?? "/invendis_logo.webp")}
               alt={settings?.logo?.alt ?? "INVENDIS"}
               className="h-9 w-auto brightness-0 invert"
             />
             {settings?.silboBadge?.src && (
               <img
-                src={settings.silboBadge.src}
+                src={publicUrl(settings.silboBadge.src)}
                 alt={settings.silboBadge.label ?? "SILBO"}
                 className="h-9 w-auto brightness-0 invert"
               />
@@ -39,7 +40,7 @@ export default function Footer() {
           <p className="text-xs leading-relaxed text-white/50">{settings?.footerTagline}</p>
           {settings?.makeInIndiaBadge?.src && (
             <img
-              src={settings.makeInIndiaBadge.src}
+              src={publicUrl(settings.makeInIndiaBadge.src)}
               alt={settings.makeInIndiaBadge.alt ?? "Make in India"}
               className="mt-2 h-10 w-auto brightness-0 invert"
             />
