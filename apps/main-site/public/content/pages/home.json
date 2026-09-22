@@ -13,8 +13,7 @@
       "OEM/ODM",
       "NETWORKING DEVICES",
       "INDUSTRIAL IOT",
-      "EDGE AI",
-      "RMS"
+      "EDGE AI"
     ],
     "cta": {
       "label": "Browse Products →",
@@ -49,7 +48,8 @@
           "Mobile Apps",
           "Utility Billing",
           "NMS",
-          "Silbo Health Monitoring (SHM)"
+          "Silbo Health Monitoring (SHM)",
+          "Solar Monitoring Platform"
         ]
       },
       {
@@ -87,7 +87,7 @@
       "label": "Years in IIoT"
     },
     {
-      "value": "1 Trillion+",
+      "value": "1.5 Trillion+",
       "label": "Data Points"
     }
   ],
