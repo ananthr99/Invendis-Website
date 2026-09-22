@@ -74,39 +74,52 @@ export default function HomePageEditor() {
 
   return (
     <div>
-      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 20 }}>
-        <h2 style={{ margin: 0 }}>Home</h2>
-        <button className="admin-btn admin-btn--primary" onClick={handleSave} disabled={saving}>
-          {saving ? "Saving…" : "Save changes"}
-        </button>
-      </div>
-
-      {/* Tab bar */}
-      <div style={{ display: "flex", flexWrap: "wrap", gap: 2, borderBottom: "2px solid var(--admin-border)", marginBottom: 24 }}>
-        {ALL_SECTION_KEYS.map((key) => (
-          <button
-            key={key}
-            onClick={() => setActiveTab(key)}
-            style={{
-              padding: "8px 16px",
-              border: "none",
-              background: "none",
-              cursor: "pointer",
-              fontSize: 13.5,
-              fontWeight: activeTab === key ? 700 : 400,
-              color: activeTab === key ? "var(--admin-blue)" : "var(--admin-muted)",
-              borderBottom: activeTab === key ? "2px solid var(--admin-blue)" : "2px solid transparent",
-              marginBottom: -2,
-              transition: "color 0.15s",
-              fontFamily: "inherit",
-            }}
-          >
-            {SECTION_LABELS[key]}
-            {!activeSections.includes(key) && (
-              <span style={{ marginLeft: 5, fontSize: 9, opacity: 0.5 }}>●</span>
-            )}
+      {/* Sticky heading + tabs — top: 56 clears the fixed admin header */}
+      <div
+        style={{
+          position: "sticky",
+          top: 56,
+          zIndex: 10,
+          background: "var(--admin-bg)",
+          marginLeft: -40,
+          marginRight: -40,
+          padding: "16px 40px 0",
+          marginBottom: 24,
+        }}
+      >
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 12 }}>
+          <h2 style={{ margin: 0 }}>Home</h2>
+          <button className="admin-btn admin-btn--primary" onClick={handleSave} disabled={saving}>
+            {saving ? "Saving…" : "Save changes"}
           </button>
-        ))}
+        </div>
+
+        <div style={{ display: "flex", flexWrap: "wrap", gap: 2, borderBottom: "2px solid var(--admin-border)" }}>
+          {ALL_SECTION_KEYS.map((key) => (
+            <button
+              key={key}
+              onClick={() => setActiveTab(key)}
+              style={{
+                padding: "8px 16px",
+                border: "none",
+                background: "none",
+                cursor: "pointer",
+                fontSize: 13.5,
+                fontWeight: activeTab === key ? 700 : 400,
+                color: activeTab === key ? "var(--admin-blue)" : "var(--admin-muted)",
+                borderBottom: activeTab === key ? "2px solid var(--admin-blue)" : "2px solid transparent",
+                marginBottom: -2,
+                transition: "color 0.15s",
+                fontFamily: "inherit",
+              }}
+            >
+              {SECTION_LABELS[key]}
+              {!activeSections.includes(key) && (
+                <span style={{ marginLeft: 5, fontSize: 9, opacity: 0.5 }}>●</span>
+              )}
+            </button>
+          ))}
+        </div>
       </div>
 
       {/* Active section editor */}
