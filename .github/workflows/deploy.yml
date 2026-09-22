@@ -1,0 +1,56 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build main-site
+        run: npm run build
+        env:
+          VITE_BASE: /invendis-website/
+
+      - name: Build cms-admin
+        run: npm run build:admin
+        env:
+          VITE_BASE: /invendis-website/cms-admin/
+          VITE_AZURE_CLIENT_ID: ${{ secrets.VITE_AZURE_CLIENT_ID }}
+          VITE_AZURE_TENANT_ID: ${{ secrets.VITE_AZURE_TENANT_ID }}
+          VITE_AZURE_REDIRECT_URI: ${{ secrets.VITE_AZURE_REDIRECT_URI }}
+          VITE_GH_OWNER: ${{ secrets.VITE_GH_OWNER }}
+          VITE_GH_REPO: ${{ secrets.VITE_GH_REPO }}
+          VITE_ALLOWED_EMAILS: ${{ secrets.VITE_ALLOWED_EMAILS }}
+
+      - name: Merge cms-admin into main-site dist
+        run: |
+          mkdir -p apps/main-site/dist/cms-admin
+          cp -r apps/cms-admin/dist/. apps/main-site/dist/cms-admin/
+
+      - name: Add SPA 404 fallback
+        run: |
+          cp apps/main-site/dist/index.html apps/main-site/dist/404.html
+          cp apps/cms-admin/dist/index.html apps/main-site/dist/cms-admin/404.html
+
+      - name: Deploy to gh-pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: apps/main-site/dist
+          force_orphan: true
