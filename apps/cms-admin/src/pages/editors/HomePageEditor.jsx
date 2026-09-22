@@ -74,11 +74,10 @@ export default function HomePageEditor() {
 
   return (
     <div>
-      {/* Sticky heading + tabs — top: 56 clears the fixed admin header */}
       <div
         style={{
           position: "sticky",
-          top: 56,
+          top: 0,
           zIndex: 10,
           background: "var(--admin-bg)",
           marginLeft: -40,

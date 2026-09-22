@@ -11,6 +11,8 @@
 
 * { box-sizing: border-box; }
 
+html, body { height: 100%; }
+
 body {
   margin: 0;
   background: var(--admin-bg);
@@ -24,7 +26,7 @@ body {
 .admin-shell {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  height: 100vh;
 }
 
 /* ---- top nav ---- */
@@ -37,10 +39,8 @@ body {
   height: 56px;
   background: white;
   border-bottom: 1px solid var(--admin-border);
-  position: sticky;
-  top: 0;
-  z-index: 100;
   flex-shrink: 0;
+  z-index: 100;
 }
 
 .admin-topnav-left {
@@ -77,6 +77,8 @@ body {
 .admin-body {
   display: flex;
   flex: 1;
+  min-height: 0;
+  overflow: hidden;
 }
 
 /* ---- sidebar ---- */
@@ -87,9 +89,6 @@ body {
   background: var(--admin-blue);
   color: white;
   padding: 8px 0;
-  position: sticky;
-  top: 56px;
-  height: calc(100vh - 56px);
   overflow-y: auto;
 }
 
@@ -102,6 +101,12 @@ body {
   color: var(--admin-red);
 }
 
+.admin-sidebar-divider {
+  margin: 4px 16px 0;
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
 .admin-sidebar-link {
   display: block;
   padding: 6px 20px 6px 29px;
@@ -111,13 +116,6 @@ body {
   transition: background 0.15s;
   border-left: 3px solid transparent;
 }
-
-.admin-sidebar-divider {
-  margin: 4px 16px 0;
-  border: none;
-  border-top: 1px solid rgba(255, 255, 255, 0.12);
-}
-
 .admin-sidebar-link:hover {
   background: rgba(255, 255, 255, 0.08);
   color: rgba(255, 255, 255, 0.95);
@@ -133,8 +131,8 @@ body {
 .admin-main {
   flex: 1;
   padding: 32px 40px;
+  overflow-y: auto;
 }
-
 
 /* ---- forms ---- */
 
@@ -145,7 +143,6 @@ body {
   font-weight: 600;
   font-size: 13px;
   margin-bottom: 6px;
-  overflow-y: auto;
 }
 
 .admin-input,
