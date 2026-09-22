@@ -7,13 +7,13 @@ import App from "./App.jsx";
 import "./index.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-	<React.StrictMode>
-		<AuthProvider>
-			<HashRouter basename={import.meta.env.BASE_URL}>
-				<AdminProvider>
-					<App />
-				</AdminProvider>
-			</HashRouter>
-		</AuthProvider>
-	</React.StrictMode>
+  <React.StrictMode>
+    <AuthProvider>
+      <HashRouter>
+        <AdminProvider>
+          <App />
+        </AdminProvider>
+      </HashRouter>
+    </AuthProvider>
+  </React.StrictMode>
 );
