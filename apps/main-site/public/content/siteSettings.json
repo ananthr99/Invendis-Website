@@ -1,0 +1,75 @@
+{
+	"logo": {
+		"src": "/invendis_logo.webp",
+		"srcDark": "/invendis_logo.webp",
+		"alt": "INVENDIS"
+	},
+	"silboBadge": {
+		"label": "SILBO",
+		"href": "/silbo",
+		"src": "/silbo_logo.png"
+	},
+  "makeInIndiaBadge": {
+    "src": "/make_in_india.png",
+    "alt": "Make in India"
+  },
+	"nav": [
+		{ "label": "Home", "href": "/" },
+		{ "label": "Sectors", "href": "/sectors" },
+		{ "label": "Products", "href": "/products" },
+		{ "label": "SILBO", "href": "/silbo" },
+		{ "label": "Case Studies", "href": "/case-studies" },
+		{ "label": "Resources", "href": "/resources" },
+		{ "label": "Company", "href": "/company" },
+		{ "label": "Gallery", "href": "/gallery" },
+		{ "label": "Contact", "href": "/contact" }
+	],
+	"footerTagline": "Industrial IoT hardware — routers, gateways, switches, and energy meters.",
+  "footerMadeInIndia": "Made in India",
+	"footerLinks": [
+		{
+			"title": "Products",
+			"links": [
+				{ "label": "iSense RMS Controller", "href": "/products" },
+				{ "label": "Energy Meters", "href": "/products" },
+				{ "label": "SILBO Routers", "href": "/silbo" },
+				{ "label": "Industrial Gateways", "href": "/products" },
+				{ "label": "PizGloria Platform", "href": "/products" },
+				{ "label": "Mobile App", "href": "/products" }
+			]
+		},
+		{
+			"title": "Sectors",
+			"links": [
+				{ "label": "Telecom Infrastructure", "href": "/sectors" },
+				{ "label": "Solar & Renewables", "href": "/sectors" },
+				{ "label": "Smart Energy", "href": "/sectors" },
+				{ "label": "Industrial Networks", "href": "/sectors" },
+				{ "label": "ESG & Sustainability", "href": "/sectors" }
+			]
+		},
+		{
+			"title": "Company",
+			"links": [
+				{ "label": "About Us", "href": "/company" },
+				{ "label": "Our Journey", "href": "/company" },
+				{ "label": "Case Studies", "href": "/case-studies" },
+				{ "label": "Resources", "href": "/resources" },
+				{ "label": "White Papers", "href": "/resources" },
+				{ "label": "Careers", "href": "/careers" },
+				{ "label": "Contact", "href": "/contact" }
+			]
+		}
+	],
+	"contact": {
+		"email": "sales@invendis.com",
+		"phone": "+91 6361509463",
+		"address": "No. 230, 1st Cross, 38th Main, BOOHBCS Layout, BTM 2nd Stage, Bangalore – 560 068",
+		"website": "www.invendis.com",
+		"websiteAlt": "www.silbonetworks.com"
+	},
+	"social": {
+		"linkedin": "https://www.linkedin.com/company/invendis"
+	},
+	"whatsapp": "+916351509463"
+}

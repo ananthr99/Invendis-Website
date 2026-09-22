@@ -1,0 +1,14 @@
+{
+	"hero": {
+		"title": "Get in touch",
+		"subtitle": "Have a project in mind? We'd love to hear from you."
+	},
+	"contactEmail": "info@invendis.com",
+	"form": {
+		"nameLabel": "Name",
+		"emailLabel": "Email",
+		"messageLabel": "Message",
+		"submitLabel": "Send message",
+		"additionalFields": [{ "label": "Company", "placeholder": "Your company name", "required": false }]
+	}
+}

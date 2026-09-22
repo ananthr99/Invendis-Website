@@ -1,0 +1,21 @@
+{
+  "name": "invendis-website",
+  "private": true,
+  "version": "1.0.0",
+  "description": "INVENDIS public website + CMS admin — npm workspaces monorepo.",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "npm run dev --workspace=apps/main-site",
+    "dev:admin": "npm run dev --workspace=apps/cms-admin",
+    "build": "npm run build --workspace=apps/main-site",
+    "build:admin": "npm run build --workspace=apps/cms-admin",
+    "build:all": "npm run build && npm run build:admin",
+    "format": "prettier --write \"apps/**/*.{js,jsx,json}\" \"packages/**/*.{js,jsx,json}\""
+  },
+  "devDependencies": {
+    "prettier": "^3.9.8"
+  }
+}

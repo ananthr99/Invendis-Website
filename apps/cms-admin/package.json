@@ -1,0 +1,23 @@
+{
+	"name": "@invendis/cms-admin",
+	"private": true,
+	"version": "1.0.0",
+	"type": "module",
+	"scripts": {
+		"dev": "vite",
+		"build": "vite build",
+		"preview": "vite preview"
+	},
+	"dependencies": {
+		"@azure/msal-browser": "^3.0.0",
+		"@azure/msal-react": "^2.0.0",
+		"@invendis/github-client": "*",
+		"react": "^18.3.0",
+		"react-dom": "^18.3.0",
+		"react-router-dom": "^7.18.4"
+	},
+	"devDependencies": {
+		"@vitejs/plugin-react": "^4.3.0",
+		"vite": "^6.0.0"
+	}
+}
