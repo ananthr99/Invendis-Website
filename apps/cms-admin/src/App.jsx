@@ -5,6 +5,7 @@ import Dashboard from "./pages/Dashboard.jsx";
 import Setup from "./pages/Setup.jsx";
 import AccessDenied from "./pages/AccessDenied.jsx";
 import HomePageEditor from "./pages/editors/HomePageEditor.jsx";
+import SectorsPageEditor from "./pages/editors/SectorsPageEditor.jsx";
 import ContactPageEditor from "./pages/editors/ContactPageEditor.jsx";
 import PlaceholderEditor from "./pages/editors/PlaceholderEditor.jsx";
 import LogPage from "./pages/LogPage.jsx";
@@ -14,7 +15,6 @@ import LogPage from "./pages/LogPage.jsx";
 // main site's stub pages. Add a real <XPageEditor /> here (copied from
 // HomePageEditor.jsx or ContactPageEditor.jsx) when you build one out.
 const PLACEHOLDER_PAGES = [
-	{ path: "sectors", label: "Sectors", contentPath: "pages/sectors.json" },
 	{ path: "products", label: "Products", contentPath: "pages/products.json" },
 	{ path: "silbo", label: "SILBO", contentPath: "pages/silbo.json" },
 	{ path: "case-studies", label: "Case Studies", contentPath: "pages/caseStudies.json" },
@@ -42,6 +42,7 @@ export default function App() {
 				<Route path="setup" element={<Setup />} />
 				<Route path="content/home" element={<HomePageEditor />} />
 				<Route path="content/contact" element={<ContactPageEditor />} />
+				<Route path="content/sectors" element={<SectorsPageEditor />} />
 				<Route path="log" element={<LogPage />} />
 				{PLACEHOLDER_PAGES.map((p) => (
 					<Route

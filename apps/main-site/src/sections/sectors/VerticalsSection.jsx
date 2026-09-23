@@ -1,6 +1,9 @@
 import { useState, useEffect } from "react";
 import SectorIcon from "./SectorIcon.jsx";
 
+const BASE = import.meta.env.BASE_URL.replace(/\/$/, "");
+function siteImg(path) { return path ? BASE + path : path; }
+
 function CameraIcon({ className }) {
 	return (
 		<svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5}>
@@ -47,7 +50,7 @@ function SectorImage({ image, label, height = 140 }) {
 			{images.map((src, i) => (
 				<img
 					key={src}
-					src={src}
+					src={siteImg(src)}
 					alt={label}
 					style={{
 						position: "absolute",

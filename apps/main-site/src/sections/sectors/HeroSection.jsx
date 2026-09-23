@@ -1,6 +1,9 @@
 import { useState, useEffect } from "react";
 import SectorIcon from "./SectorIcon.jsx";
 
+const BASE = import.meta.env.BASE_URL.replace(/\/$/, "");
+function siteImg(path) { return path ? BASE + path : path; }
+
 export default function HeroSection({ data }) {
 	const [active, setActive] = useState(0);
 	const { eyebrow, title, titleHighlight, subtitle, sectors = [] } = data ?? {};
@@ -65,7 +68,7 @@ export default function HeroSection({ data }) {
                         <div key={current.key} style={{ position: "absolute", inset: 0 }}>
                             {current.image ? (
                                 <img
-                                    src={current.image}
+                                    src={siteImg(current.image)}
                                     alt={current.name}
                                     style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
                                 />

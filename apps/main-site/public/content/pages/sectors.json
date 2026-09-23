@@ -10,35 +10,30 @@
 				"key": "edge",
 				"name": "Edge Compute & Industrial Networks",
 				"tagline": "Industrial-grade routers, SD-WAN, and protocol converters for harsh environments.",
-				"color": "#6d28d9",
 				"image": ["/images/sectors/edge/hero/hero.png"]
 			},
 			{
 				"key": "telecom",
 				"name": "Telecom Tower Infrastructure",
 				"tagline": "Remote monitoring & operations automation for passive telecom infrastructure at scale.",
-				"color": "#1B2A6B",
 				"image": ["/images/sectors/telecom/hero/hero.png"]
 			},
 			{
 				"key": "solar",
 				"name": "Solar & Renewable Energy",
 				"tagline": "End-to-end visibility over solar and hybrid energy assets, from edge device to cloud.",
-				"color": "#d97706",
 				"image": ["/images/sectors/solar/hero/hero.png"]
 			},
 			{
 				"key": "energy",
 				"name": "Smart Energy & Utilities",
 				"tagline": "Tariff-grade smart metering, utility billing, and consumption analytics.",
-				"color": "#E63946",
 				"image": ["/images/sectors/energy/hero/hero.png"]
 			},
 			{
 				"key": "esg",
 				"name": "ESG & Sustainability",
 				"tagline": "Carbon tracking, ESG reporting, and sustainability analytics on live energy data.",
-				"color": "#047857",
 				"image": ["/images/sectors/esg/hero/hero.png"]
 			}
 		]
