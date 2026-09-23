@@ -61,7 +61,7 @@ export default function HeroSection({ data }) {
                         border: "1px solid rgba(255,255,255,0.15)",
                         overflow: "hidden",
                         position: "relative",
-                        height: 300,
+                        height: 270,
                     }}
                 >
                     {current && (

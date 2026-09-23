@@ -188,7 +188,10 @@ export default function HeroSectorEditor({ data, onChange }) {
 						{/* Upload */}
 						<div className="admin-field">
 							<label className="admin-label">Upload New Image</label>
-							{pending && (
+                            <p style={{ margin: "0 0 8px", fontSize: 12, color: "var(--admin-muted)" }}>
+                                Uploading a new image replaces the existing one — only 1 hero image is supported per sector.
+                            </p>
+                            {pending && (
 								<div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 8, padding: 8, background: "var(--admin-bg)", border: "1px solid var(--admin-border)", borderRadius: 6 }}>
 									{previews[i] && (
 										<img src={previews[i]} alt="" style={{ height: 52, width: 80, objectFit: "cover", borderRadius: 4, flexShrink: 0 }} />

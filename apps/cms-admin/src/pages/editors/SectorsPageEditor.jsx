@@ -33,8 +33,14 @@ export default function SectorsPageEditor() {
 
 	useEffect(() => {
 		if (!original || !form) return;
-		const hasPending = (form.hero?._pendingUploads ?? []).length > 0;
-		const cleanForm = { ...form, hero: form.hero ? { ...form.hero, _pendingUploads: undefined } : form.hero };
+		const hasPending =
+			(form.hero?._pendingUploads ?? []).length > 0 ||
+			(form.verticals?._pendingUploads ?? []).length > 0;
+		const cleanForm = {
+			...form,
+			hero: form.hero ? { ...form.hero, _pendingUploads: undefined } : form.hero,
+			verticals: form.verticals ? { ...form.verticals, _pendingUploads: undefined } : form.verticals,
+		};
 		setDirty(hasPending || JSON.stringify(original) !== JSON.stringify(cleanForm));
 	}, [form, original]);
 
@@ -88,6 +94,33 @@ export default function SectorsPageEditor() {
 				saveForm = {
 					...form,
 					hero: { ...form.hero, sectors, _pendingUploads: undefined },
+				};
+				setForm(saveForm);
+			}
+			const verticalsPending = saveForm.verticals?._pendingUploads ?? [];
+			if (verticalsPending.length > 0) {
+				const items = [...(saveForm.verticals?.items ?? [])];
+				for (const upload of verticalsPending) {
+					const { itemIndex, base64, filename } = upload;
+					const itemKey = items[itemIndex]?.key;
+					if (!itemKey) throw new Error(`Vertical ${itemIndex + 1} has no key set — add a key before uploading.`);
+					const imgPath = `apps/main-site/public/images/sectors/${itemKey}/card/${filename}`;
+					const sha = await github.getFileSha(imgPath, { branch: "main", token });
+					await github.writeFileBase64(imgPath, base64, {
+						message: `CMS: upload card image for ${itemKey} [skip ci]`,
+						sha,
+						branch: "main",
+						token,
+					});
+					const existing = Array.isArray(items[itemIndex].image) ? items[itemIndex].image : items[itemIndex].image ? [items[itemIndex].image] : [];
+					items[itemIndex] = {
+						...items[itemIndex],
+						image: [...existing, `/images/sectors/${itemKey}/card/${filename}`],
+					};
+				}
+				saveForm = {
+					...saveForm,
+					verticals: { ...saveForm.verticals, items, _pendingUploads: undefined },
 				};
 				setForm(saveForm);
 			}
