@@ -1,121 +1,229 @@
 {
-	"sections": ["hero", "verticals", "globalReach", "cta"],
-	"hero": {
-		"eyebrow": "INDUSTRIES WE SERVE",
-		"title": "Sector ",
-		"titleHighlight": "Solutions",
-		"subtitle": "From Telecom Monitoring to Edge Network — Invendis delivers purpose-built IIoT solutions across multiple industrial verticals with proven global deployments.",
-		"sectors": [
-			{
-				"key": "edge",
-				"name": "Edge Compute & Industrial Networks",
-				"tagline": "Industrial-grade routers, SD-WAN, and protocol converters for harsh environments.",
-				"image": ["/images/sectors/edge/hero/hero.png"]
-			},
-			{
-				"key": "telecom",
-				"name": "Telecom Tower Infrastructure",
-				"tagline": "Remote monitoring & operations automation for passive telecom infrastructure at scale.",
-				"image": ["/images/sectors/telecom/hero/hero.png"]
-			},
-			{
-				"key": "solar",
-				"name": "Solar & Renewable Energy",
-				"tagline": "End-to-end visibility over solar and hybrid energy assets, from edge device to cloud.",
-				"image": ["/images/sectors/solar/hero/hero.png"]
-			},
-			{
-				"key": "energy",
-				"name": "Smart Energy & Utilities",
-				"tagline": "Tariff-grade smart metering, utility billing, and consumption analytics.",
-				"image": ["/images/sectors/energy/hero/hero.png"]
-			},
-			{
-				"key": "esg",
-				"name": "ESG & Sustainability",
-				"tagline": "Carbon tracking, ESG reporting, and sustainability analytics on live energy data.",
-				"image": ["/images/sectors/esg/hero/hero.png"]
-			}
-		]
-	},
-	"verticals": {
-		"eyebrow": "WHAT WE COVER",
-		"title": "Five Verticals, ",
-		"titleHighlight": "One Platform",
-		"subtitle": "Our solutions span the full spectrum of industrial IoT — sharing one unified data platform so insights flow freely across verticals.",
-		"items": [
-			{
-				"key": "edge",
-				"image": ["/images/sectors/edge/card/card1.png", "/images/sectors/edge/card/card2.png","/images/sectors/edge/card/card3.png"],
-				"name": "Edge Compute & Industrial Networks",
-				"description": "Industrial-grade routers, gateways, and SD-WAN solutions for mission-critical connectivity in harsh environments. Our SILBO product line powers connectivity for tower companies, utilities, and manufacturers.",
-				"tags": ["SD-WAN", "Industrial Routers", "Protocol Conversion", "Network Switches", "5G / LTE Ready"],
-				"clients": ["Tower operators", "Industrial IoT customers", "Utilities"]
-			},
-			{
-				"key": "telecom",
-				"image": ["/images/sectors/telecom/card/card1.png","/images/sectors/telecom/card/card2.png","/images/sectors/telecom/card/card3.png","/images/sectors/telecom/card/card4.png"],
-				"name": "Telecom Tower Infrastructure",
-				"description": "End-to-end remote monitoring and operations automation for passive telecom infrastructure. Alarm management, energy optimisation, field mobility, and trouble ticketing — deployed across 150K+ sites in 32 countries.",
-				"tags": ["Remote Monitoring", "Alarm Management", "Energy Optimisation", "Field Mobility", "Trouble Ticketing"],
-				"clients": ["ATC India", "Telecel", "Airtel", "Econet", "Ison Towers", "Tawal Saudi", "Tower of Africa"]
-			},
-			{
-				"key": "solar",
-				"image": ["/images/sectors/solar/card/card1.png","/images/sectors/solar/card/card2.png"],
-				"name": "Solar & Renewable Energy",
-				"description": "Real-time visibility over solar and hybrid energy assets. Integrated monitoring, billing, and analytics from edge devices to cloud dashboards — supporting both on-grid and off-grid deployments.",
-				"tags": ["Solar Monitoring", "Hybrid Systems", "Energy Billing", "PV Analytics", "Remote Diagnostics"],
-				"clients": ["OMC Power", "Altius", "IGT Myanmar", "Indus Africa"]
-			},
-			{
-				"key": "energy",
-				"image": ["/images/sectors/energy/card/card1.png","/images/sectors/energy/card/card2.png"],
-				"name": "Smart Energy & Utilities",
-				"description": "Tariff-grade smart meters and IoT-enabled utility management. Automated billing, consumption analytics, and regulatory compliance for utilities, municipalities, and industrial consumers.",
-				"tags": ["Smart Metering", "Utility Billing", "Consumption Analytics", "AMI / AMR", "Grid Monitoring"],
-				"clients": ["MicroScan", "Savanna Fibre", "Municipal utilities"]
-			},
-			{
-				"key": "esg",
-				"image": ["/images/sectors/esg/card/card1.png","/images/sectors/esg/card/card2.png"],
-				"name": "ESG & Sustainability for Solar Applications",
-				"description": "ESG reporting and sustainability analytics built directly on real-time energy data. Track carbon footprint, renewable energy credits, and compliance metrics automatically — no manual data entry.",
-				"tags": ["Carbon Tracking", "ESG Reporting", "Renewable Credits", "Sustainability Analytics", "Compliance"],
-				"clients": ["Solar operators", "Tower companies", "ESG-focused enterprises"]
-			}
-		]
-	},
-	"globalReach": {
-		"eyebrow": "GLOBAL REACH",
-		"title": "Present in ",
-		"titleHighlight": "32+ Countries",
-		"subtitle": "Partner ecosystem spanning Africa, the Middle East, South & Southeast Asia, and North America.",
-		"regions": [
-			{
-				"name": "Africa",
-				"countries": ["Nigeria", "Ghana", "Tanzania", "Niger", "Malawi", "Kenya", "South Africa"]
-			},
-			{
-				"name": "Middle East",
-				"countries": ["Oman", "Qatar", "Saudi Arabia"]
-			},
-			{
-				"name": "South & SE Asia",
-				"countries": ["India", "Bangladesh", "Sri Lanka", "Myanmar", "Malaysia", "Indonesia", "Philippines"]
-			}
-		]
-	},
-	"cta": {
-		"title": "Solving Challenges in Your Industry?",
-		"subtitle": "Talk to our IIoT experts and discover how Invendis solutions are purpose-built for your sector.",
-		"primaryBtn": {
-			"label": "Talk to Expert →",
-			"href": "/contact"
-		},
-		"secondaryBtn": {
-			"label": "View Products",
-			"href": "/products"
-		}
-	}
+  "sections": [
+    "hero",
+    "verticals",
+    "globalReach",
+    "cta"
+  ],
+  "hero": {
+    "eyebrow": "INDUSTRIES WE SERVE",
+    "title": "Sector ",
+    "titleHighlight": "Solutions",
+    "subtitle": "From Telecom Monitoring to Edge Network — Invendis delivers purpose-built IIoT solutions across multiple industrial verticals with proven global deployments.",
+    "sectors": [
+      {
+        "key": "edge",
+        "name": "Edge Compute & Industrial Networks",
+        "tagline": "Industrial-grade routers, SD-WAN, and protocol converters for harsh environments.",
+        "image": [
+          "/images/sectors/edge/hero/hero.png"
+        ]
+      },
+      {
+        "key": "telecom",
+        "name": "Telecom Tower Infrastructure",
+        "tagline": "Remote monitoring & operations automation for passive telecom infrastructure at scale.",
+        "image": [
+          "/images/sectors/telecom/hero/hero.png"
+        ]
+      },
+      {
+        "key": "solar",
+        "name": "Solar & Renewable Energy",
+        "tagline": "End-to-end visibility over solar and hybrid energy assets, from edge device to cloud.",
+        "image": [
+          "/images/sectors/solar/hero/hero.png"
+        ]
+      },
+      {
+        "key": "energy",
+        "name": "Smart Energy & Utilities",
+        "tagline": "Tariff-grade smart metering, utility billing, and consumption analytics.",
+        "image": [
+          "/images/sectors/energy/hero/hero.png"
+        ]
+      },
+      {
+        "key": "esg",
+        "name": "ESG & Sustainability",
+        "tagline": "Carbon tracking, ESG reporting, and sustainability analytics on live energy data.",
+        "image": [
+          "/images/sectors/esg/hero/hero.png"
+        ]
+      }
+    ]
+  },
+  "verticals": {
+    "eyebrow": "WHAT WE COVER",
+    "title": "Five Verticals, ",
+    "titleHighlight": "One Platform",
+    "subtitle": "Our solutions span the full spectrum of industrial IoT — sharing one unified data platform so insights flow freely across verticals.",
+    "items": [
+      {
+        "key": "edge",
+        "image": [
+          "/images/sectors/edge/card/card1.png",
+          "/images/sectors/edge/card/card2.png",
+          "/images/sectors/edge/card/card3.png"
+        ],
+        "name": "Edge Compute & Industrial Networks",
+        "description": "Industrial-grade routers, gateways, and SD-WAN solutions for mission-critical connectivity in harsh environments. Our SILBO product line powers connectivity for tower companies, utilities, and manufacturers.",
+        "tags": [
+          "SD-WAN",
+          "Industrial Routers",
+          "Protocol Conversion",
+          "Network Switches",
+          "5G / LTE Ready"
+        ],
+        "clients": [
+          "Tower operators",
+          "Industrial IoT customers",
+          "Utilities"
+        ]
+      },
+      {
+        "key": "telecom",
+        "image": [
+          "/images/sectors/telecom/card/card1.png",
+          "/images/sectors/telecom/card/card2.png",
+          "/images/sectors/telecom/card/card3.png",
+          "/images/sectors/telecom/card/card4.png"
+        ],
+        "name": "Telecom Tower Infrastructure",
+        "description": "End-to-end remote monitoring and operations automation for passive telecom infrastructure. Alarm management, energy optimisation, field mobility, and trouble ticketing — deployed across 150K+ sites in 32 countries.",
+        "tags": [
+          "Remote Monitoring",
+          "Alarm Management",
+          "Energy Optimisation",
+          "Field Mobility",
+          "Trouble Ticketing"
+        ],
+        "clients": [
+          "ATC India",
+          "Telecel",
+          "Airtel",
+          "Econet",
+          "Ison Towers",
+          "Tawal Saudi",
+          "Tower of Africa"
+        ]
+      },
+      {
+        "key": "solar",
+        "image": [
+          "/images/sectors/solar/card/card1.png",
+          "/images/sectors/solar/card/card2.png"
+        ],
+        "name": "Solar & Renewable Energy",
+        "description": "Real-time visibility over solar and hybrid energy assets. Integrated monitoring, billing, and analytics from edge devices to cloud dashboards — supporting both on-grid and off-grid deployments.",
+        "tags": [
+          "Solar Monitoring",
+          "Hybrid Systems",
+          "Energy Billing",
+          "PV Analytics",
+          "Remote Diagnostics"
+        ],
+        "clients": [
+          "OMC Power",
+          "Altius",
+          "IGT Myanmar",
+          "Indus Africa"
+        ]
+      },
+      {
+        "key": "energy",
+        "image": [
+          "/images/sectors/energy/card/card1.png",
+          "/images/sectors/energy/card/card2.png"
+        ],
+        "name": "Smart Energy & Utilities",
+        "description": "Tariff-grade smart meters and IoT-enabled utility management. Automated billing, consumption analytics, and regulatory compliance for utilities, municipalities, and industrial consumers.",
+        "tags": [
+          "Smart Metering",
+          "Utility Billing",
+          "Consumption Analytics",
+          "AMI / AMR",
+          "Grid Monitoring"
+        ],
+        "clients": [
+          "MicroScan",
+          "Savanna Fibre",
+          "Municipal utilities"
+        ]
+      },
+      {
+        "key": "esg",
+        "image": [
+          "/images/sectors/esg/card/card1.png",
+          "/images/sectors/esg/card/card2.png"
+        ],
+        "name": "ESG & Sustainability for Solar Applications",
+        "description": "ESG reporting and sustainability analytics built directly on real-time energy data. Track carbon footprint, renewable energy credits, and compliance metrics automatically — no manual data entry.",
+        "tags": [
+          "Carbon Tracking",
+          "ESG Reporting",
+          "Renewable Credits",
+          "Sustainability Analytics",
+          "Compliance"
+        ],
+        "clients": [
+          "Solar operators",
+          "Tower companies",
+          "ESG-focused enterprises"
+        ]
+      }
+    ]
+  },
+  "globalReach": {
+    "eyebrow": "GLOBAL REACH",
+    "title": "Present in ",
+    "titleHighlight": "32+ Countries",
+    "subtitle": "Partner ecosystem spanning Africa, the Middle East, South & Southeast Asia, and North America.",
+    "regions": [
+      {
+        "name": "Africa",
+        "countries": [
+          "Nigeria",
+          "Ghana",
+          "Tanzania",
+          "Niger",
+          "Malawi",
+          "Kenya",
+          "South Africa"
+        ]
+      },
+      {
+        "name": "Middle East",
+        "countries": [
+          "Oman",
+          "Qatar",
+          "Saudi Arabia"
+        ]
+      },
+      {
+        "name": "South & SE Asia",
+        "countries": [
+          "India",
+          "Bangladesh",
+          "Sri Lanka",
+          "Myanmar",
+          "Malaysia",
+          "Indonesia",
+          "Philippines"
+        ]
+      }
+    ]
+  },
+  "cta": {
+    "title": "Solving Challenges in Your Industry?",
+    "subtitle": "Talk to our IIoT experts and discover how Invendis solutions are purpose-built for your sector.",
+    "primaryBtn": {
+      "label": "Talk to Expert →",
+      "href": "/contact"
+    },
+    "secondaryBtn": {
+      "label": "View Products",
+      "href": "/products"
+    }
+  }
 }
