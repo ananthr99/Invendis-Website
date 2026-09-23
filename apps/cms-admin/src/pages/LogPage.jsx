@@ -2,7 +2,7 @@ import { useState, useEffect, useMemo, Fragment } from "react";
 import { useAdmin } from "../context/AdminContext.jsx";
 import { github } from "../config.js";
 
-const CHANGELOG_PATH = "cms-admin/changelog.json";
+const CHANGELOG_PATH = "apps/cms-admin/content-audit-log.json";
 const PAGE_SIZE_OPTIONS = [5, 10, 15, 20, 50, 100];
 
 function formatDate(iso) {

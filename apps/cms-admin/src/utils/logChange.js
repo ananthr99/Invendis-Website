@@ -2,7 +2,7 @@
 // a content JSON object, and appends one entry to cms-admin/changelog.json
 // in the repo (capped at 500 entries, newest first).
 
-const CHANGELOG_PATH = "cms-admin/changelog.json";
+const CHANGELOG_PATH = "apps/cms-admin/content-audit-log.json";
 const MAX_ENTRIES = 500;
 
 /** Shallow field-by-field diff. Array fields diff by a stable key (label > id > index). */
