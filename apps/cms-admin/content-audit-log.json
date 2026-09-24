@@ -1,5 +1,20 @@
 [
   {
+    "timestamp": "2026-09-24T10:54:21.272Z",
+    "userEmail": "ananth.r@invendis.com",
+    "page": "Products",
+    "section": null,
+    "changes": [
+      {
+        "section": "hero",
+        "field": "image",
+        "action": "added",
+        "label": "#6",
+        "after": "/images/products/hero/hero1"
+      }
+    ]
+  },
+  {
     "timestamp": "2026-09-24T10:13:26.690Z",
     "userEmail": "ananth.r@invendis.com",
     "page": "Products",
