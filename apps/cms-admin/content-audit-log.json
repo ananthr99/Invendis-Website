@@ -1,1 +1,38 @@
-[]
+[
+  {
+    "timestamp": "2026-09-24T10:13:26.690Z",
+    "userEmail": "ananth.r@invendis.com",
+    "page": "Products",
+    "section": null,
+    "changes": [
+      {
+        "section": "designPartners",
+        "field": "partners",
+        "action": "changed",
+        "label": "#0",
+        "before": {
+          "name": "MediaTek",
+          "logo": []
+        },
+        "after": {
+          "name": "Intel",
+          "logo": []
+        }
+      },
+      {
+        "section": "designPartners",
+        "field": "partners",
+        "action": "changed",
+        "label": "#1",
+        "before": {
+          "name": "Intel",
+          "logo": []
+        },
+        "after": {
+          "name": "MediaTek",
+          "logo": []
+        }
+      }
+    ]
+  }
+]
