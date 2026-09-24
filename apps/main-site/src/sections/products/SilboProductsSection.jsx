@@ -65,16 +65,11 @@ function DefaultIcon({ className }) {
 
 function RotatingImage({ imgs }) {
 	const [idx, setIdx] = useState(0);
-	const [visible, setVisible] = useState(true);
 
 	useEffect(() => {
 		if (imgs.length < 2) return;
 		const timer = setInterval(() => {
-			setVisible(false);
-			setTimeout(() => {
-				setIdx(i => (i + 1) % imgs.length);
-				setVisible(true);
-			}, 400);
+			setIdx(i => (i + 1) % imgs.length);
 		}, 4000);
 		return () => clearInterval(timer);
 	}, [imgs.length]);
@@ -89,17 +84,29 @@ function RotatingImage({ imgs }) {
 
 	return (
 		<div style={{ position: "relative", width: "100%", height: "100%" }}>
-			<img
-				src={siteImg(imgs[idx])}
-				alt="SILBO lineup"
-				style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", opacity: visible ? 1 : 0, transition: "opacity 0.4s ease" }}
-			/>
+			{imgs.map((src, i) => (
+				<img
+					key={i}
+					src={siteImg(src)}
+					alt="SILBO lineup"
+					style={{
+						position: "absolute",
+						inset: 0,
+						width: "100%",
+						height: "100%",
+						objectFit: "cover",
+						display: "block",
+						opacity: i === idx ? 1 : 0,
+						transition: "opacity 0.6s ease",
+					}}
+				/>
+			))}
 			{imgs.length > 1 && (
-				<div style={{ position: "absolute", bottom: 6, left: 0, right: 0, display: "flex", justifyContent: "center", gap: 4 }}>
+				<div style={{ position: "absolute", bottom: 6, left: 0, right: 0, display: "flex", justifyContent: "center", gap: 4, zIndex: 10 }}>
 					{imgs.map((_, i) => (
 						<button
 							key={i}
-							onClick={() => { setVisible(false); setTimeout(() => { setIdx(i); setVisible(true); }, 400); }}
+							onClick={() => setIdx(i)}
 							style={{
 								width: i === idx ? 16 : 5, height: 5,
 								borderRadius: 3, border: "none", cursor: "pointer",
@@ -113,6 +120,7 @@ function RotatingImage({ imgs }) {
 		</div>
 	);
 }
+
 
 export default function SilboProductsSection({ data }) {
 	const { eyebrow, title, subtitle, intro, introImage = [], items = [] } = data ?? {};

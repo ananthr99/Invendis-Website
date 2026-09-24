@@ -17,21 +17,14 @@ export default function HeroSection({ data }) {
 	const { eyebrow, title, titleHighlight, subtitle, cta, image = [] } = data ?? {};
 	const imgs = Array.isArray(image) ? image : image ? [image] : [];
 	const [idx, setIdx] = useState(0);
-	const [visible, setVisible] = useState(true);
 
 	useEffect(() => {
 		if (imgs.length < 2) return;
 		const timer = setInterval(() => {
-			setVisible(false);
-			setTimeout(() => {
-				setIdx(i => (i + 1) % imgs.length);
-				setVisible(true);
-			}, 400);
+			setIdx(i => (i + 1) % imgs.length);
 		}, 4000);
 		return () => clearInterval(timer);
 	}, [imgs.length]);
-
-	const heroImg = imgs[idx];
 
 	return (
 		<section
@@ -68,41 +61,50 @@ export default function HeroSection({ data }) {
 					)}
 				</div>
 
-				{/* Right — auto-rotating hero image */}
+				{/* Right — cross-fade hero carousel */}
 				<div style={{ flex: "1 1 0", minWidth: 0, borderRadius: 16, border: "1px solid rgba(255,255,255,0.15)", overflow: "hidden", height: 270, position: "relative" }}>
-					{heroImg ? (
-						<img
-							key={idx}
-							src={siteImg(heroImg)}
-							alt="Products"
-							style={{
-								width: "100%", height: "100%", objectFit: "cover", display: "block",
-								opacity: visible ? 1 : 0,
-								transition: "opacity 0.4s ease",
-							}}
-						/>
+					{imgs.length > 0 ? (
+						<>
+							{imgs.map((src, i) => (
+								<img
+									key={i}
+									src={siteImg(src)}
+									alt="Products"
+									style={{
+										position: "absolute",
+										inset: 0,
+										width: "100%",
+										height: "100%",
+										objectFit: "cover",
+										display: "block",
+										opacity: i === idx ? 1 : 0,
+										transition: "opacity 0.6s ease",
+									}}
+								/>
+							))}
+							{imgs.length > 1 && (
+								<div style={{ position: "absolute", bottom: 10, left: 0, right: 0, display: "flex", justifyContent: "center", gap: 6, zIndex: 10 }}>
+									{imgs.map((_, i) => (
+										<button
+											key={i}
+											onClick={() => setIdx(i)}
+											style={{
+												width: i === idx ? 20 : 6, height: 6,
+												borderRadius: 3, border: "none", cursor: "pointer",
+												background: i === idx ? "white" : "rgba(255,255,255,0.35)",
+												transition: "all 0.3s ease", padding: 0,
+											}}
+										/>
+									))}
+								</div>
+							)}
+						</>
 					) : (
 						<div style={{ width: "100%", height: "100%", background: "rgba(255,255,255,0.05)", display: "flex", alignItems: "center", justifyContent: "center" }}>
 							<div style={{ textAlign: "center" }}>
 								<CameraIcon className="mx-auto mb-2 h-10 w-10 text-white/20" />
 								<p style={{ fontSize: 12, color: "rgba(255,255,255,0.3)" }}>SILBO & Invendis hardware line-up</p>
 							</div>
-						</div>
-					)}
-					{imgs.length > 1 && (
-						<div style={{ position: "absolute", bottom: 10, left: 0, right: 0, display: "flex", justifyContent: "center", gap: 6 }}>
-							{imgs.map((_, i) => (
-								<button
-									key={i}
-									onClick={() => { setVisible(false); setTimeout(() => { setIdx(i); setVisible(true); }, 400); }}
-									style={{
-										width: i === idx ? 20 : 6, height: 6,
-										borderRadius: 3, border: "none", cursor: "pointer",
-										background: i === idx ? "white" : "rgba(255,255,255,0.35)",
-										transition: "all 0.3s ease", padding: 0,
-									}}
-								/>
-							))}
 						</div>
 					)}
 				</div>

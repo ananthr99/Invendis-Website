@@ -7,9 +7,8 @@ function siteImg(path) { return path ? BASE + path : path; }
 export default function HeroSection({ data }) {
 	const [active, setActive] = useState(0);
 	const { eyebrow, title, titleHighlight, subtitle, sectors = [] } = data ?? {};
-	const current = sectors[active];
 
-    useEffect(() => {
+	useEffect(() => {
 		if (sectors.length < 2) return;
 		const id = setInterval(() => {
 			setActive((prev) => (prev + 1) % sectors.length);
@@ -28,16 +27,7 @@ export default function HeroSection({ data }) {
 				backgroundSize: "48px 48px",
 			}}
 		>
-			{/* two-column row — inline flex so it's never subject to Tailwind compilation */}
-			<div
-				style={{
-					display: "flex",
-					alignItems: "center",
-					gap: "3rem",
-					maxWidth: "1536px",
-					margin: "0 auto",
-				}}
-			>
+			<div style={{ display: "flex", alignItems: "center", gap: "3rem", maxWidth: "1536px", margin: "0 auto" }}>
 				{/* ── left ── */}
 				<div style={{ flex: "1 1 0", minWidth: 0 }}>
 					<p className="mb-4 text-[10px] font-semibold tracking-widest text-brand-red uppercase">
@@ -52,102 +42,90 @@ export default function HeroSection({ data }) {
 					</p>
 				</div>
 
-				{/* ── right — sector carousel ── */}
-                <div
-                    style={{
-                        flex: "1 1 0",
-                        minWidth: 0,
-                        borderRadius: 16,
-                        border: "1px solid rgba(255,255,255,0.15)",
-                        overflow: "hidden",
-                        position: "relative",
-                        height: 270,
-                    }}
-                >
-                    {current && (
-                        <div key={current.key} style={{ position: "absolute", inset: 0 }}>
-                            {current.image ? (
-                                <img
-                                    src={siteImg(current.image)}
-                                    alt={current.name}
-                                    style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
-                                />
-                            ) : (
-                                <div style={{ width: "100%", height: "100%", background: "rgba(255,255,255,0.05)", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                                    <SectorIcon sectorKey={current.key} className="h-10 w-10 text-white/20" />
-                                </div>
-                            )}
+				{/* ── right — cross-fade sector carousel ── */}
+				<div style={{
+					flex: "1 1 0",
+					minWidth: 0,
+					borderRadius: 16,
+					border: "1px solid rgba(255,255,255,0.15)",
+					overflow: "hidden",
+					position: "relative",
+					height: 270,
+				}}>
+					{sectors.map((sector, i) => {
+						const imgSrc = Array.isArray(sector.image) ? sector.image[0] : sector.image;
+						return (
+							<div
+								key={sector.key || i}
+								style={{
+									position: "absolute",
+									inset: 0,
+									opacity: i === active ? 1 : 0,
+									transition: "opacity 0.6s ease",
+								}}
+							>
+								{imgSrc ? (
+									<img
+										src={siteImg(imgSrc)}
+										alt={sector.name}
+										style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+									/>
+								) : (
+									<div style={{ width: "100%", height: "100%", background: "rgba(255,255,255,0.05)", display: "flex", alignItems: "center", justifyContent: "center" }}>
+										<SectorIcon sectorKey={sector.key} className="h-10 w-10 text-white/20" />
+									</div>
+								)}
+								<div style={{
+									position: "absolute",
+									bottom: 0, left: 0, right: 0,
+									padding: "2.5rem 1.5rem 2.5rem",
+									background: "linear-gradient(to top, rgba(0,0,0,0.75) 0%, transparent 100%)",
+								}}>
+									<p className="font-heading text-base font-bold text-white">{sector.name}</p>
+									<p className="mt-1 text-xs" style={{ color: "rgba(255,255,255,0.65)" }}>{sector.tagline}</p>
+								</div>
+							</div>
+						);
+					})}
 
-                            {/* gradient overlay — text + dots stacked, no overlap */}
-                            <div style={{
-                                position: "absolute",
-                                bottom: 0, left: 0, right: 0,
-                                padding: "2.5rem 1.5rem 1rem",
-                                background: "linear-gradient(to top, rgba(0,0,0,0.75) 0%, transparent 100%)",
-                            }}>
-                                <p className="font-heading text-base font-bold text-white">{current.name}</p>
-                                <p className="mt-1 text-xs" style={{ color: "rgba(255,255,255,0.65)" }}>{current.tagline}</p>
-
-                                <div style={{ marginTop: 10, display: "flex", justifyContent: "center", gap: 6 }}>
-                                    {sectors.map((_, i) => (
-                                        <button
-                                            key={i}
-                                            onClick={() => setActive(i)}
-                                            style={{
-                                                height: i === active ? 10 : 8,
-                                                width: i === active ? 10 : 8,
-                                                borderRadius: "50%",
-                                                background: i === active ? "white" : "rgba(255,255,255,0.35)",
-                                                border: "none",
-                                                cursor: "pointer",
-                                                padding: 0,
-                                                transition: "all 0.2s",
-                                            }}
-                                            aria-label={`Sector ${i + 1}`}
-                                        />
-                                    ))}
-                                </div>
-                            </div>
-                        </div>
-                    )}
-
-                    {/* dot nav — bottom-center overlay */}
-                    <div style={{
-                        position: "absolute",
-                        bottom: 14,
-                        left: "50%",
-                        transform: "translateX(-50%)",
-                        display: "flex",
-                        gap: 6,
-                        zIndex: 2,
-                    }}>
-                        {sectors.map((_, i) => (
-                            <button
-                                key={i}
-                                onClick={() => setActive(i)}
-                                style={{
-                                    height: i === active ? 10 : 8,
-                                    width: i === active ? 10 : 8,
-                                    borderRadius: "50%",
-                                    background: i === active ? "white" : "rgba(255,255,255,0.35)",
-                                    border: "none",
-                                    cursor: "pointer",
-                                    padding: 0,
-                                    transition: "all 0.2s",
-                                }}
-                                aria-label={`Sector ${i + 1}`}
-                            />
-                        ))}
-                    </div>
-                </div>
+					{/* dot nav */}
+					{sectors.length > 1 && (
+						<div style={{
+							position: "absolute",
+							bottom: 14,
+							left: "50%",
+							transform: "translateX(-50%)",
+							display: "flex",
+							gap: 6,
+							zIndex: 10,
+						}}>
+							{sectors.map((_, i) => (
+								<button
+									key={i}
+									onClick={() => setActive(i)}
+									style={{
+										height: i === active ? 10 : 8,
+										width: i === active ? 10 : 8,
+										borderRadius: "50%",
+										background: i === active ? "white" : "rgba(255,255,255,0.35)",
+										border: "none",
+										cursor: "pointer",
+										padding: 0,
+										transition: "all 0.2s",
+									}}
+									aria-label={`Sector ${i + 1}`}
+								/>
+							))}
+						</div>
+					)}
+				</div>
 			</div>
 
-			{/* ── scroll chevron ── */}
-            <div className="mt-8 flex justify-center text-brand-red" style={{ maxWidth: "1536px", margin: "2rem auto 0" }}>
-                <svg className="h-5 w-5 animate-bounce" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
-                    <path d="M19 9l-7 7-7-7" />
-                </svg>
-            </div>
+			<div className="mt-8 flex justify-center text-brand-red" style={{ maxWidth: "1536px", margin: "2rem auto 0" }}>
+				<svg className="h-5 w-5 animate-bounce" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
+					<path d="M19 9l-7 7-7-7" />
+				</svg>
+			</div>
 		</section>
 	);
 }
