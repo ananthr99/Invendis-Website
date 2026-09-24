@@ -1,1 +1,310 @@
-[]
+[
+  {
+    "timestamp": "2026-09-24T17:46:53.916Z",
+    "userEmail": "ananth.r@invendis.com",
+    "page": "Contact",
+    "section": null,
+    "changes": [
+      {
+        "section": "globalPresence",
+        "field": "countriesServed",
+        "action": "removed",
+        "label": "#20",
+        "before": "SLE"
+      },
+      {
+        "section": "globalPresence",
+        "field": "countriesServed",
+        "action": "removed",
+        "label": "#21",
+        "before": "GMB"
+      },
+      {
+        "section": "globalPresence",
+        "field": "countriesServed",
+        "action": "removed",
+        "label": "#22",
+        "before": "BFA"
+      },
+      {
+        "section": "globalPresence",
+        "field": "countriesServed",
+        "action": "removed",
+        "label": "#23",
+        "before": "MLI"
+      },
+      {
+        "section": "globalPresence",
+        "field": "countriesServed",
+        "action": "removed",
+        "label": "#24",
+        "before": "NER"
+      },
+      {
+        "section": "globalPresence",
+        "field": "countriesServed",
+        "action": "removed",
+        "label": "#25",
+        "before": "TCD"
+      },
+      {
+        "section": "globalPresence",
+        "field": "countriesServed",
+        "action": "removed",
+        "label": "#26",
+        "before": "SOM"
+      },
+      {
+        "section": "globalPresence",
+        "field": "countriesServed",
+        "action": "removed",
+        "label": "#27",
+        "before": "DJI"
+      },
+      {
+        "section": "globalPresence",
+        "field": "countriesServed",
+        "action": "removed",
+        "label": "#28",
+        "before": "ERI"
+      },
+      {
+        "section": "globalPresence",
+        "field": "countriesServed",
+        "action": "removed",
+        "label": "#29",
+        "before": "SAU"
+      },
+      {
+        "section": "globalPresence",
+        "field": "countriesServed",
+        "action": "removed",
+        "label": "#30",
+        "before": "ARE"
+      },
+      {
+        "section": "globalPresence",
+        "field": "countriesServed",
+        "action": "removed",
+        "label": "#31",
+        "before": "QAT"
+      },
+      {
+        "section": "globalPresence",
+        "field": "countriesServed",
+        "action": "removed",
+        "label": "#32",
+        "before": "KWT"
+      },
+      {
+        "section": "globalPresence",
+        "field": "countriesServed",
+        "action": "removed",
+        "label": "#33",
+        "before": "BHR"
+      },
+      {
+        "section": "globalPresence",
+        "field": "countriesServed",
+        "action": "removed",
+        "label": "#34",
+        "before": "OMN"
+      },
+      {
+        "section": "globalPresence",
+        "field": "countriesServed",
+        "action": "removed",
+        "label": "#35",
+        "before": "JOR"
+      },
+      {
+        "section": "globalPresence",
+        "field": "countriesServed",
+        "action": "removed",
+        "label": "#36",
+        "before": "BGD"
+      },
+      {
+        "section": "globalPresence",
+        "field": "countriesServed",
+        "action": "removed",
+        "label": "#37",
+        "before": "LKA"
+      },
+      {
+        "section": "globalPresence",
+        "field": "countriesServed",
+        "action": "removed",
+        "label": "#38",
+        "before": "PAK"
+      },
+      {
+        "section": "globalPresence",
+        "field": "countriesServed",
+        "action": "removed",
+        "label": "#39",
+        "before": "IND"
+      },
+      {
+        "section": "globalPresence",
+        "field": "countriesServed",
+        "action": "changed",
+        "label": "#0",
+        "before": "NGA",
+        "after": "IND"
+      },
+      {
+        "section": "globalPresence",
+        "field": "countriesServed",
+        "action": "changed",
+        "label": "#1",
+        "before": "GHA",
+        "after": "USA"
+      },
+      {
+        "section": "globalPresence",
+        "field": "countriesServed",
+        "action": "changed",
+        "label": "#2",
+        "before": "KEN",
+        "after": "COL"
+      },
+      {
+        "section": "globalPresence",
+        "field": "countriesServed",
+        "action": "changed",
+        "label": "#3",
+        "before": "ETH",
+        "after": "GHA"
+      },
+      {
+        "section": "globalPresence",
+        "field": "countriesServed",
+        "action": "changed",
+        "label": "#4",
+        "before": "TZA",
+        "after": "NGA"
+      },
+      {
+        "section": "globalPresence",
+        "field": "countriesServed",
+        "action": "changed",
+        "label": "#5",
+        "before": "UGA",
+        "after": "ZWE"
+      },
+      {
+        "section": "globalPresence",
+        "field": "countriesServed",
+        "action": "changed",
+        "label": "#6",
+        "before": "ZAF",
+        "after": "BFA"
+      },
+      {
+        "section": "globalPresence",
+        "field": "countriesServed",
+        "action": "changed",
+        "label": "#7",
+        "before": "EGY",
+        "after": "CMR"
+      },
+      {
+        "section": "globalPresence",
+        "field": "countriesServed",
+        "action": "changed",
+        "label": "#8",
+        "before": "MAR",
+        "after": "UGA"
+      },
+      {
+        "section": "globalPresence",
+        "field": "countriesServed",
+        "action": "changed",
+        "label": "#9",
+        "before": "TUN",
+        "after": "BGD"
+      },
+      {
+        "section": "globalPresence",
+        "field": "countriesServed",
+        "action": "changed",
+        "label": "#10",
+        "before": "SEN",
+        "after": "MMR"
+      },
+      {
+        "section": "globalPresence",
+        "field": "countriesServed",
+        "action": "changed",
+        "label": "#11",
+        "before": "CIV",
+        "after": "ZAF"
+      },
+      {
+        "section": "globalPresence",
+        "field": "countriesServed",
+        "action": "changed",
+        "label": "#12",
+        "before": "CMR",
+        "after": "SSD"
+      },
+      {
+        "section": "globalPresence",
+        "field": "countriesServed",
+        "action": "changed",
+        "label": "#13",
+        "before": "ZMB",
+        "after": "PHL"
+      },
+      {
+        "section": "globalPresence",
+        "field": "countriesServed",
+        "action": "changed",
+        "label": "#14",
+        "before": "MOZ",
+        "after": "MWI"
+      },
+      {
+        "section": "globalPresence",
+        "field": "countriesServed",
+        "action": "changed",
+        "label": "#15",
+        "before": "MWI",
+        "after": "COD"
+      },
+      {
+        "section": "globalPresence",
+        "field": "countriesServed",
+        "action": "changed",
+        "label": "#16",
+        "before": "SDN",
+        "after": "IDN"
+      },
+      {
+        "section": "globalPresence",
+        "field": "countriesServed",
+        "action": "changed",
+        "label": "#17",
+        "before": "AGO",
+        "after": "LKA"
+      },
+      {
+        "section": "globalPresence",
+        "field": "countriesServed",
+        "action": "changed",
+        "label": "#18",
+        "before": "GAB",
+        "after": "SAU"
+      },
+      {
+        "section": "globalPresence",
+        "field": "countriesServed",
+        "action": "changed",
+        "label": "#19",
+        "before": "ZWE",
+        "after": "ARE"
+      }
+    ]
+  }
+]
