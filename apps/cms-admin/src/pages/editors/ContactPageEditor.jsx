@@ -1,7 +1,8 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useLayoutEffect, useRef } from "react";
 import { useAdmin } from "../../context/AdminContext.jsx";
 import { loadPageContent, savePageContent } from "../../utils/savePageContent.js";
-import SpecialCharsBar from "../../components/SpecialCharsBar.jsx";
+import { CONTACT_SECTION_EDITORS, SECTION_LABELS, ALL_SECTION_KEYS } from "../../sections/contact/registry.js";
+import { github } from "../../config.js";
 
 const CONTENT_PATH = "pages/contact.json";
 
@@ -11,76 +12,77 @@ export default function ContactPageEditor() {
 	const [form, setForm] = useState(null);
 	const [loading, setLoading] = useState(true);
 	const [saving, setSaving] = useState(false);
+	const [activeTab, setActiveTab] = useState(ALL_SECTION_KEYS[0]);
 	const loadedTokenRef = useRef(null);
-	const subtitleRef = useRef(null);
+	const headerRef = useRef(null);
+	const [headerH, setHeaderH] = useState(110);
 
 	useEffect(() => {
 		if (!token || loadedTokenRef.current === token) return;
 		loadedTokenRef.current = token;
 		setLoading(true);
 		loadPageContent(CONTENT_PATH, token)
-			.then((data) => {
-				setOriginal(data);
-				setForm(data);
-			})
+			.then((data) => { setOriginal(data); setForm(data); })
 			.catch((err) => toast(err.message, "err"))
 			.finally(() => setLoading(false));
 	}, [token]);
 
+	useLayoutEffect(() => {
+		if (headerRef.current) setHeaderH(headerRef.current.offsetHeight);
+	});
+
 	useEffect(() => {
 		if (!original || !form) return;
-		setDirty(JSON.stringify(original) !== JSON.stringify(form));
+		const hasPending = !!form.hero?._pendingUpload;
+		const cleanForm = {
+			...form,
+			hero: form.hero ? { ...form.hero, _pendingUpload: undefined } : form.hero,
+		};
+		setDirty(hasPending || JSON.stringify(original) !== JSON.stringify(cleanForm));
 	}, [form, original]);
 
 	if (!token) return <p style={{ color: "var(--admin-muted)" }}>Enter a GitHub token in Setup first.</p>;
 	if (loading) return <p style={{ color: "var(--admin-muted)" }}>Loading…</p>;
 	if (!form) return null;
 
-	function updateHero(field, value) {
-		setForm((f) => ({ ...f, hero: { ...f.hero, [field]: value } }));
-	}
-
-	function updateForm(field, value) {
-		setForm((f) => ({ ...f, form: { ...f.form, [field]: value } }));
-	}
-
-	function updateExtraField(index, field, value) {
-		setForm((f) => {
-			const additionalFields = [...f.form.additionalFields];
-			additionalFields[index] = { ...additionalFields[index], [field]: value };
-			return { ...f, form: { ...f.form, additionalFields } };
-		});
-	}
-
-	function addExtraField() {
-		setForm((f) => ({
-			...f,
-			form: {
-				...f.form,
-				additionalFields: [...(f.form.additionalFields ?? []), { label: "", placeholder: "", required: false }],
-			},
-		}));
-	}
-
-	function removeExtraField(index) {
-		setForm((f) => ({
-			...f,
-			form: { ...f.form, additionalFields: f.form.additionalFields.filter((_, i) => i !== index) },
-		}));
+	function updateSection(key, val) {
+		setForm((f) => ({ ...f, [key]: val }));
 	}
 
 	async function handleSave() {
 		setSaving(true);
 		try {
-			await savePageContent({
-				token,
-				contentPath: CONTENT_PATH,
-				before: original,
-				after: form,
-				page: "Contact",
-				userEmail,
-			});
-			setOriginal(form);
+			let saveForm = form;
+
+			// Pre-flight conflict check
+			const pending = form.hero?._pendingUpload;
+			if (pending) {
+				const path = `apps/main-site/public/images/contact/hero/${pending.filename}`;
+				if (await github.getFileSha(path, { branch: "main", token })) {
+					throw new Error(`Hero image "${pending.filename}" already exists at /images/contact/hero/. Rename it before saving.`);
+				}
+			}
+
+			// Upload hero background image
+			if (pending) {
+				toast("Uploading hero background…", "ok");
+				const imgPath = `apps/main-site/public/images/contact/hero/${pending.filename}`;
+				const sha = await github.getFileSha(imgPath, { branch: "main", token });
+				await github.writeFileBase64(imgPath, pending.base64, {
+					message: `CMS: upload contact hero background [skip ci]`,
+					sha,
+					branch: "main",
+					token,
+				});
+				saveForm = {
+					...saveForm,
+					hero: { ...saveForm.hero, image: `/images/contact/hero/${pending.filename}`, _pendingUpload: undefined },
+				};
+				setForm(saveForm);
+			}
+
+			await savePageContent({ token, contentPath: CONTENT_PATH, before: original, after: saveForm, page: "Contact", userEmail });
+			setOriginal(saveForm);
 			setDirty(false);
 			toast("Contact page saved — live in a few seconds", "ok");
 		} catch (err) {
@@ -90,85 +92,64 @@ export default function ContactPageEditor() {
 		}
 	}
 
+	const ActiveEditor = CONTACT_SECTION_EDITORS[activeTab];
+
 	return (
 		<div>
-			<h2>Contact</h2>
-
-			<div className="admin-card">
-				<h3 style={{ marginTop: 0 }}>Hero</h3>
-				<div className="admin-field">
-					<label className="admin-label">Title</label>
-					<input
-						className="admin-input"
-						value={form.hero.title}
-						onChange={(e) => updateHero("title", e.target.value)}
-					/>
+			<div
+				ref={headerRef}
+				style={{
+					position: "fixed",
+					top: 56,
+					left: 220,
+					right: 0,
+					zIndex: 50,
+					background: "var(--admin-bg)",
+					padding: "16px 40px 0",
+					boxShadow: "0 2px 8px rgba(0,0,0,0.07)",
+				}}
+			>
+				<div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 12 }}>
+					<h2 style={{ margin: 0 }}>Contact</h2>
+					<button className="admin-btn admin-btn--primary" onClick={handleSave} disabled={saving}>
+						{saving ? "Saving…" : "Save changes"}
+					</button>
 				</div>
-				<div className="admin-field">
-					<label className="admin-label">Subtitle</label>
-					<SpecialCharsBar targetRef={subtitleRef} onInsert={(value) => updateHero("subtitle", value)} />
-					<textarea
-						ref={subtitleRef}
-						className="admin-textarea"
-						value={form.hero.subtitle}
-						onChange={(e) => updateHero("subtitle", e.target.value)}
-					/>
-				</div>
-			</div>
-
-			<div className="admin-card">
-				<h3 style={{ marginTop: 0 }}>Contact email</h3>
-				<div className="admin-field">
-					<label className="admin-label">Emails sent to</label>
-					<input
-						className="admin-input"
-						value={form.contactEmail}
-						onChange={(e) => setForm((f) => ({ ...f, contactEmail: e.target.value }))}
-					/>
-				</div>
-			</div>
-
-			<div className="admin-card">
-				<h3 style={{ marginTop: 0 }}>Additional form fields</h3>
-				<p style={{ color: "var(--admin-muted)", fontSize: 13, marginTop: -8 }}>
-					Appear on the live form between Email and Message. No code change needed — the main site renders whatever's
-					listed here.
-				</p>
-				{(form.form.additionalFields ?? []).map((field, i) => (
-					<div key={i} style={{ display: "flex", gap: 8, alignItems: "center", marginBottom: 8 }}>
-						<input
-							className="admin-input"
-							placeholder="Label (e.g. Industry)"
-							value={field.label}
-							onChange={(e) => updateExtraField(i, "label", e.target.value)}
-						/>
-						<input
-							className="admin-input"
-							placeholder="Placeholder text"
-							value={field.placeholder}
-							onChange={(e) => updateExtraField(i, "placeholder", e.target.value)}
-						/>
-						<label style={{ display: "flex", alignItems: "center", gap: 4, fontSize: 13, whiteSpace: "nowrap" }}>
-							<input
-								type="checkbox"
-								checked={!!field.required}
-								onChange={(e) => updateExtraField(i, "required", e.target.checked)}
-							/>
-							Required
-						</label>
-						<button className="admin-btn admin-btn--ghost" onClick={() => removeExtraField(i)}>
-							Remove
+				<div style={{ display: "flex", flexWrap: "wrap", gap: 2, borderBottom: "2px solid var(--admin-border)" }}>
+					{ALL_SECTION_KEYS.map((key) => (
+						<button
+							key={key}
+							onClick={() => setActiveTab(key)}
+							style={{
+								padding: "8px 16px",
+								border: "none",
+								background: "none",
+								cursor: "pointer",
+								fontSize: 13.5,
+								fontWeight: activeTab === key ? 700 : 400,
+								color: activeTab === key ? "var(--admin-blue)" : "var(--admin-muted)",
+								borderBottom: activeTab === key ? "2px solid var(--admin-blue)" : "2px solid transparent",
+								marginBottom: -2,
+								transition: "color 0.15s",
+								fontFamily: "inherit",
+							}}
+						>
+							{SECTION_LABELS[key]}
 						</button>
-					</div>
-				))}
-				<button className="admin-btn admin-btn--ghost" onClick={addExtraField}>
-					+ Add field
-				</button>
+					))}
+				</div>
 			</div>
 
-			<button className="admin-btn admin-btn--primary" onClick={handleSave} disabled={saving}>
-				{saving ? "Saving…" : "Save changes"}
-			</button>
+			<div style={{ height: headerH }} />
+
+			<div className="admin-card">
+				<div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 20, paddingBottom: 16, borderBottom: "1px solid var(--admin-border)" }}>
+					<h3 style={{ margin: 0 }}>{SECTION_LABELS[activeTab]}</h3>
+				</div>
+				{ActiveEditor && (
+					<ActiveEditor data={form[activeTab]} onChange={(val) => updateSection(activeTab, val)} />
+				)}
+			</div>
 		</div>
 	);
 }
