@@ -1,5 +1,27 @@
 [
   {
+    "timestamp": "2026-09-24T10:58:43.467Z",
+    "userEmail": "ananth.r@invendis.com",
+    "page": "Products",
+    "section": null,
+    "changes": [
+      {
+        "section": "hero",
+        "field": "image",
+        "action": "removed",
+        "label": "#6",
+        "before": "/images/products/hero/hero1.png"
+      },
+      {
+        "section": "hero",
+        "field": "image",
+        "action": "removed",
+        "label": "#7",
+        "before": "/images/products/hero/hero2.png"
+      }
+    ]
+  },
+  {
     "timestamp": "2026-09-24T10:58:16.420Z",
     "userEmail": "ananth.r@invendis.com",
     "page": "Products",
