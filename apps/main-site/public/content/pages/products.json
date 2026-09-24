@@ -1,3 +1,203 @@
 {
-	"hero": { "title": "Our products", "subtitle": "A complete portfolio of industrial-grade hardware and software." }
+	"sections": ["hero", "hardwarePortfolio", "silboProducts", "softwarePlatforms", "designPartners", "cta"],
+	"hero": {
+		"eyebrow": "HARDWARE · SOFTWARE · SERVICES",
+		"title": "Our ",
+		"titleHighlight": "Products",
+		"subtitle": "A complete portfolio of industrial-grade hardware, software platforms, and managed services — all designed and built in-house at our Bangalore R&D centre.",
+		"cta": { "label": "Product Selector →", "href": "/products/product-selector" },
+		"image": ["/images/products/hero/hero1.png","/images/products/hero/hero2.png","/images/products/hero/hero3.png","/images/products/hero/hero4.png","/images/products/hero/hero5.png","/images/products/hero/hero6.png"]
+	},
+	"hardwarePortfolio": {
+		"eyebrow": "HARDWARE AGNOSTIC PRODUCTS",
+		"title": "Invendis Hardware Portfolio",
+		"subtitle": "Rugged, industrial-grade devices designed for reliability in demanding field environments.",
+		"items": [
+			{
+				"key": "isense",
+				"name": "iSense RMS Controller",
+				"badge": "Flagship",
+				"description": "The heart of Invendis's telecom monitoring. Dual SIM, multi-protocol, modular design with 5G-ready architecture and pluggable RS485 cards.",
+				"tags": ["4G / 5G Ready", "Modular", "Linux OS", "RS485 / RS232"],
+				"image": ["/images/products/hardware/isense/isense.png"]
+			},
+			{
+				"key": "energy-meters",
+				"name": "Multi-Function Energy Meters",
+				"badge": "",
+				"description": "Tariff-grade smart meters for utility billing and industrial energy monitoring. Compatible with major DIN standards.",
+				"tags": ["Tariff Grade", "Modbus", "RS485"],
+				"image": ["/images/products/hardware/energymeter/energymeter.png"]
+			},
+			{
+				"key": "ats",
+				"name": "Smart ATS Controller",
+				"badge": "New",
+				"description": "Generator ATS control unit with digital output control, auto-switching logic, and remote visibility via RMS platform.",
+				"tags": ["DG Control", "Relay Output", "Remote"],
+				"image": ["/images/products/hardware/atscontroller/atscontroller.png"]
+			},
+			{
+				"key": "telecom-gw",
+				"name": "Telecom Gateways",
+				"badge": "",
+				"description": "Packaged telecom site gateway solutions integrating monitoring, control, and communication in a single ruggedised enclosure.",
+				"tags": ["SNMP", "Ethernet", "DIN Rail"],
+				"image": ["/images/products/hardware/gateway/gateway.png"]
+			},
+			{
+				"key": "gsm-meter",
+				"name": "GSM Energy Meter",
+				"badge": "",
+				"description": "GSM-connected energy meter for remote monitoring of consumption at distributed utility and telecom sites.",
+				"tags": ["GSM/GPRS", "Solar", "Grid"],
+				"image": ["/images/products/hardware/gsm/gsm.png"]
+			},
+			{
+				"key": "sensors",
+				"name": "Sensors & Accessories",
+				"badge": "",
+				"description": "Surveillance cameras, environmental sensors, fuel sensors, BMS interfaces, and door/access control units for complete site visibility.",
+				"tags": ["CCTV", "Fuel Sensors", "BMS"],
+				"image": ["/images/products/hardware/accessories/accessories.png"]
+			}
+		]
+	},
+	"silboProducts": {
+		"eyebrow": "AN INVENDIS BRAND",
+		"title": "SILBO Networking Products",
+		"subtitle": "Industrial networking hardware for mission-critical industrial and telecom environments.",
+		"intro": "SILBO is Invendis's dedicated industrial networking brand — delivering rugged routers, gateways, protocol converters, and switches purpose-built for Industry 4.0 connectivity challenges.",
+		"introImage": ["/images/products/silbo/silbo1.png","/images/products/silbo/silbo2.png","/images/products/silbo/silbo3.png"],
+		"items": [
+			{
+				"key": "multi-wan",
+				"name": "Multi-WAN Router",
+				"description": "4G/5G, Wi-Fi 4/5/6, and dual-SIM with load balancing and VPN support for secure industrial connectivity.",
+				"image": []
+			},
+			{
+				"key": "industrial-gw",
+				"name": "Industrial Gateway",
+				"description": "Edge computing gateways for data aggregation, local processing, and cloud connectivity at industrial sites.",
+				"image": []
+			},
+			{
+				"key": "protocol-converter",
+				"name": "Protocol Converter",
+				"description": "Modbus, DNP3, IEC, and SNMP protocol bridging for legacy equipment integration and industrial automation.",
+				"image": []
+			},
+			{
+				"key": "network-switch",
+				"name": "Network Switch",
+				"description": "Industrial managed and unmanaged Ethernet switches rated for -40°C to +75°C operating environments.",
+				"image": []
+			},
+			{
+				"key": "sdwan",
+				"name": "SD-WAN Gateway",
+				"description": "Software-defined WAN gateways with centralised policy control and secure site-to-site tunnelling.",
+				"image": []
+			},
+			{
+				"key": "cloud-nms",
+				"name": "Cloud NMS",
+				"description": "Centralised, cloud-hosted network management for provisioning, monitoring, and firmware updates.",
+				"image": []
+			},
+			{
+				"key": "4g-dongle",
+				"name": "4G Dongle",
+				"description": "Plug-and-play 4G/5G USB dongles for rapid failover connectivity at remote sites.",
+				"image": []
+			},
+			{
+				"key": "controllers",
+				"name": "Controllers",
+				"description": "Configurable I/O controllers for automation, remote switching, and site-level process control.",
+				"image": []
+			}
+		]
+	},
+	"softwarePlatforms": {
+		"eyebrow": "PROPRIETARY SOFTWARE",
+		"title": "Software Agnostic Platforms",
+		"subtitle": "Cloud-based and on-premise platforms for monitoring, analytics, and operations management.",
+		"items": [
+			{
+				"key": "pizgloria",
+				"name": "PizGloria RMS Platform",
+				"featured": true,
+				"description": "Cloud-based Remote Monitoring System with graphical site views, executive dashboards, energy analytics, and Power BI integration. Deployed for telecom and solar customers globally.",
+				"tags": [],
+				"image": ["/images/products/software/software.png"]
+			},
+			{
+				"key": "workforce",
+				"name": "Workforce Management Software",
+				"featured": false,
+				"description": "Centralized workforce management system for connected operations, providing workforce tracking, resource allocation, productivity monitoring, and real-time operational visibility.",
+				"tags": ["Field Tracking", "Resource Allocation", "Productivity Monitoring"],
+				"image": []
+			},
+			{
+				"key": "mobile-app",
+				"name": "Mobile App",
+				"featured": false,
+				"description": "Field operations mobile application for real-time alarm acknowledgment, site visits, trouble ticketing, and manager-level executive views — iOS and Android.",
+				"tags": [],
+				"image": []
+			},
+			{
+				"key": "utility-billing",
+				"name": "Utility Billing Platform",
+				"featured": false,
+				"description": "End-to-end energy utility billing solution with meter data management, tariff configuration, invoice generation, and customer portal.",
+				"tags": [],
+				"image": []
+			},
+			{
+				"key": "alarm-engine",
+				"name": "Alarm & Notification Engine",
+				"featured": false,
+				"description": "Automated escalation matrix delivering SMS, email, and push notifications based on configurable alarm thresholds and SLA windows.",
+				"tags": [],
+				"image": []
+			},
+			{
+				"key": "analytics",
+				"name": "Analytics & Reporting",
+				"featured": false,
+				"description": "Backend analytics layer with customised algorithms for predictive maintenance, energy anomaly detection, and executive KPI reporting via Power BI.",
+				"tags": [],
+				"image": []
+			},
+			{
+				"key": "nms",
+				"name": "NMS – Network Management",
+				"featured": false,
+				"description": "Centralised network management system for SILBO devices, providing configuration management, performance monitoring, and fault management.",
+				"tags": [],
+				"image": []
+			}
+		]
+	},
+	"designPartners": {
+		"eyebrow": "DESIGN PARTNERS",
+		"title": "Built with Industry-Leading Silicon",
+		"partners": [
+			{ "name": "MediaTek", "logo": [] },
+			{ "name": "Intel", "logo": [] },
+			{ "name": "Qualcomm", "logo": [] },
+			{ "name": "Realtek", "logo": [] },
+			{ "name": "Renesas", "logo": [] }
+		]
+	},
+	"cta": {
+		"title": "Find the Right Hardware for Your Deployment",
+		"subtitle": "Use our interactive Product Selector to filter, compare, and download datasheets for every SILBO and Invendis device.",
+		"primaryBtn": { "label": "Open Product Selector →", "href": "/products/product-selector" },
+		"secondaryBtn": { "label": "Contact Sales", "href": "/contact" }
+	}
 }

@@ -41,8 +41,8 @@ export default function App() {
 				<Route index element={<Navigate to="/content/home" replace />} />
 				<Route path="setup" element={<Setup />} />
 				<Route path="content/home" element={<HomePageEditor />} />
-				<Route path="content/contact" element={<ContactPageEditor />} />
 				<Route path="content/sectors" element={<SectorsPageEditor />} />
+				<Route path="content/contact" element={<ContactPageEditor />} />
 				<Route path="log" element={<LogPage />} />
 				{PLACEHOLDER_PAGES.map((p) => (
 					<Route

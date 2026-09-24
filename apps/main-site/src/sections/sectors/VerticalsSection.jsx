@@ -169,7 +169,7 @@ export default function VerticalsSection({ data }) {
 						return (
 							<div
 								key={item.key}
-								className="rounded-2xl border border-black/5 bg-white"
+								className="rounded-2xl border border-t-4 border-black/5 border-t-transparent bg-white transition-all hover:border-t-brand-red hover:shadow-md"
 								style={{
 									gridColumn: spanFull ? "1 / -1" : undefined,
 									padding: isFirst ? "2rem 2.5rem" : "1.5rem",

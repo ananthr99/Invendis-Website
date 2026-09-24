@@ -18,7 +18,7 @@ export default function WhatWeDoSection({ data }) {
 					{cards.map((card) => (
 						<div
 							key={card.title}
-							className="rounded-2xl border border-black/5 bg-brand-light p-8 transition-shadow hover:border-t-brand-red hover:shadow-md"
+							className="rounded-2xl border border-t-4 border-black/5 border-t-transparent bg-brand-light p-8 transition-all hover:border-t-brand-red hover:shadow-md"
 						>
 							<div className="mb-4 flex h-10 w-10 items-center justify-center rounded-xl bg-brand-blue/10 text-brand-blue">
 								<Icon name={card.icon} className="h-5 w-5" />
