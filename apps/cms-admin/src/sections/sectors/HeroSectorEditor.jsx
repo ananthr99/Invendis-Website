@@ -1,6 +1,7 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { fileToBase64 } from "@invendis/github-client";
-import { OWNER, REPO } from "../../config.js";
+import { github, OWNER, REPO } from "../../config.js";
+import { useAdmin } from "../../context/AdminContext.jsx";
 
 function rawUrl(imgPath) {
 	return `https://raw.githubusercontent.com/${OWNER}/${REPO}/main/apps/main-site/public${imgPath}`;
@@ -10,6 +11,22 @@ export default function HeroSectorEditor({ data, onChange }) {
 	const d = data ?? { eyebrow: "", title: "", titleHighlight: "", subtitle: "", sectors: [] };
 	const [previews, setPreviews] = useState({});
 	const [expanded, setExpanded] = useState(null);
+	const [fileChecks, setFileChecks] = useState({});
+	const checkTimers = useRef({});
+
+	function checkFileExists(key, repoPath) {
+		if (!token) return;
+		setFileChecks(f => ({ ...f, [key]: "checking" }));
+		clearTimeout(checkTimers.current[key]);
+		checkTimers.current[key] = setTimeout(async () => {
+			try {
+				const sha = await github.getFileSha(repoPath, { branch: "main", token });
+				setFileChecks(f => ({ ...f, [key]: sha ? "exists" : "free" }));
+			} catch {
+				setFileChecks(f => ({ ...f, [key]: "free" }));
+			}
+		}, 500);
+	}
 
 	useEffect(() => {
 		if (!expanded) return;
@@ -44,6 +61,7 @@ export default function HeroSectorEditor({ data, onChange }) {
 			...d,
 			_pendingUploads: [...existing, { sectorIndex: i, sectorKey: d.sectors[i]?.key ?? "", base64, filename: file.name }],
 		});
+		checkFileExists(i, `apps/main-site/public/images/sectors/${d.sectors[i]?.key || "_"}/hero/${file.name}`);
 	}
 
 	function clearPendingUpload(i) {
@@ -51,6 +69,15 @@ export default function HeroSectorEditor({ data, onChange }) {
 		setPreviews(p => { const n = { ...p }; delete n[i]; return n; });
 		const uploads = (d._pendingUploads ?? []).filter(u => u.sectorIndex !== i);
 		onChange({ ...d, _pendingUploads: uploads.length ? uploads : undefined });
+		setFileChecks(f => { const n = { ...f }; delete n[i]; return n; });
+	}
+
+	function renamePendingUpload(i, val) {
+		const uploads = (d._pendingUploads ?? []).map(u =>
+			u.sectorIndex === i ? { ...u, filename: val } : u
+		);
+		onChange({ ...d, _pendingUploads: uploads });
+		checkFileExists(i, `apps/main-site/public/images/sectors/${d.sectors[i]?.key || "_"}/hero/${val}`);
 	}
 
 	function addSector() {
@@ -197,12 +224,26 @@ export default function HeroSectorEditor({ data, onChange }) {
 										<img src={previews[i]} alt="" style={{ height: 52, width: 80, objectFit: "cover", borderRadius: 4, flexShrink: 0 }} />
 									)}
 									<div style={{ flex: 1, minWidth: 0 }}>
-										<p style={{ margin: 0, fontSize: 13, fontWeight: 600, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
-											{pending.filename}
-										</p>
-										<p style={{ margin: "2px 0 0", fontSize: 11, color: "var(--admin-muted)" }}>
+										<label style={{ fontSize: 11, color: "var(--admin-muted)", display: "block", marginBottom: 3 }}>Save as</label>
+										<input
+											className="admin-input"
+											style={{ fontSize: 13, marginBottom: 4 }}
+											value={pending.filename}
+											onChange={e => renamePendingUpload(i, e.target.value)}
+											placeholder="filename.jpg"
+										/>
+										<p style={{ margin: 0, fontSize: 11, color: "var(--admin-muted)" }}>
 											→ /images/sectors/{sector.key || "…"}/hero/{pending.filename}
 										</p>
+										{fileChecks[key] === "checking" && (
+											<p style={{ margin: "4px 0 0", fontSize: 11, color: "var(--admin-muted)" }}>Checking…</p>
+										)}
+										{fileChecks[key] === "exists" && (
+											<p style={{ margin: "4px 0 0", fontSize: 11, color: "var(--admin-red)" }}>⚠ A file with this name already exists — saving will overwrite it</p>
+										)}
+										{fileChecks[key] === "free" && (
+											<p style={{ margin: "4px 0 0", fontSize: 11, color: "#16a34a" }}>✓ Name is available</p>
+										)}
 									</div>
 									<button className="admin-btn admin-btn--ghost" onClick={() => clearPendingUpload(i)}>✕</button>
 								</div>
