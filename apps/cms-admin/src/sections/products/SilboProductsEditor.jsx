@@ -12,6 +12,7 @@ export default function SilboProductsEditor({ data, onChange }) {
 	const [previews, setPreviews] = useState([]);
 	const [expanded, setExpanded] = useState(null);
     const [fileChecks, setFileChecks] = useState({});
+	const { token } = useAdmin();
 	const checkTimers = useRef({});
 
 	function checkFileExists(key, repoPath) {

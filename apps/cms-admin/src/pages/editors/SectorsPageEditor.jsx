@@ -64,6 +64,22 @@ export default function SectorsPageEditor() {
 		setSaving(true);
 		try {
 			let saveForm = form;
+
+			// Pre-flight: block save if any pending filename already exists in the repo
+			for (const upload of form.hero?._pendingUploads ?? []) {
+				const sKey = form.hero?.sectors?.[upload.sectorIndex]?.key || "_";
+				const path = `apps/main-site/public/images/sectors/${sKey}/hero/${upload.filename}`;
+				if (await github.getFileSha(path, { branch: "main", token })) {
+					throw new Error(`Hero image "${upload.filename}" already exists at /images/sectors/${sKey}/hero/. Rename it before saving.`);
+				}
+			}
+			for (const upload of form.verticals?._pendingUploads ?? []) {
+				const iKey = form.verticals?.items?.[upload.itemIndex]?.key || "_";
+				const path = `apps/main-site/public/images/sectors/${iKey}/card/${upload.filename}`;
+				if (await github.getFileSha(path, { branch: "main", token })) {
+					throw new Error(`Card image "${upload.filename}" already exists at /images/sectors/${iKey}/card/. Rename it before saving.`);
+				}
+			}
 			const pendingUploads = form.hero?._pendingUploads ?? [];
 
 			if (pendingUploads.length > 0) {

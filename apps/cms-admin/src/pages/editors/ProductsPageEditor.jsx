@@ -69,6 +69,31 @@ export default function ProductsPageEditor() {
 		try {
 			let saveForm = form;
 
+			// Pre-flight: block save if any pending filename already exists in the repo
+			const conflictChecks = [
+				...(form.hero?._pendingUploads ?? []).map(u => ({
+					path: `apps/main-site/public/images/products/hero/${u.filename}`,
+					label: `Hero image "${u.filename}"`,
+				})),
+				...(form.hardwarePortfolio?._pendingUploads ?? []).map(u => {
+					const k = form.hardwarePortfolio.items[u.itemIndex]?.key || "_";
+					return { path: `apps/main-site/public/images/products/hardware/${k}/${u.filename}`, label: `Hardware image "${u.filename}"` };
+				}),
+				...(form.silboProducts?._pendingUploads ?? []).map(u => ({
+					path: `apps/main-site/public/images/products/silbo/${u.filename}`,
+					label: `SILBO image "${u.filename}"`,
+				})),
+				...(form.softwarePlatforms?._pendingUploads ?? []).map(u => ({
+					path: `apps/main-site/public/images/products/software/${u.filename}`,
+					label: `Software image "${u.filename}"`,
+				})),
+			];
+			for (const { path, label } of conflictChecks) {
+				if (await github.getFileSha(path, { branch: "main", token })) {
+					throw new Error(`${label} already exists at ${path.replace("apps/main-site/public", "")}. Rename it before saving.`);
+				}
+			}
+
 			// Hero image uploads — append to hero.image array
 			const heroPending = form.hero?._pendingUploads ?? [];
 			if (heroPending.length > 0) {

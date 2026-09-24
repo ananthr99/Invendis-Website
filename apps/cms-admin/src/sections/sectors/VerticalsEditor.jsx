@@ -11,8 +11,8 @@ export default function VerticalsEditor({ data, onChange }) {
 	const d = data ?? { eyebrow: "", title: "", titleHighlight: "", subtitle: "", items: [] };
 	const [previews, setPreviews] = useState({});
 	const [expanded, setExpanded] = useState(null);
-	const { token } = useAdmin();
 	const [fileChecks, setFileChecks] = useState({});
+	const { token } = useAdmin();
 	const checkTimers = useRef({});
 
 	function checkFileExists(key, repoPath) {
@@ -257,13 +257,13 @@ export default function VerticalsEditor({ data, onChange }) {
 										<p style={{ margin: 0, fontSize: 11, color: "var(--admin-muted)" }}>
 											→ /images/sectors/{item.key || "…"}/card/{pending.filename}
 										</p>
-										{fileChecks[key] === "checking" && (
+										{fileChecks[i] === "checking" && (
 											<p style={{ margin: "4px 0 0", fontSize: 11, color: "var(--admin-muted)" }}>Checking…</p>
 										)}
-										{fileChecks[key] === "exists" && (
+										{fileChecks[i] === "exists" && (
 											<p style={{ margin: "4px 0 0", fontSize: 11, color: "var(--admin-red)" }}>⚠ A file with this name already exists — saving will overwrite it</p>
 										)}
-										{fileChecks[key] === "free" && (
+										{fileChecks[i] === "free" && (
 											<p style={{ margin: "4px 0 0", fontSize: 11, color: "#16a34a" }}>✓ Name is available</p>
 										)}
 									</div>
