@@ -218,7 +218,7 @@ export default function PhotoGallerySection({ data }) {
 					Showing {filtered.length === 0 ? 0 : (page - 1) * perPage + 1}–{Math.min(page * perPage, filtered.length)} of {filtered.length} items
 				</p>
 
-				<div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+				<div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
 					{paginated.map((item, i) => (
 						<GalleryCard key={item.id ?? i} item={item} />
 					))}
