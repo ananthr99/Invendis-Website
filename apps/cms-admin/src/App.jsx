@@ -8,19 +8,15 @@ import HomePageEditor from "./pages/editors/HomePageEditor.jsx";
 import SectorsPageEditor from "./pages/editors/SectorsPageEditor.jsx";
 import ProductsPageEditor from "./pages/editors/ProductsPageEditor.jsx";
 import ContactPageEditor from "./pages/editors/ContactPageEditor.jsx";
+import GalleryPageEditor from "./pages/editors/GalleryPageEditor.jsx";
 import PlaceholderEditor from "./pages/editors/PlaceholderEditor.jsx";
 import LogPage from "./pages/LogPage.jsx";
 
-// Pages not yet wired to a real editor render the generic
-// PlaceholderEditor — same "coming soon, follow the pattern" idea as the
-// main site's stub pages. Add a real <XPageEditor /> here (copied from
-// HomePageEditor.jsx or ContactPageEditor.jsx) when you build one out.
 const PLACEHOLDER_PAGES = [
 	{ path: "silbo", label: "SILBO", contentPath: "pages/silbo.json" },
 	{ path: "case-studies", label: "Case Studies", contentPath: "pages/caseStudies.json" },
 	{ path: "company", label: "Company", contentPath: "pages/company.json" },
 	{ path: "resources", label: "Resources", contentPath: "pages/resources.json" },
-	{ path: "gallery", label: "Gallery", contentPath: "pages/gallery.json" },
 	{ path: "careers", label: "Careers", contentPath: "pages/careers.json" },
 ];
 
@@ -44,6 +40,7 @@ export default function App() {
 				<Route path="content/sectors" element={<SectorsPageEditor />} />
 				<Route path="content/products" element={<ProductsPageEditor />} />
 				<Route path="content/contact" element={<ContactPageEditor />} />
+				<Route path="content/gallery" element={<GalleryPageEditor />} />
 				<Route path="log" element={<LogPage />} />
 				{PLACEHOLDER_PAGES.map((p) => (
 					<Route

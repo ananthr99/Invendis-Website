@@ -165,6 +165,11 @@ body {
 
 .admin-textarea { resize: vertical; min-height: 90px; }
 
+select.admin-input {
+  appearance: auto;
+  -webkit-appearance: auto;
+}
+
 /* ---- cards ---- */
 
 .admin-card {
