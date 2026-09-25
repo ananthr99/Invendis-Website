@@ -3,6 +3,8 @@ import { useState } from "react";
 const BASE = import.meta.env.BASE_URL.replace(/\/$/, "");
 function siteImg(path) { return path ? BASE + path : path; }
 
+const PER_PAGE_OPTIONS = [5, 10, 15, 20];
+
 function CameraPlaceholder() {
 	return (
 		<div style={{ width: "100%", height: "100%", background: "#1B2A6B", display: "flex", alignItems: "center", justifyContent: "center" }}>
@@ -52,14 +54,98 @@ function GalleryCard({ item }) {
 	);
 }
 
+function Pagination({ page, totalPages, onPage }) {
+	if (totalPages <= 1) return null;
+
+	function getPageNumbers() {
+		if (totalPages <= 7) return Array.from({ length: totalPages }, (_, i) => i + 1);
+		const pages = new Set([1, totalPages, page, page - 1, page + 1].filter(p => p >= 1 && p <= totalPages));
+		const sorted = [...pages].sort((a, b) => a - b);
+		const result = [];
+		for (let i = 0; i < sorted.length; i++) {
+			if (i > 0 && sorted[i] - sorted[i - 1] > 1) result.push("…");
+			result.push(sorted[i]);
+		}
+		return result;
+	}
+
+	const btnBase = {
+		minWidth: 36,
+		height: 36,
+		border: "1px solid #e2e4ec",
+		borderRadius: 8,
+		background: "white",
+		cursor: "pointer",
+		fontSize: 13,
+		fontFamily: "inherit",
+		display: "flex",
+		alignItems: "center",
+		justifyContent: "center",
+		transition: "all 0.15s",
+	};
+
+	return (
+		<div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 6, marginTop: "2.5rem" }}>
+			<button
+				onClick={() => onPage(page - 1)}
+				disabled={page === 1}
+				style={{ ...btnBase, color: page === 1 ? "#d1d5db" : "#374151", cursor: page === 1 ? "default" : "pointer" }}
+			>
+				‹
+			</button>
+
+			{getPageNumbers().map((p, i) =>
+				p === "…" ? (
+					<span key={`ellipsis-${i}`} style={{ width: 36, textAlign: "center", color: "#9ca3af", fontSize: 13 }}>…</span>
+				) : (
+					<button
+						key={p}
+						onClick={() => onPage(p)}
+						style={{
+							...btnBase,
+							background: p === page ? "#1B2A6B" : "white",
+							color: p === page ? "white" : "#374151",
+							borderColor: p === page ? "#1B2A6B" : "#e2e4ec",
+							fontWeight: p === page ? 700 : 400,
+						}}
+					>
+						{p}
+					</button>
+				)
+			)}
+
+			<button
+				onClick={() => onPage(page + 1)}
+				disabled={page === totalPages}
+				style={{ ...btnBase, color: page === totalPages ? "#d1d5db" : "#374151", cursor: page === totalPages ? "default" : "pointer" }}
+			>
+				›
+			</button>
+		</div>
+	);
+}
 
 export default function PhotoGallerySection({ data }) {
 	const { eyebrow, title, titleHighlight, categories = [], items = [] } = data ?? {};
 	const [activeFilter, setActiveFilter] = useState("All");
+	const [page, setPage] = useState(1);
+	const [perPage, setPerPage] = useState(10);
+
+	function handleFilterChange(cat) {
+		setActiveFilter(cat);
+		setPage(1);
+	}
+
+	function handlePerPageChange(val) {
+		setPerPage(val);
+		setPage(1);
+	}
 
 	const usedCategories = categories.filter((cat) => items.some((item) => item.category === cat));
-    const allTabs = ["All", ...usedCategories];
+	const allTabs = ["All", ...usedCategories];
 	const filtered = activeFilter === "All" ? items : items.filter((item) => item.category === activeFilter);
+	const totalPages = Math.ceil(filtered.length / perPage);
+	const paginated = filtered.slice((page - 1) * perPage, page * perPage);
 
 	return (
 		<section className="bg-white px-4 py-16 sm:px-8">
@@ -74,33 +160,66 @@ export default function PhotoGallerySection({ data }) {
 					</h2>
 				</div>
 
-				{allTabs.length > 1 && (
-					<div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginBottom: "2rem" }}>
-						{allTabs.map((tab) => (
+				{/* Filter tabs + per-page selector */}
+				<div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 12, marginBottom: "2rem" }}>
+					{allTabs.length > 1 && (
+						<div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
+							{allTabs.map((tab) => (
+								<button
+									key={tab}
+									onClick={() => handleFilterChange(tab)}
+									style={{
+										padding: "6px 18px",
+										borderRadius: 20,
+										border: activeFilter === tab ? "none" : "1px solid #d1d5db",
+										background: activeFilter === tab ? "#1B2A6B" : "white",
+										color: activeFilter === tab ? "white" : "#374151",
+										fontSize: 13,
+										fontWeight: activeFilter === tab ? 600 : 400,
+										cursor: "pointer",
+										transition: "all 0.15s",
+										fontFamily: "inherit",
+									}}
+								>
+									{tab}
+								</button>
+							))}
+						</div>
+					)}
+
+					<div style={{ display: "flex", alignItems: "center", gap: 8, marginLeft: "auto" }}>
+						<span style={{ fontSize: 13, color: "#6b7280", whiteSpace: "nowrap" }}>Show</span>
+						{PER_PAGE_OPTIONS.map((n) => (
 							<button
-								key={tab}
-								onClick={() => setActiveFilter(tab)}
+								key={n}
+								onClick={() => handlePerPageChange(n)}
 								style={{
-									padding: "6px 18px",
-									borderRadius: 20,
-									border: activeFilter === tab ? "none" : "1px solid #d1d5db",
-									background: activeFilter === tab ? "#1B2A6B" : "white",
-									color: activeFilter === tab ? "white" : "#374151",
+									minWidth: 36,
+									height: 32,
+									border: perPage === n ? "none" : "1px solid #d1d5db",
+									borderRadius: 6,
+									background: perPage === n ? "#1B2A6B" : "white",
+									color: perPage === n ? "white" : "#374151",
 									fontSize: 13,
-									fontWeight: activeFilter === tab ? 600 : 400,
+									fontWeight: perPage === n ? 600 : 400,
 									cursor: "pointer",
-									transition: "all 0.15s",
 									fontFamily: "inherit",
+									transition: "all 0.15s",
 								}}
 							>
-								{tab}
+								{n}
 							</button>
 						))}
 					</div>
-				)}
+				</div>
+
+				{/* Count */}
+				<p style={{ fontSize: 12, color: "#9ca3af", marginBottom: "1rem" }}>
+					Showing {filtered.length === 0 ? 0 : (page - 1) * perPage + 1}–{Math.min(page * perPage, filtered.length)} of {filtered.length} items
+				</p>
 
 				<div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-					{filtered.map((item, i) => (
+					{paginated.map((item, i) => (
 						<GalleryCard key={item.id ?? i} item={item} />
 					))}
 				</div>
@@ -110,6 +229,8 @@ export default function PhotoGallerySection({ data }) {
 						No items in this category yet.
 					</p>
 				)}
+
+				<Pagination page={page} totalPages={totalPages} onPage={setPage} />
 			</div>
 		</section>
 	);

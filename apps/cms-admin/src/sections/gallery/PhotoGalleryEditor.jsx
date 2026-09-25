@@ -68,34 +68,40 @@ function ItemEditor({ item, index, categories, onChange, onRemove }) {
 			</div>
 
 			<div className="admin-field">
-				<label className="admin-label">Photo</label>
-				{previewSrc && (
-					<div style={{ marginBottom: 8, position: "relative", display: "inline-block" }}>
-						<img src={previewSrc} alt="" style={{ height: 80, width: 140, objectFit: "cover", borderRadius: 6, border: "1px solid var(--admin-border)", display: "block" }} />
-						<button
-							onClick={pending ? clearPending : () => set("image", "")}
-							title="Remove"
-							style={{ position: "absolute", top: -7, right: -7, width: 20, height: 20, borderRadius: "50%", background: "var(--admin-red)", color: "white", border: "none", cursor: "pointer", fontSize: 11, display: "flex", alignItems: "center", justifyContent: "center" }}
-						>✕</button>
-					</div>
-				)}
-				{pending && (
-					<div style={{ marginBottom: 8 }}>
-						<input
-							className="admin-input"
-							style={{ fontSize: 12 }}
-							value={pending.filename}
-							onChange={e => renamePending(e.target.value)}
-							placeholder="filename.jpg"
-						/>
-						<p style={{ margin: "3px 0 0", fontSize: 11, color: "var(--admin-muted)" }}>→ /images/gallery/items/{pending.filename}</p>
-					</div>
-				)}
-				<label style={{ display: "inline-flex", alignItems: "center", gap: 6, padding: "6px 12px", border: "1px solid var(--admin-border)", borderRadius: 6, cursor: "pointer", fontSize: 12, background: "white", fontFamily: "inherit" }}>
-					<input type="file" accept="image/*" style={{ display: "none" }} onChange={e => { if (e.target.files[0]) handleFileSelect(e.target.files[0]); e.target.value = ""; }} />
-					{previewSrc ? "Replace photo" : "Upload photo"}
-				</label>
-			</div>
+                <label className="admin-label">Photo</label>
+                <div style={{ display: "inline-flex", flexDirection: "column", gap: 8, alignItems: "flex-start" }}>
+                    {previewSrc && (
+                        <div style={{ position: "relative", display: "inline-block" }}>
+                            <img
+                                src={previewSrc}
+                                alt=""
+                                style={{ height: 80, width: 140, objectFit: "cover", borderRadius: 6, border: "1px solid var(--admin-border)", display: "block" }}
+                            />
+                            <button
+                                onClick={pending ? clearPending : () => set("image", "")}
+                                title="Remove"
+                                style={{ position: "absolute", top: -7, right: -7, width: 20, height: 20, borderRadius: "50%", background: "var(--admin-red)", color: "white", border: "none", cursor: "pointer", fontSize: 11, display: "flex", alignItems: "center", justifyContent: "center" }}
+                            >✕</button>
+                        </div>
+                    )}
+                    {pending && (
+                        <div>
+                            <input
+                                className="admin-input"
+                                style={{ fontSize: 12 }}
+                                value={pending.filename}
+                                onChange={e => renamePending(e.target.value)}
+                                placeholder="filename.jpg"
+                            />
+                            <p style={{ margin: "3px 0 0", fontSize: 11, color: "var(--admin-muted)" }}>→ /images/gallery/items/{pending.filename}</p>
+                        </div>
+                    )}
+                    <label style={{ display: "inline-flex", alignItems: "center", gap: 6, padding: "6px 12px", border: "1px solid var(--admin-border)", borderRadius: 6, cursor: "pointer", fontSize: 12, background: "white", fontFamily: "inherit" }}>
+                        <input type="file" accept="image/*" style={{ display: "none" }} onChange={e => { if (e.target.files[0]) handleFileSelect(e.target.files[0]); e.target.value = ""; }} />
+                        {previewSrc ? "Replace photo" : "Upload photo"}
+                    </label>
+                </div>
+            </div>
 		</div>
 	);
 }
