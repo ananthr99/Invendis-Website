@@ -1,48 +1,83 @@
 {
-	"sections": ["hero", "contactBody", "globalPresence"],
-	"hero": {
-		"eyebrow": "Contact Us",
-		"title": "Let's Build Something",
-		"titleHighlight": "Together",
-		"subtitle": "Reach out to our team of IIoT experts. Whether it's a product enquiry, partnership, or a custom deployment — we're here to help.",
-		"image": "/images/contact/hero-globe.png"
-	},
-	"contactBody": {
-		"info": {
-			"headquarters": "No. 230, 1st Cross, 38th Main, BTM 2nd Stage, Bangalore – 560068, India",
-			"phone": "+91 6361509463",
-			"email": "sales@invendis.com",
-			"foreignOffice": "Accra, Ghana (West Africa operations)"
-		},
-		"quickFacts": ["32+ Countries", "Est. 2007", "Bangalore HQ", "ISO Certified", "Make in India"],
-		"form": {
-			"title": "Send Us a Message",
-			"nameLabel": "Your Name",
-			"namePlaceholder": "John Doe",
-			"companyLabel": "Company",
-			"companyPlaceholder": "Your Company",
-			"emailLabel": "Email Address",
-			"emailPlaceholder": "johndoe@company.com",
-			"messageLabel": "Message",
-			"messagePlaceholder": "Tell us about your project or requirements…",
-			"submitLabel": "Send Message",
-			"additionalFields": [
-				{ "label": "Industry", "placeholder": "Telecom", "required": false }
-			]
-		}
-	},
-	"globalPresence": {
-		"eyebrow": "Global Presence",
-		"title": "Countries",
-		"titleHighlight": "We Serve",
-		"subtitle": "Invendis has deployed IIoT solutions across 32+ countries spanning Africa, the Middle East, Asia Pacific, and beyond.",
-		"hqCountry": "IND",
-		"countriesServed": [
-			"NGA","GHA","KEN","ETH","TZA","UGA","ZAF","EGY","MAR","TUN",
-			"SEN","CIV","CMR","ZMB","MOZ","MWI","SDN","AGO","GAB","ZWE",
-			"SLE","GMB","BFA","MLI","NER","TCD","SOM","DJI","ERI",
-			"SAU","ARE","QAT","KWT","BHR","OMN","JOR",
-			"BGD","LKA","PAK","IND"
-		]
-	}
+  "sections": [
+    "hero",
+    "contactBody",
+    "globalPresence"
+  ],
+  "hero": {
+    "eyebrow": "Contact Us",
+    "title": "Let's Build Something",
+    "titleHighlight": "Together",
+    "subtitle": "Reach out to our team of IIoT experts. Whether it's a product enquiry, partnership, or a custom deployment — we're here to help.",
+    "image": "/images/contact/hero-globe.png"
+  },
+  "contactBody": {
+    "info": {
+      "headquarters": "No. 230, 1st Cross, 38th Main, BTM 2nd Stage, Bangalore – 560068, India",
+      "phone": "+91 6361509463",
+      "email": "sales@invendis.com",
+      "foreignOffice": "Accra, Ghana (West Africa operations)"
+    },
+    "quickFacts": [
+      "32+ Countries",
+      "Est. 2007",
+      "Bangalore HQ",
+      "ISO Certified",
+      "Make in India"
+    ],
+    "form": {
+      "title": "Send Us a Message",
+      "nameLabel": "Your Name",
+      "namePlaceholder": "John Doe",
+      "companyLabel": "Company",
+      "companyPlaceholder": "Your Company",
+      "emailLabel": "Email Address",
+      "emailPlaceholder": "johndoe@company.com",
+      "messageLabel": "Message",
+      "messagePlaceholder": "Tell us about your project or requirements…",
+      "submitLabel": "Send Message",
+      "additionalFields": [
+        {
+          "label": "Industry",
+          "placeholder": "Telecom",
+          "required": false
+        }
+      ]
+    }
+  },
+  "globalPresence": {
+    "eyebrow": "Global Presence",
+    "title": "Countries",
+    "titleHighlight": "We Serve",
+    "subtitle": "Invendis has deployed IIoT solutions across 32+ countries spanning Africa, the Middle East, Asia Pacific, and beyond.",
+    "hqCountry": "IND",
+    "countriesServed": [
+      "IND",
+      "USA",
+      "COL",
+      "GHA",
+      "NGA",
+      "ZWE",
+      "BFA",
+      "CMR",
+      "UGA",
+      "BGD",
+      "MMR",
+      "ZAF",
+      "SSD",
+      "PHL",
+      "MWI",
+      "COD",
+      "IDN",
+      "LKA",
+      "SAU",
+      "ARE",
+      "TZA",
+      "KEN",
+      "MYS",
+      "QAT",
+      "OMN",
+      "NER"
+    ]
+  }
 }
