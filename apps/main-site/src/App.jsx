@@ -1,5 +1,6 @@
 import { Suspense, lazy } from "react";
-import { Routes, Route } from "react-router-dom";
+import { useEffect } from "react";
+import { Routes, Route, useLocation } from "react-router-dom";
 import Navbar from "./components/layout/Navbar.jsx";
 import Footer from "./components/layout/Footer.jsx";
 import TopBarSection from "./sections/home/TopBarSection.jsx";
@@ -23,6 +24,12 @@ const Privacy = lazy(() => import("./pages/Privacy.jsx"));
 const Terms = lazy(() => import("./pages/Terms.jsx"));
 const NotFound = lazy(() => import("./pages/NotFound.jsx"));
 
+function ScrollToTop() {
+	const { pathname } = useLocation();
+	useEffect(() => { window.scrollTo(0, 0); }, [pathname]);
+	return null;
+}
+
 function PageLoader() {
 	return (
 		<div className="flex min-h-[60vh] items-center justify-center">
@@ -34,6 +41,7 @@ function PageLoader() {
 export default function App() {
 	return (
 		<div className="flex min-h-screen flex-col">
+			<ScrollToTop />
 			<div className="sticky top-0 z-50">
 				<Navbar />
 				<TopBarSection />

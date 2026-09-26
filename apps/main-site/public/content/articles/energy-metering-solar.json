@@ -1,0 +1,31 @@
+{
+	"id": "energy-metering-solar",
+	"slug": "energy-metering-solar",
+	"category": "Application Note",
+	"title": "Energy Metering for Remote Solar and Hybrid Power Sites",
+	"description": "A technical guide to deploying Invendis energy meters at off-grid solar hybrid sites for accurate generation, consumption, and export measurement.",
+	"date": "20 Oct 2025",
+	"readTime": "2 min read",
+	"content": [
+		{ "type": "paragraph", "text": "Off-grid and hybrid solar installations present a unique measurement challenge: energy flows in multiple directions simultaneously — generation from panels, consumption by loads, charging to battery banks, and export to the grid (where applicable). Accurate metering at each point is essential for performance verification, revenue reconciliation, and predictive maintenance." },
+		{ "type": "heading", "level": 2, "text": "Measurement Points in a Hybrid Site" },
+		{ "type": "numberedList", "items": [
+			"PV Array Output — DC generation from the solar panels before the inverter",
+			"Inverter AC Output — the usable AC power available to site loads",
+			"Battery Charge/Discharge — bidirectional metering of the energy storage system",
+			"Grid Import/Export — net metering point at the grid connection (where applicable)",
+			"Load Consumption — total energy drawn by the site's electrical loads"
+		]},
+		{ "type": "heading", "level": 2, "text": "Invendis Energy Meter Deployment" },
+		{ "type": "paragraph", "text": "Invendis three-phase and single-phase energy meters (acquired through the ELTRAC Technologies integration) are DIN-rail mountable, Modbus RTU/TCP-compatible, and rated for outdoor enclosure installation. Each meter supports bidirectional measurement, making it suitable for export-capable sites." },
+		{ "type": "callout", "title": "Communication Note", "text": "Meters communicate via RS-485 Modbus to the Invendis iSense gateway, which aggregates readings and forwards them to PizGloria cloud dashboards over LTE. Polling intervals are configurable from 1 minute to 15 minutes depending on bandwidth constraints." },
+		{ "type": "heading", "level": 2, "text": "Data Outputs and Reporting" },
+		{ "type": "bulletList", "items": [
+			"Real-time generation, consumption, and export values accessible via PizGloria dashboard",
+			"Daily, monthly, and annual energy reports for performance benchmarking",
+			"Automated alerts for generation shortfall, battery depth-of-discharge breaches, and overload conditions",
+			"Export to CSV or API integration for third-party energy management platforms"
+		]},
+		{ "type": "paragraph", "text": "For operators running solar hybrid sites at telecom towers, water pumping stations, or rural electrification projects, deploying accurate IIoT-connected metering is the first step toward data-driven operations and verifiable performance guarantees." }
+	]
+}
