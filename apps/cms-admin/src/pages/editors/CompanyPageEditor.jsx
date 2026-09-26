@@ -1,8 +1,7 @@
 import { useState, useEffect, useLayoutEffect, useRef } from "react";
 import { useAdmin } from "../../context/AdminContext.jsx";
-import { loadPageContent, savePageContent } from "../../utils/savePageContent.js";
+import { loadPageContent, savePageContent, uploadImage } from "../../utils/savePageContent.js";
 import { COMPANY_SECTION_EDITORS, SECTION_LABELS, ALL_SECTION_KEYS } from "../../sections/company/registry.js";
-import { github } from "../../config.js";
 
 const CONTENT_PATH = "pages/company.json";
 
@@ -74,10 +73,8 @@ export default function CompanyPageEditor() {
 			// 1. Upload hero background image
 			const heroPending = saveForm.hero?._pendingUpload;
 			if (heroPending) {
-				const path = `apps/main-site/public/images/company/hero/${heroPending.filename}`;
-				const sha = await github.getFileSha(path, { branch: "main", token });
 				toast("Uploading hero image…", "ok");
-				await github.writeFileBase64(path, heroPending.base64, { message: `CMS: upload company hero image [skip ci]`, sha, branch: "main", token });
+				await uploadImage(`images/company/hero/${heroPending.filename}`, heroPending.base64, { token, message: "CMS: upload company hero image" });
 				saveForm = { ...saveForm, hero: { ...saveForm.hero, image: `/images/company/hero/${heroPending.filename}`, _pendingUpload: undefined } };
 			}
 
@@ -87,10 +84,8 @@ export default function CompanyPageEditor() {
 				for (const member of saveForm.leadership.members) {
 					if (member._pendingUpload) {
 						const p = member._pendingUpload;
-						const path = `apps/main-site/public/images/company/leadership/${p.filename}`;
-						const sha = await github.getFileSha(path, { branch: "main", token });
 						toast(`Uploading photo for ${member.name || "member"}…`, "ok");
-						await github.writeFileBase64(path, p.base64, { message: `CMS: upload leadership photo [skip ci]`, sha, branch: "main", token });
+						await uploadImage(`images/company/leadership/${p.filename}`, p.base64, { token, message: "CMS: upload leadership photo" });
 						const { _pendingUpload: _, ...rest } = member;
 						members.push({ ...rest, image: `/images/company/leadership/${p.filename}` });
 					} else {
@@ -107,10 +102,8 @@ export default function CompanyPageEditor() {
 					if (loc._pendingImages?.length) {
 						const newPaths = [];
 						for (const p of loc._pendingImages) {
-							const path = `apps/main-site/public/images/company/locations/${p.filename}`;
-							const sha = await github.getFileSha(path, { branch: "main", token });
 							toast(`Uploading location image "${p.filename}"…`, "ok");
-							await github.writeFileBase64(path, p.base64, { message: `CMS: upload location image [skip ci]`, sha, branch: "main", token });
+							await uploadImage(`images/company/locations/${p.filename}`, p.base64, { token, message: "CMS: upload location image" });
 							newPaths.push(`/images/company/locations/${p.filename}`);
 						}
 						const { _pendingImages: _, ...rest } = loc;

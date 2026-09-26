@@ -1,8 +1,7 @@
 import { useState, useEffect, useLayoutEffect, useRef } from "react";
 import { useAdmin } from "../../context/AdminContext.jsx";
-import { loadPageContent, savePageContent } from "../../utils/savePageContent.js";
 import { CASE_STUDIES_SECTION_EDITORS, SECTION_LABELS, ALL_SECTION_KEYS } from "../../sections/case-studies/registry.js";
-import { github } from "../../config.js";
+import { loadPageContent, savePageContent, uploadImage } from "../../utils/savePageContent.js";
 
 const CONTENT_PATH = "pages/caseStudies.json";
 
@@ -59,10 +58,8 @@ export default function CaseStudiesPageEditor() {
 
 			const heroPending = saveForm.hero?._pendingUpload;
 			if (heroPending) {
-				const path = `apps/main-site/public/images/case-studies/hero/${heroPending.filename}`;
-				const sha = await github.getFileSha(path, { branch: "main", token });
 				toast("Uploading hero image…", "ok");
-				await github.writeFileBase64(path, heroPending.base64, { message: `CMS: upload case studies hero image [skip ci]`, sha, branch: "main", token });
+				await uploadImage(`images/case-studies/hero/${heroPending.filename}`, heroPending.base64, { token, message: "CMS: upload case studies hero image" });
 				saveForm = { ...saveForm, hero: { ...saveForm.hero, image: `/images/case-studies/hero/${heroPending.filename}`, _pendingUpload: undefined } };
 			}
 

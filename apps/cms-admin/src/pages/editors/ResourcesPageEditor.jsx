@@ -1,8 +1,7 @@
 import { useState, useEffect, useLayoutEffect, useRef } from "react";
 import { useAdmin } from "../../context/AdminContext.jsx";
-import { loadPageContent, savePageContent } from "../../utils/savePageContent.js";
+import { loadPageContent, savePageContent, uploadImage } from "../../utils/savePageContent.js";
 import { RESOURCES_SECTION_EDITORS, SECTION_LABELS, ALL_SECTION_KEYS } from "../../sections/resources/registry.js";
-import { github } from "../../config.js";
 
 const CONTENT_PATH = "pages/resources.json";
 
@@ -59,10 +58,7 @@ export default function ResourcesPageEditor() {
 
 			const heroPending = saveForm.hero?._pendingUpload;
 			if (heroPending) {
-				const path = `apps/main-site/public/images/resources/hero/${heroPending.filename}`;
-				const sha = await github.getFileSha(path, { branch: "main", token });
-				toast("Uploading hero image…", "ok");
-				await github.writeFileBase64(path, heroPending.base64, { message: `CMS: upload resources hero image [skip ci]`, sha, branch: "main", token });
+				await uploadImage(`images/resources/hero/${heroPending.filename}`, heroPending.base64, { token, message: "CMS: upload resources hero image" });
 				saveForm = { ...saveForm, hero: { ...saveForm.hero, image: `/images/resources/hero/${heroPending.filename}`, _pendingUpload: undefined } };
 			}
 

@@ -2,7 +2,7 @@ import { useState, useEffect, useLayoutEffect, useRef } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { fileToBase64 } from "@invendis/github-client";
 import { useAdmin } from "../../context/AdminContext.jsx";
-import { loadPageContent, savePageContent } from "../../utils/savePageContent.js";
+import { loadPageContent, savePageContent, uploadImage  } from "../../utils/savePageContent.js";
 import { github, OWNER, REPO } from "../../config.js";
 
 function rawUrl(imgPath) {
@@ -280,10 +280,8 @@ export default function ArticleDetailEditor() {
 			for (const block of saveForm.content ?? []) {
 				if (block.type === "image" && block._pendingUpload) {
 					const p = block._pendingUpload;
-					const path = `apps/main-site/public/images/articles/${p.filename}`;
-					const sha = await github.getFileSha(path, { branch: "main", token });
 					toast(`Uploading "${p.filename}"…`, "ok");
-					await github.writeFileBase64(path, p.base64, { message: `CMS: upload article image [skip ci]`, sha, branch: "main", token });
+					await uploadImage(`images/articles/${p.filename}`, p.base64, { token, message: "CMS: upload article image" });
 					const { _pendingUpload, ...rest } = block;
 					content.push({ ...rest, src: `/images/articles/${p.filename}` });
 				} else {

@@ -1,8 +1,7 @@
 import { useState, useEffect, useLayoutEffect, useRef } from "react";
 import { useAdmin } from "../../context/AdminContext.jsx";
-import { loadPageContent, savePageContent } from "../../utils/savePageContent.js";
+import { loadPageContent, savePageContent, uploadImage } from "../../utils/savePageContent.js";
 import { GALLERY_SECTION_EDITORS, SECTION_LABELS, ALL_SECTION_KEYS } from "../../sections/gallery/registry.js";
-import { github } from "../../config.js";
 
 const CONTENT_PATH = "pages/gallery.json";
 
@@ -62,15 +61,8 @@ export default function GalleryPageEditor() {
 			// Upload hero background if pending
 			const heroPending = form.hero?._pendingUpload;
 			if (heroPending) {
-				const path = `apps/main-site/public/images/gallery/hero/${heroPending.filename}`;
-				const sha = await github.getFileSha(path, { branch: "main", token });
 				toast("Uploading hero image…", "ok");
-				await github.writeFileBase64(path, heroPending.base64, {
-					message: `CMS: upload gallery hero background [skip ci]`,
-					sha,
-					branch: "main",
-					token,
-				});
+				await uploadImage(`images/gallery/hero/${heroPending.filename}`, heroPending.base64, { token, message: "CMS: upload gallery hero background" });
 				saveForm = {
 					...saveForm,
 					hero: { ...saveForm.hero, image: `/images/gallery/hero/${heroPending.filename}`, _pendingUpload: undefined },
@@ -81,15 +73,8 @@ export default function GalleryPageEditor() {
 			const updatedItems = [];
 			for (const item of saveForm.photoGallery?.items ?? []) {
 				if (item._pendingUpload) {
-					const path = `apps/main-site/public/images/gallery/items/${item._pendingUpload.filename}`;
-					const sha = await github.getFileSha(path, { branch: "main", token });
 					toast(`Uploading "${item._pendingUpload.filename}"…`, "ok");
-					await github.writeFileBase64(path, item._pendingUpload.base64, {
-						message: `CMS: upload gallery image [skip ci]`,
-						sha,
-						branch: "main",
-						token,
-					});
+					await uploadImage(`images/gallery/items/${item._pendingUpload.filename}`, item._pendingUpload.base64, { token, message: "CMS: upload gallery image" });
 					const { _pendingUpload, ...rest } = item;
 					updatedItems.push({ ...rest, image: `/images/gallery/items/${item._pendingUpload.filename}` });
 				} else {
