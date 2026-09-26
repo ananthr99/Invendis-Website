@@ -1,0 +1,27 @@
+{
+	"id": "industrial-edge-computing",
+	"slug": "industrial-edge-computing",
+	"category": "Technical Article",
+	"title": "Industrial Edge Computing: Powering Secure and Reliable IIoT Networks",
+	"description": "Introducing the INV CI X7425E, the latest 6 port Networking Device, featuring 2 COM ports, 4 USB 2.0 ports, 2 SIM slots, all ready to deliver on Edge AI networking capabilities.",
+	"date": "7 Sept 2026",
+	"readTime": "1 min read",
+	"content": [
+		{ "type": "paragraph", "text": "As industrial operations grow more distributed and data-intensive, edge computing has emerged as a foundational layer in modern IIoT deployments. Rather than routing all sensor data back to a central cloud, edge devices process, filter, and act on data at the source — reducing latency, bandwidth costs, and dependency on continuous connectivity." },
+		{ "type": "heading", "level": 2, "text": "Introducing the INV CI X7425E" },
+		{ "type": "paragraph", "text": "Invendis is pleased to introduce the INV CI X7425E — a compact, ruggedised 6-port edge compute device designed for demanding industrial environments. Built around the Intel Alder Lake platform, the X7425E combines compute performance with the I/O flexibility required for real-world field deployments." },
+		{ "type": "heading", "level": 3, "text": "Key Specifications" },
+		{ "type": "bulletList", "items": [
+			"6 × Gigabit Ethernet ports for high-throughput local networking",
+			"2 × COM (RS-232/RS-485) ports for legacy serial device integration",
+			"4 × USB 2.0 ports for peripheral and storage connectivity",
+			"2 × SIM card slots supporting dual-SIM LTE/5G failover",
+			"Operating temperature: -40°C to +70°C",
+			"Intel Alder Lake-N processor with integrated AI inference acceleration"
+		]},
+		{ "type": "heading", "level": 2, "text": "Edge AI at the Network Boundary" },
+		{ "type": "paragraph", "text": "The X7425E's Intel SoC includes a built-in NPU (Neural Processing Unit), enabling on-device inference for applications such as anomaly detection, predictive maintenance triggers, and real-time quality inspection — without sending raw data off-site." },
+		{ "type": "callout", "title": "Deployment Note", "text": "The X7425E ships with Invendis's PizGloria management software pre-configured, enabling zero-touch provisioning and remote fleet management from day one." },
+		{ "type": "paragraph", "text": "For sectors such as telecom infrastructure monitoring, solar site supervision, and industrial automation, the X7425E delivers the processing headroom and connectivity resilience needed to run reliable IIoT applications at scale." }
+	]
+}

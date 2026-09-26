@@ -1,0 +1,57 @@
+{
+	"sections": ["hero", "articles", "ctaBanner"],
+	"hero": {
+		"eyebrow": "Resources",
+		"title": "Technical Articles &",
+		"titleHighlight": "Insights",
+		"subtitle": "Deep-dives into IIoT hardware, industrial connectivity, energy metering, and infrastructure monitoring — written by the Invendis engineering team.",
+		"image": "/images/resources/hero/hero.png"
+	},
+	"articles": {
+		"categories": ["Technical Article", "Application Note", "Industry Insight"],
+		"items": [
+			{
+				"id": "industrial-edge-computing",
+				"slug": "industrial-edge-computing",
+				"category": "Technical Article",
+				"title": "Industrial Edge Computing: Powering Secure and Reliable IIoT Networks",
+				"description": "Introducing the INV CI X7425E, the latest 6 port Networking Device, featuring 2 COM ports, 4 USB 2.0 ports, 2 SIM slots, all ready to deliver on Edge AI networking capabilities.",
+				"date": "7 Sept 2026",
+				"readTime": "1 min read"
+			},
+			{
+				"id": "iiot-telecom-monitoring",
+				"slug": "iiot-telecom-monitoring",
+				"category": "Technical Article",
+				"title": "IIoT in Telecom: Real-Time Monitoring of Tower Infrastructure",
+				"description": "Discover how Industrial IoT hardware enables remote visibility, predictive maintenance, and energy efficiency across distributed telecom tower sites.",
+				"date": "10 Nov 2025",
+				"readTime": "2 min read"
+			},
+			{
+				"id": "energy-metering-solar",
+				"slug": "energy-metering-solar",
+				"category": "Application Note",
+				"title": "Energy Metering for Remote Solar and Hybrid Power Sites",
+				"description": "A technical guide to deploying Invendis energy meters at off-grid solar hybrid sites for accurate generation, consumption, and export measurement.",
+				"date": "20 Oct 2025",
+				"readTime": "2 min read"
+			},
+			{
+				"id": "industrial-router-selection",
+				"slug": "industrial-router-selection",
+				"category": "Industry Insight",
+				"title": "How to Choose the Right Industrial Router for Remote Site Connectivity",
+				"description": "A practical framework for selecting industrial LTE/5G routers based on environment, bandwidth requirements, redundancy needs, and fleet manageability.",
+				"date": "5 Sept 2025",
+				"readTime": "3 min read"
+			}
+		]
+	},
+	"ctaBanner": {
+		"title": "Have a Technical Question?",
+		"subtitle": "Our engineering team is happy to discuss your application, recommend the right hardware, or share application notes specific to your use case.",
+		"primaryBtn": { "label": "Contact the Team →", "href": "/contact" },
+		"secondaryBtn": { "label": "Browse Products", "href": "/products" }
+	}
+}

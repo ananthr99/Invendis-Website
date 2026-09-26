@@ -1,0 +1,73 @@
+{
+	"sections": ["hero", "photoGallery", "ctaBanner"],
+	"hero": {
+		"eyebrow": "Our Gallery",
+		"title": "Moments That",
+		"titleHighlight": "Define Us",
+		"subtitle": "From industry expos to team milestones — a visual journey through the events, achievements, and people that make Invendis.",
+		"image": "/images/gallery/hero/hero.png"
+	},
+	"photoGallery": {
+		"eyebrow": "Photo Gallery",
+		"title": "Behind the",
+		"titleHighlight": "Scenes",
+		"categories": ["Events", "Expos & Trade Shows", "Awards", "Team Outings", "Festivals"],
+		"items": [
+			{
+				"id": "connected-britain-2026",
+				"category": "Expos & Trade Shows",
+				"title": "Connected Britain 2026",
+				"description": "Invendis attended the recent Connected Britain Event 2026 from 9–10th September 2026 and was honoured to showcase Intel based Edge Compute devices and explain about the product portfolio.",
+				"image": "/images/gallery/gallery/connected-britain-2026.jpeg"
+			},
+			{
+				"id": "intel-isb-connect-2026",
+				"category": "Events",
+				"title": "Intel ISB Connect 2026",
+				"description": "Showcase of the latest Intel Edge Devices at the Taj Hotel, Bengaluru, on 13th August 2026.",
+				"image": "/images/gallery/gallery/intel-isb-connect-2026.jpeg"
+			},
+			{
+				"id": "automation-expo-2026",
+				"category": "Expos & Trade Shows",
+				"title": "Automation Expo 2026",
+				"description": "Invendis participated in the Industrial Automation Expo 2026, one of India's largest events for automation related technology from 22nd–25th July 2026.",
+				"image": "/images/gallery/gallery/automation-expo-2026.jpeg"
+			},
+			{
+				"id": "elasia-2026",
+				"category": "Expos & Trade Shows",
+				"title": "ElAsia 2026",
+				"description": "Invendis participated in ElAsia from May 14–17, 2026.",
+				"image": "/images/gallery/gallery/elasia-2026.jpeg"
+			},
+			{
+				"id": "embedded-world-2026",
+				"category": "Expos & Trade Shows",
+				"title": "Embedded World Germany 2026",
+				"description": "Took part in Embedded World Germany, the only trade show dedicated to the latest embedded technology, from 10–12 March 2026.",
+				"image": "/images/gallery/gallery/embedded-world-germany-2026.jpeg"
+			},
+			{
+				"id": "intel-alderlake-award",
+				"category": "Awards",
+				"title": "Intel Alderlake Award",
+				"description": "Invendis received an award for designing the Alderlake Power-On Board in a record 3 days under the Make in India initiative, in March 2026.",
+				"image": "/images/gallery/gallery/intel-alderlake-award.jpeg"
+			},
+			{
+				"id": "coins-partner-awards-2025",
+				"category": "Awards",
+				"title": "Coins Partner Awards 2025",
+				"description": "Invendis received the business excellence award at the Coins IT Partner Summit 5.0, held from 15–17 December 2025 in Goa.",
+				"image": "/images/gallery/gallery/coins-partner-awards-2026.jpeg"
+			}
+		]
+	},
+	"ctaBanner": {
+		"title": "Want to Connect with the Invendis Team?",
+		"subtitle": "Reach out to us for partnerships, product inquiries, or to explore IIoT solutions for your business.",
+		"primaryBtn": { "label": "Get in Touch →", "href": "/contact" },
+		"secondaryBtn": { "label": "About Us", "href": "/company" }
+	}
+}
