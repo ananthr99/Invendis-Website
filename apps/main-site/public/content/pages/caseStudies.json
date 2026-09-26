@@ -1,117 +1,128 @@
 {
-	"sections": ["hero", "caseStudies", "whitePapers", "ctaBanner"],
-	"hero": {
-		"eyebrow": "Proven Impact",
-		"title": "Case Studies &",
-		"titleHighlight": "White Papers",
-		"subtitle": "Real-world deployments, measurable outcomes, and technical insights from 17+ years of IIoT innovation across 26 countries.",
-		"image": ""
-	},
-	"caseStudies": {
-		"eyebrow": "Deployments",
-		"title": "Case Studies",
-		"items": [
-			{
-				"tag": "Telecom · Africa",
-				"title": "Large-Scale Tower Monitoring for Major TowerCo – Africa",
-				"client": "American Tower Corporation",
-				"description": "Deployed Invendis iSense RMS controllers across a large portfolio of towers in Sub-Saharan Africa, integrating generator monitoring, fuel management, rectifier parameters, and access control into a single unified platform.",
-				"metric": "40%",
-				"metricLabel": "Reduction in unnecessary site visits through remote diagnostics",
-				"featured": true
-			},
-			{
-				"tag": "Telecom · India",
-				"title": "Tower O&A & Field Efficiency Platform – 70,000+ Sites",
-				"client": "Altius Towers",
-				"description": "Invendis monitors tower operations for Altius India across 70,000+ towers. The solution includes process automation, real-time alarm ticketing, and a mobile field interface — driving significant operational efficiency gains.",
-				"metric": "70K+",
-				"metricLabel": "Towers actively monitored on Invendis RMS Platform",
-				"featured": true
-			},
-			{
-				"tag": "Telecom · India",
-				"title": "OMC Power Energy Measurement & Monitoring",
-				"client": "OMC Power",
-				"description": "OMC replaces expensive, polluting diesel generators with smart power plants that bill telecom towers on actual kWh consumed. Its 'ABC' distributed-energy model extends clean, reliable power to anchor telecom sites, local businesses, and rural communities via smart mini-grids in Uttar Pradesh.",
-				"metric": "100%",
-				"metricLabel": "Automated alarm-to-ticket workflow with zero manual intervention",
-				"featured": false
-			},
-			{
-				"tag": "Telecom · Saudi Arabia",
-				"title": "Billing & Reconciliation for a Major Saudi Arabia Client",
-				"client": "Major Client, Saudi Arabia (2025)",
-				"description": "Invendis deployed multichannel AC meters in 2025 for a major telecommunications operator in the Kingdom of Saudi Arabia, supporting accurate energy billing and reconciliation across its network sites.",
-				"metric": "3 Yrs",
-				"metricLabel": "Continuous hardware supply in energy meters",
-				"featured": true
-			},
-			{
-				"tag": "Technology · USA",
-				"title": "Intel-Based Router Development for US Client",
-				"client": "US Technology Client (2024)",
-				"description": "Invendis designed and delivered a custom Intel-based industrial router for a US technology client — demonstrating in-house hardware R&D capability for bespoke product design and OEM manufacturing.",
-				"metric": "OEM",
-				"metricLabel": "Custom Intel-based router designed and manufactured in-house",
-				"featured": true
-			}
-		]
-	},
-	"whitePapers": {
-		"eyebrow": "Technical Resources",
-		"title": "White Papers &",
-		"titleHighlight": "Technical Notes",
-		"subtitle": "In-depth technical documentation, solution architectures, and industry insights from the Invendis engineering team.",
-		"items": [
-			{
-				"icon": "file",
-				"iconColor": "#3b82f6",
-				"title": "Telecom RMS Architecture Guide",
-				"description": "A comprehensive guide to the Invendis Telecom Remote Monitoring Solution — covering architecture, data flows, RMS adapters, analytics layers, and integration with third-party systems.",
-				"requestLink": "/contact"
-			},
-			{
-				"icon": "cpu",
-				"iconColor": "#f59e0b",
-				"title": "iSense Gateway – Technical Datasheet",
-				"description": "Full technical specification for the iSense RMS Controller including hardware interfaces, firmware capabilities, communication protocols, and third-party equipment compatibility list.",
-				"requestLink": "/contact"
-			},
-			{
-				"icon": "globe",
-				"iconColor": "#0891b2",
-				"title": "SILBO Industrial Networking Catalogue",
-				"description": "Complete product catalogue for the SILBO brand — routers, gateways, protocol converters, and switches — including specifications, environmental ratings, and deployment scenarios.",
-				"requestLink": "/contact"
-			},
-			{
-				"icon": "sun",
-				"iconColor": "#f97316",
-				"title": "Solar Monitoring Solution Brief",
-				"description": "Overview of the Invendis solar monitoring platform — covering controller integration, anomaly detection algorithms, energy yield analytics, and billing module integration for renewable sites.",
-				"requestLink": "/contact"
-			},
-			{
-				"icon": "chart",
-				"iconColor": "#10b981",
-				"title": "ESG & Energy Analytics White Paper",
-				"description": "How IIoT-enabled monitoring supports ESG target setting, carbon footprint measurement, and automated sustainability reporting for large telecom and industrial site portfolios.",
-				"requestLink": "/contact"
-			},
-			{
-				"icon": "shield",
-				"iconColor": "#ef4444",
-				"title": "ISO 27001 Security Framework",
-				"description": "Overview of Invendis's information security management practices, covering secure data transmission, access control, and compliance with ISO/IEC 27001:2022 for remote monitoring systems.",
-				"requestLink": "/contact"
-			}
-		]
-	},
-	"ctaBanner": {
-		"title": "Want the Full Story?",
-		"subtitle": "Request a detailed case study pack or speak to our team about your specific use case.",
-		"primaryBtn": { "label": "Request Case Study Pack →", "href": "/contact" },
-		"secondaryBtn": { "label": "Talk to Sales", "href": "/contact" }
-	}
+  "sections": [
+    "hero",
+    "caseStudies",
+    "whitePapers",
+    "ctaBanner"
+  ],
+  "hero": {
+    "eyebrow": "Proven Impact",
+    "title": "Case Studies &",
+    "titleHighlight": "White Papers",
+    "subtitle": "Real-world deployments, measurable outcomes, and technical insights from 17+ years of IIoT innovation across 26 countries.",
+    "image": "/images/case-studies/hero/hero.png"
+  },
+  "caseStudies": {
+    "eyebrow": "Deployments",
+    "title": "Case Studies",
+    "items": [
+      {
+        "tag": "Telecom · Africa",
+        "title": "Large-Scale Tower Monitoring for Major TowerCo – Africa",
+        "client": "American Tower Corporation",
+        "description": "Deployed Invendis iSense RMS controllers across a large portfolio of towers in Sub-Saharan Africa, integrating generator monitoring, fuel management, rectifier parameters, and access control into a single unified platform.",
+        "metric": "40%",
+        "metricLabel": "Reduction in unnecessary site visits through remote diagnostics",
+        "featured": true
+      },
+      {
+        "tag": "Telecom · India",
+        "title": "Tower O&A & Field Efficiency Platform – 70,000+ Sites",
+        "client": "Altius Towers",
+        "description": "Invendis monitors tower operations for Altius India across 70,000+ towers. The solution includes process automation, real-time alarm ticketing, and a mobile field interface — driving significant operational efficiency gains.",
+        "metric": "70K+",
+        "metricLabel": "Towers actively monitored on Invendis RMS Platform",
+        "featured": true
+      },
+      {
+        "tag": "Telecom · India",
+        "title": "OMC Power Energy Measurement & Monitoring",
+        "client": "OMC Power",
+        "description": "OMC replaces expensive, polluting diesel generators with smart power plants that bill telecom towers on actual kWh consumed. Its 'ABC' distributed-energy model extends clean, reliable power to anchor telecom sites, local businesses, and rural communities via smart mini-grids in Uttar Pradesh.",
+        "metric": "100%",
+        "metricLabel": "Automated alarm-to-ticket workflow with zero manual intervention",
+        "featured": false
+      },
+      {
+        "tag": "Telecom · Saudi Arabia",
+        "title": "Billing & Reconciliation for a Major Saudi Arabia Client",
+        "client": "Major Client, Saudi Arabia (2025)",
+        "description": "Invendis deployed multichannel AC meters in 2025 for a major telecommunications operator in the Kingdom of Saudi Arabia, supporting accurate energy billing and reconciliation across its network sites.",
+        "metric": "3 Yrs",
+        "metricLabel": "Continuous hardware supply in energy meters",
+        "featured": true
+      },
+      {
+        "tag": "Technology · USA",
+        "title": "Intel-Based Router Development for US Client",
+        "client": "US Technology Client (2024)",
+        "description": "Invendis designed and delivered a custom Intel-based industrial router for a US technology client — demonstrating in-house hardware R&D capability for bespoke product design and OEM manufacturing.",
+        "metric": "OEM",
+        "metricLabel": "Custom Intel-based router designed and manufactured in-house",
+        "featured": true
+      }
+    ]
+  },
+  "whitePapers": {
+    "eyebrow": "Technical Resources",
+    "title": "White Papers &",
+    "titleHighlight": "Technical Notes",
+    "subtitle": "In-depth technical documentation, solution architectures, and industry insights from the Invendis engineering team.",
+    "items": [
+      {
+        "icon": "file",
+        "iconColor": "#3b82f6",
+        "title": "Telecom RMS Architecture Guide",
+        "description": "A comprehensive guide to the Invendis Telecom Remote Monitoring Solution — covering architecture, data flows, RMS adapters, analytics layers, and integration with third-party systems.",
+        "requestLink": "/contact"
+      },
+      {
+        "icon": "cpu",
+        "iconColor": "#f59e0b",
+        "title": "iSense Gateway – Technical Datasheet",
+        "description": "Full technical specification for the iSense RMS Controller including hardware interfaces, firmware capabilities, communication protocols, and third-party equipment compatibility list.",
+        "requestLink": "/contact"
+      },
+      {
+        "icon": "globe",
+        "iconColor": "#0891b2",
+        "title": "SILBO Industrial Networking Catalogue",
+        "description": "Complete product catalogue for the SILBO brand — routers, gateways, protocol converters, and switches — including specifications, environmental ratings, and deployment scenarios.",
+        "requestLink": "/contact"
+      },
+      {
+        "icon": "sun",
+        "iconColor": "#f97316",
+        "title": "Solar Monitoring Solution Brief",
+        "description": "Overview of the Invendis solar monitoring platform — covering controller integration, anomaly detection algorithms, energy yield analytics, and billing module integration for renewable sites.",
+        "requestLink": "/contact"
+      },
+      {
+        "icon": "chart",
+        "iconColor": "#10b981",
+        "title": "ESG & Energy Analytics White Paper",
+        "description": "How IIoT-enabled monitoring supports ESG target setting, carbon footprint measurement, and automated sustainability reporting for large telecom and industrial site portfolios.",
+        "requestLink": "/contact"
+      },
+      {
+        "icon": "shield",
+        "iconColor": "#ef4444",
+        "title": "ISO 27001 Security Framework",
+        "description": "Overview of Invendis's information security management practices, covering secure data transmission, access control, and compliance with ISO/IEC 27001:2022 for remote monitoring systems.",
+        "requestLink": "/contact"
+      }
+    ]
+  },
+  "ctaBanner": {
+    "title": "Want the Full Story?",
+    "subtitle": "Request a detailed case study pack or speak to our team about your specific use case.",
+    "primaryBtn": {
+      "label": "Request Case Study Pack →",
+      "href": "/contact"
+    },
+    "secondaryBtn": {
+      "label": "Talk to Sales",
+      "href": "/contact"
+    }
+  }
 }
