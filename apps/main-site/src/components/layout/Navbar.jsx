@@ -32,7 +32,7 @@ export default function Navbar() {
 							key={link.href}
 							to={link.href}
 							className={({ isActive }) =>
-								`text-sm font-semibold transition-colors ${
+								`text-base font-semibold transition-colors ${
 									isActive ? "text-brand-text border-b-2 border-brand-red pb-1" : "text-brand-red hover:text-brand-text"
 								}`
 							}
