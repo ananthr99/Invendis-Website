@@ -1,9 +1,7 @@
 import { useState } from "react";
 import { fileToBase64 } from "@invendis/github-client";
-import { github } from "../../config.js";
+import { github, OWNER, REPO } from "../../config.js";
 
-const OWNER = github.owner;
-const REPO = github.repo;
 
 function rawUrl(imgPath) {
 	return `https://raw.githubusercontent.com/${OWNER}/${REPO}/main/apps/main-site/public${imgPath}`;
