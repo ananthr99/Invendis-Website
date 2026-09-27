@@ -13,12 +13,11 @@ import CompanyPageEditor from "./pages/editors/CompanyPageEditor.jsx";
 import ResourcesPageEditor from "./pages/editors/ResourcesPageEditor.jsx";
 import ArticleDetailEditor from "./pages/editors/ArticleDetailEditor.jsx";
 import CaseStudiesPageEditor from "./pages/editors/CaseStudiesPageEditor.jsx";
+import SilboPageEditor from "./pages/editors/SilboPageEditor.jsx";
 import PlaceholderEditor from "./pages/editors/PlaceholderEditor.jsx";
 import LogPage from "./pages/LogPage.jsx";
 
 const PLACEHOLDER_PAGES = [
-	{ path: "silbo", label: "SILBO", contentPath: "pages/silbo.json" },
-	{ path: "case-studies", label: "Case Studies", contentPath: "pages/caseStudies.json" },
 	{ path: "careers", label: "Careers", contentPath: "pages/careers.json" },
 ];
 
@@ -47,6 +46,7 @@ export default function App() {
 				<Route path="content/resources" element={<ResourcesPageEditor />} />
 				<Route path="content/resources/:slug" element={<ArticleDetailEditor />} />
 				<Route path="content/case-studies" element={<CaseStudiesPageEditor />} />
+				<Route path="content/silbo" element={<SilboPageEditor />} />
 				<Route path="log" element={<LogPage />} />
 				{PLACEHOLDER_PAGES.map((p) => (
 					<Route
