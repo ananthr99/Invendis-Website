@@ -1,5 +1,19 @@
 [
   {
+    "timestamp": "2026-09-27T15:44:05.957Z",
+    "userEmail": "ananth.r@invendis.com",
+    "page": "Gallery",
+    "section": null,
+    "changes": [
+      {
+        "section": "hero",
+        "field": "image",
+        "before": "/images/gallery/hero/hero.png",
+        "after": "/images/gallery/hero/hero-gallery.png"
+      }
+    ]
+  },
+  {
     "timestamp": "2026-09-27T15:43:38.229Z",
     "userEmail": "ananth.r@invendis.com",
     "page": "Company",
