@@ -1,5 +1,27 @@
 [
   {
+    "timestamp": "2026-09-27T15:45:42.008Z",
+    "userEmail": "ananth.r@invendis.com",
+    "page": "Company",
+    "section": null,
+    "changes": [
+      {
+        "section": "hero",
+        "field": "stats",
+        "action": "changed",
+        "label": "Team Members",
+        "before": {
+          "value": "250+",
+          "label": "Team Members"
+        },
+        "after": {
+          "value": "160+",
+          "label": "Team Members"
+        }
+      }
+    ]
+  },
+  {
     "timestamp": "2026-09-27T15:44:05.957Z",
     "userEmail": "ananth.r@invendis.com",
     "page": "Gallery",
