@@ -17,7 +17,7 @@ export default function LeadershipSection({ data }) {
 			<div style={{ maxWidth: "1536px", margin: "0 auto" }}>
 				<div style={{ marginBottom: "2.5rem", textAlign: "center" }}>
 					{eyebrow && <p className="mb-3 text-[10px] font-semibold tracking-widest text-brand-red uppercase">{eyebrow}</p>}
-					<h2 className="font-heading text-4xl font-bold text-brand-blue lg:text-5xl">{title}</h2>
+					<h2 className="font-heading text-3xl font-bold text-brand-blue sm:text-4xl lg:text-5xl">{title}</h2>
 					{subtitle && <p className="mx-auto mt-4 max-w-2xl text-[14px] leading-relaxed text-brand-muted">{subtitle}</p>}
 				</div>
 

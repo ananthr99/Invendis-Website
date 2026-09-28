@@ -23,6 +23,7 @@ export default function HeroSection({ data }) {
 			className="relative bg-brand-blue px-4 py-16 text-white sm:px-8 lg:py-24"
 			style={bgStyle}
 		>
+			{d.image && <div style={{ position: "absolute", inset: 0, background: "rgba(11,18,60,0.72)" }} />}
 			<div style={{
 				position: "relative",
 				zIndex: 1,
@@ -33,11 +34,11 @@ export default function HeroSection({ data }) {
 				flexDirection: "column",
 				justifyContent: "center",
 			}}>
-				<div style={{ maxWidth: "48%" }}>
+				<div className="lg:max-w-[48%]">
 					{d.eyebrow && (
 						<p className="mb-4 text-[10px] font-semibold tracking-widest text-brand-red uppercase">{d.eyebrow}</p>
 					)}
-					<h1 className="font-heading text-5xl font-bold leading-tight lg:text-6xl">
+					<h1 className="font-heading text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl">
 						{d.title}
 						{d.titleHighlight && <span className="text-brand-red"> {d.titleHighlight}</span>}
 					</h1>

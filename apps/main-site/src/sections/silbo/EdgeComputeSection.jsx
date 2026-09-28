@@ -7,7 +7,7 @@ function ProductCard({ product }) {
 	return (
 		<div className="overflow-hidden rounded-xl border border-t-4 border-black/5 border-t-transparent bg-white transition-all hover:border-t-brand-red hover:shadow-md">
 			{product.image ? (
-				<img src={siteImg(product.image)} alt={product.model} style={{ width: "100%", height: 150, objectFit: "cover" }} />
+				<img src={siteImg(product.image)} alt={product.model} width={300} height={150} loading="lazy" style={{ width: "100%", height: 150, objectFit: "contain", background: "#f1f5f9", padding: "0.5rem" }} />
 			) : (
 				<div style={{ height: 150, background: "#f1f5f9", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 8 }}>
 					<svg viewBox="0 0 24 24" fill="none" stroke="#94a3b8" strokeWidth={1.5} style={{ width: 26, height: 26 }}>
@@ -38,7 +38,7 @@ function ArrowBtn({ dir, onClick }) {
 			onClick={onClick}
 			style={{
 				position: "absolute", top: "50%", transform: "translateY(-50%)",
-				[dir === "left" ? "left" : "right"]: -20,
+				[dir === "left" ? "left" : "right"]: 4,
 				zIndex: 10, width: 40, height: 40, borderRadius: "50%",
 				background: "white", border: "1px solid #e2e8f0",
 				boxShadow: "0 2px 8px rgba(0,0,0,0.12)",

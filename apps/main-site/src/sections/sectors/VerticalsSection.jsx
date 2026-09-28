@@ -160,7 +160,7 @@ export default function VerticalsSection({ data }) {
 					<p className="mx-auto mt-4 max-w-2xl text-brand-muted">{subtitle}</p>
 				</div>
 
-				<div style={{ display: "grid", gridTemplateColumns: `repeat(${cols}, 1fr)`, gap: "1.5rem" }}>
+				<div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
 					{items.map((item, i) => {
 						const isFirst = i === 0;
 						const isLast = i === items.length - 1;

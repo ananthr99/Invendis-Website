@@ -38,6 +38,7 @@ export default function HeroSection({ data }) {
 			className="relative bg-brand-blue px-4 py-16 text-white sm:px-8 lg:py-24"
 			style={bgStyle}
 		>
+			{image && <div style={{ position: "absolute", inset: 0, background: "rgba(11,18,60,0.72)" }} />}
 			{/* Identical inner structure to Gallery/Contact/Sectors/Products hero */}
 			<div style={{
 				position: "relative",
@@ -49,11 +50,11 @@ export default function HeroSection({ data }) {
 				flexDirection: "column",
 				justifyContent: "center",
 			}}>
-				<div style={{ maxWidth: "48%" }}>
+				<div className="lg:max-w-[48%]">
 					{eyebrow && (
 						<p className="mb-4 text-[10px] font-semibold tracking-widest text-brand-red uppercase">{eyebrow}</p>
 					)}
-					<h1 className="font-heading text-5xl font-bold leading-tight lg:text-6xl">
+					<h1 className="font-heading text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl">
 						{title}
 						{titleHighlight && <span className="text-brand-red"> {titleHighlight}</span>}
 					</h1>
@@ -73,9 +74,9 @@ export default function HeroSection({ data }) {
 			{stats.length > 0 && (
 				<div style={{ position: "absolute", bottom: "2rem", left: 0, right: 0, zIndex: 1 }}>
 					<div className="px-4 sm:px-8" style={{ maxWidth: "1536px", margin: "0 auto" }}>
-						<div style={{
-							maxWidth: "48%",
+						<div className="lg:max-w-[48%]" style={{
 							display: "flex",
+							flexWrap: "wrap",
 							gap: "2rem",
 							paddingTop: "1rem",
 							borderTop: "1px solid rgba(255,255,255,0.15)",

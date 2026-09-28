@@ -13,10 +13,11 @@ export default function TopBarSection() {
 	return (
 		<div className="border-b border-white/10 bg-brand-blue-light">
 			<div className="mx-auto flex max-w-screen-2xl items-center justify-between px-4 py-2 sm:px-8">
-				<div className="flex flex-wrap items-center gap-3 text-[11px] font-medium tracking-widest text-white/50 uppercase">
+				<div className="grid grid-cols-2 gap-x-3 gap-y-1 text-[10px] font-medium tracking-widest text-white/50 uppercase lg:flex lg:flex-wrap lg:items-center lg:gap-3">
 					{tags.map((tag, i) => (
 						<span key={tag} className="flex items-center gap-3">
-							{i > 0 && <span className="text-brand-red">·</span>}
+							{i % 2 === 1 && <span className="text-brand-red lg:hidden">·</span>}
+							{i > 0 && <span className="hidden text-brand-red lg:inline">·</span>}
 							{tag}
 						</span>
 					))}

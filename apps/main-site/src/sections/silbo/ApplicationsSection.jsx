@@ -7,7 +7,7 @@ function AppCard({ item }) {
 	return (
 		<div className="border border-t-4 border-black/5 border-t-transparent bg-white transition-all hover:border-t-brand-red hover:shadow-md" style={{ width: 260, flexShrink: 0, borderRadius: 12, overflow: "hidden" }}>
 			{item.image ? (
-				<img src={siteImg(item.image)} alt={item.title} style={{ width: "100%", height: 140, objectFit: "cover" }} />
+				<img src={siteImg(item.image)} alt={item.title} width={300} height={140} loading="lazy" style={{ width: "100%", height: 140, objectFit: "cover" }} />
 			) : (
 				<div style={{ height: 140, background: "#f1f5f9", display: "flex", alignItems: "center", justifyContent: "center" }}>
 					<svg viewBox="0 0 24 24" fill="none" stroke="#94a3b8" strokeWidth={1.5} style={{ width: 28, height: 28 }}>
@@ -34,7 +34,7 @@ function ArrowBtn({ dir, onClick }) {
 			onClick={onClick}
 			style={{
 				position: "absolute", top: "50%", transform: "translateY(-50%)",
-				[dir === "left" ? "left" : "right"]: -20,
+				[dir === "left" ? "left" : "right"]: 4,
 				zIndex: 10, width: 40, height: 40, borderRadius: "50%",
 				background: "white", border: "1px solid #e2e8f0",
 				boxShadow: "0 2px 8px rgba(0,0,0,0.12)",

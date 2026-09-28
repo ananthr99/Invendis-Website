@@ -154,7 +154,7 @@ export default function PhotoGallerySection({ data }) {
 					{eyebrow && (
 						<p className="mb-3 text-[10px] font-semibold tracking-widest text-brand-red uppercase">{eyebrow}</p>
 					)}
-					<h2 className="font-heading text-4xl font-bold text-brand-blue lg:text-5xl">
+					<h2 className="font-heading text-3xl font-bold text-brand-blue sm:text-4xl lg:text-5xl">
 						{title}
 						{titleHighlight && <span className="text-brand-red"> {titleHighlight}</span>}
 					</h2>

@@ -21,12 +21,12 @@ export default function FloatingButtons() {
 	}, []);
 
 	return (
-		<div className="fixed bottom-24 right-6 z-50 flex flex-col items-center gap-3">
+		<div className="fixed bottom-8 right-6 z-[100] flex flex-col items-center gap-3">
 			<button
 				onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
 				aria-label="Scroll to top"
 				className={`flex h-12 w-12 items-center justify-center rounded-full bg-brand-red text-white shadow-lg transition-all duration-300 hover:opacity-90 ${
-					showTop ? "opacity-100 pointer-events-auto translate-y-0" : "opacity-0 pointer-events-none translate-y-4"
+					showTop ? "opacity-100 pointer-events-auto scale-100" : "opacity-0 pointer-events-none scale-0"
 				}`}
 			>
 				<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5} className="h-5 w-5">
@@ -39,7 +39,7 @@ export default function FloatingButtons() {
 					target="_blank"
 					rel="noreferrer"
 					aria-label="Chat on WhatsApp"
-					className="flex h-12 w-12 items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg transition-opacity hover:opacity-90"
+					className="flex h-12 w-12 items-center justify-center rounded-full bg-brand-whatsapp text-white shadow-lg transition-opacity hover:opacity-90"
 				>
 					<WhatsAppIcon />
 				</a>

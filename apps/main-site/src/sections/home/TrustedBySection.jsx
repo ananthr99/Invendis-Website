@@ -4,7 +4,7 @@ export default function TrustedBySection({ data }) {
 	return (
 		<section className="bg-brand-light px-6 py-10">
 			<div className="mx-auto max-w-6xl text-center">
-				<p className="mb-8 text-[11px] font-semibold tracking-widest text-brand-red uppercase">{heading}</p>
+				<p className="mb-8 text-[10px] font-semibold tracking-widest text-brand-red uppercase">{heading}</p>
 				<div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-4">
 					{clients.map((name) => (
 						<span

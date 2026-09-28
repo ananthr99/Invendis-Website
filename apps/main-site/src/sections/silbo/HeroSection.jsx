@@ -39,9 +39,9 @@ export default function HeroSection({ data }) {
 				paddingBottom: "0.75rem",
 			}}
 		>
-			<div style={{ display: "flex", alignItems: "center", gap: "3rem", maxWidth: "1536px", margin: "0 auto" }}>
+			<div className="flex flex-col gap-8 lg:flex-row lg:items-center lg:gap-12" style={{ maxWidth: "1536px", margin: "0 auto" }}>
 				{/* Left column */}
-				<div style={{ flex: "1 1 0", minWidth: 0 }}>
+				<div className="min-w-0 lg:flex-1">
 					{d.eyebrow && (
 						<p className="mb-2 text-[10px] font-semibold tracking-widest text-brand-red uppercase">
 							{d.eyebrow}
@@ -52,7 +52,7 @@ export default function HeroSection({ data }) {
 							{d.brand}
 						</p>
 					)}
-					<h1 className="font-heading text-5xl font-bold leading-tight lg:text-6xl">
+					<h1 className="font-heading text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl">
 						{d.title}
 						{d.titleHighlight && <><br /><span className="text-brand-red">{d.titleHighlight}</span></>}
 					</h1>
@@ -98,7 +98,7 @@ export default function HeroSection({ data }) {
 				</div>
 
 				{/* Right column — cross-fade carousel */}
-				<div style={{ flex: "1.3 1 0", minWidth: 0, borderRadius: 16, border: "1px solid rgba(255,255,255,0.15)", overflow: "hidden", height: 270, position: "relative" }}>
+				<div className="min-w-0 lg:flex-[1.3]" style={{ borderRadius: 16, border: "1px solid rgba(255,255,255,0.15)", overflow: "hidden", height: 270, position: "relative" }}>
 					{imgs.length > 0 ? (
 						<>
 							{imgs.map((src, i) => (

@@ -23,8 +23,8 @@ function ProductImage({ image, label }) {
 		);
 	}
 	return (
-		<div style={{ height: 160, marginBottom: "1rem", borderRadius: "0.75rem", overflow: "hidden" }}>
-			<img src={siteImg(src)} alt={label} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+		<div style={{ height: 160, marginBottom: "1rem", borderRadius: "0.75rem", overflow: "hidden", background: "#f1f5f9", display: "flex", alignItems: "center", justifyContent: "center" }}>
+			<img src={siteImg(src)} alt={label} style={{ width: "100%", height: "100%", objectFit: "contain", padding: "0.5rem" }} />
 		</div>
 	);
 }
@@ -41,7 +41,7 @@ export default function HardwarePortfolioSection({ data }) {
 					<p className="mx-auto mt-4 max-w-2xl text-brand-muted">{subtitle}</p>
 				</div>
 
-				<div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "1.5rem" }}>
+				<div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
 					{items.map((item) => (
 						<div
 							key={item.key}

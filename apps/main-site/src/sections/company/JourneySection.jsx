@@ -72,10 +72,10 @@ export default function JourneySection({ data }) {
 			<div style={{ maxWidth: "1536px", margin: "0 auto" }}>
 				<div style={{ marginBottom: "2.5rem" }}>
 					{eyebrow && <p className="mb-3 text-[10px] font-semibold tracking-widest text-brand-red uppercase">{eyebrow}</p>}
-					<h2 className="font-heading text-4xl font-bold text-brand-blue lg:text-5xl">{title}</h2>
+					<h2 className="font-heading text-3xl font-bold text-brand-blue sm:text-4xl lg:text-5xl">{title}</h2>
 				</div>
 
-				<div style={{ display: "grid", gridTemplateColumns: "1fr 380px", gap: "4rem", alignItems: "start" }}>
+				<div className="grid grid-cols-1 gap-10 lg:grid-cols-[1fr_380px] lg:gap-16" style={{ alignItems: "start" }}>
 					{/* Timeline */}
 					<div style={{ position: "relative" }}>
 						<div style={{ position: "absolute", left: 36, top: 0, bottom: 0, width: 2, background: "#e2e8f0" }} />

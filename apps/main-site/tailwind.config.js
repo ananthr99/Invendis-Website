@@ -13,6 +13,8 @@ export default {
 				"brand-text": "#1a1a2e",
 				"brand-muted": "#6b7280",
 				"brand-blue-light": "#2B3F8C",
+				"brand-whatsapp": "#25D366",
+				"brand-linkedin": "#0A66C2",
 			},
 			fontFamily: {
 				heading: ["Sora", "sans-serif"],

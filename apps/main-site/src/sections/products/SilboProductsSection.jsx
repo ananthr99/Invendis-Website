@@ -132,28 +132,19 @@ export default function SilboProductsSection({ data }) {
 				<div className="mb-10 text-center">
 					<p className="mb-3 text-[10px] font-semibold tracking-widest text-brand-red uppercase">{eyebrow}</p>
 					<h2 className="font-heading text-3xl font-bold text-white sm:text-4xl">{title}</h2>
-					<p className="mx-auto mt-4 max-w-2xl text-white/70" style={{ fontSize: 15 }}>{subtitle}</p>
+					<p className="mx-auto mt-4 max-w-2xl text-white/65" style={{ fontSize: 15 }}>{subtitle}</p>
 				</div>
 
 				{/* Intro banner */}
-				<div style={{
-					borderRadius: 16,
-					border: "1px solid rgba(255,255,255,0.15)",
-					background: "rgba(255,255,255,0.06)",
-					padding: "2rem 2.5rem",
-					display: "flex",
-					alignItems: "center",
-					gap: "3rem",
-					marginBottom: "1.5rem",
-				}}>
-					<p className="text-[15px] leading-relaxed text-white/80" style={{ flex: "1 1 0" }}>{intro}</p>
-					<div style={{ flex: "0 0 220px", height: 140, borderRadius: 12, overflow: "hidden", border: "1px solid rgba(255,255,255,0.1)", flexShrink: 0 }}>
+				<div className="mb-6 flex flex-col gap-6 sm:flex-row sm:items-center sm:gap-12" style={{ borderRadius: 16, border: "1px solid rgba(255,255,255,0.15)", background: "rgba(255,255,255,0.06)", padding: "1.5rem 2rem" }}>
+					<p className="text-[15px] leading-relaxed text-white/80 sm:flex-1">{intro}</p>
+					<div className="sm:w-[220px] sm:flex-none" style={{ width: "100%", height: 140, borderRadius: 12, overflow: "hidden", border: "1px solid rgba(255,255,255,0.1)" }}>
 						<RotatingImage imgs={imgs} />
 					</div>
 				</div>
 
 				{/* 4-column product grid */}
-				<div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: "1rem" }}>
+				<div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
 					{items.map((item) => {
 						const Icon = ICONS[item.key] ?? DefaultIcon;
 						return (

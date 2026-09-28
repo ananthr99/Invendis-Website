@@ -26,7 +26,7 @@ export default function Navbar() {
           )}
 				</Link>
 
-				<nav className="hidden flex-1 items-center justify-center gap-8 md:flex">
+				<nav className="hidden flex-1 items-center justify-center gap-6 lg:flex">
 					{links.map((link) => (
 						<NavLink
 							key={link.href}
@@ -43,7 +43,7 @@ export default function Navbar() {
 				</nav>
 
 				{settings?.silboBadge && (
-					<Link to={settings.silboBadge.href} className="hidden md:flex items-center">
+					<Link to={settings.silboBadge.href} className="hidden lg:flex items-center">
 						<img
 							src={publicUrl(settings.silboBadge.src ?? "/silbo_logo.png")}
 							alt={settings.silboBadge.label}
@@ -52,26 +52,28 @@ export default function Navbar() {
 					</Link>
 				)}
 
-				<button className="md:hidden" onClick={() => setOpen((v) => !v)} aria-label="Toggle menu">
-					<span className="block h-0.5 w-6 bg-brand-text" />
-					<span className="mt-1.5 block h-0.5 w-6 bg-brand-text" />
-					<span className="mt-1.5 block h-0.5 w-6 bg-brand-text" />
+				<button className="lg:hidden p-1" onClick={() => setOpen((v) => !v)} aria-label="Toggle menu">
+					<span className={`block h-0.5 w-6 bg-brand-text transition-all duration-300 ${open ? "translate-y-2 rotate-45" : ""}`} />
+					<span className={`mt-1.5 block h-0.5 w-6 bg-brand-text transition-all duration-300 ${open ? "opacity-0" : ""}`} />
+					<span className={`mt-1.5 block h-0.5 w-6 bg-brand-text transition-all duration-300 ${open ? "-translate-y-2 -rotate-45" : ""}`} />
 				</button>
 			</div>
-			{open && (
-				<nav className="flex flex-col gap-1 border-t bg-white px-4 py-4 sm:px-8 md:hidden">
+			<nav className={`overflow-hidden border-t bg-white px-4 transition-all duration-200 ease-in-out sm:px-8 lg:hidden ${open ? "max-h-96 opacity-100" : "max-h-0 opacity-0"}`}>
+				<div className="flex flex-col gap-1 py-4">
 					{links.map((link) => (
 						<NavLink
 							key={link.href}
 							to={link.href}
 							onClick={() => setOpen(false)}
-							className="py-2 text-sm font-medium text-brand-text"
+							className={({ isActive }) =>
+								`py-2 text-sm font-medium ${isActive ? "text-brand-red font-semibold border-l-2 border-brand-red pl-2" : "text-brand-text"}`
+							}
 						>
 							{link.label}
 						</NavLink>
 					))}
-				</nav>
-			)}
+				</div>
+			</nav>
 		</header>
 	);
 }

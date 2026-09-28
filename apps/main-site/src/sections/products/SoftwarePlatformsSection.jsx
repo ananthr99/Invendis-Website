@@ -35,8 +35,8 @@ export default function SoftwarePlatformsSection({ data }) {
 
 				{/* Featured item */}
 				{featured && (
-					<div className="mb-6 rounded-2xl border border-t-4 border-black/5 border-t-transparent bg-brand-light transition-all hover:border-t-brand-red hover:shadow-md" style={{ display: "flex", alignItems: "center", gap: "3rem", padding: "2rem 2.5rem" }}>
-						<div style={{ flex: "1 1 0", minWidth: 0 }}>
+					<div className="mb-6 flex flex-col gap-6 rounded-2xl border border-t-4 border-black/5 border-t-transparent bg-brand-light transition-all hover:border-t-brand-red hover:shadow-md sm:flex-row sm:items-center sm:gap-12" style={{ padding: "1.5rem 2rem" }}>
+						<div className="min-w-0 sm:flex-1">
 							<div style={{ width: 40, height: 40, borderRadius: 10, background: "rgba(27,42,107,0.1)", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "1rem" }}>
 								<SoftwareIcon className="h-5 w-5 text-brand-blue" />
 							</div>
@@ -52,7 +52,7 @@ export default function SoftwarePlatformsSection({ data }) {
 								</div>
 							)}
 						</div>
-						<div style={{ flex: "0 0 380px", height: 220, borderRadius: 12, overflow: "hidden", border: "1px solid rgba(0,0,0,0.07)", flexShrink: 0, background: "white" }}>
+						<div className="sm:w-[380px] sm:flex-none" style={{ height: 220, borderRadius: 12, overflow: "hidden", border: "1px solid rgba(0,0,0,0.07)", background: "white" }}>
 							{featuredImg ? (
 								<img src={siteImg(featuredImg)} alt={featured.name} style={{ width: "100%", height: "100%", objectFit: "contain" }} />
 							) : (
@@ -65,7 +65,7 @@ export default function SoftwarePlatformsSection({ data }) {
 				)}
 
 				{/* Remaining items — 3-column grid */}
-				<div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "1.25rem" }}>
+				<div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
 					{rest.map((item) => (
 						<div key={item.key} className="mb-6 rounded-2xl border border-t-4 border-black/5 border-t-transparent bg-brand-light transition-all hover:border-t-brand-red hover:shadow-md" style={{ padding: "1.5rem" }}>
 							<div style={{ width: 36, height: 36, borderRadius: 9, background: "rgba(27,42,107,0.08)", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "0.75rem" }}>

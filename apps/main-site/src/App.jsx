@@ -66,10 +66,10 @@ export default function App() {
 						<Route path="/terms" element={<Terms />} />
 						<Route path="*" element={<NotFound />} />
 					</Routes>
-					<FloatingButtons />
 				</Suspense>
 			</main>
 			<Footer />
+			<FloatingButtons />
 		</div>
 	);
 }

@@ -6,7 +6,7 @@ export default function CtaBannerSection({ data }) {
 	return (
 		<section className="bg-brand-light px-4 py-12 sm:px-8">
 			<div className="mx-auto max-w-screen-2xl">
-				<div className="rounded-3xl bg-gradient-to-r from-brand-blue via-purple-700 to-brand-red px-8 py-16 text-center text-white sm:px-16">
+				<div className="rounded-3xl bg-gradient-to-r from-brand-blue via-purple-700 to-brand-red px-6 py-10 text-center text-white sm:px-16 sm:py-16">
 					<h2 className="font-heading text-3xl font-bold sm:text-4xl">{title}</h2>
 					<p className="mx-auto mt-4 max-w-xl text-white/75">{subtitle}</p>
 					<div className="mt-10 flex flex-wrap justify-center gap-4">

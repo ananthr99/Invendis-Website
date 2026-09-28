@@ -25,11 +25,11 @@ export default function WhoWeAreSection({ data }) {
 			<div style={{ maxWidth: "1536px", margin: "0 auto" }}>
 				<div style={{ marginBottom: "2.5rem", textAlign: "center" }}>
 					{eyebrow && <p className="mb-3 text-[10px] font-semibold tracking-widest text-brand-red uppercase">{eyebrow}</p>}
-					<h2 className="font-heading text-4xl font-bold text-brand-blue lg:text-5xl">{title}</h2>
+					<h2 className="font-heading text-3xl font-bold text-brand-blue sm:text-4xl lg:text-5xl">{title}</h2>
 				</div>
 				<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
 					{cards.map((card) => (
-						<div key={card.title} className="rounded-2xl border border-t-4 border-black/5 border-t-transparent bg-brand-light p-8 transition-all hover:border-t-brand-red hover:shadow-md">
+						<div key={card.title} className="rounded-2xl border border-t-4 border-black/5 border-t-transparent bg-brand-light p-5 sm:p-8 transition-all hover:border-t-brand-red hover:shadow-md">
 							<div className="mb-4 flex h-10 w-10 items-center justify-center rounded-xl bg-brand-blue/10 text-brand-blue">
 								<CardIcon icon={card.icon} />
 							</div>

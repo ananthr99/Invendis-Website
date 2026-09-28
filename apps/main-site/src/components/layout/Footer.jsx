@@ -52,7 +52,7 @@ export default function Footer() {
               target="_blank"
               rel="noreferrer"
               aria-label="LinkedIn"
-              className="mt-4 inline-flex h-9 w-9 items-center justify-center rounded bg-[#0A66C2] text-white transition-opacity hover:opacity-90"
+              className="mt-4 inline-flex h-9 w-9 items-center justify-center rounded bg-brand-linkedin text-white transition-opacity hover:opacity-90"
             >
               <LinkedInIcon />
             </a>

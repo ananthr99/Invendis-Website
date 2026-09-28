@@ -98,10 +98,10 @@ export default function ContactBodySection({ data }) {
 
 	return (
 		<section className="bg-white px-4 py-20 sm:px-8">
-			<div style={{ maxWidth: 920, margin: "0 auto", display: "flex", gap: "4rem", alignItems: "flex-start" }}>
+			<div className="flex flex-col gap-10 sm:flex-row sm:items-start sm:gap-16" style={{ maxWidth: 920, margin: "0 auto" }}>
 
 				{/* Left — contact info */}
-				<div style={{ flex: "0 0 300px" }}>
+				<div className="sm:w-[300px] sm:flex-none">
 					<h2 className="font-heading text-2xl font-bold text-brand-text" style={{ marginBottom: "2rem" }}>Get In Touch</h2>
 
 					{info?.headquarters && (
@@ -145,7 +145,7 @@ export default function ContactBodySection({ data }) {
 						<h2 className="font-heading text-2xl font-bold text-brand-text" style={{ marginBottom: "1.25rem" }}>{form.title}</h2>
 					)}
 					<form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "0.65rem" }}>
-						<div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0.65rem" }}>
+						<div className="grid grid-cols-1 gap-[0.65rem] sm:grid-cols-2">
 							<FormField label={form?.nameLabel ?? "Your Name"} placeholder={form?.namePlaceholder} value={fields.name} onChange={(v) => handleChange("name", v)} required />
 							<FormField label={form?.companyLabel ?? "Company"} placeholder={form?.companyPlaceholder} value={fields.company} onChange={(v) => handleChange("company", v)} />
 						</div>
