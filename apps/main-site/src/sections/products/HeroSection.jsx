@@ -28,6 +28,7 @@ export default function HeroSection({ data }) {
 
 	return (
 		<section
+			id="oem"
 			className="relative bg-brand-blue px-4 py-16 text-white sm:px-8 lg:py-24"
 			style={{
 				backgroundImage: `

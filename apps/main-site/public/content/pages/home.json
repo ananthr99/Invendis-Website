@@ -110,31 +110,37 @@
       {
         "icon": "tower",
         "title": "Telecom Tower OA",
+        "href": "/sectors#telecom",
         "description": "Remote monitoring of passive infrastructure — batteries, rectifiers, generators, fuel levels, security, and environmental sensors, all in one platform."
       },
       {
         "icon": "solar",
         "title": "Solar & Energy Monitoring",
+        "href": "/sectors#solar",
         "description": "Solar monitoring solutions with integrated energy measurement and billing. Real-time visibility over renewable assets from edge to cloud."
       },
       {
         "icon": "meter",
         "title": "Digital Energy Meters",
+        "href": "/products#hardware",
         "description": "Smart tariff-grade meters, multi-function meters, and GSM energy meters for utility billing and consumption analytics."
       },
       {
         "icon": "network",
         "title": "Industrial Networking — SILBO",
+        "href": "/silbo",
         "description": "Industrial routers, SD-WAN gateways, protocol converters, and network switches designed for harsh industrial environments."
       },
       {
         "icon": "platform",
         "title": "PizGloria RMS Platform",
+        "href": "/products#software",
         "description": "Cloud-based Remote Monitoring System with graphical dashboards, Power BI analytics, mobile app, and automated alerting."
       },
       {
         "icon": "design",
         "title": "OEM / ODM & Design Services",
+        "href": "/products#oem",
         "description": "Bespoke hardware design, product development, and 24×7 remote support services for OEM and ODM customers worldwide."
       }
     ]

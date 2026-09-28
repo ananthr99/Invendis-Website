@@ -25,7 +25,7 @@ export default function SoftwarePlatformsSection({ data }) {
 	const featuredImg = featured ? (Array.isArray(featured.image) ? featured.image[0] : featured.image) : null;
 
 	return (
-		<section className="bg-white px-4 py-20 sm:px-8">
+		<section id="software" className="bg-white px-4 py-20 sm:px-8">
 			<div className="mx-auto max-w-screen-2xl">
 				<div className="mb-12 text-center">
 					<p className="mb-3 text-[10px] font-semibold tracking-widest text-brand-red uppercase">{eyebrow}</p>

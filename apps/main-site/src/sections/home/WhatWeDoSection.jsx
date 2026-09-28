@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Icon from "../../components/shared/Icon.jsx";
 
 export default function WhatWeDoSection({ data }) {
@@ -18,13 +19,21 @@ export default function WhatWeDoSection({ data }) {
 					{cards.map((card) => (
 						<div
 							key={card.title}
-							className="rounded-2xl border border-t-4 border-black/5 border-t-transparent bg-brand-light p-5 sm:p-8 transition-all hover:border-t-brand-red hover:shadow-md"
+							className="rounded-2xl border border-t-4 border-black/5 border-t-transparent bg-brand-light p-5 sm:p-8 transition-all hover:border-t-brand-red hover:shadow-md flex flex-col"
 						>
 							<div className="mb-4 flex h-10 w-10 items-center justify-center rounded-xl bg-brand-blue/10 text-brand-blue">
 								<Icon name={card.icon} className="h-5 w-5" />
 							</div>
 							<h3 className="font-heading font-semibold text-brand-text">{card.title}</h3>
-							<p className="mt-2 text-sm leading-relaxed text-brand-muted">{card.description}</p>
+							<p className="mt-2 text-sm leading-relaxed text-brand-muted flex-1">{card.description}</p>
+							{card.href && (
+								<Link
+									to={card.href}
+									className="mt-4 text-sm font-semibold text-brand-red hover:underline"
+								>
+									Read more →
+								</Link>
+							)}
 						</div>
 					))}
 				</div>

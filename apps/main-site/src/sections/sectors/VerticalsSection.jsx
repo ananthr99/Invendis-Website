@@ -27,12 +27,8 @@ function SectorImage({ image, label, height = 140 }) {
 		return (
 			<div
 				className="flex items-center justify-center rounded-xl bg-brand-light"
-				style={{ height, marginBottom: "1.5rem" }}
+				style={{ aspectRatio: height >= 200 ? "16 / 6" : "16 / 9", marginBottom: "1.5rem" }}
 			>
-				<div className="text-center">
-					<CameraIcon className="mx-auto mb-1.5 h-6 w-6 text-brand-muted/40" />
-					<p className="text-xs text-brand-muted/50">{label}</p>
-				</div>
 			</div>
 		);
 	}
@@ -41,7 +37,7 @@ function SectorImage({ image, label, height = 140 }) {
 		<div
 			style={{
 				position: "relative",
-				height,
+				aspectRatio: "2048 / 887",
 				marginBottom: "1.5rem",
 				borderRadius: "0.75rem",
 				overflow: "hidden",
@@ -133,19 +129,8 @@ function Clients({ clients }) {
 	);
 }
 
-function getColCount(n) {
-	if (n <= 3) return n;
-	if (n === 4) return 2;
-	return 3;
-}
-
 export default function VerticalsSection({ data }) {
 	const { eyebrow, title, titleHighlight, subtitle, items = [] } = data ?? {};
-
-	const restCount = items.length - 1;
-	const cols = restCount > 0 ? getColCount(restCount) : 1;
-	const lastRowItems = restCount % cols || cols;
-	const isLastAlone = restCount > 0 && lastRowItems === 1;
 
 	return (
 		<section className="bg-brand-light px-4 py-20 sm:px-8">
@@ -160,15 +145,16 @@ export default function VerticalsSection({ data }) {
 					<p className="mx-auto mt-4 max-w-2xl text-brand-muted">{subtitle}</p>
 				</div>
 
-				<div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+				<div className="grid grid-cols-1 gap-6 lg:grid-cols-2 2xl:grid-cols-4">
 					{items.map((item, i) => {
 						const isFirst = i === 0;
 						const isLast = i === items.length - 1;
-						const spanFull = isFirst || (isLast && isLastAlone);
+						const spanFull = isFirst;
 
 						return (
 							<div
 								key={item.key}
+								id={item.key}
 								className="rounded-2xl border border-t-4 border-black/5 border-t-transparent bg-white transition-all hover:border-t-brand-red hover:shadow-md"
 								style={{
 									gridColumn: spanFull ? "1 / -1" : undefined,

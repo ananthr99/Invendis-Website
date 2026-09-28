@@ -7,11 +7,8 @@ export default function CtaBannerSection({ data }) {
 		<section className="bg-white" style={{ padding: "3rem 2rem" }}>
 			<div style={{ maxWidth: 1536, margin: "0 auto" }}>
 				<div
-					className="px-6 py-12 text-center text-white sm:px-16 sm:py-20"
-					style={{
-						background: "linear-gradient(to right, #1B2A6B, #7e22ce, #E63946)",
-						borderRadius: 24,
-					}}
+					className="bg-[#C1121F] px-6 py-12 text-center text-white sm:px-16 sm:py-20"
+					style={{ borderRadius: 24 }}
 				>
 					<h2 className="font-heading text-3xl font-bold sm:text-4xl">{title}</h2>
 					<p className="mx-auto mt-4 max-w-xl" style={{ color: "rgba(255,255,255,0.75)" }}>

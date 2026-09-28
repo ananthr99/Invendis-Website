@@ -33,7 +33,7 @@ export default function HardwarePortfolioSection({ data }) {
 	const { eyebrow, title, subtitle, items = [] } = data ?? {};
 
 	return (
-		<section className="bg-brand-light px-4 py-20 sm:px-8">
+		<section id="hardware" className="bg-brand-light px-4 py-20 sm:px-8">
 			<div className="mx-auto max-w-screen-2xl">
 				<div className="mb-12 text-center">
 					<p className="mb-3 text-[10px] font-semibold tracking-widest text-brand-red uppercase">{eyebrow}</p>
