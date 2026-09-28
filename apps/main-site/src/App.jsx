@@ -46,8 +46,9 @@ export default function App() {
 				<Navbar />
 				<TopBarSection />
 			</div>
-			<main className="flex-1">
+						<main className="flex-1">
 				<Suspense fallback={<PageLoader />}>
+					<ScrollToTop />
 					<Routes>
 						<Route path="/" element={<Home />} />
 						<Route path="/sectors" element={<Sectors />} />

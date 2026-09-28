@@ -6,19 +6,8 @@ function GlobeIcon({ className }) {
 	);
 }
 
-function getColCount(n) {
-	if (n <= 3) return n;
-	if (n === 4) return 2;
-	return 3;
-}
-
 export default function GlobalReachSection({ data }) {
 	const { eyebrow, title, titleHighlight, subtitle, regions = [] } = data ?? {};
-
-	const count = regions.length;
-	const cols = getColCount(count);
-	const lastRowItems = count % cols || cols;
-	const isLastAlone = lastRowItems === 1;
 
 	return (
 		<section className="bg-brand-blue px-4 py-20 sm:px-8">
@@ -33,41 +22,37 @@ export default function GlobalReachSection({ data }) {
 					<p className="mx-auto mt-4 max-w-2xl text-white" style={{ fontSize: 15 }}>{subtitle}</p>
 				</div>
 
-				<div style={{ display: "grid", gridTemplateColumns: `repeat(${cols}, 1fr)`, gap: "1.25rem" }}>
-					{regions.map((region, i) => {
-						const isLast = i === count - 1;
-						return (
-							<div
-								key={region.name}
-								style={{
-									gridColumn: isLast && isLastAlone ? "1 / -1" : undefined,
-									borderRadius: 16,
-									border: "1px solid rgba(255,255,255,0.15)",
-									background: "rgba(255,255,255,0.05)",
-									padding: "2rem 1.5rem",
-									textAlign: "center",
-								}}
-							>
-								<div style={{
-									margin: "0 auto 1rem",
-									width: 40,
-									height: 40,
-									borderRadius: "50%",
-									border: "1px solid rgba(255,255,255,0.15)",
-									background: "rgba(255,255,255,0.1)",
-									display: "flex",
-									alignItems: "center",
-									justifyContent: "center",
-								}}>
-									<GlobeIcon className="h-5 w-5 text-white/70" />
-								</div>
-								<h3 className="font-heading text-lg font-bold text-white">{region.name}</h3>
-								<p className="mt-3 text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.6)" }}>
-									{region.countries.join(", ")}
-								</p>
+				<div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+					{regions.map((region) => (
+						<div
+							key={region.name}
+							style={{
+								borderRadius: 16,
+								border: "1px solid rgba(255,255,255,0.15)",
+								background: "rgba(255,255,255,0.05)",
+								padding: "2rem 1.5rem",
+								textAlign: "center",
+							}}
+						>
+							<div style={{
+								margin: "0 auto 1rem",
+								width: 40,
+								height: 40,
+								borderRadius: "50%",
+								border: "1px solid rgba(255,255,255,0.15)",
+								background: "rgba(255,255,255,0.1)",
+								display: "flex",
+								alignItems: "center",
+								justifyContent: "center",
+							}}>
+								<GlobeIcon className="h-5 w-5 text-white/70" />
 							</div>
-						);
-					})}
+							<h3 className="font-heading text-lg font-bold text-white">{region.name}</h3>
+							<p className="mt-3 text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.6)" }}>
+								{region.countries.join(", ")}
+							</p>
+						</div>
+					))}
 				</div>
 			</div>
 		</section>
