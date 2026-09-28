@@ -23,7 +23,7 @@ export default function HeroSection({ data }) {
 			className="relative bg-brand-blue px-4 py-16 text-white sm:px-8 lg:py-24"
 			style={bgStyle}
 		>
-			{d.image && <div style={{ position: "absolute", inset: 0, background: "rgba(11,18,60,0.72)" }} />}
+			{d.image && <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to right, rgba(11,18,60,0.80) 0%, rgba(11,18,60,0.80) 35%, rgba(11,18,60,0.35) 65%, rgba(11,18,60,0.05) 100%)" }} />}
 			<div style={{
 				position: "relative",
 				zIndex: 1,
@@ -48,7 +48,7 @@ export default function HeroSection({ data }) {
 				</div>
 			</div>
 
-			<div className="flex justify-center text-brand-red" style={{ position: "relative", zIndex: 1, maxWidth: "1536px", margin: "2rem auto 0" }}>
+			<div className="text-brand-red" style={{ position: "absolute", bottom: "1.5rem", left: 0, right: 0, display: "flex", justifyContent: "center", zIndex: 1 }}>
 				<svg className="h-5 w-5 animate-bounce" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
 					<path d="M19 9l-7 7-7-7" />
 				</svg>
