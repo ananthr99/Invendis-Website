@@ -24,6 +24,7 @@ export default function HeroSection({ data }) {
 			backgroundImage: `url('${siteImg(image)}')`,
 			backgroundSize: "cover",
 			backgroundPosition: "center right",
+			minHeight: "calc(100vh - 76px)",
 		}
 		: {
 			backgroundImage: `

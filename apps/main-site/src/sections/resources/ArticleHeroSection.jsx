@@ -10,7 +10,7 @@ export default function ArticleHeroSection({ data }) {
 	const heroImage = resourcesPage?.hero?.image;
 
 	const bgStyle = heroImage
-		? { backgroundImage: `url('${siteImg(heroImage)}')`, backgroundSize: "cover", backgroundPosition: "center right" }
+		? { backgroundImage: `url('${siteImg(heroImage)}')`, backgroundSize: "cover", backgroundPosition: "center right", minHeight: "calc(100vh - 76px)" }
 		: {
 			backgroundImage: `
 				linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),

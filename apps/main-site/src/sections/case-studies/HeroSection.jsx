@@ -5,7 +5,7 @@ export default function HeroSection({ data }) {
 	const d = data ?? {};
 
 	const bgStyle = d.image
-		? { backgroundImage: `url('${siteImg(d.image)}')`, backgroundSize: "cover", backgroundPosition: "center right" }
+		? { backgroundImage: `url('${siteImg(d.image)}')`, backgroundSize: "cover", backgroundPosition: "center right",minHeight: "calc(100vh - 76px)", }
 		: {
 			backgroundImage: `
 				linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),

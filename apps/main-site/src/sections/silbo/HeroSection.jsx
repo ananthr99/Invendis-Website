@@ -35,6 +35,7 @@ export default function HeroSection({ data }) {
 				backgroundPosition: "center",
 				paddingTop: "0.65rem",
 				paddingBottom: "0.65rem",
+				minHeight: "calc(100vh - 76px)",
 			}}
 		>
 			<div className="flex flex-col gap-8 lg:flex-row lg:items-center lg:gap-12" style={{ maxWidth: "1536px", margin: "0 auto" }}>
