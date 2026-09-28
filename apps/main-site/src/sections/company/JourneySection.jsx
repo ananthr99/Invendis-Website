@@ -68,7 +68,7 @@ export default function JourneySection({ data }) {
 	const { eyebrow, title, timeline = [], facilities = {}, locations = {} } = data ?? {};
 
 	return (
-		<section className="bg-white px-4 py-16 sm:px-8">
+		<section id="journey" className="bg-white px-4 py-16 sm:px-8">
 			<div style={{ maxWidth: "1536px", margin: "0 auto" }}>
 				<div style={{ marginBottom: "2.5rem" }}>
 					{eyebrow && <p className="mb-3 text-[10px] font-semibold tracking-widest text-brand-red uppercase">{eyebrow}</p>}

@@ -30,29 +30,29 @@
 		{
 			"title": "Products",
 			"links": [
-				{ "label": "iSense RMS Controller", "href": "/products" },
-				{ "label": "Energy Meters", "href": "/products" },
+				{ "label": "iSense RMS Controller", "href": "/products#hardware" },
+				{ "label": "Energy Meters", "href": "/products#hardware" },
 				{ "label": "SILBO Routers", "href": "/silbo" },
-				{ "label": "Industrial Gateways", "href": "/products" },
-				{ "label": "PizGloria Platform", "href": "/products" },
-				{ "label": "Mobile App", "href": "/products" }
+				{ "label": "Industrial Gateways", "href": "/products#hardware" },
+				{ "label": "PizGloria Platform", "href": "/products#software" },
+				{ "label": "Mobile App", "href": "/products#software" }
 			]
 		},
 		{
 			"title": "Sectors",
 			"links": [
-				{ "label": "Telecom Infrastructure", "href": "/sectors" },
-				{ "label": "Solar & Renewables", "href": "/sectors" },
-				{ "label": "Smart Energy", "href": "/sectors" },
-				{ "label": "Industrial Networks", "href": "/sectors" },
-				{ "label": "ESG & Sustainability", "href": "/sectors" }
+				{ "label": "Telecom Infrastructure", "href": "/sectors#telecom" },
+				{ "label": "Solar & Renewables", "href": "/sectors#solar" },
+				{ "label": "Smart Energy", "href": "/sectors#energy" },
+				{ "label": "Industrial Networks", "href": "/sectors#edge" },
+				{ "label": "ESG & Sustainability", "href": "/sectors#esg" }
 			]
 		},
 		{
 			"title": "Company",
 			"links": [
 				{ "label": "About Us", "href": "/company" },
-				{ "label": "Our Journey", "href": "/company" },
+				{ "label": "Our Journey", "href": "/company#journey" },
 				{ "label": "Case Studies", "href": "/case-studies" },
 				{ "label": "Resources", "href": "/resources" },
 				{ "label": "White Papers", "href": "/resources" },
