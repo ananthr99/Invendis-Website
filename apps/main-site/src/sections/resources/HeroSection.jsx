@@ -8,8 +8,7 @@ export default function HeroSection({ data }) {
 		? {
 			backgroundImage: `url('${siteImg(d.image)}')`,
 			backgroundSize: "cover",
-			backgroundPosition: "center right",
-			minHeight: "calc(100vh - 76px)",
+			backgroundPosition: "center right"
 		}
 		: {
 			backgroundImage: `
@@ -30,7 +29,7 @@ export default function HeroSection({ data }) {
 				zIndex: 1,
 				maxWidth: "1536px",
 				margin: "0 auto",
-				minHeight: 270,
+				minHeight: 335,
 				display: "flex",
 				flexDirection: "column",
 				justifyContent: "center",

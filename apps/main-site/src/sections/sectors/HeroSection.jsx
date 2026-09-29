@@ -22,11 +22,10 @@ export default function HeroSection({ data }) {
 			style={{
 				backgroundImage: `url('${BASE}/images/hero-bg-blue.png')`,
 				backgroundSize: "cover",
-				backgroundPosition: "center",
-				minHeight: "calc(100vh - 76px)", 
+				backgroundPosition: "center"
 			}}
 		>
-			<div className="flex flex-col gap-8 lg:flex-row lg:items-center lg:gap-12" style={{ maxWidth: "1536px", margin: "0 auto" }}>
+			<div className="flex flex-col gap-8 lg:flex-row lg:items-center lg:gap-12" style={{ maxWidth: "1536px", margin: "0 auto", minHeight: 335 }}>
 				{/* ── left ── */}
 				<div className="min-w-0 lg:flex-1">
 					<p className="mb-4 text-[10px] font-semibold tracking-widest text-brand-red uppercase">
@@ -47,7 +46,7 @@ export default function HeroSection({ data }) {
 					border: "1px solid rgba(255,255,255,0.15)",
 					overflow: "hidden",
 					position: "relative",
-					height: 270,
+					height: 335,
 				}}>
 					{sectors.map((sector, i) => {
 						const imgSrc = Array.isArray(sector.image) ? sector.image[0] : sector.image;
@@ -118,7 +117,7 @@ export default function HeroSection({ data }) {
 				</div>
 			</div>
 
-			<div className="text-brand-red" style={{ position: "absolute", bottom: "1.5rem", left: 0, right: 0, display: "flex", justifyContent: "center", zIndex: 1 }}>
+			<div className="text-brand-red" style={{ position: "absolute", bottom: "1.5rem", left: 0, right: 0, display: "flex", justifyContent: "center", zIndex: 10 }}>
 				<svg className="h-5 w-5 animate-bounce" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
 					<path d="M19 9l-7 7-7-7" />
 				</svg>

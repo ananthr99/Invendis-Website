@@ -5,7 +5,7 @@ export default function HeroSection({ data }) {
 	const d = data ?? {};
 
 	const bgStyle = d.image
-		? { backgroundImage: `url('${siteImg(d.image)}')`, backgroundSize: "cover", backgroundPosition: "center right",minHeight: "calc(100vh - 76px)", }
+		? { backgroundImage: `url('${siteImg(d.image)}')`, backgroundSize: "cover", backgroundPosition: "center right" }
 		: {
 			backgroundImage: `
 				linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
@@ -17,7 +17,7 @@ export default function HeroSection({ data }) {
 	return (
 		<section className="relative bg-brand-blue px-4 py-16 text-white sm:px-8 lg:py-24" style={bgStyle}>
 			{d.image && <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to right, rgba(11,18,60,0.80) 0%, rgba(11,18,60,0.80) 35%, rgba(11,18,60,0.35) 65%, rgba(11,18,60,0.05) 100%)" }} />}
-			<div style={{ position: "relative", zIndex: 1, maxWidth: "1536px", margin: "0 auto", minHeight: 270, display: "flex", flexDirection: "column", justifyContent: "center" }}>
+			<div style={{ position: "relative", zIndex: 1, maxWidth: "1536px", margin: "0 auto", minHeight: 335, display: "flex", flexDirection: "column", justifyContent: "center" }}>
 				<div className="lg:max-w-[48%]">
 					{d.eyebrow && (
 						<p className="mb-4 text-[10px] font-semibold tracking-widest text-brand-red uppercase">{d.eyebrow}</p>
