@@ -37,7 +37,8 @@ function SectorImage({ image, label, height = 140 }) {
 		<div
 			style={{
 				position: "relative",
-				aspectRatio: "2048 / 887",
+				width: "100%",
+				height: height,
 				marginBottom: "1.5rem",
 				borderRadius: "0.75rem",
 				overflow: "hidden",
