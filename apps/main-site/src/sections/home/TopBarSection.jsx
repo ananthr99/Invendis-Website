@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useContent } from "../../hooks/useContent.js";
 
-export default function TopBarSection() {
+export default function TopBarSection({ hideCta = false }) {
 	const home = useContent("pages/home.json");
 	const data = home?.topBar;
 	const activeSections = home?.sections ?? [];
@@ -22,7 +22,7 @@ export default function TopBarSection() {
 						</span>
 					))}
 				</div>
-				{cta && (
+				{cta && !hideCta && (
 					<Link
 						to={cta.href}
 						className="rounded-full bg-brand-red px-4 py-1.5 text-xs font-semibold text-white transition-opacity hover:opacity-90"

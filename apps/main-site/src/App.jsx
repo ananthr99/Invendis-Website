@@ -49,14 +49,15 @@ function PageLoader() {
 }
 
 export default function App() {
+	const { pathname } = useLocation();
 	return (
 		<div className="flex min-h-screen flex-col">
 			<ScrollToTop />
 			<div className="sticky top-0 z-50">
 				<Navbar />
-				<TopBarSection />
+				<TopBarSection hideCta={pathname.startsWith("/products/product-selector")} />
 			</div>
-						<main className="flex-1">
+				<main className="flex-1">
 				<Suspense fallback={<PageLoader />}>
 					<ScrollToTop />
 					<Routes>
