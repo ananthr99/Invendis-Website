@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { useContent } from "../../hooks/useContent.js";
 
+const BASE = import.meta.env.BASE_URL.replace(/\/$/, "");
+
 const CAT_COLORS = {
 	"Intel Based Devices": { bg: "#FEF2F2", fg: "#991B1B" },
 	Router: { bg: "#EAF2FB", fg: "#1260A8" },
@@ -41,7 +43,7 @@ function ImageCarousel({ images }) {
 	return (
 		<div>
 			<div style={{ height: 260, background: "#f8f9fa", borderRadius: 12, overflow: "hidden", display: "flex", alignItems: "center", justifyContent: "center", padding: "1.5rem", position: "relative" }}>
-				<img src={images[idx]} alt="" style={{ maxHeight: "100%", maxWidth: "100%", objectFit: "contain" }} />
+				<img src={images[idx].startsWith("http") ? images[idx] : `${BASE}${images[idx]}`} alt="" style={{ maxHeight: "100%", maxWidth: "100%", objectFit: "contain" }} />
 				{images.length > 1 && (
 					<>
 						<button

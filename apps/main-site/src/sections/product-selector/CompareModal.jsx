@@ -121,7 +121,7 @@ export default function CompareModal({ ids, onClose }) {
 									{products.map(p => (
 										<td key={p.id} style={{ padding: "12px 20px", borderBottom: "1px solid #f3f4f6", textAlign: "center" }}>
 											{p.images?.[0] && (
-												<img src={p.images[0]} alt={p.name} style={{ height: 72, maxWidth: "100%", objectFit: "contain" }} />
+												<img src={p.images[0].startsWith("http") ? p.images[0] : `${BASE}${p.images[0]}`} alt={p.name} style={{ height: 72, maxWidth: "100%", objectFit: "contain" }} />
 											)}
 										</td>
 									))}
