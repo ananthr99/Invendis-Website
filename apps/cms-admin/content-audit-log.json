@@ -1,5 +1,25 @@
 [
   {
+    "timestamp": "2026-10-01T10:38:06.344Z",
+    "userEmail": "ananth.r@invendis.com",
+    "page": "SILBO",
+    "section": null,
+    "changes": [
+      {
+        "section": "hero",
+        "field": "primaryBtn",
+        "before": {
+          "label": "Browse All Products →",
+          "href": "/products"
+        },
+        "after": {
+          "label": "Browse All Products →",
+          "href": "/products/product-selector"
+        }
+      }
+    ]
+  },
+  {
     "timestamp": "2026-10-01T10:37:38.009Z",
     "userEmail": "ananth.r@invendis.com",
     "page": "Home",
