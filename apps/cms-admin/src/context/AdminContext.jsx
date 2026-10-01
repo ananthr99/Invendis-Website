@@ -39,8 +39,8 @@ export function AdminProvider({ children }) {
 		return dirtyRef.current;
 	}
 
-	function showConfirm(message, onOk) {
-		setConfirmState({ message, onOk });
+	function showConfirm(message, onOk, onCancel) {
+		setConfirmState({ message, onOk, onCancel });
 	}
 
 	// Warn on browser close/refresh with unsaved changes.
@@ -66,7 +66,7 @@ export function AdminProvider({ children }) {
 					<div className="admin-modal">
 						<p>{confirmState.message}</p>
 						<div className="admin-modal-actions">
-							<button className="admin-btn admin-btn--ghost" onClick={() => setConfirmState(null)}>
+							<button className="admin-btn admin-btn--ghost" onClick={() => { confirmState.onCancel?.(); setConfirmState(null); }}>
 								Cancel
 							</button>
 							<button

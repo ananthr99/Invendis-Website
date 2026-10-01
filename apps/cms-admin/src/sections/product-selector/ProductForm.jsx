@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useLayoutEffect  } from "react";
 import { OWNER, REPO } from "../../config.js";
 
 function rawUrl(path) {
@@ -34,10 +34,17 @@ const TABS = [
 	{ key: "additional", label: "Additional Specs" },
 ];
 
-export default function ProductForm({ product, isNew, cats, onChange }) {
+export default function ProductForm({ product, isNew, cats, onChange, headerH = 0 }) {
 	const [p, setP] = useState({ ...product });
 	const [tab, setTab] = useState("core");
 	const [lightbox, setLightbox] = useState(null);
+
+	const tabBarRef = useRef(null);
+	const [tabBarH, setTabBarH] = useState(44);
+	useLayoutEffect(() => {
+		if (tabBarRef.current) setTabBarH(tabBarRef.current.offsetHeight);
+	});
+
 
 	const addImgRef    = useRef(null);
 	const replImgRef   = useRef(null);
@@ -121,8 +128,27 @@ export default function ProductForm({ product, isNew, cats, onChange }) {
 	return (
 		<div style={{ paddingBottom: 80 }}>
 
-			{/* Tab bar */}
-			<div style={{ display: "flex", gap: 0, borderBottom: "1px solid var(--admin-border)", marginBottom: 24, flexWrap: "wrap" }}>
+			{/* Spacer to push content below the fixed tab bar */}
+			<div style={{ height: tabBarH + 24 }} />
+
+			{/* Fixed tab bar */}
+			<div
+				ref={tabBarRef}
+				style={{
+					position: "fixed",
+					top: 56 + headerH,
+					left: 220,
+					right: 0,
+					zIndex: 45,
+					background: "white",
+					borderBottom: "1px solid var(--admin-border)",
+					padding: "0 28px",
+					display: "flex",
+					gap: 0,
+					flexWrap: "wrap",
+					boxShadow: "0 1px 4px rgba(0,0,0,0.06)",
+				}}
+			>
 				{TABS.map(t => (
 					<button
 						key={t.key}

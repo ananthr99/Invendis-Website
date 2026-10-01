@@ -113,11 +113,11 @@ function VariantsTable({ variants, part_datasheets }) {
 	);
 }
 
-export default function ProductModal({ id, onClose, onCompare, isCompared, compareDisabled }) {
+export default function ProductModal({ id, onClose, onCompare, isCompared, compareDisabled, catColors }) {
 	const { data: product, loading } = useContent(`productSelector/products/${id}.json`, { withLoading: true });
 	const [tab, setTab] = useState("specs");
 	const d = product ?? {};
-	const colors = CAT_COLORS[d.cat] || CAT_COLORS.Other;
+	const colors = catColors?.[d.cat] ?? CAT_COLORS[d.cat] ?? CAT_COLORS.Other;
 
 	useEffect(() => { setTab("specs"); }, [id]);
 

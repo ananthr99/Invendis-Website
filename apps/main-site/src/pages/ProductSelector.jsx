@@ -7,17 +7,6 @@ import CompareModal from "../sections/product-selector/CompareModal.jsx";
 
 const BASE = import.meta.env.BASE_URL.replace(/\/$/, "");
 
-const CAT_COLORS = {
-	"Intel Based Devices": { bg: "#FEF2F2", fg: "#991B1B" },
-	Router: { bg: "#EAF2FB", fg: "#1260A8" },
-	Gateway: { bg: "#E4F5EE", fg: "#0F6040" },
-	Switch: { bg: "#FFF3E0", fg: "#8B5200" },
-	"Energy Meter": { bg: "#F9EAF3", fg: "#7B2563" },
-	Other: { bg: "#EEF0F3", fg: "#3A4D63" },
-	PCB: { bg: "#ECFDF5", fg: "#065F46" },
-	"Outdoor Unit": { bg: "#EEF2FF", fg: "#3730A3" },
-};
-
 function wifiLabel(v) {
 	if (!v || v === "-") return null;
 	if (v === "WiFi6") return "Wi-Fi 6";
@@ -137,8 +126,9 @@ function SerialDropdown({ value, onChange }) {
 	);
 }
 
-function ProductCard({ product, onView, onCompare, isCompared, compareDisabled }) {
-	const colors = CAT_COLORS[product.cat] || CAT_COLORS.Other;
+function ProductCard({ product, onView, onCompare, isCompared, compareDisabled, catColors }) {
+	const colors = catColors?.[product.cat] ?? { bg: "#EEF0F3", fg: "#3A4D63" };
+
 	const [hovered, setHovered] = useState(false);
 	return (
 		<div
@@ -575,6 +565,7 @@ export default function ProductSelector() {
 			{modalId && (
 				<ProductModal
 					id={modalId}
+					catColors={index?.catColors ?? {}}
 					onClose={closeModal}
 					onCompare={toggleCompare}
 					isCompared={compareIds.includes(modalId)}

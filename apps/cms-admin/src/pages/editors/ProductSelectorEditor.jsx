@@ -21,7 +21,7 @@ const EMPTY_PRODUCT = {
 };
 
 export default function ProductSelectorEditor() {
-	const { token, toast, setDirty, userEmail } = useAdmin();
+	const { token, toast, setDirty, isDirty, showConfirm, userEmail } = useAdmin();
 	const [index, setIndex] = useState(null);
 	const [loading, setLoading] = useState(true);
 	const [view, setView] = useState("list");
@@ -79,10 +79,17 @@ export default function ProductSelectorEditor() {
 	}
 
 	function goBack() {
-		setView("list");
-		setProduct(null);
-		setOriginalProduct(null);
-		setDirty(false);
+		const doGoBack = () => {
+			setView("list");
+			setProduct(null);
+			setOriginalProduct(null);
+			setDirty(false);
+		};
+		if (isDirty()) {
+			showConfirm("You have unsaved changes. Discard them and go back to the list?", doGoBack);
+		} else {
+			doGoBack();
+		}
 	}
 
 	async function handleSave() {
@@ -190,10 +197,10 @@ export default function ProductSelectorEditor() {
 		}
 	}
 
-	async function handleSaveCats(cats) {
+	async function handleSaveCats(cats, catColors) {
 		setSaving(true);
 		try {
-			const newIndex = { ...index, cats };
+			const newIndex = { ...index, cats, catColors };
 			await savePageContent({ token, contentPath: INDEX_PATH, before: index, after: newIndex, page: "Product Selector", section: "categories", userEmail });
 			setIndex(newIndex);
 			toast("Categories saved", "ok");
@@ -260,7 +267,7 @@ export default function ProductSelectorEditor() {
 			) : productLoading ? (
 				<p style={{ color: "var(--admin-muted)", padding: 40 }}>Loading product…</p>
 			) : product ? (
-				<ProductForm product={product} cats={index.cats ?? []} isNew={view === "new"} onChange={setProduct} />
+				<ProductForm product={product} cats={index.cats ?? []} isNew={view === "new"} onChange={setProduct} headerH={headerH}/>
 			) : null}
 		</div>
 	);
