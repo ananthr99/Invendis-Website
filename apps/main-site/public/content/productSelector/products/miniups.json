@@ -30,7 +30,7 @@
   ],
   "datasheet": "/assets/datasheets/products/miniups/Mini-UPS_Datasheet.pdf",
   "part_datasheets": {},
-  "hidden": true,
+  "hidden": false,
   "hidden_fields": [
     "cell",
     "cellular_gen",
