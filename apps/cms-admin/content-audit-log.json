@@ -1,5 +1,19 @@
 [
   {
+    "timestamp": "2026-10-01T06:21:22.417Z",
+    "userEmail": "ananth.r@invendis.com",
+    "page": "Product Selector",
+    "section": "Mini UPS",
+    "changes": [
+      {
+        "section": "Mini UPS",
+        "field": "hidden",
+        "before": false,
+        "after": true
+      }
+    ]
+  },
+  {
     "timestamp": "2026-10-01T06:18:18.711Z",
     "userEmail": "ananth.r@invendis.com",
     "page": "Product Selector",
