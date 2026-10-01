@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import SectorIcon from "./SectorIcon.jsx";
 
 const BASE = import.meta.env.BASE_URL.replace(/\/$/, "");
 function siteImg(path) { return path ? BASE + path : path; }
@@ -17,17 +16,56 @@ export default function HeroSection({ data }) {
 	}, [sectors.length]);
 
 	return (
-		<section
-			className="relative bg-brand-blue px-4 py-16 text-white sm:px-8 lg:py-24"
-			style={{
+		<section className="relative bg-brand-blue px-4 py-16 text-white sm:px-8 lg:py-24">
+			{/* Rotating full-bleed background images */}
+			{sectors.map((sector, i) => {
+				const imgSrc = Array.isArray(sector.image) ? sector.image[0] : sector.image;
+				return imgSrc ? (
+					<div
+						key={sector.key || i}
+						style={{
+							position: "absolute",
+							inset: 0,
+							backgroundImage: `url('${siteImg(imgSrc)}')`,
+							backgroundSize: "cover",
+							backgroundPosition: "center right",
+							opacity: i === active ? 1 : 0,
+							transition: "opacity 0.8s ease",
+						}}
+					/>
+				) : null;
+			})}
+
+			{/* Blue gradient overlay — dark on left, fades right */}
+			<div style={{
+				position: "absolute",
+				inset: 0,
+				background: "linear-gradient(to right, rgba(11,18,60,0.88) 0%, rgba(11,18,60,0.88) 35%, rgba(11,18,60,0.55) 65%, rgba(11,18,60,0.18) 100%)",
+			}} />
+
+			{/* Grid lines texture */}
+			<div style={{
+				position: "absolute",
+				inset: 0,
 				backgroundImage: `url('${BASE}/images/hero-bg-blue.png')`,
 				backgroundSize: "cover",
-				backgroundPosition: "center"
-			}}
-		>
-			<div className="flex flex-col gap-8 lg:flex-row lg:items-center lg:gap-12" style={{ maxWidth: "1536px", margin: "0 auto", minHeight: 335 }}>
-				{/* ── left ── */}
-				<div className="min-w-0 lg:flex-1">
+				backgroundPosition: "center",
+				opacity: 0.12,
+				mixBlendMode: "overlay",
+			}} />
+
+			{/* Text content */}
+			<div style={{
+				position: "relative",
+				zIndex: 1,
+				maxWidth: "1536px",
+				margin: "0 auto",
+				minHeight: 335,
+				display: "flex",
+				flexDirection: "column",
+				justifyContent: "center",
+			}}>
+				<div className="lg:max-w-[48%]">
 					<p className="mb-4 text-[10px] font-semibold tracking-widest text-brand-red uppercase">
 						{eyebrow}
 					</p>
@@ -39,85 +77,49 @@ export default function HeroSection({ data }) {
 						{subtitle}
 					</p>
 				</div>
-
-				{/* ── right — cross-fade sector carousel ── */}
-				<div className="min-w-0 lg:flex-1" style={{
-					borderRadius: 16,
-					border: "1px solid rgba(255,255,255,0.15)",
-					overflow: "hidden",
-					position: "relative",
-					height: 335,
-				}}>
-					{sectors.map((sector, i) => {
-						const imgSrc = Array.isArray(sector.image) ? sector.image[0] : sector.image;
-						return (
-							<div
-								key={sector.key || i}
-								style={{
-									position: "absolute",
-									inset: 0,
-									opacity: i === active ? 1 : 0,
-									transition: "opacity 0.6s ease",
-								}}
-							>
-								{imgSrc ? (
-									<img
-										src={siteImg(imgSrc)}
-										alt={sector.name}
-										style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
-									/>
-								) : (
-									<div style={{ width: "100%", height: "100%", background: "rgba(255,255,255,0.05)", display: "flex", alignItems: "center", justifyContent: "center" }}>
-										<SectorIcon sectorKey={sector.key} className="h-10 w-10 text-white/20" />
-									</div>
-								)}
-								<div style={{
-									position: "absolute",
-									bottom: 0, left: 0, right: 0,
-									padding: "2.5rem 1.5rem 2.5rem",
-									background: "linear-gradient(to top, rgba(0,0,0,0.75) 0%, transparent 100%)",
-								}}>
-									<p className="font-heading text-base font-bold text-white">{sector.name}</p>
-									<p className="mt-1 text-xs" style={{ color: "rgba(255,255,255,0.65)" }}>{sector.tagline}</p>
-								</div>
-							</div>
-						);
-					})}
-
-					{/* dot nav */}
-					{sectors.length > 1 && (
-						<div style={{
-							position: "absolute",
-							bottom: 14,
-							left: "50%",
-							transform: "translateX(-50%)",
-							display: "flex",
-							gap: 6,
-							zIndex: 10,
-						}}>
-							{sectors.map((_, i) => (
-								<button
-									key={i}
-									onClick={() => setActive(i)}
-									style={{
-										height: i === active ? 10 : 8,
-										width: i === active ? 10 : 8,
-										borderRadius: "50%",
-										background: i === active ? "white" : "rgba(255,255,255,0.35)",
-										border: "none",
-										cursor: "pointer",
-										padding: 0,
-										transition: "all 0.2s",
-									}}
-									aria-label={`Sector ${i + 1}`}
-								/>
-							))}
-						</div>
-					)}
-				</div>
 			</div>
 
-			<div className="text-brand-red" style={{ position: "absolute", bottom: "1.5rem", left: 0, right: 0, display: "flex", justifyContent: "center", zIndex: 10 }}>
+			{/* Dot navigation */}
+			{sectors.length > 1 && (
+				<div style={{
+					position: "absolute",
+					bottom: "3rem",
+					left: "50%",
+					transform: "translateX(-50%)",
+					display: "flex",
+					gap: 6,
+					zIndex: 10,
+				}}>
+					{sectors.map((_, i) => (
+						<button
+							key={i}
+							onClick={() => setActive(i)}
+							style={{
+								height: i === active ? 10 : 8,
+								width: i === active ? 10 : 8,
+								borderRadius: "50%",
+								background: i === active ? "white" : "rgba(255,255,255,0.35)",
+								border: "none",
+								cursor: "pointer",
+								padding: 0,
+								transition: "all 0.2s",
+							}}
+							aria-label={`Sector ${i + 1}`}
+						/>
+					))}
+				</div>
+			)}
+
+			{/* Bounce arrow */}
+			<div className="text-brand-red" style={{
+				position: "absolute",
+				bottom: "1.5rem",
+				left: 0,
+				right: 0,
+				display: "flex",
+				justifyContent: "center",
+				zIndex: 10,
+			}}>
 				<svg className="h-5 w-5 animate-bounce" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
 					<path d="M19 9l-7 7-7-7" />
 				</svg>
