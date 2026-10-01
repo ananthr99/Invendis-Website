@@ -17,7 +17,7 @@
     ],
     "cta": {
       "label": "Browse Products →",
-      "href": "/products"
+      "href": "/products/product-selector"
     }
   },
   "hero": {
