@@ -98,7 +98,7 @@ function VariantsTable({ variants, part_datasheets }) {
 								))}
 								<td style={{ padding: "8px 12px" }}>
 									{ds === "contact_us"
-										? <a href="/contact" style={{ fontSize: 12, color: "#E63946", fontWeight: 600, textDecoration: "none" }}>Contact Us</a>
+										? <a href={ds.startsWith("http") ? ds : `${BASE}${ds}`} target="_blank" rel="noopener noreferrer" style={{ fontSize: 12, color: "#1260A8", fontWeight: 600, textDecoration: "none" }}>↓ PDF</a>
 										: ds
 											? <a href={ds} target="_blank" rel="noopener noreferrer" style={{ fontSize: 12, color: "#1260A8", fontWeight: 600, textDecoration: "none" }}>↓ PDF</a>
 											: <span style={{ color: "#9ca3af", fontSize: 12 }}>—</span>
@@ -247,7 +247,7 @@ export default function ProductModal({ id, onClose, onCompare, isCompared, compa
 							{tab === "datasheet" && d.datasheet && (
 								<div style={{ padding: "1.5rem 0" }}>
 									<a
-										href={d.datasheet}
+										href={d.datasheet.startsWith("http") ? d.datasheet : `${BASE}${d.datasheet}`}
 										target="_blank"
 										rel="noopener noreferrer"
 										style={{
