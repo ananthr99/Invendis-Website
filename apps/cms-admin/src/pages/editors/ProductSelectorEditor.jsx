@@ -24,6 +24,7 @@ export default function ProductSelectorEditor() {
 	const { token, toast, setDirty, isDirty, showConfirm, userEmail } = useAdmin();
 	const [index, setIndex] = useState(null);
 	const [loading, setLoading] = useState(true);
+	const [loadError, setLoadError] = useState(null);
 	const [view, setView] = useState("list");
 	const [product, setProduct] = useState(null);
 	const [originalProduct, setOriginalProduct] = useState(null);
@@ -42,9 +43,10 @@ export default function ProductSelectorEditor() {
 		if (!token || loadedRef.current === token) return;
 		loadedRef.current = token;
 		setLoading(true);
+		setLoadError(null);
 		loadPageContent(INDEX_PATH, token)
 			.then(data => setIndex(data))
-			.catch(err => toast(err.message, "err"))
+			.catch(err => { setLoadError(err.message); toast(err.message, "err"); })
 			.finally(() => setLoading(false));
 	}, [token]);
 
@@ -96,6 +98,14 @@ export default function ProductSelectorEditor() {
 		if (!product) return;
 		if (!product.id.trim()) { toast("Product ID is required", "err"); return; }
 		if (!product.name.trim()) { toast("Product name is required", "err"); return; }
+		if (view === "new" && index.products.some(p => p.id === product.id.trim())) {
+			toast(`A product with ID "${product.id.trim()}" already exists`, "err");
+			return;
+		}
+		if (product.cat && !index.cats.includes(product.cat)) {
+			toast(`Category "${product.cat}" is not a recognised category. Please pick one from the list.`, "err");
+			return;
+		}
 		setSaving(true);
 		try {
 			let p = { ...product };
@@ -213,7 +223,23 @@ export default function ProductSelectorEditor() {
 
 	if (!token) return <p style={{ color: "var(--admin-muted)" }}>Enter a GitHub token in Setup first.</p>;
 	if (loading) return <p style={{ color: "var(--admin-muted)" }}>Loading product index…</p>;
-	if (!index) return null;
+	
+	if (!index) return (
+		<div style={{ padding: 40, textAlign: "center" }}>
+			<p style={{ color: "var(--admin-red)", marginBottom: 8, fontWeight: 600 }}>
+				Failed to load product index
+			</p>
+			<p style={{ color: "var(--admin-muted)", fontSize: 13, marginBottom: 20 }}>
+				{loadError ?? "Unknown error"}
+			</p>
+			<button
+				className="admin-btn admin-btn--primary"
+				onClick={() => { loadedRef.current = null; setLoading(true); setLoadError(null); loadPageContent(INDEX_PATH, token).then(setIndex).catch(err => { setLoadError(err.message); toast(err.message, "err"); }).finally(() => setLoading(false)); }}
+			>
+				Retry
+			</button>
+		</div>
+	);
 
 	const isEdit = view === "edit" || view === "new";
 

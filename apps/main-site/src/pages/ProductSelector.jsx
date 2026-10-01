@@ -4,16 +4,10 @@ import PageSEO from "../components/shared/PageSEO.jsx";
 import { useContent } from "../hooks/useContent.js";
 import ProductModal from "../sections/product-selector/ProductModal.jsx";
 import CompareModal from "../sections/product-selector/CompareModal.jsx";
+import ProductCard from "../sections/product-selector/ProductCard.jsx";
+import SerialDropdown from "../sections/product-selector/SerialDropdown.jsx";
 
 const BASE = import.meta.env.BASE_URL.replace(/\/$/, "");
-
-function wifiLabel(v) {
-	if (!v || v === "-") return null;
-	if (v === "WiFi6") return "Wi-Fi 6";
-	if (v === "WiFi5") return "Wi-Fi 5";
-	if (v === "WiFi4") return "Wi-Fi 4";
-	return v;
-}
 
 function matchesCat(p, v) { 
 	return !v || p.cat === v; 
@@ -50,183 +44,6 @@ function matchesSearch(p, q) {
 	return p.name.toLowerCase().includes(lq) || p.desc.toLowerCase().includes(lq) || p.cat.toLowerCase().includes(lq);
 }
 
-function SerialDropdown({ value, onChange }) {
-	const [open, setOpen] = useState(false);
-	const ref = useRef(null);
-	const selected = value ? value.split(",") : [];
-	const options = [
-		{ key: "rs485", label: "RS-485" },
-		{ key: "rs232", label: "RS-232" },
-	];
-
-	useEffect(() => {
-		function handler(e) {
-			if (ref.current && !ref.current.contains(e.target)) setOpen(false);
-		}
-		document.addEventListener("mousedown", handler);
-		return () => document.removeEventListener("mousedown", handler);
-	}, []);
-
-	function toggle(key) {
-		const next = selected.includes(key)
-			? selected.filter(x => x !== key)
-			: [...selected, key];
-		onChange(next.join(","));
-	}
-
-	const label = selected.length === 0
-		? "Serial I/O: Any"
-		: selected.map(k => k === "rs485" ? "RS-485" : "RS-232").join(" + ");
-
-	return (
-		<div ref={ref} style={{ position: "relative", flex: 1, minWidth: 140 }}>
-			<button
-				onClick={() => setOpen(!open)}
-				style={{
-					width: "100%", padding: "6px 10px",
-					borderRadius: 6, border: "1px solid #d1d5db",
-					background: selected.length > 0 ? "#EFF6FF" : "white",
-					color: selected.length > 0 ? "#0369A1" : "#374151",
-					fontSize: 12, cursor: "pointer",
-					display: "flex", alignItems: "center", justifyContent: "space-between", gap: 6,
-					fontWeight: selected.length > 0 ? 600 : 400,
-				}}
-			>
-				<span>{label}</span>
-				<span style={{ fontSize: 9, opacity: 0.6 }}>{open ? "▲" : "▼"}</span>
-			</button>
-			{open && (
-				<div style={{
-					position: "absolute", top: "calc(100% + 4px)", left: 0, right: 0,
-					background: "white", border: "1px solid #e5e7eb", borderRadius: 8,
-					boxShadow: "0 4px 12px rgba(0,0,0,0.1)", zIndex: 50, overflow: "hidden",
-				}}>
-					{options.map(opt => (
-						<label
-							key={opt.key}
-							style={{
-								display: "flex", alignItems: "center", gap: 8,
-								padding: "10px 12px", cursor: "pointer",
-								background: selected.includes(opt.key) ? "#EFF6FF" : "white",
-								fontSize: 13, color: "#374151",
-							}}
-						>
-							<input
-								type="checkbox"
-								checked={selected.includes(opt.key)}
-								onChange={() => toggle(opt.key)}
-								style={{ accentColor: "#E63946" }}
-							/>
-							{opt.label}
-						</label>
-					))}
-				</div>
-			)}
-		</div>
-	);
-}
-
-function ProductCard({ product, onView, onCompare, isCompared, compareDisabled, catColors }) {
-	const colors = catColors?.[product.cat] ?? { bg: "#EEF0F3", fg: "#3A4D63" };
-
-	const [hovered, setHovered] = useState(false);
-	return (
-		<div
-			className="border border-t-4 border-black/5 border-t-transparent transition-all hover:border-t-brand-red hover:shadow-md"
-			style={{
-				background: "white", borderRadius: 12,
-				overflow: "hidden",
-				display: "flex", flexDirection: "column",
-				boxShadow: "0 1px 4px rgba(0,0,0,0.10)",
-		}}>
-			<div style={{ height: 160, background: "white", display: "flex", alignItems: "center", justifyContent: "center", padding: "1rem", position: "relative" }}>
-				{product.image
-					? <img src={product.image.startsWith("http") ? product.image : `${BASE}${product.image}`} alt={product.name} style={{ maxHeight: "100%", maxWidth: "100%", objectFit: "contain" }} />
-					: <span style={{ color: "#d1d5db", fontSize: 12 }}>No image</span>
-				}
-				<span style={{
-					position: "absolute", top: 8, right: 8,
-					background: colors.bg, color: colors.fg,
-					fontSize: 10, fontWeight: 700, padding: "2px 8px", borderRadius: 999, letterSpacing: "0.05em",
-				}}>
-					{product.cat}
-				</span>
-			</div>
-			<div style={{ padding: "1rem", flex: 1, display: "flex", flexDirection: "column", borderTop: "1px solid #e5e7eb" }}>
-				<h3 className="font-heading" style={{ fontSize: 15, fontWeight: 700, color: "#0B123C", marginBottom: 5, lineHeight: 1.3 }}>
-					{product.name}
-				</h3>
-				<p style={{ fontSize: 12, color: "#6b7280", lineHeight: 1.5, overflow: "hidden", display: "-webkit-box", WebkitLineClamp: 2, WebkitBoxOrient: "vertical" }}>
-					{product.desc}
-				</p>
-				<div style={{ display: "flex", flexWrap: "wrap", gap: 4, marginTop: "auto", paddingTop: 10 }}>
-					{product.cellular_gen && product.cellular_gen !== "-" && (
-						<span style={{ fontSize: 9, fontWeight: 600, padding: "1px 5px", borderRadius: 999, background: "#E0F2FE", color: "#0369A1" }}>
-							{product.cellular_gen}
-						</span>
-					)}
-					{wifiLabel(product.wifi) && (
-						<span style={{ fontSize: 9, fontWeight: 600, padding: "1px 5px", borderRadius: 999, background: "#F0FDF4", color: "#15803D" }}>
-							{wifiLabel(product.wifi)}
-						</span>
-					)}
-					{product.ports && product.ports !== "-" && (
-						<span style={{ fontSize: 9, fontWeight: 600, padding: "1px 5px", borderRadius: 999, background: "#FEF3C7", color: "#92400E" }}>
-							{product.ports} ports
-						</span>
-					)}
-				</div>
-				{/* Use case pills */}
-				{product.use_cases?.length > 0 && (
-					<div style={{ display: "flex", flexWrap: "wrap", gap: 4, marginTop: 8 }}>
-						{product.use_cases.slice(0, 3).map((u, i) => (
-							<span key={i} style={{
-								fontSize: 9,
-								padding: "1px 6px", borderRadius: 999,
-								background: "rgba(11,18,60,0.06)", color: "#374151",
-								border: "1px solid rgba(11,18,60,0.08)",
-							}}>
-								{u}
-							</span>
-						))}
-						{product.use_cases.length > 3 && (
-							<span style={{ fontSize: 10, padding: "3px 8px", borderRadius: 999, background: "#f3f4f6", color: "#9ca3af" }}>
-								+{product.use_cases.length - 3} more
-							</span>
-						)}
-					</div>
-				)}
-				<div style={{ display: "flex", gap: 8, marginTop: 14, alignItems: "center" }}>
-					<button
-						onClick={() => onView(product.id)}
-						style={{
-							flex: 1, background: "#0B123C", color: "white",
-							border: "none", borderRadius: 6, padding: "8px 0",
-							fontSize: 12, fontWeight: 600, cursor: "pointer",
-						}}
-					>
-						View Details
-					</button>
-					<label style={{
-						display: "flex", alignItems: "center", gap: 5,
-						cursor: compareDisabled && !isCompared ? "not-allowed" : "pointer",
-						fontSize: 11, color: "#6b7280", whiteSpace: "nowrap",
-					}}>
-						<input
-							type="checkbox"
-							checked={isCompared}
-							disabled={compareDisabled && !isCompared}
-							onChange={() => onCompare(product.id)}
-							style={{ accentColor: "#E63946" }}
-						/>
-						Compare
-					</label>
-				</div>
-			</div>
-		</div>
-	);
-}
-
 function useItemsPerPage() {
 	function calc() {
 		const w = window.innerWidth;
@@ -260,7 +77,7 @@ export default function ProductSelector() {
 	const { id: urlId } = useParams();
 	const navigate = useNavigate();
 
-	const { data: index, loading: indexLoading } = useContent("productSelector/_index.json", { withLoading: true });
+	const { data: index, loading: indexLoading, error: indexError } = useContent("productSelector/_index.json", { withLoading: true });
 
 	const q = searchParams.get("q") || "";
 	const catFilter = searchParams.get("cat") || "";
@@ -271,7 +88,7 @@ export default function ProductSelector() {
 
 	const [compareIds, setCompareIds] = useState([]);
 	const [compareOpen, setCompareOpen] = useState(false);
-	const [page, setPage] = useState(1);
+	const page = parseInt(searchParams.get("page") || "1", 10);
 	const itemsPerPage = useItemsPerPage();
 	const [modalId, setModalId] = useState(urlId || null);
 
@@ -282,9 +99,12 @@ export default function ProductSelector() {
 	}, [urlId]);
 
 	function goToPage(n) {
-		setPage(n);
+		const next = new URLSearchParams(searchParams);
+		next.set("page", String(n));
+		setSearchParams(next, { replace: true });
 		productsRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
 	}
+
 
 	function setParam(key, val) {
 		const next = new URLSearchParams(searchParams);
@@ -338,7 +158,11 @@ export default function ProductSelector() {
 	const paginated = filtered.slice((page - 1) * itemsPerPage, page * itemsPerPage);
 
 	// Reset to page 1 when filters or screen size changes
-	useEffect(() => { setPage(1); }, [q, catFilter, cellularFilter, wifiFilter, portsFilter, serialFilter, itemsPerPage]);
+	useEffect(() => {
+		const next = new URLSearchParams(searchParams);
+		next.delete("page");
+		setSearchParams(next, { replace: true });
+	}, [q, catFilter, cellularFilter, wifiFilter, portsFilter, serialFilter, itemsPerPage]);
 
 	return (
 		<>
@@ -456,6 +280,10 @@ export default function ProductSelector() {
 
 					{indexLoading ? (
 						<div style={{ textAlign: "center", padding: "4rem 0", color: "#9ca3af" }}>Loading products…</div>
+					) : indexError ? (
+						<div style={{ textAlign: "center", padding: "4rem 0" }}>
+							<p style={{ fontSize: 15, color: "#6b7280" }}>Content temporarily unavailable. Please try again later.</p>
+						</div>
 					) : filtered.length === 0 ? (
 						<div style={{ textAlign: "center", padding: "4rem 0" }}>
 							<p style={{ fontSize: 15, color: "#6b7280", marginBottom: 8 }}>No products match your filters.</p>
@@ -474,6 +302,7 @@ export default function ProductSelector() {
 										onCompare={toggleCompare}
 										isCompared={compareIds.includes(p.id)}
 										compareDisabled={compareIds.length >= 3}
+										catColors={index?.catColors ?? {}}
 									/>
 								))}
 							</div>

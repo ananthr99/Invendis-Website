@@ -43,7 +43,7 @@ function ImageCarousel({ images }) {
 	return (
 		<div>
 			<div style={{ height: 260, background: "#f8f9fa", borderRadius: 12, overflow: "hidden", display: "flex", alignItems: "center", justifyContent: "center", padding: "1.5rem", position: "relative" }}>
-				<img src={images[idx].startsWith("http") ? images[idx] : `${BASE}${images[idx]}`} alt="" style={{ maxHeight: "100%", maxWidth: "100%", objectFit: "contain" }} />
+				<img src={images[idx].startsWith("http") ? images[idx] : `${BASE}${images[idx]}`} alt="" loading="lazy" style={{ maxHeight: "100%", maxWidth: "100%", objectFit: "contain" }} />
 				{images.length > 1 && (
 					<>
 						<button

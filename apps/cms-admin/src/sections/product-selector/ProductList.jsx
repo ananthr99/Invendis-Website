@@ -1,18 +1,8 @@
 import { useState } from "react";
 import { OWNER, REPO } from "../../config.js";
+import { SPEC_FIELDS, CAT_COLORS } from "./constants.js";
 
 const DEFAULT_COLOR = { bg: "#EEF0F3", fg: "#374151" };
-
-const CAT_COLORS = {
-	"Intel Based Devices": { bg: "#FEF2F2", fg: "#991B1B" },
-	Router:                { bg: "#EAF2FB", fg: "#1260A8" },
-	Gateway:               { bg: "#E4F5EE", fg: "#0F6040" },
-	Switch:                { bg: "#FFF3E0", fg: "#8B5200" },
-	"Energy Meter":        { bg: "#F9EAF3", fg: "#7B2563" },
-	"Outdoor Unit":        { bg: "#EEF2FF", fg: "#3730A3" },
-	PCB:                   { bg: "#ECFDF5", fg: "#065F46" },
-	Other:                 { bg: "#EEF0F3", fg: "#3A4D63" },
-};
 
 function rawUrl(path) {
 	if (!path) return null;

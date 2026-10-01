@@ -1,29 +1,11 @@
 import { useState, useEffect, useRef, useLayoutEffect  } from "react";
 import { OWNER, REPO } from "../../config.js";
+import { SPEC_FIELDS, CAT_COLORS } from "./constants.js";
 
 function rawUrl(path) {
 	if (!path || path.startsWith("http")) return path;
 	return `https://raw.githubusercontent.com/${OWNER}/${REPO}/main/apps/main-site/public${path}`;
 }
-
-const SPEC_FIELDS = [
-	{ key: "cpu",          label: "Processor" },
-	{ key: "ram",          label: "RAM" },
-	{ key: "storage",      label: "Storage" },
-	{ key: "os",           label: "Operating System" },
-	{ key: "cell",         label: "Cellular Module" },
-	{ key: "cellular_gen", label: "Cellular Generation" },
-	{ key: "wifi",         label: "Wi-Fi" },
-	{ key: "rs485",        label: "RS-485" },
-	{ key: "rs232",        label: "RS-232" },
-	{ key: "ports",        label: "Port Count" },
-	{ key: "ip",           label: "IP Rating" },
-	{ key: "power",        label: "Power Supply" },
-	{ key: "housing",      label: "Housing" },
-	{ key: "dims",         label: "Dimensions" },
-	{ key: "weight",       label: "Weight" },
-	{ key: "op_temp",      label: "Operating Temp." },
-];
 
 const TABS = [
 	{ key: "core",       label: "Core" },

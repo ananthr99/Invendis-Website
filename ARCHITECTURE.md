@@ -48,29 +48,53 @@ itself:
 ```js
 sourcePath("pages/home.json") // → apps/main-site/public/content/pages/home.json  (main branch)
 livePath("pages/home.json")   // → content/pages/home.json                        (gh-pages branch)
-```
 
 No editor component needs to know the two-branch mechanics exist at
-all — it just calls `savePageContent({ contentPath, ... })`.
+all — it just calls savePageContent({ contentPath, ... }).
 
-## Every page editable from day one
+Section registry pattern
+Every page in both apps uses a registry map to decouple section
+components from page layout. Each section folder exports a registry.js:
 
-The original repo builds one bespoke editor component per page, all at
-once. Here, every page route exists in the CMS from the start, but most
-of them render `PlaceholderEditor.jsx` — a generic editor that shows the
-page's raw JSON in a textarea and saves it through the exact same
-`savePageContent` path as a real form would. It's less pleasant to use
-than a proper form, but nothing is blocked waiting for a dedicated editor
-to be built: every page is genuinely writable immediately, and pages get
-upgraded to structured forms (like `HomePageEditor.jsx` and
-`ContactPageEditor.jsx` already are) one at a time as it's worth the
-effort for that page.
 
-## Environment variables instead of hardcoded constants
+// apps/main-site/src/sections/home/registry.js
+export const HOME_SECTIONS = {
+  hero:         HeroSection,
+  whatWeDo:     WhatWeDoSection,
+  stats:        StatsSection,
+};
+The page component iterates data.sections (an ordered array of keys
+from the JSON) and renders each registered component in sequence. The
+CMS controls which sections appear and in what order by editing the
+sections array in the JSON — no code change is needed to reorder or
+hide a section.
 
-The original repo hardcodes the GitHub `OWNER`/`REPO` constants directly
+The CMS admin mirrors this exactly: each section has a corresponding
+editor component, and the same registry pattern maps section keys to
+editor components inside each page editor.
+
+Environment variables instead of hardcoded constants
+The original repo hardcodes the GitHub OWNER/REPO constants directly
 in both API wrapper files, and instructs the Azure AD client ID to be
-"hardcoded in `msalConfig.js`". Here, both come from `.env` (see each
-app's `.env.example`) via `apps/cms-admin/src/config.js` — forking the
+"hardcoded in msalConfig.js". Here, both come from .env (see each
+app's .env.example) via apps/cms-admin/src/config.js — forking the
 repo, or pointing it at a different GitHub account, is a config change,
 not a code edit.
+
+Product Selector two-file data model
+The product catalog uses a split data model to keep the main page fast
+without loading 54 full spec sheets upfront:
+
+productSelector/_index.json — lightweight card entries only (id, name, category, connectivity flags, first image, use-case tags). This single file powers the entire filter and grid view.
+productSelector/products/<id>.json — full spec sheet, images array, datasheets, variants. Fetched on demand only when a product modal is opened.
+The CMS mirrors this: saving a product writes both files. The index card
+entry is derived from the full product data at save time, so the two
+files are always in sync.
+
+Every page has a structured editor
+All pages — Home, Sectors, Products, Product Selector, Case Studies,
+Company, Contact, Resources, Silbo, Gallery, Careers — have dedicated
+structured-form editors in the CMS admin. There is no longer any page
+that falls back to raw JSON editing. PlaceholderEditor.jsx remains in
+the codebase as a safety net for pages added in the future before their
+editor is built, but it is not wired to any active route.

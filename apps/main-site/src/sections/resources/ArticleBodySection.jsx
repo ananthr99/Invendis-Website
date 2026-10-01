@@ -30,7 +30,7 @@ function ContentBlock({ block }) {
 		case "image":
 			return (
 				<figure style={{ margin: "1.5rem 0 2rem" }}>
-					<img src={siteImg(block.src)} alt={block.caption ?? ""} style={{ width: "100%", borderRadius: 10, border: "1px solid #e2e8f0", display: "block" }} />
+					<img src={siteImg(block.src)} alt={block.caption ?? ""} loading="lazy" style={{ width: "100%", borderRadius: 10, border: "1px solid #e2e8f0", display: "block" }} />
 					{block.caption && (
 						<figcaption style={{ marginTop: 8, fontSize: 12, color: "#9ca3af", textAlign: "center" }}>{block.caption}</figcaption>
 					)}

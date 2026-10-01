@@ -3,9 +3,13 @@ import PageSEO from "../components/shared/PageSEO.jsx";
 import { CASE_STUDIES_SECTIONS } from "../sections/case-studies/registry.js";
 
 export default function CaseStudies() {
-	const { data, loading } = useContent("pages/caseStudies.json", { withLoading: true });
-
-	if (loading || !data) return null;
+	const { data, loading, error } = useContent("pages/caseStudies.json", { withLoading: true });
+	if (loading) return null;
+	if (error || !data) return (
+		<div style={{ minHeight: "60vh", display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column", gap: 12 }}>
+			<p style={{ color: "#6b7280", fontSize: 15 }}>Content temporarily unavailable. Please try again later.</p>
+		</div>
+	);
 
 	return (
 		<>

@@ -3,9 +3,13 @@ import PageSEO from "../components/shared/PageSEO.jsx";
 import { PRODUCT_SECTIONS } from "../sections/products/registry.js";
 
 export default function Products() {
-	const { data, loading } = useContent("pages/products.json", { withLoading: true });
-
-	if (loading || !data) return null;
+	const { data, loading, error } = useContent("pages/products.json", { withLoading: true });
+	if (loading) return null;
+	if (error || !data) return (
+		<div style={{ minHeight: "60vh", display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column", gap: 12 }}>
+			<p style={{ color: "#6b7280", fontSize: 15 }}>Content temporarily unavailable. Please try again later.</p>
+		</div>
+	);
 
 	return (
 		<>

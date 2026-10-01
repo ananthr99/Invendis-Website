@@ -19,6 +19,12 @@ function sourcePath(contentPath) {
 function livePath(contentPath) {
 	return `content/${contentPath}`;
 }
+function rethrowConflict(err) {
+	if (err?.message?.includes("409") || err?.message?.toLowerCase().includes("conflict")) {
+		throw new Error("Another editor saved this file while you were editing. Please refresh and try again.");
+	}
+	throw err;
+}
 
 /**
  * The one function every page editor calls to save. Writes to both
@@ -40,7 +46,7 @@ export async function savePageContent({ token, contentPath, before, after, page,
 		sha: mainSha,
 		branch: "main",
 		token,
-	});
+	}).catch(rethrowConflict);
 
 	const liveSha = await github.getFileSha(livePath(contentPath), { branch: LIVE_BRANCH, token });
 	await github.writeFile(livePath(contentPath), json, {
@@ -48,7 +54,7 @@ export async function savePageContent({ token, contentPath, before, after, page,
 		sha: liveSha,
 		branch: LIVE_BRANCH,
 		token,
-	});
+	}).catch(rethrowConflict);
 
 	await appendChangelogEntry(github, token, { page, section, before, after, userEmail });
 }
@@ -75,7 +81,7 @@ export async function uploadImage(imagePath, base64, { token, message }) {
 		sha: mainSha,
 		branch: "main",
 		token,
-	});
+	}).catch(rethrowConflict);
 
 	const liveSha = await github.getFileSha(liveFullPath, { branch: LIVE_BRANCH, token });
 	await github.writeFileBase64(liveFullPath, base64, {
@@ -83,5 +89,6 @@ export async function uploadImage(imagePath, base64, { token, message }) {
 		sha: liveSha,
 		branch: LIVE_BRANCH,
 		token,
-	});
+	}).catch(rethrowConflict);
+
 }

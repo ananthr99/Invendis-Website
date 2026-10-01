@@ -17,9 +17,9 @@ export function useContent(path, { withLoading = false } = {}) {
 	const [error, setError] = useState(null);
 
 	useEffect(() => {
-		// cache-bust with a timestamp so we never see a stale CDN/browser copy
-		// right after an editor saves a change
-		fetch(`${BASE}content/${path}?t=${Date.now()}`, { cache: "no-store" })
+		// Browser HTTP cache handles freshness. The in-memory memCache
+		// prevents duplicate fetches within the same session.
+		fetch(`${BASE}content/${path}`)
 			.then((r) => {
 				if (!r.ok) throw new Error(`Failed to load ${path} (${r.status})`);
 				return r.json();
