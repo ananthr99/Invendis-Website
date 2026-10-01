@@ -6,6 +6,7 @@ const CONTENT_LINKS = [
   { path: "/content/home",         label: "Home" },
   { path: "/content/sectors",      label: "Sectors" },
   { path: "/content/products",     label: "Products" },
+  { path: "/content/product-selector", label: "Product Selector" },
   { path: "/content/silbo",        label: "SILBO" },
   { path: "/content/case-studies", label: "Case Studies" },
   { path: "/content/resources",    label: "Resources" },

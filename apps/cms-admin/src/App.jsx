@@ -15,6 +15,7 @@ import ArticleDetailEditor from "./pages/editors/ArticleDetailEditor.jsx";
 import CaseStudiesPageEditor from "./pages/editors/CaseStudiesPageEditor.jsx";
 import SilboPageEditor from "./pages/editors/SilboPageEditor.jsx";
 import CareersPageEditor from "./pages/editors/CareersPageEditor.jsx";
+import ProductSelectorEditor from "./pages/editors/ProductSelectorEditor.jsx";
 import LogPage from "./pages/LogPage.jsx";
 
 export default function App() {
@@ -44,6 +45,7 @@ export default function App() {
 				<Route path="content/case-studies" element={<CaseStudiesPageEditor />} />
 				<Route path="content/silbo" element={<SilboPageEditor />} />
 				<Route path="content/careers" element={<CareersPageEditor />} />
+				<Route path="content/product-selector" element={<ProductSelectorEditor />} />
 				<Route path="log" element={<LogPage />} />
 			</Route>
 		</Routes>
