@@ -1,5 +1,25 @@
 [
   {
+    "timestamp": "2026-10-01T10:35:18.142Z",
+    "userEmail": "ananth.r@invendis.com",
+    "page": "Home",
+    "section": null,
+    "changes": [
+      {
+        "section": "topBar",
+        "field": "cta",
+        "before": {
+          "label": "Browse Products →",
+          "href": "/products"
+        },
+        "after": {
+          "label": "Browse Products →",
+          "href": "/products/product-selector"
+        }
+      }
+    ]
+  },
+  {
     "timestamp": "2026-10-01T06:23:57.412Z",
     "userEmail": "ananth.r@invendis.com",
     "page": "Product Selector",
