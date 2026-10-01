@@ -151,7 +151,7 @@ function ProductCard({ product, onView, onCompare, isCompared, compareDisabled }
 		}}>
 			<div style={{ height: 160, background: "white", display: "flex", alignItems: "center", justifyContent: "center", padding: "1rem", position: "relative" }}>
 				{product.image
-					? <img src={product.image} alt={product.name} style={{ maxHeight: "100%", maxWidth: "100%", objectFit: "contain" }} />
+					? <img src={product.image.startsWith("http") ? product.image : `${BASE}${product.image}`} alt={product.name} style={{ maxHeight: "100%", maxWidth: "100%", objectFit: "contain" }} />
 					: <span style={{ color: "#d1d5db", fontSize: 12 }}>No image</span>
 				}
 				<span style={{
