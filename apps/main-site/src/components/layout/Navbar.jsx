@@ -50,7 +50,7 @@ export default function Navbar() {
 							src={publicUrl("/silbo_logo.webp")}
 							alt={settings.silboBadge.label}
 							className="h-8 w-auto"
-							width="142" height="32"
+							width="281" height="80"
 						/>
 					</Link>
 				)}

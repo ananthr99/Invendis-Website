@@ -67,7 +67,7 @@ export default function Footer() {
 								src={publicUrl("/silbo_logo.webp")}
 								alt={settings.silboBadge.label ?? "SILBO"}
 								className="h-9 w-auto brightness-0 invert"
-								width="160" height="36"
+								width="281" height="80"
 							/>
 						)}
 					</div>
@@ -164,7 +164,7 @@ export default function Footer() {
 
 			</div>
 
-			<div className="mx-auto mt-10 flex max-w-screen-2xl flex-wrap items-center gap-x-6 gap-y-2 border-t border-white/10 pt-6 text-xs text-white/40">
+			<div className="mx-auto mt-10 flex max-w-screen-2xl flex-wrap items-center gap-x-6 gap-y-2 border-t border-white/10 pt-6 text-xs text-white/60">
 				<span>&copy; {year} Invendis Technologies India Private Limited. All rights reserved.</span>
 				<Link to="/privacy" className="transition-colors hover:text-white/70">Privacy Policy</Link>
 				<Link to="/terms" className="transition-colors hover:text-white/70">Terms of Use</Link>

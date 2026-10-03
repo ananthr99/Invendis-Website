@@ -30,6 +30,7 @@ export default function WhatWeDoSection({ data }) {
 								<Link
 									to={card.href}
 									className="mt-4 text-sm font-semibold text-brand-red hover:underline"
+									aria-label={`Read more about ${card.title}`}
 								>
 									Read more →
 								</Link>
