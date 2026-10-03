@@ -31,6 +31,12 @@ export default class ErrorBoundary extends Component {
 					>
 						Reload page
 					</button>
+					<a
+						href={import.meta.env.BASE_URL}
+						className="text-sm font-medium text-brand-blue hover:underline"
+					>
+						Go to homepage
+					</a>
 				</div>
 			);
 		}
