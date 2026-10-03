@@ -11,7 +11,7 @@ export default function HeroSection({ data }) {
 						{title}
 						<span className="text-brand-red">{titleHighlight}</span>
 					</h1>
-					<p className="mt-4 text-[15px] leading-relaxed text-white/35 lg:max-w-md">{subtitle}</p>
+					<p className="mt-4 text-[15px] leading-relaxed text-white/65 lg:max-w-md">{subtitle}</p>
 					{cta && (
 						<Link
 							to={cta.href}
