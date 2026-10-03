@@ -63,7 +63,7 @@ function DefaultIcon({ className }) {
 	);
 }
 
-function RotatingImage({ imgs }) {
+function RotatingImage({ imgs, label }) {
 	const [idx, setIdx] = useState(0);
 
 	useEffect(() => {
@@ -88,7 +88,7 @@ function RotatingImage({ imgs }) {
 				<img
 					key={i}
 					src={siteImg(src)}
-					alt="SILBO lineup"
+					alt={label || "SILBO product lineup"}
 					style={{
 						position: "absolute",
 						inset: 0,
@@ -139,7 +139,7 @@ export default function SilboProductsSection({ data }) {
 				<div className="mb-6 flex flex-col gap-6 sm:flex-row sm:items-center sm:gap-12" style={{ borderRadius: 16, border: "1px solid rgba(255,255,255,0.15)", background: "rgba(255,255,255,0.06)", padding: "1.5rem 2rem" }}>
 					<p className="text-[15px] leading-relaxed text-white/80 sm:flex-1">{intro}</p>
 						<div className="sm:w-[220px] sm:flex-none" style={{ height: 140, borderRadius: 12, overflow: "hidden", border: "1px solid rgba(255,255,255,0.1)" }}>
-						<RotatingImage imgs={imgs} />
+						<RotatingImage imgs={imgs} label={title} />
 					</div>
 				</div>
 

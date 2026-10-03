@@ -13,6 +13,7 @@
     "build": "npm run build --workspace=apps/main-site",
     "build:admin": "npm run build --workspace=apps/cms-admin",
     "build:all": "npm run build && npm run build:admin",
+    "prerender": "npm run prerender --workspace=apps/main-site",
     "format": "prettier --write \"apps/**/*.{js,jsx,json}\" \"packages/**/*.{js,jsx,json}\""
   },
   "devDependencies": {

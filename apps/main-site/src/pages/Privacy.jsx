@@ -23,7 +23,7 @@ function BulletList({ items }) {
 export default function Privacy() {
 	return (
 		<>
-			<PageSEO title="Privacy Policy — INVENDIS Technologies" path="/privacy" />
+			<PageSEO title="Privacy Policy" description="Read INVENDIS Technologies' privacy policy covering data collection, usage, and your rights." path="/privacy" />
 			<div className="min-h-screen bg-brand-light">
 				<div className="mx-auto max-w-3xl px-6 py-14 sm:px-8">
 

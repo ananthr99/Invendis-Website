@@ -83,7 +83,7 @@ export default function ProductSelector() {
 
 	return (
 		<>
-			<PageSEO title="Product Selector" path="/products/product-selector" />
+			<PageSEO title="Product Selector" description="Browse and filter the full INVENDIS product lineup by connectivity, ports, and form factor to find the right IIoT device for your deployment." path="/products/product-selector" />
 			<HeroSection />
 
 			<section ref={productsRef} className="px-4 py-10 sm:px-8" style={{ background: "#f4f6f9", minHeight: 600, paddingBottom: compareIds.length > 0 ? "6rem" : undefined }}>

@@ -23,7 +23,7 @@ function BulletList({ items }) {
 export default function Terms() {
 	return (
 		<>
-			<PageSEO title="Terms of Use — INVENDIS Technologies" path="/terms" />
+			<PageSEO title="Terms of Use" description="Terms of use for INVENDIS Technologies' website, products, and services." path="/terms" />
 			<div className="min-h-screen bg-brand-light">
 				<div className="mx-auto max-w-3xl px-6 py-14 sm:px-8">
 

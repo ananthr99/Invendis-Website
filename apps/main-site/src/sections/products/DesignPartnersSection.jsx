@@ -15,7 +15,7 @@ export default function DesignPartnersSection({ data }) {
 						return (
 							<div key={partner.name}>
 								{logo ? (
-									<img src={siteImg(logo)} alt={partner.name} style={{ height: 28, objectFit: "contain", filter: "grayscale(1) opacity(0.55)" }} />
+									<img src={siteImg(logo)} alt={partner.name} loading="lazy" style={{ height: 28, objectFit: "contain", filter: "grayscale(1) opacity(0.55)" }} />
 								) : (
 									<span className="cursor-default text-xl font-semibold tracking-wider text-brand-muted transition-colors hover:text-brand-blue uppercase">
 									    {partner.name}

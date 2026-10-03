@@ -5,6 +5,7 @@ import Navbar from "./components/layout/Navbar.jsx";
 import Footer from "./components/layout/Footer.jsx";
 import TopBarSection from "./sections/home/TopBarSection.jsx";
 import FloatingButtons from "./components/layout/FloatingButtons.jsx";
+import SiteStructuredData from "./components/shared/SiteStructuredData.jsx";
 
 // Every route is lazy-loaded so the initial bundle only pays for the page
 // the visitor actually landed on. Same pattern as the original site.
@@ -53,6 +54,7 @@ export default function App() {
 	return (
 		<div className="flex min-h-screen flex-col">
 			<ScrollToTop />
+			<SiteStructuredData />
 			<div className="sticky top-0 z-50">
 				<Navbar />
 				<TopBarSection hideCta={pathname.startsWith("/products/product-selector")} />

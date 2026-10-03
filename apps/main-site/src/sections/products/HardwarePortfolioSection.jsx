@@ -24,7 +24,7 @@ function ProductImage({ image, label }) {
 	}
 	return (
 		<div style={{ height: 160, marginBottom: "1rem", borderRadius: "0.75rem", overflow: "hidden", background: "#f1f5f9", display: "flex", alignItems: "center", justifyContent: "center" }}>
-			<img src={siteImg(src)} alt={label} style={{ width: "100%", height: "100%", objectFit: "contain", padding: "0.5rem" }} />
+			<img src={siteImg(src)} alt={label} loading="lazy" style={{ width: "100%", height: "100%", objectFit: "contain", padding: "0.5rem" }} />
 		</div>
 	);
 }

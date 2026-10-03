@@ -33,7 +33,7 @@ const SPEC_FIELDS = [
 	{ key: "op_temp", label: "Operating Temp." },
 ];
 
-function ImageCarousel({ images }) {
+function ImageCarousel({ images, name }) {
 	const [idx, setIdx] = useState(0);
 	if (!images?.length) return (
 		<div style={{ height: 260, background: "#f3f4f6", borderRadius: 12, display: "flex", alignItems: "center", justifyContent: "center" }}>
@@ -43,7 +43,7 @@ function ImageCarousel({ images }) {
 	return (
 		<div>
 			<div style={{ height: 260, background: "#f8f9fa", borderRadius: 12, overflow: "hidden", display: "flex", alignItems: "center", justifyContent: "center", padding: "1.5rem", position: "relative" }}>
-				<img src={images[idx].startsWith("http") ? images[idx] : `${BASE}${images[idx]}`} alt="" loading="lazy" style={{ maxHeight: "100%", maxWidth: "100%", objectFit: "contain" }} />
+				<img src={images[idx].startsWith("http") ? images[idx] : `${BASE}${images[idx]}`} alt={name || "Product Image"} loading="lazy" style={{ maxHeight: "100%", maxWidth: "100%", objectFit: "contain" }} />
 				{images.length > 1 && (
 					<>
 						<button
@@ -164,7 +164,7 @@ export default function ProductModal({ id, onClose, onCompare, isCompared, compa
 				) : (
 					<div style={{ padding: "28px 28px 32px" }}>
 						<div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
-							<ImageCarousel images={d.images} />
+							<ImageCarousel images={d.images} name={d.name} />
 							<div>
 								{d.cat && (
 									<span style={{ display: "inline-block", background: colors.bg, color: colors.fg, fontSize: 10, fontWeight: 700, padding: "3px 10px", borderRadius: 999, letterSpacing: "0.05em", marginBottom: 10 }}>

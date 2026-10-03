@@ -13,7 +13,7 @@ export default function Home() {
 
 	return (
 		<>
-			<PageSEO title="Home" description={data.hero?.subtitle} path="/" />
+			<PageSEO title="Industrial IoT Solutions & Edge Hardware" description={data.hero?.subtitle} path="/" />
 			{(data.sections ?? []).map((key) => {
 				const Section = HOME_SECTIONS[key];
 				return Section ? <Section key={key} data={data[key]} /> : null;

@@ -13,7 +13,7 @@ export default function Silbo() {
 
 	return (
 		<>
-			<PageSEO title="SILBO" description={data.hero?.description} path="/silbo" />
+			<PageSEO title="SILBO — Industrial Edge Networking" description={data.hero?.description} path="/silbo" />
 			{(data.sections ?? []).map((key) => {
 				const Section = SILBO_SECTIONS[key];
 				return Section ? <Section key={key} data={data[key]} /> : null;

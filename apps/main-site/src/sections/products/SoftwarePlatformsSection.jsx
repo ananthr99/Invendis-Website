@@ -54,7 +54,7 @@ export default function SoftwarePlatformsSection({ data }) {
 						</div>
 						<div className="sm:w-[380px] sm:flex-none" style={{ height: 220, borderRadius: 12, overflow: "hidden", border: "1px solid rgba(0,0,0,0.07)", background: "white" }}>
 							{featuredImg ? (
-								<img src={siteImg(featuredImg)} alt={featured.name} style={{ width: "100%", height: "100%", objectFit: "contain" }} />
+								<img src={siteImg(featuredImg)} alt={featured.name} loading="lazy" style={{ width: "100%", height: "100%", objectFit: "contain" }} />
 							) : (
 								<div className="flex h-full w-full items-center justify-center bg-white">
 									<CameraIcon className="h-6 w-6 text-brand-muted/30" />

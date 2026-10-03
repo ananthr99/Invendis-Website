@@ -26,6 +26,15 @@ jobs:
         run: npm run build
         env:
           VITE_BASE: /Invendis-Website/
+          VITE_SITE_URL: https://ananthr99.github.io/Invendis-Website
+
+      - name: Save SPA shell as 404 fallback
+        run: cp apps/main-site/dist/index.html apps/main-site/dist/404.html
+
+      - name: Prerender main-site routes
+        run: npm run prerender
+        env:
+          VITE_BASE: /Invendis-Website/
 
       - name: Build cms-admin
         run: npm run build:admin
@@ -43,10 +52,8 @@ jobs:
           mkdir -p apps/main-site/dist/cms-admin
           cp -r apps/cms-admin/dist/. apps/main-site/dist/cms-admin/
 
-      - name: Add SPA 404 fallback
-        run: |
-          cp apps/main-site/dist/index.html apps/main-site/dist/404.html
-          cp apps/cms-admin/dist/index.html apps/main-site/dist/cms-admin/404.html
+      - name: Add cms-admin 404 fallback
+        run: cp apps/cms-admin/dist/index.html apps/main-site/dist/cms-admin/404.html
 
       - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v4

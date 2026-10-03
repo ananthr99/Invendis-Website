@@ -13,7 +13,7 @@ export default function Products() {
 
 	return (
 		<>
-			<PageSEO title="Products" description={data.hero?.subtitle} path="/products" />
+			<PageSEO title="Industrial IoT Hardware & Software" description={data.hero?.subtitle} path="/products" />
 			{(data.sections ?? []).map((key) => {
 				const Section = PRODUCT_SECTIONS[key];
 				return Section ? <Section key={key} data={data[key]} /> : null;
