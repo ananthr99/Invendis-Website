@@ -1,0 +1,4 @@
+Contact: mailto:sales@invendis.com
+Expires: 2027-10-03T00:00:00.000Z
+Preferred-Languages: en
+Canonical: https://ananthr99.github.io/Invendis-Website/.well-known/security.txt

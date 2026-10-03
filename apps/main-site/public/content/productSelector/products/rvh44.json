@@ -21,7 +21,7 @@
 	"weight": "400 gm",
 	"op_temp": "0 ~ 60°C",
 	"images": [
-		"/images/product-selector/rvh44/RVH44.png"
+		"/images/product-selector/rvh44/RVH44.webp"
 	],
 	"use_cases": [
 		"Industrial IoT & Telemetry Aggregation",

@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useContent } from "../../hooks/useContent.js";
+import { absoluteUrl } from "../../utils/siteUrl.js";
 
 const BASE = import.meta.env.BASE_URL.replace(/\/$/, "");
 
@@ -113,6 +114,17 @@ function VariantsTable({ variants, part_datasheets }) {
 	);
 }
 
+function injectSchema(id, schema) {
+	let tag = document.querySelector(`script[data-schema="${id}"]`);
+	if (!tag) {
+		tag = document.createElement("script");
+		tag.type = "application/ld+json";
+		tag.setAttribute("data-schema", id);
+		document.head.appendChild(tag);
+	}
+	tag.textContent = JSON.stringify(schema);
+}
+
 export default function ProductModal({ id, onClose, onCompare, isCompared, compareDisabled, catColors }) {
 	const { data: product, loading } = useContent(`productSelector/products/${id}.json`, { withLoading: true });
 	const [tab, setTab] = useState("specs");
@@ -131,6 +143,24 @@ export default function ProductModal({ id, onClose, onCompare, isCompared, compa
 		document.body.style.overflow = "hidden";
 		return () => { document.body.style.overflow = ""; };
 	}, []);
+
+	useEffect(() => {
+		if (!product) return;
+		injectSchema("ld-product", {
+			"@context": "https://schema.org",
+			"@type": "Product",
+			"name": product.name,
+			"description": product.desc,
+			"image": (product.images ?? []).map(img => absoluteUrl(img)),
+			"brand": { "@type": "Brand", "name": "INVENDIS" },
+			"url": absoluteUrl(`/products/product-selector/${product.id}`),
+			"sku": product.id,
+			"category": product.cat,
+		});
+		return () => {
+			document.querySelector('script[data-schema="ld-product"]')?.remove();
+		};
+	}, [product]);
 
 	const hidden = new Set(d.hidden_fields ?? []);
 	const visibleSpecs = SPEC_FIELDS.filter(f => !hidden.has(f.key));

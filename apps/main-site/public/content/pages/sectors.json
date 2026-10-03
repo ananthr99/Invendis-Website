@@ -16,7 +16,7 @@
         "name": "Edge Compute & Industrial Networks",
         "tagline": "Industrial-grade routers, SD-WAN, and protocol converters for harsh environments.",
         "image": [
-          "/images/sectors/edge/hero/hero.png"
+          "/images/sectors/edge/hero/hero.webp"
         ]
       },
       {
@@ -24,7 +24,7 @@
         "name": "Telecom Tower Infrastructure",
         "tagline": "Remote monitoring & operations automation for passive telecom infrastructure at scale.",
         "image": [
-          "/images/sectors/telecom/hero/hero.png"
+          "/images/sectors/telecom/hero/hero.webp"
         ]
       },
       {
@@ -32,7 +32,7 @@
         "name": "Solar & Renewable Energy",
         "tagline": "End-to-end visibility over solar and hybrid energy assets, from edge device to cloud.",
         "image": [
-          "/images/sectors/solar/hero/hero.png"
+          "/images/sectors/solar/hero/hero.webp"
         ]
       },
       {
@@ -40,7 +40,7 @@
         "name": "Smart Energy & Utilities",
         "tagline": "Tariff-grade smart metering, utility billing, and consumption analytics.",
         "image": [
-          "/images/sectors/energy/hero/hero.png"
+          "/images/sectors/energy/hero/hero.webp"
         ]
       },
       {
@@ -48,7 +48,7 @@
         "name": "ESG & Sustainability",
         "tagline": "Carbon tracking, ESG reporting, and sustainability analytics on live energy data.",
         "image": [
-          "/images/sectors/esg/hero/hero.png"
+          "/images/sectors/esg/hero/hero.webp"
         ]
       }
     ]
@@ -62,9 +62,9 @@
       {
         "key": "edge",
         "image": [
-          "/images/sectors/edge/card/card1.png",
-          "/images/sectors/edge/card/card2.png",
-          "/images/sectors/edge/card/card3.png"
+          "/images/sectors/edge/card/card1.webp",
+          "/images/sectors/edge/card/card2.webp",
+          "/images/sectors/edge/card/card3.webp"
         ],
         "name": "Edge Compute & Industrial Networks",
         "description": "Industrial-grade routers, gateways, and SD-WAN solutions for mission-critical connectivity in harsh environments. Our SILBO product line powers connectivity for tower companies, utilities, and manufacturers.",
@@ -84,10 +84,10 @@
       {
         "key": "telecom",
         "image": [
-          "/images/sectors/telecom/card/card1.png",
-          "/images/sectors/telecom/card/card2.png",
-          "/images/sectors/telecom/card/card3.png",
-          "/images/sectors/telecom/card/card4.png"
+          "/images/sectors/telecom/card/card1.webp",
+          "/images/sectors/telecom/card/card2.webp",
+          "/images/sectors/telecom/card/card3.webp",
+          "/images/sectors/telecom/card/card4.webp"
         ],
         "name": "Telecom Tower Infrastructure",
         "description": "End-to-end remote monitoring and operations automation for passive telecom infrastructure. Alarm management, energy optimisation, field mobility, and trouble ticketing — deployed across 150K+ sites in 32 countries.",
@@ -111,8 +111,8 @@
       {
         "key": "solar",
         "image": [
-          "/images/sectors/solar/card/card1.png",
-          "/images/sectors/solar/card/card2.png"
+          "/images/sectors/solar/card/card1.webp",
+          "/images/sectors/solar/card/card2.webp"
         ],
         "name": "Solar & Renewable Energy",
         "description": "Real-time visibility over solar and hybrid energy assets. Integrated monitoring, billing, and analytics from edge devices to cloud dashboards — supporting both on-grid and off-grid deployments.",
@@ -133,8 +133,8 @@
       {
         "key": "energy",
         "image": [
-          "/images/sectors/energy/card/card1.png",
-          "/images/sectors/energy/card/card2.png"
+          "/images/sectors/energy/card/card1.webp",
+          "/images/sectors/energy/card/card2.webp"
         ],
         "name": "Smart Energy & Utilities",
         "description": "Tariff-grade smart meters and IoT-enabled utility management. Automated billing, consumption analytics, and regulatory compliance for utilities, municipalities, and industrial consumers.",
@@ -154,8 +154,8 @@
       {
         "key": "esg",
         "image": [
-          "/images/sectors/esg/card/card1.png",
-          "/images/sectors/esg/card/card2.png"
+          "/images/sectors/esg/card/card1.webp",
+          "/images/sectors/esg/card/card2.webp"
         ],
         "name": "ESG & Sustainability for Solar Applications",
         "description": "ESG reporting and sustainability analytics built directly on real-time energy data. Track carbon footprint, renewable energy credits, and compliance metrics automatically — no manual data entry.",

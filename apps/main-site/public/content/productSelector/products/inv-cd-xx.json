@@ -20,7 +20,7 @@
 	"dims": "150 x 210 x 65 mm (LxWxH)",
 	"weight": "995 gm",
 	"op_temp": "0–50°C",
-	"images": ["/images/product-selector/inv-cd-xx/inv-cd-xx_1.png","/images/product-selector/inv-cd-xx/inv-cd-xx_2.png","/images/product-selector/inv-cd-xx/inv-cd-xx_3.png"],
+	"images": ["/images/product-selector/inv-cd-xx/inv-cd-xx_1.webp","/images/product-selector/inv-cd-xx/inv-cd-xx_2.webp","/images/product-selector/inv-cd-xx/inv-cd-xx_3.webp"],
 	"use_cases": [
 		"Industrial Machine Vision & Quality Inspection",
 		"Smart Traffic & Transportation Edge Nodes",

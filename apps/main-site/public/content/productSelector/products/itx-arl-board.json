@@ -20,7 +20,7 @@
 	"dims": "210 x 203 x 60 mm",
 	"weight": "1400 gm",
 	"op_temp": "0–50°C",
-	"images": ["/images/product-selector/itx-arl-board/itx-arl-board_1.png","/images/product-selector/itx-arl-board/itx-arl-board_2.png","/images/product-selector/itx-arl-board/itx-arl-board_3.png"],
+	"images": ["/images/product-selector/itx-arl-board/itx-arl-board_1.webp","/images/product-selector/itx-arl-board/itx-arl-board_2.webp","/images/product-selector/itx-arl-board/itx-arl-board_3.webp"],
 	"use_cases": [
 		"AI-Powered Edge Vision & Video Analytics",
 		"Industrial IoT Gateway & Automation Controller",

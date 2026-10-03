@@ -20,7 +20,7 @@
 	"dims": "110 x 26 x 95 mm (W x H x D)",
 	"weight": "200 gm",
 	"op_temp": "0 ~ 50°C",
-	"images": ["/images/product-selector/rv00/rv00.png"],
+	"images": ["/images/product-selector/rv00/rv00.webp"],
 	"use_cases": [
 		"M2M Communication & Remote Asset Connectivity",
 		"Transportation & Fleet Connectivity",

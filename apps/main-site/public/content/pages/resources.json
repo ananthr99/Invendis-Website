@@ -5,7 +5,7 @@
 		"title": "Technical Articles &",
 		"titleHighlight": "Insights",
 		"subtitle": "Deep-dives into IIoT hardware, industrial connectivity, energy metering, and infrastructure monitoring — written by the Invendis engineering team.",
-		"image": "/images/resources/hero/hero.png"
+		"image": "/images/resources/hero/hero.webp"
 	},
 	"articles": {
 		"categories": ["Technical Article", "Application Note", "Industry Insight"],

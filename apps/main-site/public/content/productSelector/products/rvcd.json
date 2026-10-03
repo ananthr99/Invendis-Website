@@ -21,7 +21,7 @@
 	"weight": "200 gm",
 	"op_temp": "0 ~ 50°C",
 	"images": [
-		"/images/product-selector/rvcd/rvcd.png"
+		"/images/product-selector/rvcd/rvcd.webp"
 	],
 	"use_cases": [
 		"Multi-WAN Failover",

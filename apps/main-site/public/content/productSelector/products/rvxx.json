@@ -21,8 +21,8 @@
 	"weight": "390 gm",
 	"op_temp": "0-50°C",
 	"images": [
-		"/images/product-selector/rvxx/rvxx_1.png",
-        "/images/product-selector/rvxx/rvxx_2.png"
+		"/images/product-selector/rvxx/rvxx_1.webp",
+        "/images/product-selector/rvxx/rvxx_2.webp"
 	],
 	"use_cases": [
 		"M2M Communication & Remote Asset Connectivity",

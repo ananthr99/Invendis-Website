@@ -20,7 +20,7 @@
 	"dims": "150 x 160 x 52.8 mm (LxWxH)",
 	"weight": "1800 gm",
 	"op_temp": "0–50°C",
-	"images": ["/images/product-selector/inv-ce-xx/inv-ce-xx_1.png","/images/product-selector/inv-ce-xx/inv-ce-xx_2.png"],
+	"images": ["/images/product-selector/inv-ce-xx/inv-ce-xx_1.webp","/images/product-selector/inv-ce-xx/inv-ce-xx_2.webp"],
 	"use_cases": [
 		"Enterprise Branch Connectivity",
 		"Infotainment System for Vehicles"

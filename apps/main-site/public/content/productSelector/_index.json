@@ -32,7 +32,7 @@
       "rs485": "-",
       "rs232": "-",
       "hidden": false,
-      "image": "/images/product-selector/inv-cb-xx/inv-cb-xx_1.png",
+      "image": "/images/product-selector/inv-cb-xx/inv-cb-xx_1.webp",
       "use_cases": [
         "Healthcare",
         "Defence and Intelligence",
@@ -51,7 +51,7 @@
       "rs485": "-",
       "rs232": "-",
       "hidden": false,
-      "image": "/images/product-selector/inv-cd-xx/inv-cd-xx_1.png",
+      "image": "/images/product-selector/inv-cd-xx/inv-cd-xx_1.webp",
       "use_cases": [
         "Industrial Machine Vision & Quality Inspection",
         "Smart Traffic & Transportation Edge Nodes",
@@ -70,7 +70,7 @@
       "rs485": "-",
       "rs232": "-",
       "hidden": false,
-      "image": "/images/product-selector/inv-ce-xx/inv-ce-xx_1.png",
+      "image": "/images/product-selector/inv-ce-xx/inv-ce-xx_1.webp",
       "use_cases": [
         "Enterprise Branch Connectivity",
         "Infotainment System for Vehicles"
@@ -88,7 +88,7 @@
       "rs485": "-",
       "rs232": "-",
       "hidden": false,
-      "image": "/images/product-selector/inv-cea-xx/inv-cea-xx_1.png",
+      "image": "/images/product-selector/inv-cea-xx/inv-cea-xx_1.webp",
       "use_cases": [
         "Industrial Automation & Control",
         "Machine Monitoring & OEE System"
@@ -106,7 +106,7 @@
       "rs485": "-",
       "rs232": "-",
       "hidden": false,
-      "image": "/images/product-selector/inv-ci-xx/inv-ci-xx_1.png",
+      "image": "/images/product-selector/inv-ci-xx/inv-ci-xx_1.webp",
       "use_cases": [
         "Multi-Site Enterprise WAN Management",
         "Video Surveillance & Security Networks",
@@ -125,7 +125,7 @@
       "rs485": "-",
       "rs232": "-",
       "hidden": false,
-      "image": "/images/product-selector/itx-arl-board/itx-arl-board_1.png",
+      "image": "/images/product-selector/itx-arl-board/itx-arl-board_1.webp",
       "use_cases": [
         "AI-Powered Edge Vision & Video Analytics",
         "Industrial IoT Gateway & Automation Controller",
@@ -144,7 +144,7 @@
       "rs485": "-",
       "rs232": "-",
       "hidden": false,
-      "image": "/images/product-selector/inv-cf-xx/inv-cf-xx_1.png",
+      "image": "/images/product-selector/inv-cf-xx/inv-cf-xx_1.webp",
       "use_cases": [
         "Fleet Telematics",
         "Autonomous Vehicle",
@@ -166,7 +166,7 @@
       "rs485": "-",
       "rs232": "-",
       "hidden": false,
-      "image": "/images/product-selector/rtsxx/rtsxx-1.png",
+      "image": "/images/product-selector/rtsxx/rtsxx-1.webp",
       "use_cases": [
         "SD-WAN & Branch Network Connectivity",
         "Secure VPN & Surveillance Network Deployment"
@@ -184,7 +184,7 @@
       "rs485": "-",
       "rs232": "-",
       "hidden": false,
-      "image": "/images/product-selector/ru60/ru60.png",
+      "image": "/images/product-selector/ru60/ru60.webp",
       "use_cases": [
         "Enterprise & Office Wireless Connectivity",
         "Retail & Commercial Space Networking",
@@ -203,7 +203,7 @@
       "rs485": "-",
       "rs232": "-",
       "hidden": false,
-      "image": "/images/product-selector/roxx/roxx.png",
+      "image": "/images/product-selector/roxx/roxx.webp",
       "use_cases": [
         "Telecom Backhaul & Site Connectivity",
         "Enterprise Edge Network with Dual Active for Load Balancing"
@@ -221,7 +221,7 @@
       "rs485": "-",
       "rs232": "-",
       "hidden": false,
-      "image": "/images/product-selector/rtxx/rtxx.png",
+      "image": "/images/product-selector/rtxx/rtxx.webp",
       "use_cases": [
         "Industrial Automation & Machine Connectivity",
         "IoT Gateway for Smart Deployments",
@@ -240,7 +240,7 @@
       "rs485": "-",
       "rs232": "-",
       "hidden": false,
-      "image": "/images/product-selector/rvxx/rvxx_1.png",
+      "image": "/images/product-selector/rvxx/rvxx_1.webp",
       "use_cases": [
         "M2M Communication & Remote Asset Connectivity",
         "Transportation & Fleet Connectivity",
@@ -259,7 +259,7 @@
       "rs485": "-",
       "rs232": "-",
       "hidden": false,
-      "image": "/images/product-selector/rv00/rv00.png",
+      "image": "/images/product-selector/rv00/rv00.webp",
       "use_cases": [
         "M2M Communication & Remote Asset Connectivity",
         "Transportation & Fleet Connectivity",
@@ -278,7 +278,7 @@
       "rs485": "-",
       "rs232": "-",
       "hidden": false,
-      "image": "/images/product-selector/rdxx/rdxx.png",
+      "image": "/images/product-selector/rdxx/rdxx.webp",
       "use_cases": [
         "Smart Transportation Connectivity",
         "Smart Infrastructure & Utility Monitoring",
@@ -297,7 +297,7 @@
       "rs485": "-",
       "rs232": "-",
       "hidden": false,
-      "image": "/images/product-selector/rexx/rexx.png",
+      "image": "/images/product-selector/rexx/rexx.webp",
       "use_cases": [
         "Digital Signage & Remote Display Networks",
         "Environmental & Field Data Collection",
@@ -316,7 +316,7 @@
       "rs485": "-",
       "rs232": "-",
       "hidden": false,
-      "image": "/images/product-selector/ri44/ri44.png",
+      "image": "/images/product-selector/ri44/ri44.webp",
       "use_cases": [
         "CCTV & Video Surveillance Connectivity for ISP Communication Tower"
       ]
@@ -333,7 +333,7 @@
       "rs485": "-",
       "rs232": "-",
       "hidden": false,
-      "image": "/images/product-selector/iexx/iexx.png",
+      "image": "/images/product-selector/iexx/iexx.webp",
       "use_cases": [
         "Smart Metering & Utility Data Collection using eSIM",
         "Remote Equipment Monitoring using dual profile eSIM",
@@ -352,7 +352,7 @@
       "rs485": "Yes",
       "rs232": "-",
       "hidden": false,
-      "image": "/images/product-selector/iaxx/iaxx.png",
+      "image": "/images/product-selector/iaxx/iaxx.webp",
       "use_cases": [
         "Industrial Machine Data Communication",
         "Remote Infrastructure Management",
@@ -371,7 +371,7 @@
       "rs485": "Yes",
       "rs232": "-",
       "hidden": false,
-      "image": "/images/product-selector/rfnxx/rfnxx.png",
+      "image": "/images/product-selector/rfnxx/rfnxx.webp",
       "use_cases": [
         "Industrial Panel & PLC Connectivity",
         "Telecom & Remote Site Uptime Monitoring",
@@ -390,7 +390,7 @@
       "rs485": "Yes",
       "rs232": "Yes",
       "hidden": false,
-      "image": "/images/product-selector/iabxx-x/iabxx-x.png",
+      "image": "/images/product-selector/iabxx-x/iabxx-x.webp",
       "use_cases": [
         "Smart Energy & Utility Automation",
         "Industrial Process Monitoring",
@@ -409,7 +409,7 @@
       "rs485": "Yes",
       "rs232": "-",
       "hidden": false,
-      "image": "/images/product-selector/iacxx-x/iacxx-x.png",
+      "image": "/images/product-selector/iacxx-x/iacxx-x.webp",
       "use_cases": [
         "OEM Embedded Connectivity Solutions",
         "Factory Floor Network Integration",
@@ -428,7 +428,7 @@
       "rs485": "Yes",
       "rs232": "No",
       "hidden": false,
-      "image": "/images/product-selector/iafxx-x/iafxx-x.png",
+      "image": "/images/product-selector/iafxx-x/iafxx-x.webp",
       "use_cases": [
         "Remote Sensor & Transducer Data to Cloud",
         "Drinking Water Treatment Plant Data to Remote Cloud SCADA",
@@ -447,7 +447,7 @@
       "rs485": "-",
       "rs232": "-",
       "hidden": false,
-      "image": "/images/product-selector/idxx-x/idxx-x.png",
+      "image": "/images/product-selector/idxx-x/idxx-x.webp",
       "use_cases": [
         "High-Bandwidth Smart Factory Connectivity",
         "Multi-Site Enterprise Network Extension",
@@ -466,7 +466,7 @@
       "rs485": "Yes",
       "rs232": "Yes",
       "hidden": false,
-      "image": "/images/product-selector/idbxx-x/idbxx-x.png",
+      "image": "/images/product-selector/idbxx-x/idbxx-x.webp",
       "use_cases": [
         "Custom Industrial Edge Application Development",
         "Industrial Equipment Integration & Control",
@@ -485,7 +485,7 @@
       "rs485": "Yes",
       "rs232": "Yes",
       "hidden": false,
-      "image": "/images/product-selector/iSense/iSense.png",
+      "image": "/images/product-selector/iSense/iSense.webp",
       "use_cases": [
         "Energy Monitoring & Power Management",
         "Process Automation & Industrial Control",
@@ -504,7 +504,7 @@
       "rs485": "Yes",
       "rs232": "-",
       "hidden": false,
-      "image": "/images/product-selector/rvgxx-x/rvgxx-x_1.png",
+      "image": "/images/product-selector/rvgxx-x/rvgxx-x_1.webp",
       "use_cases": [
         "Smart Utilities",
         "Industrial IoT & Automation",
@@ -523,7 +523,7 @@
       "rs485": "Yes",
       "rs232": "Yes",
       "hidden": false,
-      "image": "/images/product-selector/rvh44/RVH44.png",
+      "image": "/images/product-selector/rvh44/RVH44.webp",
       "use_cases": [
         "Industrial IoT & Telemetry Aggregation",
         "Remote Substation & Utility Monitoring",
@@ -542,7 +542,7 @@
       "rs485": "-",
       "rs232": "-",
       "hidden": false,
-      "image": "/images/product-selector/rvcp/rvcp.png",
+      "image": "/images/product-selector/rvcp/rvcp.webp",
       "use_cases": [
         "Primary WAN Failover for Retail & Branch Offices",
         "Remote SCADA/Industrial Site Connectivity",
@@ -561,7 +561,7 @@
       "rs485": "-",
       "rs232": "-",
       "hidden": false,
-      "image": "/images/product-selector/ruc65/ruc65.png",
+      "image": "/images/product-selector/ruc65/ruc65.webp",
       "use_cases": [
         "Smart Building & IoT Edge Aggregation",
         "Mobile & Temporary Event Branch Connectivity",
@@ -580,7 +580,7 @@
       "rs485": "-",
       "rs232": "-",
       "hidden": false,
-      "image": "/images/product-selector/rdb40/rdb40.png",
+      "image": "/images/product-selector/rdb40/rdb40.webp",
       "use_cases": [
         "Indoor Asset Tracking & Real-Time Location Services (RTLS)",
         "Smart Building Sensor Data Aggregation",
@@ -599,7 +599,7 @@
       "rs485": "-",
       "rs232": "-",
       "hidden": false,
-      "image": "/images/product-selector/gpononu/gpononu.png",
+      "image": "/images/product-selector/gpononu/gpononu.webp",
       "use_cases": [
         "Residential FTTH Last-Mile Termination",
         "Small Office / Retail Fiber Connectivity",
@@ -618,7 +618,7 @@
       "rs485": "-",
       "rs232": "-",
       "hidden": false,
-      "image": "/images/product-selector/xa82/xa82.png",
+      "image": "/images/product-selector/xa82/xa82.webp",
       "use_cases": [
         "CCTV & Video Surveillance Deployment",
         "Enterprise & Smart Building Connectivity",
@@ -637,7 +637,7 @@
       "rs485": "-",
       "rs232": "-",
       "hidden": false,
-      "image": "/images/product-selector/xb82/xb82.png",
+      "image": "/images/product-selector/xb82/xb82.webp",
       "use_cases": [
         "Wireless Access Point Aggregation",
         "IP Telephony & Communication Networks",
@@ -656,7 +656,7 @@
       "rs485": "-",
       "rs232": "-",
       "hidden": false,
-      "image": "/images/product-selector/xc80/xc80.png",
+      "image": "/images/product-selector/xc80/xc80.webp",
       "use_cases": [
         "Factory Floor Device Connectivity",
         "Smart Security Infrastructure",
@@ -675,7 +675,7 @@
       "rs485": "-",
       "rs232": "-",
       "hidden": false,
-      "image": "/images/product-selector/xd50/xd50.png",
+      "image": "/images/product-selector/xd50/xd50.webp",
       "use_cases": [
         "EV Charger Controller Connectivity",
         "Edge Cabinet Network Integration",
@@ -694,7 +694,7 @@
       "rs485": "-",
       "rs232": "-",
       "hidden": false,
-      "image": "/images/product-selector/xf100/xf100.png",
+      "image": "/images/product-selector/xf100/xf100.webp",
       "use_cases": [
         "Large Camera & Surveillance Networks",
         "Smart Office & Campus Device Connectivity",
@@ -713,7 +713,7 @@
       "rs485": "-",
       "rs232": "-",
       "hidden": false,
-      "image": "/images/product-selector/xg822l/xg822l.png",
+      "image": "/images/product-selector/xg822l/xg822l.webp",
       "use_cases": [
         "Enterprise Surveillance & Security Networks",
         "Smart Campus & Enterprise Network Management",
@@ -732,7 +732,7 @@
       "rs485": "-",
       "rs232": "-",
       "hidden": false,
-      "image": "/images/product-selector/xg82/xg82.png",
+      "image": "/images/product-selector/xg82/xg82.webp",
       "use_cases": [
         "Enterprise Surveillance & Security Networks",
         "Smart Campus & Enterprise Network Management",
@@ -751,7 +751,7 @@
       "rs485": "-",
       "rs232": "-",
       "hidden": false,
-      "image": "/images/product-selector/xi244-2m/xi244-2m.png",
+      "image": "/images/product-selector/xi244-2m/xi244-2m.webp",
       "use_cases": [
         "Commercial IP Security & Surveillance Infrastructure",
         "Smart Building & IoT Deployment",
@@ -770,7 +770,7 @@
       "rs485": "-",
       "rs232": "-",
       "hidden": false,
-      "image": "/images/product-selector/rvcd/rvcd.png",
+      "image": "/images/product-selector/rvcd/rvcd.webp",
       "use_cases": [
         "Multi-WAN Failover",
         "Secure Remote Infrastructure Access (Branch-to-HQ VPN)",
@@ -789,7 +789,7 @@
       "rs485": "Yes",
       "rs232": "-",
       "hidden": false,
-      "image": "/images/product-selector/pc3xx/pc3xx.png",
+      "image": "/images/product-selector/pc3xx/pc3xx.webp",
       "use_cases": [
         "Energy Meter & Utility Device Integration",
         "Building Automation Connectivity",
@@ -808,7 +808,7 @@
       "rs485": "-",
       "rs232": "-",
       "hidden": false,
-      "image": "/images/product-selector/mcx/mcx.png",
+      "image": "/images/product-selector/mcx/mcx.webp",
       "use_cases": [
         "Long-Distance Network Extension"
       ]
@@ -825,7 +825,7 @@
       "rs485": "-",
       "rs232": "-",
       "hidden": false,
-      "image": "/images/product-selector/mt7621odu/mt7621odu.png",
+      "image": "/images/product-selector/mt7621odu/mt7621odu.webp",
       "use_cases": [
         "Outdoor CCTV & Perimeter Surveillance",
         "Smart Transportation & Roadside Infrastructure",
@@ -844,7 +844,7 @@
       "rs485": "-",
       "rs232": "-",
       "hidden": false,
-      "image": "/images/product-selector/rt65odu/rt65odu.png",
+      "image": "/images/product-selector/rt65odu/rt65odu.webp",
       "use_cases": [
         "Smart Transportation & Traffic Connectivity",
         "Mission-Critical Remote Site Networking",
@@ -863,7 +863,7 @@
       "rs485": "-",
       "rs232": "-",
       "hidden": false,
-      "image": "/images/product-selector/rn50pcba/rn50pcba.png",
+      "image": "/images/product-selector/rn50pcba/rn50pcba.webp",
       "use_cases": [
         "Vehicle & Transportation Systems",
         "Passenger Infotainment AP for Railways"
@@ -881,7 +881,7 @@
       "rs485": "-",
       "rs232": "-",
       "hidden": false,
-      "image": "/images/product-selector/rvw50/rvw50.png",
+      "image": "/images/product-selector/rvw50/rvw50.webp",
       "use_cases": [
         "Transit & Passenger Connectivity",
         "Mobile Field Operations",
@@ -900,7 +900,7 @@
       "rs485": "Yes",
       "rs232": "-",
       "hidden": false,
-      "image": "/images/product-selector/idfxx/idfxx.png",
+      "image": "/images/product-selector/idfxx/idfxx.webp",
       "use_cases": [
         "Telecom Tower Connectivity",
         "Smart Utility & Street Cabinet Networking",
@@ -919,7 +919,7 @@
       "ports": "0",
       "rs485": "-",
       "rs232": "-",
-      "image": "/images/product-selector/miniups/miniups.png",
+      "image": "/images/product-selector/miniups/miniups.webp",
       "use_cases": [
         "Router & Modem Power Backup",
         "CCTV & Security Continuity",
@@ -938,7 +938,7 @@
       "rs485": "-",
       "rs232": "-",
       "hidden": false,
-      "image": "/images/product-selector/mfmet4640/mfmet4640_1.png",
+      "image": "/images/product-selector/mfmet4640/mfmet4640_1.webp",
       "use_cases": [
         "Energy Consumption Monitoring",
         "Industrial Power Quality Analysis",
@@ -957,7 +957,7 @@
       "rs485": "Yes",
       "rs232": "-",
       "hidden": false,
-      "image": "/images/product-selector/acmeter/acmeter.png",
+      "image": "/images/product-selector/acmeter/acmeter.webp",
       "use_cases": [
         "Grid & Generator Energy Tracking",
         "Industrial Power Monitoring",
@@ -976,7 +976,7 @@
       "rs485": "Yes",
       "rs232": "-",
       "hidden": false,
-      "image": "/images/product-selector/dcmeter/dcmeter.png",
+      "image": "/images/product-selector/dcmeter/dcmeter.webp",
       "use_cases": [
         "Telecom Power Monitoring",
         "Solar & Battery System Analytics",
@@ -995,7 +995,7 @@
       "rs485": "-",
       "rs232": "-",
       "hidden": false,
-      "image": "/images/product-selector/bcpm/bcpm.png",
+      "image": "/images/product-selector/bcpm/bcpm.webp",
       "use_cases": [
         "Branch-Level Energy Monitoring",
         "Data Centre & Facility Load Profiling",
@@ -1014,7 +1014,7 @@
       "ports": "4",
       "rs485": "-",
       "rs232": "-",
-      "image": "/images/product-selector/id04/id04.png",
+      "image": "/images/product-selector/id04/id04.webp",
       "use_cases": [
         "Remote Industrial Equipment Monitoring",
         "Smart ATM & Kiosk Networking",

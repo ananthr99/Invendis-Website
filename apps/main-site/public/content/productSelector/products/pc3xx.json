@@ -21,7 +21,7 @@
 	"weight": "400 gm",
 	"op_temp": "0 ~ 50°C",
 	"images": [
-		"/images/product-selector/pc3xx/pc3xx.png"
+		"/images/product-selector/pc3xx/pc3xx.webp"
 	],
 	"use_cases": [
 		"Energy Meter & Utility Device Integration",

@@ -21,7 +21,7 @@
 	"weight": "-",
 	"op_temp": "-10 ~ 55°C",
 	"images": [
-		"/images/product-selector/acmeter/acmeter.png"
+		"/images/product-selector/acmeter/acmeter.webp"
 	],
 	"use_cases": [
 		"Grid & Generator Energy Tracking",

@@ -20,7 +20,7 @@
 	"dims": "232 x 202 x 44 mm",
 	"weight": "1500 gm",
 	"op_temp": "0–50°C",
-	"images": ["/images/product-selector/inv-ci-xx/inv-ci-xx_1.png","/images/product-selector/inv-ci-xx/inv-ci-xx_2.png"],
+	"images": ["/images/product-selector/inv-ci-xx/inv-ci-xx_1.webp","/images/product-selector/inv-ci-xx/inv-ci-xx_2.webp"],
 	"use_cases": [
 		"Multi-Site Enterprise WAN Management",
 		"Video Surveillance & Security Networks",

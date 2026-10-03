@@ -32,7 +32,7 @@ export default function HeroSection({ data }) {
 				<div className="space-y-5 rounded-2xl border border-white/10 bg-white/5 p-6">
 					{productGroups.map((group) => (
 						<div key={group.heading}>
-							<p className="mb-3 text-[10px] font-semibold tracking-widest text-white/60 uppercase">{group.heading}</p>
+							<p className="mb-3 text-[10px] font-semibold tracking-widest text-brand-red uppercase">{group.heading}</p>
 							<div className="flex flex-wrap gap-2">
 								{group.items.map((item) => (
 									<span

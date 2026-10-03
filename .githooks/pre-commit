@@ -1,0 +1,17 @@
+#!/bin/sh
+# Auto-convert staged PNG/JPG images to WebP before committing
+
+STAGED=$(git diff --cached --name-only | grep -E 'apps/main-site/public/images/.*\.(png|jpg|jpeg)$')
+if [ -z "$STAGED" ]; then
+  exit 0
+fi
+
+echo "[pre-commit] Converting staged images to WebP..."
+(cd apps/main-site && node scripts/convert-images.mjs)
+if [ $? -ne 0 ]; then
+  echo "[pre-commit] Image conversion failed — commit aborted."
+  exit 1
+fi
+
+git add apps/main-site/public/images apps/main-site/public/content
+echo "[pre-commit] Done. WebP files staged."

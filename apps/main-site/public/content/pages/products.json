@@ -17,11 +17,11 @@
       "href": "/products/product-selector"
     },
     "image": [
-      "/images/products/hero/hero1.png",
-      "/images/products/hero/hero2.png",
-      "/images/products/hero/hero3.png",
-      "/images/products/hero/hero4.png",
-      "/images/products/hero/hero5.png"
+      "/images/products/hero/hero1.webp",
+      "/images/products/hero/hero2.webp",
+      "/images/products/hero/hero3.webp",
+      "/images/products/hero/hero4.webp",
+      "/images/products/hero/hero5.webp"
     ]
   },
   "hardwarePortfolio": {
@@ -41,7 +41,7 @@
           "RS485 / RS232"
         ],
         "image": [
-          "/images/products/hardware/isense/isense.png"
+          "/images/products/hardware/isense/isense.webp"
         ]
       },
       {
@@ -55,7 +55,7 @@
           "RS485"
         ],
         "image": [
-          "/images/products/hardware/energymeter/energymeter.png"
+          "/images/products/hardware/energymeter/energymeter.webp"
         ]
       },
       {
@@ -69,7 +69,7 @@
           "Remote"
         ],
         "image": [
-          "/images/products/hardware/atscontroller/atscontroller.png"
+          "/images/products/hardware/atscontroller/atscontroller.webp"
         ]
       },
       {
@@ -83,7 +83,7 @@
           "DIN Rail"
         ],
         "image": [
-          "/images/products/hardware/gateway/gateway.png"
+          "/images/products/hardware/gateway/gateway.webp"
         ]
       },
       {
@@ -97,7 +97,7 @@
           "Grid"
         ],
         "image": [
-          "/images/products/hardware/gsm/gsm.png"
+          "/images/products/hardware/gsm/gsm.webp"
         ]
       },
       {
@@ -111,7 +111,7 @@
           "BMS"
         ],
         "image": [
-          "/images/products/hardware/accessories/accessories.png"
+          "/images/products/hardware/accessories/accessories.webp"
         ]
       }
     ]
@@ -122,9 +122,9 @@
     "subtitle": "Industrial networking hardware for mission-critical industrial and telecom environments.",
     "intro": "SILBO is Invendis's dedicated industrial networking brand — delivering rugged routers, gateways, protocol converters, and switches purpose-built for Industry 4.0 connectivity challenges.",
     "introImage": [
-      "/images/products/silbo/silbo1.png",
-      "/images/products/silbo/silbo2.png",
-      "/images/products/silbo/silbo3.png"
+      "/images/products/silbo/silbo1.webp",
+      "/images/products/silbo/silbo2.webp",
+      "/images/products/silbo/silbo3.webp"
     ],
     "items": [
       {
@@ -189,7 +189,7 @@
         "description": "Cloud-based Remote Monitoring System with graphical site views, executive dashboards, energy analytics, and Power BI integration. Deployed for telecom and solar customers globally.",
         "tags": [],
         "image": [
-          "/images/products/software/software.png"
+          "/images/products/software/software.webp"
         ]
       },
       {

@@ -21,6 +21,18 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
+      
+      - name: Convert new images to WebP
+        working-directory: apps/main-site
+        run: node scripts/convert-images.mjs
+
+      - name: Commit converted images back to main
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add apps/main-site/public/images apps/main-site/public/content
+          git diff --staged --quiet && echo "No new images converted." || \
+            (git commit -m "chore: auto-convert images to WebP [skip ci]" && git push)
 
       - name: Build main-site
         run: npm run build

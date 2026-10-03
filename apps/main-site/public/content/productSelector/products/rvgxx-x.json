@@ -21,8 +21,8 @@
 	"weight": "400 gm",
 	"op_temp": "0 ~ 60°C",
 	"images": [
-		"/images/product-selector/rvgxx-x/rvgxx-x_1.png",
-		"/images/product-selector/rvgxx-x/rvgxx-x_2.png"
+		"/images/product-selector/rvgxx-x/rvgxx-x_1.webp",
+		"/images/product-selector/rvgxx-x/rvgxx-x_2.webp"
 	],
 	"use_cases": [
 		"Smart Utilities",

@@ -30,7 +30,7 @@
         "label": "Team Members"
       }
     ],
-    "image": "/images/company/hero/hero-company.png"
+    "image": "/images/company/hero/hero-company.webp"
   },
   "whoWeAre": {
     "eyebrow": "Our Story",
@@ -156,19 +156,19 @@
         {
           "caption": "Head Quarters — Bangalore, India",
           "images": [
-            "/images/company/locations/head-quarters.png"
+            "/images/company/locations/head-quarters.webp"
           ]
         },
         {
           "caption": "Research & Development — Bangalore, India",
           "images": [
-            "/images/company/locations/research-development.png"
+            "/images/company/locations/research-development.webp"
           ]
         },
         {
           "caption": "Factory — Bangalore, India",
           "images": [
-            "/images/company/locations/factory.png"
+            "/images/company/locations/factory.webp"
           ]
         }
       ]

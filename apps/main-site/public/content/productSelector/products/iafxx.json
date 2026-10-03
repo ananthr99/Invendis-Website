@@ -21,7 +21,7 @@
 	"weight": "400 gm",
 	"op_temp": "0 ~ 50°C",
 	"images": [
-		"/images/product-selector/iafxx-x/iafxx-x.png"
+		"/images/product-selector/iafxx-x/iafxx-x.webp"
 	],
 	"use_cases": [
 		"Remote Sensor & Transducer Data to Cloud",

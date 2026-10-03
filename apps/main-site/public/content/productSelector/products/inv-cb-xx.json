@@ -20,7 +20,7 @@
 	"dims": "150x210x65mm (LxWxH)",
 	"weight": "1800 gm",
 	"op_temp": "0–50°C",
-	"images": ["/images/product-selector/inv-cb-xx/inv-cb-xx_1.png","/images/product-selector/inv-cb-xx/inv-cb-xx_2.png"],
+	"images": ["/images/product-selector/inv-cb-xx/inv-cb-xx_1.webp","/images/product-selector/inv-cb-xx/inv-cb-xx_2.webp"],
 	"use_cases": [
 		"Healthcare",
 		"Defence and Intelligence",

@@ -20,7 +20,7 @@
 	"dims": "190 × 45 × 120 mm",
 	"weight": "700 gm",
 	"op_temp": "0°C – 50°C",
-	"images": ["/images/product-selector/rtsxx/rtsxx-1.png","/images/product-selector/rtsxx/rtsxx-2.png"],
+	"images": ["/images/product-selector/rtsxx/rtsxx-1.webp","/images/product-selector/rtsxx/rtsxx-2.webp"],
 	"use_cases": [
 		"SD-WAN & Branch Network Connectivity",
 		"Secure VPN & Surveillance Network Deployment"

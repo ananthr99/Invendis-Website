@@ -21,7 +21,7 @@
 	"weight": "520 gm",
 	"op_temp": "0 ~ 50°C",
 	"images": [
-		"/images/product-selector/rvcp/rvcp.png"
+		"/images/product-selector/rvcp/rvcp.webp"
 	],
 	"use_cases": [
 		"Primary WAN Failover for Retail & Branch Offices",

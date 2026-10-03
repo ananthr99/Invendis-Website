@@ -74,7 +74,7 @@ function FormField({ label, type = "text", value, onChange, required, placeholde
 
 export default function ContactBodySection({ data }) {
 	const { info = {}, quickFacts = [], form = {} } = data ?? {};
-	const [fields, setFields] = useState({ name: "", company: "", email: "", message: "" });
+	const [fields, setFields] = useState({ name: "", company: "", email: "", message: "", honeypot: "" });
 	const additionalFields = form.additionalFields ?? [];
 
 	function handleChange(key, value) {
@@ -83,6 +83,7 @@ export default function ContactBodySection({ data }) {
 
 	function handleSubmit(e) {
 		e.preventDefault();
+		if (fields.honeypot) return;
 		const to = info?.email ?? "sales@invendis.com";
 		const subject = encodeURIComponent(`Website enquiry from ${fields.name || "a visitor"}`);
 		const bodyLines = [
@@ -145,6 +146,18 @@ export default function ContactBodySection({ data }) {
 						<h2 className="font-heading text-2xl font-bold text-brand-text" style={{ marginBottom: "1.25rem" }}>{form.title}</h2>
 					)}
 					<form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "0.65rem" }}>
+						{/* Honeypot — hidden from humans, bots fill it */}
+						<div aria-hidden="true" style={{ position: "absolute", left: "-9999px", height: 0, overflow: "hidden" }}>
+							<input
+								type="text"
+								name="website"
+								tabIndex={-1}
+								autoComplete="off"
+								value={fields.honeypot}
+								onChange={(e) => handleChange("honeypot", e.target.value)}
+							/>
+						</div>
+
 						<div className="grid grid-cols-1 gap-[0.65rem] sm:grid-cols-2">
 							<FormField label={form?.nameLabel ?? "Your Name"} placeholder={form?.namePlaceholder} value={fields.name} onChange={(v) => handleChange("name", v)} required />
 							<FormField label={form?.companyLabel ?? "Company"} placeholder={form?.companyPlaceholder} value={fields.company} onChange={(v) => handleChange("company", v)} />

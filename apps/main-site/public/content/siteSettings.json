@@ -7,10 +7,10 @@
 	"silboBadge": {
 		"label": "SILBO",
 		"href": "/silbo",
-		"src": "/silbo_logo.png"
+		"src": "/silbo_logo.webp"
 	},
   "makeInIndiaBadge": {
-    "src": "/make_in_india.png",
+    "src": "/make_in_india.webp",
     "alt": "Make in India"
   },
 	"nav": [

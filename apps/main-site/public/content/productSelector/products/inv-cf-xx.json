@@ -20,8 +20,8 @@
 	"dims": "150mm X 160mm X 52.8mm (L X W X H)",
 	"weight": "1800 gm",
 	"op_temp": "0 ~ 50℃",
-	"images": ["/images/product-selector/inv-cf-xx/inv-cf-xx_1.png","/images/product-selector/inv-cf-xx/inv-cf-xx_2.png",
-    "/images/product-selector/inv-cf-xx/inv-cf-xx_3.png","/images/product-selector/inv-cf-xx/inv-cf-xx_4.png"],
+	"images": ["/images/product-selector/inv-cf-xx/inv-cf-xx_1.webp","/images/product-selector/inv-cf-xx/inv-cf-xx_2.webp",
+    "/images/product-selector/inv-cf-xx/inv-cf-xx_3.webp","/images/product-selector/inv-cf-xx/inv-cf-xx_4.webp"],
 	"use_cases": [
 		"Fleet Telematics",
 		"Autonomous Vehicle",
