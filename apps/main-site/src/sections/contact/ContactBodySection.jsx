@@ -117,8 +117,33 @@ export default function ContactBodySection({ data }) {
 		}
 	}
 
-	return (
+		return (
 		<section className="bg-white px-4 py-20 sm:px-8">
+
+			{/* Success popup */}
+			{status === "success" && (
+				<div style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.45)", display: "flex", alignItems: "center", justifyContent: "center", zIndex: 1000 }}>
+					<div style={{ background: "white", borderRadius: 16, padding: "2.5rem 2rem", maxWidth: 400, width: "90%", textAlign: "center", position: "relative", boxShadow: "0 20px 60px rgba(0,0,0,0.2)" }}>
+						<button
+							onClick={() => { setStatus("idle"); setFields({ name: "", company: "", email: "", message: "", honeypot: "" }); }}
+							style={{ position: "absolute", top: 12, right: 12, background: "none", border: "none", cursor: "pointer", padding: 4, color: "#6b7280" }}
+							aria-label="Close"
+						>
+							<svg style={{ width: 20, height: 20 }} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
+								<path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+							</svg>
+						</button>
+						<div style={{ width: 56, height: 56, borderRadius: "50%", background: "#dcfce7", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 1.25rem" }}>
+							<svg style={{ width: 28, height: 28, color: "#16a34a" }} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5}>
+								<path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+							</svg>
+						</div>
+						<h3 className="font-heading text-xl font-bold text-brand-text" style={{ marginBottom: "0.5rem" }}>Message Sent!</h3>
+						<p style={{ fontSize: 14, color: "#6b7280" }}>Thank you for reaching out. We'll get back to you shortly.</p>
+					</div>
+				</div>
+			)}
+
 			<div className="flex flex-col gap-10 sm:flex-row sm:items-start sm:gap-16" style={{ maxWidth: 920, margin: "0 auto" }}>
 
 				{/* Left — contact info */}
@@ -162,86 +187,64 @@ export default function ContactBodySection({ data }) {
 
 				{/* Right — form */}
 				<div style={{ flex: 1 }}>
-					{status === "success" ? (
-						<div style={{ textAlign: "center", padding: "3rem 1rem" }}>
-							<div style={{ width: 56, height: 56, borderRadius: "50%", background: "#dcfce7", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 1.25rem" }}>
-								<svg style={{ width: 28, height: 28, color: "#16a34a" }} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5}>
-									<path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-								</svg>
-							</div>
-							<h3 className="font-heading text-xl font-bold text-brand-text" style={{ marginBottom: "0.5rem" }}>Message Sent!</h3>
-							<p style={{ fontSize: 14, color: "#6b7280", marginBottom: "1.5rem" }}>
-								Thank you for reaching out. We'll get back to you shortly.
+					{form?.title && (
+						<h2 className="font-heading text-2xl font-bold text-brand-text" style={{ marginBottom: "1.25rem" }}>{form.title}</h2>
+					)}
+					<form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "0.65rem" }}>
+						{/* Honeypot — hidden from humans, bots fill it */}
+						<div aria-hidden="true" style={{ position: "absolute", left: "-9999px", height: 0, overflow: "hidden" }}>
+							<input
+								type="text"
+								name="website"
+								tabIndex={-1}
+								autoComplete="off"
+								value={fields.honeypot}
+								onChange={(e) => handleChange("honeypot", e.target.value)}
+							/>
+						</div>
+
+						<div className="grid grid-cols-1 gap-[0.65rem] sm:grid-cols-2">
+							<FormField label={form?.nameLabel ?? "Your Name"} placeholder={form?.namePlaceholder} value={fields.name} onChange={(v) => handleChange("name", v)} required />
+							<FormField label={form?.companyLabel ?? "Company"} placeholder={form?.companyPlaceholder} value={fields.company} onChange={(v) => handleChange("company", v)} />
+						</div>
+
+						<FormField label={form?.emailLabel ?? "Email Address"} type="email" placeholder={form?.emailPlaceholder} value={fields.email} onChange={(v) => handleChange("email", v)} required />
+
+						{additionalFields.map((f) => (
+							<FormField key={f.label} label={f.label} placeholder={f.placeholder} value={fields[f.label] ?? ""} onChange={(v) => handleChange(f.label, v)} required={f.required} />
+						))}
+
+						<div>
+							<label style={{ display: "block", marginBottom: 6, fontSize: 13, fontWeight: 500, color: "#111827" }}>
+								{form?.messageLabel ?? "Message"}<span style={{ color: "#E63946", marginLeft: 2 }}>*</span>
+							</label>
+							<textarea
+								rows={4}
+								required
+								placeholder={form?.messagePlaceholder ?? "Tell us about your project or requirements…"}
+								value={fields.message}
+								onChange={(e) => handleChange("message", e.target.value)}
+								style={{ width: "100%", borderRadius: 8, border: "1px solid #e5e7eb", padding: "9px 13px", fontSize: 14, outline: "none", fontFamily: "inherit", resize: "vertical", boxSizing: "border-box" }}
+							/>
+						</div>
+
+						{status === "error" && (
+							<p style={{ fontSize: 13, color: "#dc2626", padding: "8px 12px", background: "#fef2f2", borderRadius: 6, border: "1px solid #fecaca" }}>
+								Something went wrong. Please try again or email us directly at {info?.email ?? "sales@invendis.com"}.
 							</p>
+						)}
+
+						<div style={{ paddingTop: "0.25rem" }}>
 							<button
-								onClick={() => { setStatus("idle"); setFields({ name: "", company: "", email: "", message: "", honeypot: "" }); }}
-								style={{ fontSize: 13, fontWeight: 500, color: "#1B2A6B", background: "none", border: "none", cursor: "pointer", textDecoration: "underline" }}
+								type="submit"
+								disabled={status === "sending"}
+								style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "11px 28px", borderRadius: 8, border: "none", background: status === "sending" ? "#6b7280" : "#1B2A6B", color: "white", fontSize: 14, fontWeight: 600, cursor: status === "sending" ? "not-allowed" : "pointer", fontFamily: "inherit" }}
 							>
-								Send another message
+								{status === "sending" ? "Sending…" : (form?.submitLabel ?? "Send Message")}
+								{status !== "sending" && <SendIcon />}
 							</button>
 						</div>
-					) : (
-						<>
-							{form?.title && (
-								<h2 className="font-heading text-2xl font-bold text-brand-text" style={{ marginBottom: "1.25rem" }}>{form.title}</h2>
-							)}
-							<form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "0.65rem" }}>
-								{/* Honeypot — hidden from humans, bots fill it */}
-								<div aria-hidden="true" style={{ position: "absolute", left: "-9999px", height: 0, overflow: "hidden" }}>
-									<input
-										type="text"
-										name="website"
-										tabIndex={-1}
-										autoComplete="off"
-										value={fields.honeypot}
-										onChange={(e) => handleChange("honeypot", e.target.value)}
-									/>
-								</div>
-
-								<div className="grid grid-cols-1 gap-[0.65rem] sm:grid-cols-2">
-									<FormField label={form?.nameLabel ?? "Your Name"} placeholder={form?.namePlaceholder} value={fields.name} onChange={(v) => handleChange("name", v)} required />
-									<FormField label={form?.companyLabel ?? "Company"} placeholder={form?.companyPlaceholder} value={fields.company} onChange={(v) => handleChange("company", v)} />
-								</div>
-
-								<FormField label={form?.emailLabel ?? "Email Address"} type="email" placeholder={form?.emailPlaceholder} value={fields.email} onChange={(v) => handleChange("email", v)} required />
-
-								{additionalFields.map((f) => (
-									<FormField key={f.label} label={f.label} placeholder={f.placeholder} value={fields[f.label] ?? ""} onChange={(v) => handleChange(f.label, v)} required={f.required} />
-								))}
-
-								<div>
-									<label style={{ display: "block", marginBottom: 6, fontSize: 13, fontWeight: 500, color: "#111827" }}>
-										{form?.messageLabel ?? "Message"}<span style={{ color: "#E63946", marginLeft: 2 }}>*</span>
-									</label>
-									<textarea
-										rows={4}
-										required
-										placeholder={form?.messagePlaceholder ?? "Tell us about your project or requirements…"}
-										value={fields.message}
-										onChange={(e) => handleChange("message", e.target.value)}
-										style={{ width: "100%", borderRadius: 8, border: "1px solid #e5e7eb", padding: "9px 13px", fontSize: 14, outline: "none", fontFamily: "inherit", resize: "vertical", boxSizing: "border-box" }}
-									/>
-								</div>
-
-								{status === "error" && (
-									<p style={{ fontSize: 13, color: "#dc2626", padding: "8px 12px", background: "#fef2f2", borderRadius: 6, border: "1px solid #fecaca" }}>
-										Something went wrong. Please try again or email us directly at {info?.email ?? "sales@invendis.com"}.
-									</p>
-								)}
-
-								<div style={{ paddingTop: "0.25rem" }}>
-									<button
-										type="submit"
-										disabled={status === "sending"}
-										style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "11px 28px", borderRadius: 8, border: "none", background: status === "sending" ? "#6b7280" : "#1B2A6B", color: "white", fontSize: 14, fontWeight: 600, cursor: status === "sending" ? "not-allowed" : "pointer", fontFamily: "inherit" }}
-									>
-										{status === "sending" ? "Sending…" : (form?.submitLabel ?? "Send Message")}
-										{status !== "sending" && <SendIcon />}
-									</button>
-								</div>
-							</form>
-						</>
-					)}
+					</form>
 				</div>
 			</div>
 		</section>
