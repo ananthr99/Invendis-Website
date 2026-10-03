@@ -6,6 +6,7 @@ import Footer from "./components/layout/Footer.jsx";
 import TopBarSection from "./sections/home/TopBarSection.jsx";
 import FloatingButtons from "./components/layout/FloatingButtons.jsx";
 import SiteStructuredData from "./components/shared/SiteStructuredData.jsx";
+import CookieConsent from "./components/shared/CookieConsent.jsx";
 
 // Every route is lazy-loaded so the initial bundle only pays for the page
 // the visitor actually landed on. Same pattern as the original site.
@@ -84,6 +85,7 @@ export default function App() {
 			</main>
 			<Footer />
 			<FloatingButtons />
+			<CookieConsent />
 		</div>
 	);
 }

@@ -40,6 +40,7 @@ jobs:
           VITE_BASE: /Invendis-Website/
           VITE_SITE_URL: https://ananthr99.github.io/Invendis-Website
           VITE_FORMSPREE_ENDPOINT: ${{ secrets.VITE_FORMSPREE_ENDPOINT }}
+          VITE_GA_ID: ${{ secrets.VITE_GA_ID }}
 
       - name: Save SPA shell as 404 fallback
         run: cp apps/main-site/dist/index.html apps/main-site/dist/404.html
