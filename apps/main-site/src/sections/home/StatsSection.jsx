@@ -8,7 +8,7 @@ export default function StatsSection({ data }) {
 					{stats.map((stat) => (
 						<div key={stat.label} className="px-6 py-4 text-center text-white">
 							<div className="font-heading text-2xl font-bold sm:text-3xl">{stat.value}</div>
-							<div className="mt-1 text-xs text-white/45">{stat.label}</div>
+							<div className="mt-1 text-xs text-white/65">{stat.label}</div>
 						</div>
 					))}
 				</div>

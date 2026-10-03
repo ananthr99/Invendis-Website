@@ -11,7 +11,7 @@ export default function HeroSection({ data }) {
 						{title}
 						<span className="text-brand-red">{titleHighlight}</span>
 					</h1>
-					<p className="mt-4 text-[15px] leading-relaxed text-white/65 lg:max-w-md">{subtitle}</p>
+					<p className="mt-4 text-[15px] leading-relaxed text-white/35 lg:max-w-md">{subtitle}</p>
 					{cta && (
 						<Link
 							to={cta.href}
@@ -25,7 +25,7 @@ export default function HeroSection({ data }) {
 				<div className="space-y-5 rounded-2xl border border-white/10 bg-white/5 p-6">
 					{productGroups.map((group) => (
 						<div key={group.heading}>
-							<p className="mb-3 text-[10px] font-semibold tracking-widest text-white/35 uppercase">{group.heading}</p>
+							<p className="mb-3 text-[10px] font-semibold tracking-widest text-white/60 uppercase">{group.heading}</p>
 							<div className="flex flex-wrap gap-2">
 								{group.items.map((item) => (
 									<span

@@ -9,7 +9,7 @@ export default function TrustedBySection({ data }) {
 					{clients.map((name) => (
 						<span
 							key={name}
-							className="text-sm font-semibold tracking-wider text-brand-muted/50 uppercase transition-colors hover:text-brand-blue cursor-default"
+							className="text-sm font-semibold tracking-wider text-brand-muted uppercase transition-colors hover:text-brand-blue cursor-default"
 						>
 							{name}
 						</span>

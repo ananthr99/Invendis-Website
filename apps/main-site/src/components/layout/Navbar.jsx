@@ -16,14 +16,16 @@ export default function Navbar() {
 						src={publicUrl(settings?.logo?.srcDark ?? settings?.logo?.src ?? "/invendis_logo.webp")}
 						alt={settings?.logo?.alt ?? "INVENDIS"}
 						className="h-8 w-auto"
+						width="120" height="32"
 					/>
-          {settings?.makeInIndiaBadge?.src && (
-            <img
-              src={publicUrl(settings.makeInIndiaBadge.src)}
-              alt={settings.makeInIndiaBadge.alt ?? "Make in India"}
-              className="h-8 w-auto"
-            />
-          )}
+					{settings?.makeInIndiaBadge?.src && (
+						<img
+							src={publicUrl("/make_in_india.webp")}
+							alt={settings.makeInIndiaBadge.alt ?? "Make in India"}
+							className="h-8 w-auto"
+							width="32" height="32"
+						/>
+					)}
 				</Link>
 
 				<nav className="hidden flex-1 items-center justify-center gap-6 lg:flex">
@@ -45,9 +47,10 @@ export default function Navbar() {
 				{settings?.silboBadge && (
 					<Link to={settings.silboBadge.href} className="hidden lg:flex items-center">
 						<img
-							src={publicUrl(settings.silboBadge.src ?? "/silbo_logo.png")}
+							src={publicUrl("/silbo_logo.webp")}
 							alt={settings.silboBadge.label}
 							className="h-8 w-auto"
+							width="142" height="32"
 						/>
 					</Link>
 				)}

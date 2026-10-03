@@ -17,7 +17,7 @@ function ProductImage({ image, label }) {
 			<div className="flex items-center justify-center rounded-xl bg-brand-light" style={{ height: 160, marginBottom: "1rem" }}>
 				<div className="text-center">
 					<CameraIcon className="mx-auto mb-1 h-6 w-6 text-brand-muted/40" />
-					<p className="text-xs text-brand-muted/50">{label}</p>
+					<p className="text-xs text-brand-muted/80">{label}</p>
 				</div>
 			</div>
 		);

@@ -60,24 +60,27 @@ export default function Footer() {
 							src={publicUrl(settings?.logo?.srcDark ?? settings?.logo?.src ?? "/invendis_logo.webp")}
 							alt={settings?.logo?.alt ?? "INVENDIS"}
 							className="h-9 w-auto brightness-0 invert"
+							width="135" height="36"
 						/>
 						{settings?.silboBadge?.src && (
 							<img
-								src={publicUrl(settings.silboBadge.src)}
+								src={publicUrl("/silbo_logo.webp")}
 								alt={settings.silboBadge.label ?? "SILBO"}
 								className="h-9 w-auto brightness-0 invert"
+								width="160" height="36"
 							/>
 						)}
 					</div>
-					<p className="text-xs leading-relaxed text-white/50">{settings?.footerTagline}</p>
+					<p className="text-xs leading-relaxed text-white/70">{settings?.footerTagline}</p>
 					{settings?.makeInIndiaBadge?.src && (
 						<img
-							src={publicUrl(settings.makeInIndiaBadge.src)}
+							src={publicUrl("/make_in_india.webp")}
 							alt={settings.makeInIndiaBadge.alt ?? "Make in India"}
 							className="mt-2 h-10 w-auto brightness-0 invert"
+							width="40" height="40"
 						/>
 					)}
-					<p className="text-xs text-white/50">{settings?.footerMadeInIndia}</p>
+					<p className="text-xs text-white/70">{settings?.footerMadeInIndia}</p>
 
 					{/* Social icons */}
 					<div className="mt-4 flex flex-wrap gap-2">
@@ -104,9 +107,9 @@ export default function Footer() {
 				{/* Cols 2–4: link groups */}
 				{groups.map((group) => (
 					<div key={group.title}>
-						<h4 className="mb-4 text-xs font-semibold uppercase tracking-widest text-brand-red">
+						<p className="mb-4 text-xs font-semibold uppercase tracking-widest text-brand-red">
 							{group.title}
-						</h4>
+						</p>
 						<ul className="space-y-2">
 							{(group.links ?? []).map((link) => (
 								<li key={link.label}>
@@ -121,9 +124,9 @@ export default function Footer() {
 
 				{/* Col 5: contact */}
 				<div>
-					<h4 className="mb-4 text-xs font-semibold uppercase tracking-widest text-brand-red">
+					<p className="mb-4 text-xs font-semibold uppercase tracking-widest text-brand-red">
 						Contact Us
-					</h4>
+					</p>
 					<ul className="space-y-2 text-sm">
 						{contact.email && (
 							<li>
