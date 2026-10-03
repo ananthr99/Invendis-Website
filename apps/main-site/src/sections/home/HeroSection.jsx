@@ -4,8 +4,15 @@ export default function HeroSection({ data }) {
 	const { title, titleHighlight, subtitle, cta, productGroups = [] } = data ?? {};
 
 	return (
-		<section className="bg-brand-blue px-4 py-8 text-white sm:px-8 lg:py-12">
-			<div className="mx-auto grid max-w-screen-2xl gap-8 lg:grid-cols-[1fr_1.1fr] lg:items-start">
+		<section className="relative bg-brand-blue px-4 py-8 text-white sm:px-8 lg:py-12">
+			{/* Gradient overlay — matches Products & SILBO hero */}
+			<div style={{
+				position: "absolute",
+				inset: 0,
+				background: "linear-gradient(to right, rgba(11,18,60,0.88) 0%, rgba(11,18,60,0.88) 35%, rgba(11,18,60,0.55) 65%, rgba(11,18,60,0.18) 100%)",
+			}} />
+
+			<div className="relative mx-auto grid max-w-screen-2xl gap-8 lg:grid-cols-[1fr_1.1fr] lg:items-start" style={{ zIndex: 1 }}>
 				<div>
 					<h1 className="font-heading text-4xl font-bold leading-tight sm:text-5xl lg:text-[3rem]">
 						{title}
@@ -30,7 +37,7 @@ export default function HeroSection({ data }) {
 								{group.items.map((item) => (
 									<span
 										key={item}
-										className="rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-sm text-white/75 border border-white/30 hover:border-brand-red transition-colors cursor-default"
+										className="rounded-full border border-white/30 bg-white/5 px-4 py-1.5 text-sm text-white/75 hover:border-brand-red transition-colors cursor-default"
 									>
 										{item}
 									</span>
