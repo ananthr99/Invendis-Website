@@ -116,7 +116,7 @@
         "count": "10+",
         "label": "Routers",
         "description": "4G/5G, dual-SIM, Wi-Fi 6, SD-WAN and outdoor variants",
-        "link": "/products",
+        "link": "//products/product-selector",
         "linkLabel": "Browse Routers →"
       },
       {
@@ -124,7 +124,7 @@
         "count": "16+",
         "label": "Gateways",
         "description": "RS485, RS232, DIO, AI inputs for industrial integration",
-        "link": "/products",
+        "link": "/products/product-selector",
         "linkLabel": "Browse Gateways →"
       },
       {
@@ -132,7 +132,7 @@
         "count": "10+",
         "label": "Switches",
         "description": "Managed and unmanaged PoE switches, DIN rail mount",
-        "link": "/products",
+        "link": "/products/product-selector",
         "linkLabel": "Browse Switches →"
       }
     ]

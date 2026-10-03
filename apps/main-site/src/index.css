@@ -1,15 +1,30 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+	/* Brand colors */
+	--color-brand-blue: #1B2A6B;
+	--color-brand-red: #E63946;
+	--color-brand-dark: #0d1534;
+	--color-brand-light: #f7f8fc;
+	--color-brand-text: #1a1a2e;
+	--color-brand-muted: #6b7280;
+	--color-brand-blue-light: #2B3F8C;
+	--color-brand-whatsapp: #25D366;
+	--color-brand-linkedin: #0A66C2;
+
+	/* Brand fonts */
+	--font-heading: "Sora", sans-serif;
+	--font-body: "DM Sans", sans-serif;
+}
 
 html {
-  scroll-behavior: smooth;
+	scroll-behavior: smooth;
 }
 
 body {
-  @apply bg-brand-light text-brand-text font-body antialiased;
+	@apply bg-brand-light text-brand-text font-body antialiased;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  @apply font-heading;
+	@apply font-heading;
 }

@@ -18,7 +18,7 @@ export default function HeroSection({ data }) {
 	}, [imgs.length]);
 
 	return (
-		<section className="relative bg-brand-blue px-4 py-16 text-white sm:px-8 lg:py-24">
+		<section className="relative bg-brand-blue px-4 pt-8 text-white sm:px-8 lg:pt-14 lg:pb-20">
 			{/* Rotating full-bleed background images */}
 			{imgs.map((src, i) => (
 				<div
@@ -105,7 +105,7 @@ export default function HeroSection({ data }) {
 						)}
 					</div>
 					{d.stats?.length > 0 && (
-						<div style={{ display: "flex", flexWrap: "wrap", gap: "1rem 7rem", marginTop: "1.75rem", paddingTop: "1rem", borderTop: "1px solid rgba(255,255,255,0.12)" }}>
+						<div className="grid grid-cols-2 lg:grid-cols-4" style={{ gap: "0.75rem 2.5rem", marginTop: "1.75rem", paddingTop: "1rem", borderTop: "1px solid rgba(255,255,255,0.12)" }}>
 							{d.stats.map((stat, i) => (
 								<div key={i}>
 									<p className="font-heading" style={{ fontSize: 22, fontWeight: 800, color: stat.highlight ? "#E63946" : "white", marginBottom: 2, lineHeight: 1 }}>
