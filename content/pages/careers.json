@@ -1,0 +1,45 @@
+{
+	"sections": ["hero", "whyJoin", "perks", "openings", "ctaBanner"],
+	"hero": {
+		"eyebrow": "JOIN OUR TEAM",
+		"title": "Build the Future of",
+		"titleHighlight": "Industrial Connectivity",
+		"subtitle": "Join a team of engineers, designers, and problem-solvers who are redefining how industries connect at the edge.",
+		"cta": { "label": "View Open Roles →", "href": "#openings" },
+		"image": "/images/careers/hero/hero.webp"
+	},
+	"whyJoin": {
+		"eyebrow": "WHY INVENDIS",
+		"title": "A Place to Grow",
+		"subtitle": "We build products that matter — for industries that power the world.",
+		"items": [
+			{ "icon": "rocket", "title": "Meaningful Work", "description": "Every product we ship connects critical infrastructure across telecom, energy, and manufacturing. Your work reaches the field." },
+			{ "icon": "users", "title": "Collaborative Culture", "description": "Small teams, fast decisions, and an open-door culture where every voice drives the product roadmap." },
+			{ "icon": "trending", "title": "Rapid Growth", "description": "We are scaling fast across India and beyond. Grow your career alongside a company building for global markets." },
+			{ "icon": "globe", "title": "Global Impact", "description": "INVENDIS products are deployed across 20+ countries. You'll build solutions that reach industries worldwide." }
+		]
+	},
+	"openings": {
+		"eyebrow": "OPEN POSITIONS",
+		"title": "Current Openings",
+		"subtitle": "We're hiring across engineering, sales, and operations.",
+		"jobs": []
+	},
+	"perks": {
+		"eyebrow": "BENEFITS",
+		"title": "What We Offer",
+		"items": [
+			{ "icon": "heart", "title": "Health Insurance", "description": "Comprehensive medical, dental, and vision coverage for you and your family." },
+			{ "icon": "book", "title": "Learning Budget", "description": "Annual allowance for courses, certifications, and conferences to keep you sharp." },
+			{ "icon": "clock", "title": "Flexible Hours", "description": "Own your schedule. We care about output, not clock-in time." },
+			{ "icon": "shield", "title": "Job Stability", "description": "We are a profitable, growing company with long-term ambitions and a stable foundation." },
+			{ "icon": "award", "title": "Performance Rewards", "description": "Transparent appraisal cycles and bonuses tied to your contribution and company growth." },
+			{ "icon": "coffee", "title": "Great Workspace", "description": "Modern offices in Bangalore with the tools, equipment, and environment you need to do your best work." }
+		]
+	},
+	"ctaBanner": {
+		"title": "Don't see your role?",
+		"subtitle": "We're always looking for talented people. Send us your resume and we'll be in touch when the right opportunity opens.",
+		"primaryBtn": { "label": "Get in Touch →", "href": "/contact" }
+	}
+}
