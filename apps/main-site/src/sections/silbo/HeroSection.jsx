@@ -18,7 +18,7 @@ export default function HeroSection({ data }) {
 	}, [imgs.length]);
 
 	return (
-		<section className="relative bg-brand-blue px-4 py-10 text-white sm:px-8 lg:py-16">
+		<section className="relative bg-brand-blue px-4 py-16 text-white sm:px-8 lg:py-24">
 			{/* Rotating full-bleed background images */}
 			{imgs.map((src, i) => (
 				<div
