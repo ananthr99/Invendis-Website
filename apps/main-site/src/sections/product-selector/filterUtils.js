@@ -39,18 +39,23 @@ export function pageNums(total, current) {
 
 export function useItemsPerPage() {
 	function calc() {
-		const w = window.innerWidth;
-		if (w < 640) return 10;
-		if (w < 1024) return 9;
-		if (w < 1280) return 12;
-		if (w < 1536) return 15;
-		return 24;
+		if (window.matchMedia("(min-width: 96rem)").matches) return 18;  // 2xl: 6 cols × 3 rows
+		if (window.matchMedia("(min-width: 80rem)").matches) return 15;  // xl:  5 cols × 3 rows
+		if (window.matchMedia("(min-width: 64rem)").matches) return 12;  // lg:  4 cols × 3 rows
+		if (window.matchMedia("(min-width: 40rem)").matches) return 9;   // sm:  3 cols × 3 rows
+		return 10;                                                         // base: 2 cols × 5 rows
 	}
 	const [ipp, setIpp] = useState(calc);
 	useEffect(() => {
+		const mqs = [
+			window.matchMedia("(min-width: 96rem)"),
+			window.matchMedia("(min-width: 80rem)"),
+			window.matchMedia("(min-width: 64rem)"),
+			window.matchMedia("(min-width: 40rem)"),
+		];
 		const handler = () => setIpp(calc());
-		window.addEventListener("resize", handler);
-		return () => window.removeEventListener("resize", handler);
+		mqs.forEach(mq => mq.addEventListener("change", handler));
+		return () => mqs.forEach(mq => mq.removeEventListener("change", handler));
 	}, []);
 	return ipp;
 }

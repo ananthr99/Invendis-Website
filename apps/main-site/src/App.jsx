@@ -1,4 +1,4 @@
-import { Suspense, lazy } from "react";
+import { Suspense, lazy, useRef } from "react";
 import { useEffect } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 import Navbar from "./components/layout/Navbar.jsx";
@@ -28,7 +28,17 @@ const NotFound = lazy(() => import("./pages/NotFound.jsx"));
 
 function ScrollToTop() {
 	const { pathname, hash } = useLocation();
+	const prevPathname = useRef(pathname);
+
 	useEffect(() => {
+		const prev = prevPathname.current;
+		prevPathname.current = pathname;
+
+		if (
+			prev.startsWith("/products/product-selector") &&
+			pathname.startsWith("/products/product-selector")
+		) return;
+
 		if (hash) {
 			setTimeout(() => {
 				const el = document.getElementById(hash.slice(1));
@@ -40,6 +50,7 @@ function ScrollToTop() {
 	}, [pathname, hash]);
 	return null;
 }
+
 
 
 function PageLoader() {
