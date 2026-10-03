@@ -47,7 +47,7 @@ export default function HeroSection({ data }) {
 			<div style={{
 				position: "absolute",
 				inset: 0,
-				backgroundImage: `url('${BASE}/images/hero-bg-blue.png')`,
+				backgroundImage: `url('${BASE}/images/hero-bg-blue.webp')`,
 				backgroundSize: "cover",
 				backgroundPosition: "center",
 				opacity: 0.12,

@@ -47,7 +47,7 @@ export default function ResourceDetail() {
 			},
 			"url": absoluteUrl(`/resources/${slug}`),
 			"mainEntityOfPage": { "@type": "WebPage", "@id": absoluteUrl(`/resources/${slug}`) },
-			"image": absoluteUrl("/images/og-default.png"),
+			"image": absoluteUrl("/images/og-default.webp"),
 		});
 		return () => {
 			document.querySelector('script[data-schema="ld-article"]')?.remove();

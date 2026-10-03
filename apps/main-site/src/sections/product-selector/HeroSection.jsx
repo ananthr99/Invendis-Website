@@ -5,7 +5,7 @@ export default function HeroSection() {
 		<section
 			className="relative bg-brand-blue px-4 py-16 text-white sm:px-8 lg:py-24"
 			style={{
-				backgroundImage: `url('${BASE}/images/product-selector/hero/hero-productselector.png')`,
+				backgroundImage: `url('${BASE}/images/product-selector/hero/hero-productselector.webp')`,
 				backgroundSize: "cover",
 				backgroundPosition: "center right",
 			}}

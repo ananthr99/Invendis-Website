@@ -22,7 +22,7 @@ export default function PageSEO({ title, description, path = "", image }) {
 		const canonicalUrl = absoluteUrl(path);
 		const ogImage = image
 			? (image.startsWith("http") ? image : absoluteUrl(image))
-			: absoluteUrl("/images/og-default.png");
+			: absoluteUrl("/images/og-default.webp");
 
 		document.title = fullTitle;
 
