@@ -86,7 +86,8 @@ export default function ContactBodySection({ data }) {
 		e.preventDefault();
 		if (fields.honeypot) return;
 
-		const endpoint = import.meta.env.VITE_FORMSPREE_ENDPOINT;
+		const endpoint = import.meta.env.VITE_FORMSPREE_ENDPOINT || "https://formspree.io/f/mgavgdov";
+		
 		if (!endpoint) {
 			setStatus("error");
 			return;
