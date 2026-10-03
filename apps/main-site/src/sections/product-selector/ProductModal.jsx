@@ -99,9 +99,9 @@ function VariantsTable({ variants, part_datasheets }) {
 								))}
 								<td style={{ padding: "8px 12px" }}>
 									{ds === "contact_us"
-										? <a href={ds.startsWith("http") ? ds : `${BASE}${ds}`} target="_blank" rel="noopener noreferrer" style={{ fontSize: 12, color: "#1260A8", fontWeight: 600, textDecoration: "none" }}>↓ PDF</a>
+										? <span style={{ fontSize: 12, color: "#9ca3af" }}>Contact Us</span>
 										: ds
-											? <a href={ds} target="_blank" rel="noopener noreferrer" style={{ fontSize: 12, color: "#1260A8", fontWeight: 600, textDecoration: "none" }}>↓ PDF</a>
+											? <a href={ds.startsWith("http") ? ds : `${BASE}${ds}`} target="_blank" rel="noopener noreferrer" style={{ fontSize: 12, color: "#1260A8", fontWeight: 600, textDecoration: "none" }}>↓ PDF</a>
 											: <span style={{ color: "#9ca3af", fontSize: 12 }}>—</span>
 									}
 								</td>
