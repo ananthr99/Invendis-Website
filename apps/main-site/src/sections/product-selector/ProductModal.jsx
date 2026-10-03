@@ -101,7 +101,12 @@ function VariantsTable({ variants, part_datasheets }) {
 									{ds === "contact_us"
 										? <span style={{ fontSize: 12, color: "#9ca3af" }}>Contact Us</span>
 										: ds
-											? <a href={ds.startsWith("http") ? ds : `${BASE}${ds}`} target="_blank" rel="noopener noreferrer" style={{ fontSize: 12, color: "#1260A8", fontWeight: 600, textDecoration: "none" }}>↓ PDF</a>
+											? <a href={ds.startsWith("http") ? ds : `${BASE}${ds}`} target="_blank" rel="noopener noreferrer" style={{ fontSize: 12, color: "#1260A8", fontWeight: 600, textDecoration: "none", display: "inline-flex", alignItems: "center", gap: 4 }}>
+												<svg style={{ width: 13, height: 13 }} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5}>
+													<path strokeLinecap="round" strokeLinejoin="round" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M12 4v11m0 0l-4-4m4 4l4-4" />
+												</svg>
+												PDF
+											</a>
 											: <span style={{ color: "#9ca3af", fontSize: 12 }}>—</span>
 									}
 								</td>
@@ -287,7 +292,10 @@ export default function ProductModal({ id, onClose, onCompare, isCompared, compa
 											fontSize: 14, fontWeight: 600, textDecoration: "none",
 										}}
 									>
-										↓ Download Datasheet (PDF)
+										<svg style={{ width: 16, height: 16 }} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5}>
+											<path strokeLinecap="round" strokeLinejoin="round" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M12 4v11m0 0l-4-4m4 4l4-4" />
+										</svg>
+										Download Datasheet (PDF)
 									</a>
 								</div>
 							)}
