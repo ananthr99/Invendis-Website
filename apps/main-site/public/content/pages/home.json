@@ -179,7 +179,7 @@
     },
     "secondaryBtn": {
       "label": "See All Products",
-      "href": "/products"
+      "href": "/products/product-selector"
     }
   }
 }
