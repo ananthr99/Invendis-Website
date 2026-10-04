@@ -18,7 +18,7 @@ const CONTENT_LINKS = [
 
 export default function Dashboard() {
 	const { instance, accounts } = useMsal();
-	const { isDirty, showConfirm, token, tokenStatus } = useAdmin();
+	const { isDirty, showConfirm, token, tokenStatus, clearToken } = useAdmin();
 	const navigate = useNavigate();
 
 	const displayName = accounts[0]?.name ?? accounts[0]?.username ?? "";
@@ -36,6 +36,7 @@ export default function Dashboard() {
 	}
 
 	function handleSignOut() {
+		clearToken();
 		instance.logoutRedirect({
 			account: instance.getActiveAccount(),
 			onRedirectNavigate: () => false,

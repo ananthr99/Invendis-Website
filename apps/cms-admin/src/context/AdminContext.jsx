@@ -34,6 +34,11 @@ export function AdminProvider({ children }) {
 		setTokenState(t);
 	}
 
+	function clearToken() {
+		localStorage.removeItem(TOKEN_KEY);
+		setTokenState("");
+	}
+
 	const toast = useCallback((message, type = "default") => {
 		setToastMsg({ message, type, id: Date.now() });
 	}, []);
@@ -77,7 +82,7 @@ export function AdminProvider({ children }) {
 	}, []);
 
 	return (
-		<AdminContext.Provider value={{ token, saveToken, toast, userEmail, setDirty, isDirty, showConfirm, showConflictModal, tokenStatus }}>
+		<AdminContext.Provider value={{ token, saveToken, clearToken, toast, userEmail, setDirty, isDirty, showConfirm, showConflictModal, tokenStatus }}>
 
 			{children}
 
