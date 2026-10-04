@@ -1,5 +1,35 @@
 [
   {
+    "timestamp": "2026-10-04T11:28:57.191Z",
+    "userEmail": "ananth.r@invendis.com",
+    "page": "Company",
+    "section": null,
+    "changes": [
+      {
+        "section": "leadership",
+        "field": "members",
+        "action": "changed",
+        "label": "#4",
+        "before": {
+          "name": "Ravishankar S",
+          "role": "Assistant Vice President",
+          "initials": "RS",
+          "color": "#0891b2",
+          "linkedin": "https://www.linkedin.com/in/ravi-shankar-31441431/",
+          "image": ""
+        },
+        "after": {
+          "name": "Ravi Shankar S",
+          "role": "Assistant Vice President",
+          "initials": "RS",
+          "color": "#0891b2",
+          "linkedin": "https://www.linkedin.com/in/ravi-shankar-31441431/",
+          "image": ""
+        }
+      }
+    ]
+  },
+  {
     "timestamp": "2026-10-04T10:18:25.608Z",
     "userEmail": "ananth.r@invendis.com",
     "page": "Home",
