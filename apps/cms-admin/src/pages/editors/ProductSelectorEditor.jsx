@@ -4,7 +4,6 @@ import { loadPageContent, savePageContent, uploadImage } from "../../utils/saveP
 import { github, LIVE_BRANCH } from "../../config.js";
 import ProductList from "../../sections/product-selector/ProductList.jsx";
 import ProductForm from "../../sections/product-selector/ProductForm.jsx";
-import { validateRequired } from "../../utils/validate.js";
 
 const INDEX_PATH = "productSelector/_index.json";
 
@@ -96,9 +95,6 @@ export default function ProductSelectorEditor() {
 	}
 
 	async function handleSave() {
-		if (!validateRequired([
-			{ label: "Title", value: form.title },
-		], toast)) return;
 		if (!product) return;
 		if (!product.id.trim()) { toast("Product ID is required", "err"); return; }
 		if (!product.name.trim()) { toast("Product name is required", "err"); return; }

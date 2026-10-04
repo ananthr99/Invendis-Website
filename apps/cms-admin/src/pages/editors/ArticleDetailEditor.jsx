@@ -6,7 +6,6 @@ import { useAdmin } from "../../context/AdminContext.jsx";
 import { loadPageContent, savePageContent, uploadImage  } from "../../utils/savePageContent.js";
 import { github, OWNER, REPO } from "../../config.js";
 import { checkFileSize } from "../../utils/fileUtils.js";
-import { validateRequired } from "../../utils/validate.js";
 
 function rawUrl(imgPath) {
 	return `https://raw.githubusercontent.com/${OWNER}/${REPO}/main/apps/main-site/public${imgPath}`;
@@ -279,9 +278,6 @@ export default function ArticleDetailEditor() {
 	}
 
 	async function handleSave() {
-		if (!validateRequired([
-			{ label: "Title", value: form.title },
-		], toast)) return;
 		setSaving(true);
 		try {
 			let saveForm = { ...form };

@@ -2,7 +2,6 @@ import { useState, useEffect, useLayoutEffect, useRef } from "react";
 import { useAdmin } from "../../context/AdminContext.jsx";
 import { loadPageContent, savePageContent, uploadImage } from "../../utils/savePageContent.js";
 import { GALLERY_SECTION_EDITORS, SECTION_LABELS, ALL_SECTION_KEYS } from "../../sections/gallery/registry.js";
-import { validateRequired } from "../../utils/validate.js";
 
 const CONTENT_PATH = "pages/gallery.json";
 
@@ -55,9 +54,6 @@ export default function GalleryPageEditor() {
 	}
 
 	async function handleSave() {
-		if (!validateRequired([
-			{ label: "Title", value: form.title },
-		], toast)) return;
 		setSaving(true);
 		try {
 			let saveForm = form;

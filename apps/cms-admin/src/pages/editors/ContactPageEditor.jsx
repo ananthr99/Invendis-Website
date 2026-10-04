@@ -3,7 +3,6 @@ import { useAdmin } from "../../context/AdminContext.jsx";
 import { loadPageContent, savePageContent } from "../../utils/savePageContent.js";
 import { CONTACT_SECTION_EDITORS, SECTION_LABELS, ALL_SECTION_KEYS } from "../../sections/contact/registry.js";
 import { github } from "../../config.js";
-import { validateRequired } from "../../utils/validate.js";
 
 const CONTENT_PATH = "pages/contact.json";
 
@@ -51,9 +50,6 @@ export default function ContactPageEditor() {
 	}
 
 	async function handleSave() {
-		if (!validateRequired([
-			{ label: "Title", value: form.title },
-		], toast)) return;
 		setSaving(true);
 		try {
 			let saveForm = form;

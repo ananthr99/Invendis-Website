@@ -3,7 +3,6 @@ import { useAdmin } from "../../context/AdminContext.jsx";
 import { loadPageContent, savePageContent } from "../../utils/savePageContent.js";
 import { SECTOR_SECTION_EDITORS, SECTION_LABELS, ALL_SECTION_KEYS } from "../../sections/sectors/registry.js";
 import { github, LIVE_BRANCH } from "../../config.js";
-import { validateRequired } from "../../utils/validate.js";
 
 const CONTENT_PATH = "pages/sectors.json";
 
@@ -62,9 +61,6 @@ export default function SectorsPageEditor() {
 	}
 
 	async function handleSave() {
-		if (!validateRequired([
-			{ label: "Title", value: form.title },
-		], toast)) return;
 		setSaving(true);
 		try {
 			let saveForm = form;

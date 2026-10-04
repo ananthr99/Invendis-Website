@@ -2,7 +2,6 @@ import { useState, useEffect, useLayoutEffect, useRef } from "react";
 import { useAdmin } from "../../context/AdminContext.jsx";
 import { loadPageContent, savePageContent, uploadImage } from "../../utils/savePageContent.js";
 import { CAREERS_SECTION_EDITORS, SECTION_LABELS, ALL_SECTION_KEYS } from "../../sections/careers/registry.js";
-import { validateRequired } from "../../utils/validate.js";
 
 const CONTENT_PATH = "pages/careers.json";
 
@@ -53,9 +52,6 @@ export default function CareersPageEditor() {
 	}
 
 	async function handleSave() {
-		if (!validateRequired([
-			{ label: "Title", value: form.title },
-		], toast)) return;
 		setSaving(true);
 		try {
 			let saveForm = { ...form };
