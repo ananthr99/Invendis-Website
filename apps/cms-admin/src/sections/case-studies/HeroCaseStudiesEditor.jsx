@@ -1,7 +1,10 @@
 import { useState, useRef } from "react";
+import { checkFileSize } from "../../utils/fileUtils.js";
 import { fileToBase64 } from "@invendis/github-client";
+import { compressImage, COMPRESS_PRESETS } from "../../utils/compressImage.js";
 import { github, OWNER, REPO } from "../../config.js";
 import { useAdmin } from "../../context/AdminContext.jsx";
+import SingleImageUpload from "../../components/SingleImageUpload.jsx";
 
 function rawUrl(imgPath) {
 	return `https://raw.githubusercontent.com/${OWNER}/${REPO}/main/apps/main-site/public${imgPath}`;
@@ -11,7 +14,7 @@ export default function HeroCaseStudiesEditor({ data, onChange }) {
 	const d = data ?? { eyebrow: "", title: "", titleHighlight: "", subtitle: "", image: "" };
 	const [preview, setPreview] = useState(null);
 	const [fileCheck, setFileCheck] = useState(null);
-	const { token } = useAdmin();
+	const { token, toast } = useAdmin();
 	const checkTimer = useRef(null);
 
 	function set(field, val) { onChange({ ...d, [field]: val }); }
@@ -29,8 +32,10 @@ export default function HeroCaseStudiesEditor({ data, onChange }) {
 	}
 
 	async function handleFileSelect(file) {
-		const base64 = await fileToBase64(file);
-		const previewUrl = URL.createObjectURL(file);
+		if (!checkFileSize(file, toast)) return;
+		const compressed = await compressImage(file, COMPRESS_PRESETS.hero);
+		const base64 = await fileToBase64(compressed);
+		const previewUrl = URL.createObjectURL(compressed);
 		setPreview({ previewUrl, filename: file.name });
 		onChange({ ...d, _pendingUpload: { base64, filename: file.name } });
 		checkFileExists(`apps/main-site/public/images/case-studies/hero/${file.name}`);
@@ -71,36 +76,18 @@ export default function HeroCaseStudiesEditor({ data, onChange }) {
 
 			<div className="admin-field" style={{ marginTop: 20, paddingTop: 20, borderTop: "1px solid var(--admin-border)" }}>
 				<label className="admin-label">Hero Background Image</label>
-
-				{d.image && !pending && (
-					<div style={{ marginBottom: 12 }}>
-						<div style={{ position: "relative", display: "inline-block" }}>
-							<img src={rawUrl(d.image)} alt="" style={{ height: 80, width: 160, objectFit: "cover", borderRadius: 6, border: "1px solid var(--admin-border)", display: "block" }} />
-							<button onClick={() => onChange({ ...d, image: "" })} title="Remove" style={{ position: "absolute", top: -7, right: -7, width: 20, height: 20, borderRadius: "50%", background: "var(--admin-red)", color: "white", border: "none", cursor: "pointer", fontSize: 11, display: "flex", alignItems: "center", justifyContent: "center" }}>✕</button>
-						</div>
-						<p style={{ margin: "6px 0 0", fontSize: 11, color: "var(--admin-muted)" }}>{d.image}</p>
-					</div>
-				)}
-
-				{pending && (
-					<div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 8, padding: 8, background: "var(--admin-bg)", border: "1px solid var(--admin-border)", borderRadius: 6 }}>
-						{preview?.previewUrl && <img src={preview.previewUrl} alt="" style={{ height: 52, width: 80, objectFit: "cover", borderRadius: 4, flexShrink: 0 }} />}
-						<div style={{ flex: 1, minWidth: 0 }}>
-							<label style={{ fontSize: 11, color: "var(--admin-muted)", display: "block", marginBottom: 3 }}>Save as</label>
-							<input className="admin-input" style={{ fontSize: 13, marginBottom: 4 }} value={pending.filename} onChange={e => renamePending(e.target.value)} placeholder="filename.jpg" />
-							<p style={{ margin: 0, fontSize: 11, color: "var(--admin-muted)" }}>→ /images/case-studies/hero/{pending.filename}</p>
-							{fileCheck === "checking" && <p style={{ margin: "4px 0 0", fontSize: 11, color: "var(--admin-muted)" }}>Checking…</p>}
-							{fileCheck === "exists" && <p style={{ margin: "4px 0 0", fontSize: 11, color: "var(--admin-red)" }}>⚠ File already exists — saving will overwrite it</p>}
-							{fileCheck === "free" && <p style={{ margin: "4px 0 0", fontSize: 11, color: "#16a34a" }}>✓ Name is available</p>}
-						</div>
-						<button className="admin-btn admin-btn--ghost" onClick={clearPending}>✕</button>
-					</div>
-				)}
-
-				<label style={{ display: "inline-flex", alignItems: "center", gap: 6, padding: "7px 14px", border: "1px solid var(--admin-border)", borderRadius: 8, cursor: "pointer", fontSize: 13, background: "white", fontFamily: "inherit" }}>
-					<input type="file" accept="image/*" style={{ display: "none" }} onChange={e => { if (e.target.files[0]) handleFileSelect(e.target.files[0]); e.target.value = ""; }} />
-					{pending || d.image ? "Replace image" : "Upload image"}
-				</label>
+				<SingleImageUpload
+					existingUrl={d.image ? rawUrl(d.image) : null}
+					existingPath={d.image}
+					pending={d._pendingUpload ?? null}
+					preview={preview?.previewUrl ?? null}
+					fileCheck={fileCheck}
+					storagePath="/images/case-studies/hero/"
+					onFileSelect={handleFileSelect}
+					onRename={renamePending}
+					onClearPending={clearPending}
+					onRemoveExisting={() => onChange({ ...d, image: "" })}
+				/>
 			</div>
 		</div>
 	);

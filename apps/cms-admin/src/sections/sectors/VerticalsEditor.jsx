@@ -1,5 +1,7 @@
 import { useState, useEffect, useRef } from "react";
+import { checkFileSize } from "../../utils/fileUtils.js";
 import { fileToBase64 } from "@invendis/github-client";
+import { compressImage, COMPRESS_PRESETS } from "../../utils/compressImage.js";
 import { github, OWNER, REPO } from "../../config.js";
 import { useAdmin } from "../../context/AdminContext.jsx";
 
@@ -12,7 +14,7 @@ export default function VerticalsEditor({ data, onChange }) {
 	const [previews, setPreviews] = useState({});
 	const [expanded, setExpanded] = useState(null);
 	const [fileChecks, setFileChecks] = useState({});
-	const { token } = useAdmin();
+	const { token, toast } = useAdmin();
 	const checkTimers = useRef({});
 
 	function checkFileExists(key, repoPath) {
@@ -54,8 +56,10 @@ export default function VerticalsEditor({ data, onChange }) {
 	}
 
 	async function handleFileSelect(i, file) {
-		const base64 = await fileToBase64(file);
-		const previewUrl = URL.createObjectURL(file);
+		if (!checkFileSize(file, toast)) return;
+		const compressed = await compressImage(file, COMPRESS_PRESETS.card);
+		const base64 = await fileToBase64(compressed);
+		const previewUrl = URL.createObjectURL(compressed);
 		setPreviews(p => ({ ...p, [i]: previewUrl }));
 		const existing = (d._pendingUploads ?? []).filter(u => u.itemIndex !== i);
 		onChange({

@@ -1,5 +1,7 @@
 import { useState, useEffect, useRef } from "react";
+import { checkFileSize } from "../../utils/fileUtils.js";
 import { fileToBase64 } from "@invendis/github-client";
+import { compressImage, COMPRESS_PRESETS } from "../../utils/compressImage.js";
 import { github, OWNER, REPO } from "../../config.js";
 import { useAdmin } from "../../context/AdminContext.jsx";
 
@@ -12,7 +14,7 @@ export default function HeroCareerEditor({ data, onChange }) {
 	const [preview, setPreview] = useState(null);
 	const [expanded, setExpanded] = useState(null);
 	const [fileCheck, setFileCheck] = useState(null);
-	const { token } = useAdmin();
+	const { token, toast } = useAdmin();
 	const checkTimer = useRef(null);
 
 	function checkFileExists(repoPath) {
@@ -40,8 +42,10 @@ export default function HeroCareerEditor({ data, onChange }) {
 	function updateCta(field, val) { onChange({ ...d, cta: { ...d.cta, [field]: val } }); }
 
 	async function handleFileSelect(file) {
-		const base64 = await fileToBase64(file);
-		const previewUrl = URL.createObjectURL(file);
+		if (!checkFileSize(file, toast)) return;
+		const compressed = await compressImage(file, COMPRESS_PRESETS.hero);
+		const base64 = await fileToBase64(compressed);
+		const previewUrl = URL.createObjectURL(compressed);
 		if (preview) URL.revokeObjectURL(preview);
 		setPreview(previewUrl);
 		onChange({ ...d, _pendingUpload: { base64, filename: file.name } });

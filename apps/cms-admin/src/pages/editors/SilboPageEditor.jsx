@@ -2,6 +2,7 @@ import { useState, useEffect, useLayoutEffect, useRef } from "react";
 import { useAdmin } from "../../context/AdminContext.jsx";
 import { loadPageContent, savePageContent, uploadImage } from "../../utils/savePageContent.js";
 import { SILBO_SECTION_EDITORS, SECTION_LABELS, ALL_SECTION_KEYS } from "../../sections/silbo/registry.js";
+import { validateRequired } from "../../utils/validate.js";
 
 const CONTENT_PATH = "pages/silbo.json";
 
@@ -63,6 +64,9 @@ export default function SilboPageEditor() {
 	}
 
 	async function handleSave() {
+		if (!validateRequired([
+			{ label: "Title", value: form.title },
+		], toast)) return;
 		setSaving(true);
 		try {
 			let saveForm = { ...form };

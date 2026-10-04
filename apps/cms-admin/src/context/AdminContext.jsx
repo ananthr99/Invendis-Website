@@ -1,5 +1,6 @@
 import { createContext, useContext, useState, useRef, useEffect, useCallback } from "react";
 import { useMsal } from "@azure/msal-react";
+import { github } from "../config.js";
 
 // Global state every editor page needs: the GitHub PAT, a toast helper,
 // the signed-in user's email (for the activity log), and an "unsaved
@@ -13,6 +14,16 @@ export function AdminProvider({ children }) {
 	const userEmail = accounts[0]?.username ?? "";
 
 	const [token, setTokenState] = useState(() => sessionStorage.getItem(TOKEN_KEY) || "");
+	const [tokenStatus, setTokenStatus] = useState("unchecked"); // "unchecked" | "valid" | "invalid"
+
+	useEffect(() => {
+		if (!token) { setTokenStatus("unchecked"); return; }
+		setTokenStatus("unchecked");
+		github.testConnection(token)
+			.then(() => setTokenStatus("valid"))
+			.catch(() => setTokenStatus("invalid"));
+	}, [token]);
+
 	const [toastMsg, setToastMsg] = useState(null);
 	const [confirmState, setConfirmState] = useState(null);
 	const dirtyRef = useRef(false);
@@ -43,6 +54,15 @@ export function AdminProvider({ children }) {
 	function showConfirm(message, onOk, onCancel) {
 		setConfirmState({ message, onOk, onCancel });
 	}
+	function showConflictModal() {
+		setConfirmState({
+			message: "Another editor saved this file while you were editing. Refresh the page to get the latest version, then re-apply your changes.",
+			onOk: () => window.location.reload(),
+			onCancel: null,
+			okLabel: "Reload page",
+			cancelLabel: "Dismiss",
+		});
+	}
 
 	// Warn on browser close/refresh with unsaved changes.
 	useEffect(() => {
@@ -57,7 +77,8 @@ export function AdminProvider({ children }) {
 	}, []);
 
 	return (
-		<AdminContext.Provider value={{ token, saveToken, toast, userEmail, setDirty, isDirty, showConfirm }}>
+		<AdminContext.Provider value={{ token, saveToken, toast, userEmail, setDirty, isDirty, showConfirm, showConflictModal, tokenStatus }}>
+
 			{children}
 
 			{toastMsg && <div className={`admin-toast admin-toast--${toastMsg.type}`}>{toastMsg.message}</div>}
@@ -68,16 +89,10 @@ export function AdminProvider({ children }) {
 						<p>{confirmState.message}</p>
 						<div className="admin-modal-actions">
 							<button className="admin-btn admin-btn--ghost" onClick={() => { confirmState.onCancel?.(); setConfirmState(null); }}>
-								Cancel
+								{confirmState.cancelLabel ?? "Cancel"}
 							</button>
-							<button
-								className="admin-btn admin-btn--danger"
-								onClick={() => {
-									confirmState.onOk();
-									setConfirmState(null);
-								}}
-							>
-								Discard changes
+							<button className="admin-btn admin-btn--danger" onClick={() => { confirmState.onOk(); setConfirmState(null); }}>
+								{confirmState.okLabel ?? "Discard changes"}
 							</button>
 						</div>
 					</div>

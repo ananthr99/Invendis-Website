@@ -1,34 +1,60 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { fileToBase64 } from "@invendis/github-client";
+import { compressImage, COMPRESS_PRESETS } from "../../utils/compressImage.js";
 import { github, OWNER, REPO } from "../../config.js";
+import { useAdmin } from "../../context/AdminContext.jsx";
+import { checkFileSize } from "../../utils/fileUtils.js";
+import SingleImageUpload from "../../components/SingleImageUpload.jsx";
 
 function rawUrl(imgPath) {
 	return `https://raw.githubusercontent.com/${OWNER}/${REPO}/main/apps/main-site/public${imgPath}`;
 }
 
 export default function HeroCompanyEditor({ data, onChange }) {
+	const { token, toast } = useAdmin();
 	const d = data ?? { eyebrow: "", title: "", titleHighlight: "", subtitle: "", stats: [], image: "" };
 	const [blobUrl, setBlobUrl] = useState(null);
+	const [fileCheck, setFileCheck] = useState(null);
+	const checkTimer = useRef(null);
 
 	function set(field, val) {
 		onChange({ ...d, [field]: val });
 	}
 
+	function checkFileExists(repoPath) {
+		if (!token) return;
+		setFileCheck("checking");
+		clearTimeout(checkTimer.current);
+		checkTimer.current = setTimeout(async () => {
+			try {
+				const sha = await github.getFileSha(repoPath, { branch: "main", token });
+				setFileCheck(sha ? "exists" : "free");
+			} catch {
+				setFileCheck("free");
+			}
+		}, 500);
+	}
+
 	async function handleFileSelect(file) {
-		const base64 = await fileToBase64(file);
+		if (!checkFileSize(file, toast)) return;
+		const compressed = await compressImage(file, COMPRESS_PRESETS.hero);
+		const base64 = await fileToBase64(compressed);
 		if (blobUrl) URL.revokeObjectURL(blobUrl);
-		const url = URL.createObjectURL(file);
+		const url = URL.createObjectURL(compressed);
 		setBlobUrl(url);
 		onChange({ ...d, _pendingUpload: { base64, filename: file.name } });
+		checkFileExists(`apps/main-site/public/images/company/hero/${file.name}`);
 	}
 
 	function renamePending(val) {
 		onChange({ ...d, _pendingUpload: { ...d._pendingUpload, filename: val } });
+		checkFileExists(`apps/main-site/public/images/company/hero/${val}`);
 	}
 
 	function clearPending() {
 		if (blobUrl) URL.revokeObjectURL(blobUrl);
 		setBlobUrl(null);
+		setFileCheck(null);
 		onChange({ ...d, _pendingUpload: undefined });
 	}
 
@@ -91,28 +117,17 @@ export default function HeroCompanyEditor({ data, onChange }) {
 			{/* Background Image */}
 			<div className="admin-field">
 				<label className="admin-label">Background Image</label>
-				<div style={{ display: "inline-flex", flexDirection: "column", gap: 8, alignItems: "flex-start" }}>
-					{previewSrc && (
-						<div style={{ position: "relative", display: "inline-block" }}>
-							<img src={previewSrc} alt="" style={{ height: 80, width: 160, objectFit: "cover", borderRadius: 6, border: "1px solid var(--admin-border)", display: "block" }} />
-							<button
-								onClick={pending ? clearPending : () => set("image", "")}
-								title="Remove"
-								style={{ position: "absolute", top: -7, right: -7, width: 20, height: 20, borderRadius: "50%", background: "var(--admin-red)", color: "white", border: "none", cursor: "pointer", fontSize: 11, display: "flex", alignItems: "center", justifyContent: "center" }}
-							>✕</button>
-						</div>
-					)}
-					{pending && (
-						<div>
-							<input className="admin-input" style={{ fontSize: 12 }} value={pending.filename} onChange={e => renamePending(e.target.value)} placeholder="filename.jpg" />
-							<p style={{ margin: "3px 0 0", fontSize: 11, color: "var(--admin-muted)" }}>→ /images/company/hero/{pending.filename}</p>
-						</div>
-					)}
-					<label style={{ display: "inline-flex", alignItems: "center", gap: 6, padding: "6px 12px", border: "1px solid var(--admin-border)", borderRadius: 6, cursor: "pointer", fontSize: 12, background: "white", fontFamily: "inherit" }}>
-						<input type="file" accept="image/*" style={{ display: "none" }} onChange={e => { if (e.target.files[0]) handleFileSelect(e.target.files[0]); e.target.value = ""; }} />
-						{previewSrc ? "Replace image" : "Upload image"}
-					</label>
-				</div>
+				<SingleImageUpload
+					existingUrl={d.image ? rawUrl(d.image) : null}
+					pending={d._pendingUpload ?? null}
+					preview={blobUrl}
+					fileCheck={fileCheck}
+					storagePath="/images/company/hero/"
+					onFileSelect={handleFileSelect}
+					onRename={renamePending}
+					onClearPending={clearPending}
+					onRemoveExisting={() => set("image", "")}
+				/>
 			</div>
 		</div>
 	);

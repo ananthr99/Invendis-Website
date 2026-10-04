@@ -1,5 +1,8 @@
 import { useState } from "react";
+import { useAdmin } from "../../context/AdminContext.jsx";
+import { checkFileSize } from "../../utils/fileUtils.js";
 import { fileToBase64 } from "@invendis/github-client";
+import { compressImage, COMPRESS_PRESETS } from "../../utils/compressImage.js";
 import { github, OWNER, REPO } from "../../config.js";
 
 
@@ -37,9 +40,13 @@ function TimelineItemEditor({ item, onChange, onRemove }) {
 }
 
 function LocationItemEditor({ item, onChange, onRemove }) {
+	const { toast } = useAdmin();
+
 	async function handleFileSelect(file) {
-		const base64 = await fileToBase64(file);
-		const blobUrl = URL.createObjectURL(file);
+		if (!checkFileSize(file, toast)) return;
+		const compressed = await compressImage(file, COMPRESS_PRESETS.content);
+		const base64 = await fileToBase64(compressed);
+		const blobUrl = URL.createObjectURL(compressed);
 		const pending = [...(item._pendingImages ?? []), { base64, filename: file.name, blobUrl }];
 		onChange({ ...item, _pendingImages: pending });
 	}

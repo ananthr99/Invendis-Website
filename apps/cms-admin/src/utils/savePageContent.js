@@ -21,7 +21,9 @@ function livePath(contentPath) {
 }
 function rethrowConflict(err) {
 	if (err?.message?.includes("409") || err?.message?.toLowerCase().includes("conflict")) {
-		throw new Error("Another editor saved this file while you were editing. Please refresh and try again.");
+		const e = new Error("Another editor saved this file while you were editing. Refresh the page to get the latest version, then re-apply your changes.");
+		e.isConflict = true;
+		throw e;
 	}
 	throw err;
 }
@@ -56,7 +58,11 @@ export async function savePageContent({ token, contentPath, before, after, page,
 		token,
 	}).catch(rethrowConflict);
 
-	await appendChangelogEntry(github, token, { page, section, before, after, userEmail });
+	try {
+		await appendChangelogEntry(github, token, { page, section, before, after, userEmail });
+	} catch (logErr) {
+		console.warn("Changelog update failed:", logErr.message);
+	}
 }
 
 /** Reads from the main branch (source of truth) using the same relative content path. */

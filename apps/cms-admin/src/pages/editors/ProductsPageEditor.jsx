@@ -3,6 +3,7 @@ import { useAdmin } from "../../context/AdminContext.jsx";
 import { loadPageContent, savePageContent } from "../../utils/savePageContent.js";
 import { PRODUCT_SECTION_EDITORS, SECTION_LABELS, ALL_SECTION_KEYS } from "../../sections/products/registry.js";
 import { github } from "../../config.js";
+import { validateRequired } from "../../utils/validate.js";
 
 const CONTENT_PATH = "pages/products.json";
 
@@ -65,6 +66,9 @@ export default function ProductsPageEditor() {
 	}
 
 	async function handleSave() {
+		if (!validateRequired([
+			{ label: "Title", value: form.title },
+		], toast)) return;
 		setSaving(true);
 		try {
 			let saveForm = form;

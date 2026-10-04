@@ -2,6 +2,7 @@ import { useState, useEffect, useLayoutEffect, useRef } from "react";
 import { useAdmin } from "../../context/AdminContext.jsx";
 import { CASE_STUDIES_SECTION_EDITORS, SECTION_LABELS, ALL_SECTION_KEYS } from "../../sections/case-studies/registry.js";
 import { loadPageContent, savePageContent, uploadImage } from "../../utils/savePageContent.js";
+import { validateRequired } from "../../utils/validate.js";
 
 const CONTENT_PATH = "pages/caseStudies.json";
 
@@ -52,6 +53,9 @@ export default function CaseStudiesPageEditor() {
 	}
 
 	async function handleSave() {
+		if (!validateRequired([
+			{ label: "Title", value: form.title },
+		], toast)) return;
 		setSaving(true);
 		try {
 			let saveForm = { ...form };

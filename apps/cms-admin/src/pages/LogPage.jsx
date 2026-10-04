@@ -1,6 +1,7 @@
 import { useState, useEffect, useMemo, Fragment } from "react";
 import { useAdmin } from "../context/AdminContext.jsx";
 import { github } from "../config.js";
+import { withRetry } from "../utils/withRetry.js";
 
 const CHANGELOG_PATH = "apps/cms-admin/content-audit-log.json";
 const PAGE_SIZE_OPTIONS = [5, 10, 15, 20, 50, 100];
@@ -89,7 +90,7 @@ function ConfirmModal({ title, message, onConfirm, onCancel, confirmLabel = "Del
 }
 
 export default function LogPage() {
-  const { token } = useAdmin();
+  const { token, toast } = useAdmin();
   const [entries, setEntries] = useState([]);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
@@ -193,16 +194,16 @@ export default function LogPage() {
         try {
           const { sha } = await github.readFile(CHANGELOG_PATH, { branch: "main", token });
           const remaining = entries.filter((e) => !selected.has(entryKey(e)));
-          await github.writeFile(CHANGELOG_PATH, JSON.stringify(remaining, null, 2), {
+          await withRetry(() => github.writeFile(CHANGELOG_PATH, JSON.stringify(remaining, null, 2), {
             message: "CMS: delete log entries [skip ci]",
             sha,
             branch: "main",
             token,
-          });
+          }));
           setEntries(remaining);
           setSelected(new Set());
         } catch (err) {
-          alert("Failed to delete: " + err.message);
+          toast("Failed to delete entries: " + err.message, "error");
         } finally {
           setDeleting(false);
         }
@@ -219,16 +220,16 @@ export default function LogPage() {
         setDeleting(true);
         try {
           const { sha } = await github.readFile(CHANGELOG_PATH, { branch: "main", token });
-          await github.writeFile(CHANGELOG_PATH, "[]", {
+          await withRetry(() => github.writeFile(CHANGELOG_PATH,"[]", {
             message: "CMS: clear activity log [skip ci]",
             sha,
             branch: "main",
             token,
-          });
+          }));
           setEntries([]);
           setSelected(new Set());
         } catch (err) {
-          alert("Failed to delete: " + err.message);
+          toast("Failed to clear log: " + err.message, "error");
         } finally {
           setDeleting(false);
         }

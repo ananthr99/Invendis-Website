@@ -2,6 +2,7 @@
 // a content JSON object, and appends one entry to cms-admin/changelog.json
 // in the repo (capped at 500 entries, newest first).
 
+import { withRetry } from "./withRetry.js";
 const CHANGELOG_PATH = "apps/cms-admin/content-audit-log.json";
 const MAX_ENTRIES = 500;
 
@@ -95,9 +96,9 @@ export async function appendChangelogEntry(client, token, { page, section, befor
   });
   if (entries.length > MAX_ENTRIES) entries = entries.slice(0, MAX_ENTRIES);
 
-  await client.writeFile(CHANGELOG_PATH, JSON.stringify(entries, null, 2), {
+  await withRetry(() => client.writeFile(CHANGELOG_PATH, JSON.stringify(entries, null, 2), {
     message: "CMS: update changelog [skip ci]",
     sha,
     token,
-  });
+  }));
 }

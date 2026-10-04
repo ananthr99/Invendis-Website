@@ -1,9 +1,12 @@
 import { useState, useEffect, useLayoutEffect, useRef } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { fileToBase64 } from "@invendis/github-client";
+import { compressImage, COMPRESS_PRESETS } from "../../utils/compressImage.js";
 import { useAdmin } from "../../context/AdminContext.jsx";
 import { loadPageContent, savePageContent, uploadImage  } from "../../utils/savePageContent.js";
 import { github, OWNER, REPO } from "../../config.js";
+import { checkFileSize } from "../../utils/fileUtils.js";
+import { validateRequired } from "../../utils/validate.js";
 
 function rawUrl(imgPath) {
 	return `https://raw.githubusercontent.com/${OWNER}/${REPO}/main/apps/main-site/public${imgPath}`;
@@ -66,6 +69,7 @@ function ListEditor({ block, onChange }) {
 }
 
 function ImageBlockEditor({ block, onChange, token }) {
+	const { toast } = useAdmin();
 	const [preview, setPreview] = useState(null);
 	const [fileCheck, setFileCheck] = useState(null);
 	const checkTimer = useRef(null);
@@ -83,8 +87,10 @@ function ImageBlockEditor({ block, onChange, token }) {
 	}
 
 	async function handleFileSelect(file) {
-		const base64 = await fileToBase64(file);
-		const previewUrl = URL.createObjectURL(file);
+		if (!checkFileSize(file, toast)) return;
+		const compressed = await compressImage(file, COMPRESS_PRESETS.content);
+		const base64 = await fileToBase64(compressed);
+		const previewUrl = URL.createObjectURL(compressed);
 		setPreview({ previewUrl, filename: file.name });
 		onChange({ ...block, _pendingUpload: { base64, filename: file.name } });
 		checkFileExists(`apps/main-site/public/images/articles/${file.name}`);
@@ -273,6 +279,9 @@ export default function ArticleDetailEditor() {
 	}
 
 	async function handleSave() {
+		if (!validateRequired([
+			{ label: "Title", value: form.title },
+		], toast)) return;
 		setSaving(true);
 		try {
 			let saveForm = { ...form };

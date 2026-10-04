@@ -2,6 +2,7 @@ import { useState, useEffect, useLayoutEffect, useRef } from "react";
 import { useAdmin } from "../../context/AdminContext.jsx";
 import { loadPageContent, savePageContent, uploadImage } from "../../utils/savePageContent.js";
 import { RESOURCES_SECTION_EDITORS, SECTION_LABELS, ALL_SECTION_KEYS } from "../../sections/resources/registry.js";
+import { validateRequired } from "../../utils/validate.js";
 
 const CONTENT_PATH = "pages/resources.json";
 
@@ -52,6 +53,9 @@ export default function ResourcesPageEditor() {
 	}
 
 	async function handleSave() {
+		if (!validateRequired([
+			{ label: "Title", value: form.title },
+		], toast)) return;
 		setSaving(true);
 		try {
 			let saveForm = { ...form };

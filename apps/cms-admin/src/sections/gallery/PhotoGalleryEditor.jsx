@@ -1,5 +1,8 @@
 import { useState } from "react";
+import { useAdmin } from "../../context/AdminContext.jsx";
+import { checkFileSize } from "../../utils/fileUtils.js";
 import { fileToBase64 } from "@invendis/github-client";
+import { compressImage, COMPRESS_PRESETS } from "../../utils/compressImage.js";
 import { OWNER, REPO } from "../../config.js";
 
 function rawUrl(imgPath) {
@@ -8,6 +11,8 @@ function rawUrl(imgPath) {
 
 function ItemEditor({ item, index, categories, onChange, onRemove }) {
 	const [blobUrl, setBlobUrl] = useState(null);
+	const { toast } = useAdmin();
+
 	const datalistId = `gallery-cats-${index}`;
 
 	function set(field, val) {
@@ -15,9 +20,11 @@ function ItemEditor({ item, index, categories, onChange, onRemove }) {
 	}
 
 	async function handleFileSelect(file) {
-		const base64 = await fileToBase64(file);
+		if (!checkFileSize(file, toast)) return;
+		const compressed = await compressImage(file, COMPRESS_PRESETS.content);
+		const base64 = await fileToBase64(compressed);
 		if (blobUrl) URL.revokeObjectURL(blobUrl);
-		const url = URL.createObjectURL(file);
+		const url = URL.createObjectURL(compressed);
 		setBlobUrl(url);
 		onChange({ ...item, _pendingUpload: { base64, filename: file.name } });
 	}

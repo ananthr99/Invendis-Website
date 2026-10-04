@@ -2,6 +2,7 @@ import { useState, useEffect, useLayoutEffect, useRef } from "react";
 import { useAdmin } from "../../context/AdminContext.jsx";
 import { loadPageContent, savePageContent } from "../../utils/savePageContent.js";
 import { HOME_SECTION_EDITORS, SECTION_LABELS, ALL_SECTION_KEYS } from "../../sections/home/registry.js";
+import { validateRequired } from "../../utils/validate.js";
 
 const CONTENT_PATH = "pages/home.json";
 
@@ -52,6 +53,9 @@ export default function HomePageEditor() {
   }
 
   async function handleSave() {
+    if (!validateRequired([
+			{ label: "Title", value: form.title },
+		], toast)) return;
     setSaving(true);
     try {
       await savePageContent({ token, contentPath: CONTENT_PATH, before: original, after: form, page: "Home", userEmail });

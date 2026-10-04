@@ -18,7 +18,7 @@ const CONTENT_LINKS = [
 
 export default function Dashboard() {
 	const { instance, accounts } = useMsal();
-	const { isDirty, showConfirm, token } = useAdmin();
+	const { isDirty, showConfirm, token, tokenStatus } = useAdmin();
 	const navigate = useNavigate();
 
 	const displayName = accounts[0]?.name ?? accounts[0]?.username ?? "";
@@ -55,7 +55,30 @@ export default function Dashboard() {
 					<span className="admin-topnav-title">Invendis Admin</span>
 				</div>
 				<div className="admin-topnav-right">
+					{import.meta.env.VITE_SITE_URL && (
+						<a
+							href={import.meta.env.VITE_SITE_URL}
+							target="_blank"
+							rel="noopener noreferrer"
+							className="admin-btn admin-btn--ghost"
+							style={{ fontSize: 12 }}
+						>
+							View Live Site ↗
+						</a>
+					)}
 					<span className="admin-user-name">{displayName}</span>
+					<span style={{
+						display: "inline-flex", alignItems: "center", gap: 5,
+						fontSize: 12, fontWeight: 500,
+						color: tokenStatus === "valid" ? "#16a34a" : tokenStatus === "invalid" ? "#dc2626" : "#9ca3af"
+					}}>
+						<span style={{
+							width: 8, height: 8, borderRadius: "50%",
+							background: tokenStatus === "valid" ? "#16a34a" : tokenStatus === "invalid" ? "#dc2626" : "#d1d5db",
+							display: "inline-block"
+						}} />
+						{tokenStatus === "valid" ? "Connected" : tokenStatus === "invalid" ? "Invalid token" : "Not verified"}
+					</span>
 					<button className="admin-btn admin-btn--ghost" onClick={handleSignOut}>
 						Sign out
 					</button>

@@ -1,6 +1,8 @@
 import { useState, useEffect, useRef, useLayoutEffect  } from "react";
 import { OWNER, REPO } from "../../config.js";
 import { SPEC_FIELDS, CAT_COLORS } from "./constants.js";
+import { useAdmin } from "../../context/AdminContext.jsx";
+import { checkFileSize } from "../../utils/fileUtils.js";
 
 function rawUrl(path) {
 	if (!path || path.startsWith("http")) return path;
@@ -17,6 +19,7 @@ const TABS = [
 ];
 
 export default function ProductForm({ product, isNew, cats, onChange, headerH = 0 }) {
+	const { toast } = useAdmin();
 	const [p, setP] = useState({ ...product });
 	const [tab, setTab] = useState("core");
 	const [lightbox, setLightbox] = useState(null);
@@ -279,8 +282,8 @@ export default function ProductForm({ product, isNew, cats, onChange, headerH = 
 					)}
 
 					{/* Hidden file inputs */}
-					<input ref={addImgRef}  type="file" accept="image/*" style={{ display: "none" }} onChange={e => { if (e.target.files[0]) { pickImage(e.target.files[0]); e.target.value = ""; } }} />
-					<input ref={replImgRef} type="file" accept="image/*" style={{ display: "none" }} onChange={e => { if (e.target.files[0]) { pickImage(e.target.files[0], replImgIdx.current); e.target.value = ""; replImgIdx.current = null; } }} />
+					<input ref={addImgRef}  type="file" accept="image/*" style={{ display: "none" }} onChange={e => { if (e.target.files[0]) { if (!checkFileSize(e.target.files[0], toast)) { e.target.value = ""; return; } pickImage(e.target.files[0]); e.target.value = ""; } }} />
+					<input ref={replImgRef} type="file" accept="image/*" style={{ display: "none" }} onChange={e => { if (e.target.files[0]) { if (!checkFileSize(e.target.files[0], toast)) { e.target.value = ""; return; } pickImage(e.target.files[0], replImgIdx.current); e.target.value = ""; replImgIdx.current = null; } }} />
 
 					<div>
 						<button onClick={() => addImgRef.current?.click()} className="admin-btn-secondary">+ Add Image</button>

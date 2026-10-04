@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { useAdmin } from "../../context/AdminContext.jsx";
 import { loadPageContent, savePageContent } from "../../utils/savePageContent.js";
+import { validateRequired } from "../../utils/validate.js";
 
 // Generic fallback editor for any page that doesn't have a structured
 // form yet (see HomePageEditor.jsx / ContactPageEditor.jsx for that
@@ -39,6 +40,9 @@ export default function PlaceholderEditor({ label, contentPath }) {
 	if (loading) return <p style={{ color: "var(--admin-muted)" }}>Loading…</p>;
 
 	function handleChange(value) {
+		if (!validateRequired([
+			{ label: "Title", value: form.title },
+		], toast)) return;
 		setText(value);
 		try {
 			JSON.parse(value);

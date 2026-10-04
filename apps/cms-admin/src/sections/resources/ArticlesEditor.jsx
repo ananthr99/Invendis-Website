@@ -26,8 +26,7 @@ function ArticleItem({ item, onChange, onDelete, navigate }) {
 					value={item.title ?? ""}
 					onChange={e => {
 						const title = e.target.value;
-						const autoSlug = slugify(title);
-						onChange({ ...item, title, id: item.id || autoSlug, slug: item.slug || autoSlug });
+						onChange({ ...item, title, slug: item.slug || slugify(title) });
 					}}
 				/>
 			</div>
@@ -42,7 +41,7 @@ function ArticleItem({ item, onChange, onDelete, navigate }) {
 				</div>
 				<div className="admin-field">
 					<label className="admin-label">Slug</label>
-					<input className="admin-input" value={item.slug ?? ""} onChange={e => onChange({ ...item, slug: e.target.value, id: e.target.value })} />
+					<input className="admin-input" value={item.slug ?? ""} onChange={e => onChange({ ...item, slug: e.target.value })} />
 				</div>
 			</div>
 			<div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
@@ -73,8 +72,7 @@ export default function ArticlesEditor({ data, onChange }) {
 	function removeCategory(i) { setCategories(categories.filter((_, idx) => idx !== i)); }
 
 	function addItem() {
-		const id = `new-article-${Date.now()}`;
-		setItems([...items, { id, slug: id, category: categories[0] ?? "", title: "", description: "", date: "", readTime: "" }]);
+		setItems([...items, { id: `article-${Date.now()}`, slug: "", category: categories[0] ?? "", title: "", description: "", date: "", readTime: "" }]);
 	}
 
 	function updateItem(i, val) { const next = [...items]; next[i] = val; setItems(next); }

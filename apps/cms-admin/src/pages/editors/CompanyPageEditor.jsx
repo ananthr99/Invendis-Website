@@ -2,6 +2,7 @@ import { useState, useEffect, useLayoutEffect, useRef } from "react";
 import { useAdmin } from "../../context/AdminContext.jsx";
 import { loadPageContent, savePageContent, uploadImage } from "../../utils/savePageContent.js";
 import { COMPANY_SECTION_EDITORS, SECTION_LABELS, ALL_SECTION_KEYS } from "../../sections/company/registry.js";
+import { validateRequired } from "../../utils/validate.js";
 
 const CONTENT_PATH = "pages/company.json";
 
@@ -66,6 +67,9 @@ export default function CompanyPageEditor() {
 	}
 
 	async function handleSave() {
+		if (!validateRequired([
+			{ label: "Title", value: form.title },
+		], toast)) return;
 		setSaving(true);
 		try {
 			let saveForm = { ...form };
