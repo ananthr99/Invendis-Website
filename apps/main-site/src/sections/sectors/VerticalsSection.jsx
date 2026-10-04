@@ -146,30 +146,43 @@ export default function VerticalsSection({ data }) {
 					<p className="mx-auto mt-4 max-w-2xl text-brand-muted">{subtitle}</p>
 				</div>
 
-				<div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+								<div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
 					{items.map((item, i) => {
+						const isFirst = i === 0;
+						const isLast = i === items.length - 1;
+						const spanFull = isFirst;
+
 						return (
 							<div
 								key={item.key}
 								id={item.key}
 								className="rounded-2xl border border-t-4 border-black/5 border-t-transparent bg-white transition-all hover:border-t-brand-red hover:shadow-md"
-								style={{ padding: "1.5rem" }}
+								style={{
+									gridColumn: spanFull ? "1 / -1" : undefined,
+									padding: isFirst ? "2rem 2.5rem" : "1.5rem",
+								}}
 							>
 								<SectorImage
 									label={`[Photo: ${item.photo ?? item.name}]`}
 									image={item.image}
-									height={180}
+									height={isFirst ? 240 : 240}
 								/>
 								<div
 									className="mb-3 flex items-center justify-center rounded-xl bg-brand-blue/10 text-brand-blue"
-									style={{ width: 36, height: 36 }}
+									style={{ width: isFirst ? 40 : 36, height: isFirst ? 40 : 36 }}
 								>
-									<SectorIcon sectorKey={item.key} className="h-4 w-4" />
+									<SectorIcon sectorKey={item.key} className={isFirst ? "h-5 w-5" : "h-4 w-4"} />
 								</div>
-								<h3 className="font-heading font-bold text-brand-text" style={{ fontSize: "1rem" }}>
+								<h3
+									className="font-heading font-bold text-brand-text"
+									style={{ fontSize: isFirst ? "1.5rem" : "1rem" }}
+								>
 									{item.name}
 								</h3>
-								<p className="mt-2 leading-relaxed text-brand-muted" style={{ fontSize: 14 }}>
+								<p
+									className="mt-2 leading-relaxed text-brand-muted"
+									style={{ fontSize: isFirst ? 15 : 14 }}
+								>
 									{item.description}
 								</p>
 								<Tags tags={item.tags} />
