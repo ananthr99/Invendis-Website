@@ -37,8 +37,8 @@ jobs:
       - name: Build main-site
         run: npm run build
         env:
-          VITE_BASE: /Invendis-Website/
-          VITE_SITE_URL: https://ananthr99.github.io/Invendis-Website
+          VITE_BASE: /
+          VITE_SITE_URL: https://invendis.co.in
           VITE_FORMSPREE_ENDPOINT: ${{ secrets.VITE_FORMSPREE_ENDPOINT }}
           VITE_GA_ID: ${{ secrets.VITE_GA_ID }}
 
@@ -48,12 +48,12 @@ jobs:
       - name: Prerender main-site routes
         run: npm run prerender
         env:
-          VITE_BASE: /Invendis-Website/
+          VITE_BASE: /
 
       - name: Build cms-admin
         run: npm run build:admin
         env:
-          VITE_BASE: /Invendis-Website/cms-admin/
+          VITE_BASE: /cms-admin/
           VITE_AZURE_CLIENT_ID: ${{ secrets.VITE_AZURE_CLIENT_ID }}
           VITE_AZURE_TENANT_ID: ${{ secrets.VITE_AZURE_TENANT_ID }}
           VITE_AZURE_REDIRECT_URI: ${{ secrets.VITE_AZURE_REDIRECT_URI }}
