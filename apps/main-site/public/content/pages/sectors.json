@@ -133,8 +133,8 @@
       {
         "key": "energy",
         "image": [
-          "/images/sectors/energy/card/card1.webp",
-          "/images/sectors/energy/card/card2.webp"
+          "/images/sectors/energy/card/energycard1.webp",
+          "/images/sectors/energy/card/energycard2.webp"
         ],
         "name": "Smart Energy & Utilities",
         "description": "Tariff-grade smart meters and IoT-enabled utility management. Automated billing, consumption analytics, and regulatory compliance for utilities, municipalities, and industrial consumers.",
