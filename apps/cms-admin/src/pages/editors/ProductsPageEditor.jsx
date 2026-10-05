@@ -1,6 +1,6 @@
 import { useState, useEffect, useLayoutEffect, useRef } from "react";
 import { useAdmin } from "../../context/AdminContext.jsx";
-import { loadPageContent, savePageContent } from "../../utils/savePageContent.js";
+import { loadPageContent, savePageContent, uploadImage } from "../../utils/savePageContent.js";
 import { PRODUCT_SECTION_EDITORS, SECTION_LABELS, ALL_SECTION_KEYS } from "../../sections/products/registry.js";
 import { github } from "../../config.js";
 
@@ -100,14 +100,7 @@ export default function ProductsPageEditor() {
 				toast("Uploading hero images…", "ok");
 				const heroImgs = [...(form.hero?.image ?? [])];
 				for (const upload of heroPending) {
-					const imgPath = `apps/main-site/public/images/products/hero/${upload.filename}`;
-					const sha = await github.getFileSha(imgPath, { branch: "main", token });
-					await github.writeFileBase64(imgPath, upload.base64, {
-						message: `CMS: upload products hero image [skip ci]`,
-						sha,
-						branch: "main",
-						token,
-					});
+					await uploadImage(`images/products/hero/${upload.filename}`, upload.base64, { token, message: "CMS: upload products hero image" });
 					heroImgs.push(`/images/products/hero/${upload.filename}`);
 				}
 				saveForm = { ...saveForm, hero: { ...saveForm.hero, image: heroImgs, _pendingUploads: undefined } };
@@ -123,14 +116,7 @@ export default function ProductsPageEditor() {
 					const { itemIndex, base64, filename } = upload;
 					const itemKey = items[itemIndex]?.key;
 					if (!itemKey) throw new Error(`Hardware item ${itemIndex + 1} has no key set — add a key before uploading.`);
-					const imgPath = `apps/main-site/public/images/products/hardware/${itemKey}/${filename}`;
-					const sha = await github.getFileSha(imgPath, { branch: "main", token });
-					await github.writeFileBase64(imgPath, base64, {
-						message: `CMS: upload hardware image for ${itemKey} [skip ci]`,
-						sha,
-						branch: "main",
-						token,
-					});
+					await uploadImage(`images/products/hardware/${itemKey}/${filename}`, base64, { token, message: `CMS: upload hardware image for ${itemKey}` });
 					items[itemIndex] = { ...items[itemIndex], image: [`/images/products/hardware/${itemKey}/${filename}`] };
 				}
 				saveForm = { ...saveForm, hardwarePortfolio: { ...saveForm.hardwarePortfolio, items, _pendingUploads: undefined } };
@@ -143,14 +129,7 @@ export default function ProductsPageEditor() {
 				toast("Uploading SILBO images…", "ok");
 				const silboImgs = [...(saveForm.silboProducts?.introImage ?? [])];
 				for (const upload of silboPending) {
-					const imgPath = `apps/main-site/public/images/products/silbo/${upload.filename}`;
-					const sha = await github.getFileSha(imgPath, { branch: "main", token });
-					await github.writeFileBase64(imgPath, upload.base64, {
-						message: `CMS: upload SILBO intro image [skip ci]`,
-						sha,
-						branch: "main",
-						token,
-					});
+					await uploadImage(`images/products/silbo/${upload.filename}`, upload.base64, { token, message: "CMS: upload SILBO intro image" });
 					silboImgs.push(`/images/products/silbo/${upload.filename}`);
 				}
 				saveForm = { ...saveForm, silboProducts: { ...saveForm.silboProducts, introImage: silboImgs, _pendingUploads: undefined } };
@@ -164,14 +143,7 @@ export default function ProductsPageEditor() {
 				const items = [...(saveForm.softwarePlatforms?.items ?? [])];
 				for (const upload of swPending) {
 					const { itemIndex, base64, filename } = upload;
-					const imgPath = `apps/main-site/public/images/products/software/${filename}`;
-					const sha = await github.getFileSha(imgPath, { branch: "main", token });
-					await github.writeFileBase64(imgPath, base64, {
-						message: `CMS: upload software platform image [skip ci]`,
-						sha,
-						branch: "main",
-						token,
-					});
+					await uploadImage(`images/products/software/${filename}`, base64, { token, message: "CMS: upload software platform image" });
 					items[itemIndex] = { ...items[itemIndex], image: [`/images/products/software/${filename}`] };
 				}
 				saveForm = { ...saveForm, softwarePlatforms: { ...saveForm.softwarePlatforms, items, _pendingUploads: undefined } };

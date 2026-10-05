@@ -1,6 +1,6 @@
 import { useState, useEffect, useLayoutEffect, useRef } from "react";
 import { useAdmin } from "../../context/AdminContext.jsx";
-import { loadPageContent, savePageContent } from "../../utils/savePageContent.js";
+import { loadPageContent, savePageContent, uploadImage } from "../../utils/savePageContent.js";
 import { CONTACT_SECTION_EDITORS, SECTION_LABELS, ALL_SECTION_KEYS } from "../../sections/contact/registry.js";
 import { github } from "../../config.js";
 
@@ -66,14 +66,7 @@ export default function ContactPageEditor() {
 			// Upload hero background image
 			if (pending) {
 				toast("Uploading hero background…", "ok");
-				const imgPath = `apps/main-site/public/images/contact/hero/${pending.filename}`;
-				const sha = await github.getFileSha(imgPath, { branch: "main", token });
-				await github.writeFileBase64(imgPath, pending.base64, {
-					message: `CMS: upload contact hero background [skip ci]`,
-					sha,
-					branch: "main",
-					token,
-				});
+				await uploadImage(`images/contact/hero/${pending.filename}`, pending.base64, { token, message: "CMS: upload contact hero background" });
 				saveForm = {
 					...saveForm,
 					hero: { ...saveForm.hero, image: `/images/contact/hero/${pending.filename}`, _pendingUpload: undefined },

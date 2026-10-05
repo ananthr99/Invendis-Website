@@ -60,38 +60,44 @@ export default function VerticalsEditor({ data, onChange }) {
 		const compressed = await compressImage(file, COMPRESS_PRESETS.card);
 		const base64 = await fileToBase64(compressed);
 		const previewUrl = URL.createObjectURL(compressed);
-		setPreviews(p => ({ ...p, [i]: previewUrl }));
-		const existing = (d._pendingUploads ?? []).filter(u => u.itemIndex !== i);
+		const ui = (d._pendingUploads ?? []).length;
+		setPreviews(p => ({ ...p, [ui]: previewUrl }));
 		onChange({
 			...d,
-			_pendingUploads: [...existing, { itemIndex: i, itemKey: d.items[i]?.key ?? "", base64, filename: compressed.name }],
+			_pendingUploads: [...(d._pendingUploads ?? []), { itemIndex: i, itemKey: d.items[i]?.key ?? "", base64, filename: compressed.name }],
 		});
-		checkFileExists(i, `apps/main-site/public/images/sectors/${d.items[i]?.key || "_"}/card/${compressed.name}`);
+		checkFileExists(ui, `apps/main-site/public/images/sectors/${d.items[i]?.key || "_"}/card/${compressed.name}`);
 	}
 
-	function clearPendingUpload(i) {
-		if (previews[i]) URL.revokeObjectURL(previews[i]);
-		setPreviews(p => { const n = { ...p }; delete n[i]; return n; });
-		const uploads = (d._pendingUploads ?? []).filter(u => u.itemIndex !== i);
+	function clearPendingUpload(ui) {
+		if (previews[ui]) URL.revokeObjectURL(previews[ui]);
+		setPreviews(p => { const n = { ...p }; delete n[ui]; return n; });
+		const uploads = (d._pendingUploads ?? []).filter((_, j) => j !== ui);
 		onChange({ ...d, _pendingUploads: uploads.length ? uploads : undefined });
-		setFileChecks(f => { const n = { ...f }; delete n[i]; return n; });
+		setFileChecks(f => { const n = { ...f }; delete n[ui]; return n; });
 	}
 
-	function renamePendingUpload(i, val) {
-		const uploads = (d._pendingUploads ?? []).map(u =>
-			u.itemIndex === i ? { ...u, filename: val } : u
-		);
+	function renamePendingUpload(ui, val) {
+		const uploads = (d._pendingUploads ?? []).map((u, j) => j === ui ? { ...u, filename: val } : u);
 		onChange({ ...d, _pendingUploads: uploads });
-		checkFileExists(i, `apps/main-site/public/images/sectors/${d.items[i]?.key || "_"}/card/${val}`);
+		const upload = (d._pendingUploads ?? [])[ui];
+		checkFileExists(ui, `apps/main-site/public/images/sectors/${upload?.itemKey || "_"}/card/${val}`);
 	}
+
 
 	function addItem() {
 		onChange({ ...d, items: [...d.items, { key: "", name: "", description: "", tags: [], clients: [], image: [] }] });
 	}
 
 	function removeItem(i) {
-		if (previews[i]) URL.revokeObjectURL(previews[i]);
-		setPreviews(p => { const n = { ...p }; delete n[i]; return n; });
+		(d._pendingUploads ?? []).forEach((u, ui) => {
+			if (u.itemIndex === i && previews[ui]) URL.revokeObjectURL(previews[ui]);
+		});
+		setPreviews(p => {
+			const n = { ...p };
+			(d._pendingUploads ?? []).forEach((u, ui) => { if (u.itemIndex === i) delete n[ui]; });
+			return n;
+		});
 		const uploads = (d._pendingUploads ?? []).filter(u => u.itemIndex !== i);
 		onChange({
 			...d,
@@ -109,13 +115,6 @@ export default function VerticalsEditor({ data, onChange }) {
 			if (u.itemIndex === i) return { ...u, itemIndex: j };
 			if (u.itemIndex === j) return { ...u, itemIndex: i };
 			return u;
-		});
-		setPreviews(p => {
-			const n = { ...p };
-			[n[i], n[j]] = [n[j], n[i]];
-			if (n[i] === undefined) delete n[i];
-			if (n[j] === undefined) delete n[j];
-			return n;
 		});
 		onChange({ ...d, items, _pendingUploads: uploads.length ? uploads : undefined });
 	}
@@ -179,7 +178,7 @@ export default function VerticalsEditor({ data, onChange }) {
 
 			{d.items.map((item, i) => {
 				const imgs = Array.isArray(item.image) ? item.image : item.image ? [item.image] : [];
-				const pending = (d._pendingUploads ?? []).find(u => u.itemIndex === i);
+				const pendings = (d._pendingUploads ?? []).map((u, ui) => ({ ...u, ui })).filter(u => u.itemIndex === i);
 				return (
 					<div key={i} style={{ border: "1px solid var(--admin-border)", borderRadius: 8, padding: 12, marginBottom: 16 }}>
 						<div style={{ display: "flex", justifyContent: "space-between", marginBottom: 8 }}>
@@ -244,36 +243,30 @@ export default function VerticalsEditor({ data, onChange }) {
 						{/* Upload */}
 						<div className="admin-field">
 							<label className="admin-label">Upload Card Image</label>
-							{pending && (
-								<div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 8, padding: 8, background: "var(--admin-bg)", border: "1px solid var(--admin-border)", borderRadius: 6 }}>
-									{previews[i] && (
-										<img src={previews[i]} alt="" style={{ height: 52, width: 80, objectFit: "cover", borderRadius: 4, flexShrink: 0 }} />
+							{pendings.map(({ ui, filename }) => (
+								<div key={ui} style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 8, padding: 8, background: "var(--admin-bg)", border: "1px solid var(--admin-border)", borderRadius: 6 }}>
+									{previews[ui] && (
+										<img src={previews[ui]} alt="" style={{ height: 52, width: 80, objectFit: "cover", borderRadius: 4, flexShrink: 0 }} />
 									)}
 									<div style={{ flex: 1, minWidth: 0 }}>
 										<label style={{ fontSize: 11, color: "var(--admin-muted)", display: "block", marginBottom: 3 }}>Save as</label>
 										<input
 											className="admin-input"
 											style={{ fontSize: 13, marginBottom: 4 }}
-											value={pending.filename}
-											onChange={e => renamePendingUpload(i, e.target.value)}
-											placeholder="filename.jpg"
+											value={filename}
+											onChange={e => renamePendingUpload(ui, e.target.value)}
+											placeholder="filename.webp"
 										/>
 										<p style={{ margin: 0, fontSize: 11, color: "var(--admin-muted)" }}>
-											→ /images/sectors/{item.key || "…"}/card/{pending.filename}
+											→ /images/sectors/{item.key || "…"}/card/{filename}
 										</p>
-										{fileChecks[i] === "checking" && (
-											<p style={{ margin: "4px 0 0", fontSize: 11, color: "var(--admin-muted)" }}>Checking…</p>
-										)}
-										{fileChecks[i] === "exists" && (
-											<p style={{ margin: "4px 0 0", fontSize: 11, color: "var(--admin-red)" }}>⚠ A file with this name already exists — saving will overwrite it</p>
-										)}
-										{fileChecks[i] === "free" && (
-											<p style={{ margin: "4px 0 0", fontSize: 11, color: "#16a34a" }}>✓ Name is available</p>
-										)}
+										{fileChecks[ui] === "checking" && <p style={{ margin: "4px 0 0", fontSize: 11, color: "var(--admin-muted)" }}>Checking…</p>}
+										{fileChecks[ui] === "exists" && <p style={{ margin: "4px 0 0", fontSize: 11, color: "var(--admin-red)" }}>⚠ File already exists — saving will overwrite it</p>}
+										{fileChecks[ui] === "free" && <p style={{ margin: "4px 0 0", fontSize: 11, color: "#16a34a" }}>✓ Name is available</p>}
 									</div>
-									<button className="admin-btn admin-btn--ghost" onClick={() => clearPendingUpload(i)}>✕</button>
+									<button className="admin-btn admin-btn--ghost" onClick={() => clearPendingUpload(ui)}>✕</button>
 								</div>
-							)}
+							))}
 							<label style={{ display: "inline-flex", alignItems: "center", gap: 6, padding: "7px 14px", border: "1px solid var(--admin-border)", borderRadius: 8, cursor: "pointer", fontSize: 13, background: "white", fontFamily: "inherit" }}>
 								<input
 									type="file"
@@ -281,12 +274,13 @@ export default function VerticalsEditor({ data, onChange }) {
 									style={{ display: "none" }}
 									onChange={e => { if (e.target.files[0]) handleFileSelect(i, e.target.files[0]); e.target.value = ""; }}
 								/>
-								{pending ? "Replace pending" : "Upload image"}
+								+ Add image
 							</label>
-							{imgs.length > 0 && !pending && (
+							{imgs.length > 0 && (
 								<span style={{ marginLeft: 8, fontSize: 12, color: "var(--admin-muted)" }}>Uploads append to existing images</span>
 							)}
 						</div>
+
 
 						{/* Tags */}
 						<label className="admin-label">Tags</label>

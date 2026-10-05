@@ -1,6 +1,6 @@
 import { useState, useEffect, useLayoutEffect, useRef } from "react";
 import { useAdmin } from "../../context/AdminContext.jsx";
-import { loadPageContent, savePageContent } from "../../utils/savePageContent.js";
+import { loadPageContent, savePageContent, uploadImage } from "../../utils/savePageContent.js";
 import { SECTOR_SECTION_EDITORS, SECTION_LABELS, ALL_SECTION_KEYS } from "../../sections/sectors/registry.js";
 import { github, LIVE_BRANCH } from "../../config.js";
 
@@ -91,15 +91,7 @@ export default function SectorsPageEditor() {
 					const sectorKey = sectors[sectorIndex]?.key;
 					if (!sectorKey) throw new Error(`Sector ${sectorIndex + 1} has no key set — add a key before uploading.`);
 
-					const mainImgPath = `apps/main-site/public/images/sectors/${sectorKey}/hero/${filename}`;
-
-					const mainSha = await github.getFileSha(mainImgPath, { branch: "main", token });
-					await github.writeFileBase64(mainImgPath, base64, {
-						message: `CMS: upload hero image for ${sectorKey} [skip ci]`,
-						sha: mainSha,
-						branch: "main",
-						token,
-					});
+					await uploadImage(`images/sectors/${sectorKey}/hero/${filename}`, base64, { token, message: `CMS: upload hero image for ${sectorKey}` });
 
 					sectors[sectorIndex] = {
 						...sectors[sectorIndex],
@@ -120,14 +112,7 @@ export default function SectorsPageEditor() {
 					const { itemIndex, base64, filename } = upload;
 					const itemKey = items[itemIndex]?.key;
 					if (!itemKey) throw new Error(`Vertical ${itemIndex + 1} has no key set — add a key before uploading.`);
-					const imgPath = `apps/main-site/public/images/sectors/${itemKey}/card/${filename}`;
-					const sha = await github.getFileSha(imgPath, { branch: "main", token });
-					await github.writeFileBase64(imgPath, base64, {
-						message: `CMS: upload card image for ${itemKey} [skip ci]`,
-						sha,
-						branch: "main",
-						token,
-					});
+					await uploadImage(`images/sectors/${itemKey}/card/${filename}`, base64, { token, message: `CMS: upload card image for ${itemKey}` });
 					const existing = Array.isArray(items[itemIndex].image) ? items[itemIndex].image : items[itemIndex].image ? [items[itemIndex].image] : [];
 					items[itemIndex] = {
 						...items[itemIndex],
