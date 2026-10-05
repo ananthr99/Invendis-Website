@@ -1,5 +1,19 @@
 [
   {
+    "timestamp": "2026-10-05T06:31:41.682Z",
+    "userEmail": "ananth.r@invendis.com",
+    "page": "Company",
+    "section": null,
+    "changes": [
+      {
+        "section": "journey",
+        "field": "title",
+        "before": "17+ Years of IIoT Innovation",
+        "after": "18+ Years of IIoT Innovation"
+      }
+    ]
+  },
+  {
     "timestamp": "2026-10-05T06:22:26.812Z",
     "userEmail": "ananth.r@invendis.com",
     "page": "Sectors",
