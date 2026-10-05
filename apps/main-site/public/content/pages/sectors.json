@@ -154,8 +154,8 @@
       {
         "key": "esg",
         "image": [
-          "/images/sectors/esg/card/card1.webp",
-          "/images/sectors/esg/card/card2.webp"
+          "/images/sectors/esg/card/card2.webp",
+          "/images/sectors/esg/card/esgcard1.webp"
         ],
         "name": "ESG & Sustainability for Solar Applications",
         "description": "ESG reporting and sustainability analytics built directly on real-time energy data. Track carbon footprint, renewable energy credits, and compliance metrics automatically — no manual data entry.",
