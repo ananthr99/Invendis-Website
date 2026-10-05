@@ -13,7 +13,7 @@ export function AdminProvider({ children }) {
 	const { accounts } = useMsal();
 	const userEmail = accounts[0]?.username ?? "";
 
-	const [token, setTokenState] = useState(() => sessionStorage.getItem(TOKEN_KEY) || "");
+	const [token, setTokenState] = useState(() => localStorage.getItem(TOKEN_KEY) || "");
 	const [tokenStatus, setTokenStatus] = useState("unchecked"); // "unchecked" | "valid" | "invalid"
 
 	useEffect(() => {
@@ -29,8 +29,7 @@ export function AdminProvider({ children }) {
 	const dirtyRef = useRef(false);
 
 	function saveToken(t) {
-		localStorage.removeItem(TOKEN_KEY);
-		sessionStorage.setItem(TOKEN_KEY, t);
+		localStorage.setItem(TOKEN_KEY, t);
 		setTokenState(t);
 	}
 
