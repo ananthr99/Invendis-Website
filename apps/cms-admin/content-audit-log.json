@@ -1,5 +1,19 @@
 [
   {
+    "timestamp": "2026-10-05T11:10:56.576Z",
+    "userEmail": "ananth.r@invendis.com",
+    "page": "Case Studies",
+    "section": null,
+    "changes": [
+      {
+        "section": "hero",
+        "field": "subtitle",
+        "before": "Real-world deployments, measurable outcomes, and technical insights from 18+ years of IIoT innovation across 26 countries.",
+        "after": "Real-world deployments, measurable outcomes, and technical insights from 18+ years of IIoT innovation across 32+ countries."
+      }
+    ]
+  },
+  {
     "timestamp": "2026-10-05T11:10:45.940Z",
     "userEmail": "ananth.r@invendis.com",
     "page": "Case Studies",
