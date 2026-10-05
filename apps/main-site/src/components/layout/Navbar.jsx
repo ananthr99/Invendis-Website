@@ -15,14 +15,14 @@ export default function Navbar() {
 					<img
 						src={publicUrl(settings?.logo?.srcDark ?? settings?.logo?.src ?? "/invendis_logo.webp")}
 						alt={settings?.logo?.alt ?? "INVENDIS"}
-						className="h-8 w-auto"
+						className="h-11 w-auto"
 						width="120" height="32"
 					/>
 					{settings?.makeInIndiaBadge?.src && (
 						<img
 							src={publicUrl("/make_in_india.webp")}
 							alt={settings.makeInIndiaBadge.alt ?? "Make in India"}
-							className="h-8 w-auto"
+							className="h-11 w-auto"
 							width="32" height="32"
 						/>
 					)}
@@ -49,7 +49,7 @@ export default function Navbar() {
 						<img
 							src={publicUrl("/silbo_logo.webp")}
 							alt={settings.silboBadge.label}
-							className="h-8 w-auto"
+							className="h-11 w-auto"
 							width="281" height="80"
 						/>
 					</Link>
