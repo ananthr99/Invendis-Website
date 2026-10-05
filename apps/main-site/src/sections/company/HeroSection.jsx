@@ -35,10 +35,15 @@ export default function HeroSection({ data }) {
 
 	return (
 		<section
-			className="relative bg-brand-blue px-4 py-16 text-white sm:px-8 lg:py-24"
+			className="relative bg-brand-blue px-4 pt-8 pb-24 text-white sm:px-8 lg:pt-4 lg:pb-34"
 			style={bgStyle}
 		>
-			{image && <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to right, rgba(11,18,60,0.80) 0%, rgba(11,18,60,0.80) 35%, rgba(11,18,60,0.35) 65%, rgba(11,18,60,0.05) 100%)" }} />}
+			{image && (
+				<>
+					<div className="absolute inset-0 lg:hidden" style={{ background: "rgba(11,18,60,0.82)" }} />
+					<div className="absolute inset-0 hidden lg:block" style={{ background: "linear-gradient(to right, rgba(11,18,60,0.80) 0%, rgba(11,18,60,0.80) 35%, rgba(11,18,60,0.35) 65%, rgba(11,18,60,0.05) 100%)" }} />
+				</>
+			)}
 			{/* Identical inner structure to Gallery/Contact/Sectors/Products hero */}
 			<div style={{
 				position: "relative",
@@ -48,18 +53,19 @@ export default function HeroSection({ data }) {
 				minHeight: 335,
 				display: "flex",
 				flexDirection: "column",
-				justifyContent: "center",
+				justifyContent: "flex-start",
+				paddingBottom: "2rem",
 			}}>
-				<div className="lg:max-w-[48%]">
+				<div>
 					{eyebrow && (
 						<p className="mb-4 text-[10px] font-semibold tracking-widest text-brand-red uppercase">{eyebrow}</p>
 					)}
-					<h1 className="font-heading text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl">
+					<h1 className="font-heading text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl lg:max-w-[56%]">
 						{title}
 						{titleHighlight && <span className="text-brand-red"> {titleHighlight}</span>}
 					</h1>
 					{subtitle && (
-						<p className="mt-6 text-[15px] leading-relaxed text-white/65" style={{ maxWidth: "28rem" }}>{subtitle}</p>
+						<p className="mt-6 text-[15px] leading-relaxed text-white/65 max-w-sm sm:max-w-xl lg:max-w-[48rem]" style={{ whiteSpace: "pre-line" }}>{subtitle}</p>
 					)}
 				</div>
 			</div>
