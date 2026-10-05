@@ -1,5 +1,61 @@
 [
   {
+    "timestamp": "2026-10-05T06:22:26.812Z",
+    "userEmail": "ananth.r@invendis.com",
+    "page": "Sectors",
+    "section": null,
+    "changes": [
+      {
+        "section": "verticals",
+        "field": "items",
+        "action": "changed",
+        "label": "#4",
+        "before": {
+          "key": "esg",
+          "image": [
+            "/images/sectors/esg/card/card1.webp",
+            "/images/sectors/esg/card/card2.webp"
+          ],
+          "name": "ESG & Sustainability for Solar Applications",
+          "description": "ESG reporting and sustainability analytics built directly on real-time energy data. Track carbon footprint, renewable energy credits, and compliance metrics automatically — no manual data entry.",
+          "tags": [
+            "Carbon Tracking",
+            "ESG Reporting",
+            "Renewable Credits",
+            "Sustainability Analytics",
+            "Compliance"
+          ],
+          "clients": [
+            "Solar operators",
+            "Tower companies",
+            "ESG-focused enterprises"
+          ]
+        },
+        "after": {
+          "key": "esg",
+          "image": [
+            "/images/sectors/esg/card/card2.webp",
+            "/images/sectors/esg/card/esgcard1.webp"
+          ],
+          "name": "ESG & Sustainability for Solar Applications",
+          "description": "ESG reporting and sustainability analytics built directly on real-time energy data. Track carbon footprint, renewable energy credits, and compliance metrics automatically — no manual data entry.",
+          "tags": [
+            "Carbon Tracking",
+            "ESG Reporting",
+            "Renewable Credits",
+            "Sustainability Analytics",
+            "Compliance"
+          ],
+          "clients": [
+            "Solar operators",
+            "Tower companies",
+            "ESG-focused enterprises"
+          ]
+        }
+      }
+    ]
+  },
+  {
     "timestamp": "2026-10-05T05:22:06.376Z",
     "userEmail": "ananth.r@invendis.com",
     "page": "Sectors",
