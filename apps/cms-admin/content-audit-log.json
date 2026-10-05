@@ -1,5 +1,19 @@
 [
   {
+    "timestamp": "2026-10-05T07:13:21.717Z",
+    "userEmail": "ananth.r@invendis.com",
+    "page": "Company",
+    "section": null,
+    "changes": [
+      {
+        "section": "leadership",
+        "field": "subtitle",
+        "before": "The people behind Invendis's 17+ years of IIoT innovation — engineers, strategists, and operators committed to delivering world-class solutions.",
+        "after": "The people behind Invendis's 18+ years of IIoT innovation — engineers, strategists, and operators committed to delivering world-class solutions."
+      }
+    ]
+  },
+  {
     "timestamp": "2026-10-05T06:35:16.459Z",
     "userEmail": "ananth.r@invendis.com",
     "page": "Contact",
