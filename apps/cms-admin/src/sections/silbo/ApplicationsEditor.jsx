@@ -59,9 +59,9 @@ export default function ApplicationsEditor({ data, onChange }) {
 		const previewUrl = URL.createObjectURL(compressed);
 		setPreviews(p => ({ ...p, [i]: previewUrl }));
 		const items = [...(d.items ?? [])];
-		items[i] = { ...items[i], _pendingUpload: { base64, filename: file.name } };
+		items[i] = { ...items[i], _pendingUpload: { base64, filename: compressed.name } };
 		onChange({ ...d, items });
-		checkFileExists(i, `apps/main-site/public/images/silbo/applications/${file.name}`);
+		checkFileExists(i, `apps/main-site/public/images/silbo/applications/${compressed.name}`);
 	}
 
 	function clearPendingUpload(i) {

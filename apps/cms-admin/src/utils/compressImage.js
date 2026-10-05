@@ -6,7 +6,9 @@ export const COMPRESS_PRESETS = {
 };
 
 export function compressImage(file, { maxWidth = 1920, maxSizeMB = 1.5 } = {}) {
-	if (file.size <= maxSizeMB * 1024 * 1024) return Promise.resolve(file);
+	if (file.type === "image/webp" && file.size <= maxSizeMB * 1024 * 1024) {
+		return Promise.resolve(file);
+	}
 
 	return new Promise((resolve) => {
 		const img = new Image();
@@ -24,19 +26,17 @@ export function compressImage(file, { maxWidth = 1920, maxSizeMB = 1.5 } = {}) {
 			canvas.height = height;
 			canvas.getContext("2d").drawImage(img, 0, 0, width, height);
 
-			const outputType = file.type === "image/png" ? "image/png" : "image/jpeg";
-			const quality = outputType === "image/jpeg" ? 0.82 : undefined;
-
 			canvas.toBlob(
 				(blob) => {
-					if (!blob || blob.size >= file.size) {
+					if (!blob) {
 						resolve(file);
 					} else {
-						resolve(new File([blob], file.name, { type: outputType }));
+						const webpName = file.name.replace(/\.(png|jpe?g|jpg|gif|bmp|tiff?)$/i, ".webp");
+						resolve(new File([blob], webpName, { type: "image/webp" }));
 					}
 				},
-				outputType,
-				quality
+				"image/webp",
+				0.82
 			);
 		};
 

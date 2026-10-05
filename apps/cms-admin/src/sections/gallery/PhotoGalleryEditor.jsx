@@ -26,7 +26,7 @@ function ItemEditor({ item, index, categories, onChange, onRemove }) {
 		if (blobUrl) URL.revokeObjectURL(blobUrl);
 		const url = URL.createObjectURL(compressed);
 		setBlobUrl(url);
-		onChange({ ...item, _pendingUpload: { base64, filename: file.name } });
+		onChange({ ...item, _pendingUpload: { base64, filename: compressed.name } });
 	}
 
 	function renamePending(val) {

@@ -3,6 +3,8 @@ import { OWNER, REPO } from "../../config.js";
 import { SPEC_FIELDS, CAT_COLORS } from "./constants.js";
 import { useAdmin } from "../../context/AdminContext.jsx";
 import { checkFileSize } from "../../utils/fileUtils.js";
+import { compressImage, COMPRESS_PRESETS } from "../../utils/compressImage.js";
+import { fileToBase64 } from "@invendis/github-client";
 
 function rawUrl(path) {
 	if (!path || path.startsWith("http")) return path;
@@ -58,19 +60,23 @@ export default function ProductForm({ product, isNew, cats, onChange, headerH = 
 
 	const readFile = (file, cb) => { const r = new FileReader(); r.onload = e => cb(e.target.result); r.readAsDataURL(file); };
 
-	const pickImage = (file, repIdx = null) => readFile(file, dataUrl =>
-        setP(prev => ({
-            ...prev,
-            _pendingImages: [...(prev._pendingImages ?? []), {
-                filename: file.name,
-                base64: dataUrl.split(",")[1],
-                dataUrl,
-                replaceIndex: repIdx,
-            }],
-        }))
-    );
+	const pickImage = async (file, repIdx = null) => {
+		if (!checkFileSize(file, toast)) return;
+		const compressed = await compressImage(file, COMPRESS_PRESETS.card);
+		const base64 = await fileToBase64(compressed);
+		const dataUrl = URL.createObjectURL(compressed);
+		setP(prev => ({
+			...prev,
+			_pendingImages: [...(prev._pendingImages ?? []), {
+				filename: compressed.name,
+				base64,
+				dataUrl,
+				replaceIndex: repIdx,
+			}],
+		}));
+	};
 
-	const removePendingImage  = i => setP(prev => { const a = [...(prev._pendingImages ?? [])]; a.splice(i, 1); return { ...prev, _pendingImages: a }; });
+	const removePendingImage  = i => setP(prev => { const a = [...(prev._pendingImages ?? [])]; if (a[i]?.dataUrl?.startsWith("blob:")) URL.revokeObjectURL(a[i].dataUrl); a.splice(i, 1); return { ...prev, _pendingImages: a }; });
 	const removeExistingImage = i => setP(prev => { const a = (prev.images ?? []).filter((_, idx) => idx !== i); return { ...prev, images: a }; });
 
 	const pickDs = (file, partName, isTopLevel) => readFile(file, dataUrl =>

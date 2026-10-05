@@ -53,9 +53,9 @@ export default function SilboProductsEditor({ data, onChange }) {
 		const compressed = await compressImage(file, COMPRESS_PRESETS.card);
 		const base64 = await fileToBase64(compressed);
 		const previewUrl = URL.createObjectURL(compressed);
-		setPreviews(p => [...p, { previewUrl, filename: file.name }]);
-		onChange({ ...d, _pendingUploads: [...(d._pendingUploads ?? []), { base64, filename: file.name }] });
-        checkFileExists((d._pendingUploads ?? []).length, `apps/main-site/public/images/products/silbo/${file.name}`);
+		setPreviews(p => [...p, { previewUrl, filename: compressed.name }]);
+		onChange({ ...d, _pendingUploads: [...(d._pendingUploads ?? []), { base64, filename: compressed.name }] });
+        checkFileExists((d._pendingUploads ?? []).length, `apps/main-site/public/images/products/silbo/${compressed.name}`);
 	}
 
 	function clearPendingUpload(idx) {

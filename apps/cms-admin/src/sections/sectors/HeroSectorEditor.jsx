@@ -64,9 +64,9 @@ export default function HeroSectorEditor({ data, onChange }) {
 		const existing = (d._pendingUploads ?? []).filter(u => u.sectorIndex !== i);
 		onChange({
 			...d,
-			_pendingUploads: [...existing, { sectorIndex: i, sectorKey: d.sectors[i]?.key ?? "", base64, filename: file.name }],
+			_pendingUploads: [...existing, { sectorIndex: i, sectorKey: d.sectors[i]?.key ?? "", base64, filename: compressed.name }],
 		});
-		checkFileExists(i, `apps/main-site/public/images/sectors/${d.sectors[i]?.key || "_"}/hero/${file.name}`);
+		checkFileExists(i, `apps/main-site/public/images/sectors/${d.sectors[i]?.key || "_"}/hero/${compressed.name}`);
 	}
 
 	function clearPendingUpload(i) {

@@ -23,7 +23,7 @@ function MemberEditor({ member, onChange, onRemove }) {
 		if (blobUrl) URL.revokeObjectURL(blobUrl);
 		const url = URL.createObjectURL(compressed);
 		setBlobUrl(url);
-		onChange({ ...member, _pendingUpload: { base64, filename: file.name } });
+		onChange({ ...member, _pendingUpload: { base64, filename: compressed.name } });
 	}
 
 	function renamePending(val) {

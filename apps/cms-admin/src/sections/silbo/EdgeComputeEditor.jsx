@@ -65,9 +65,9 @@ export default function EdgeComputeEditor({ data, onChange }) {
 		const previewUrl = URL.createObjectURL(compressed);
 		setPreviews(p => ({ ...p, [i]: previewUrl }));
 		const products = [...(d.products ?? [])];
-		products[i] = { ...products[i], _pendingUpload: { base64, filename: file.name } };
+		products[i] = { ...products[i], _pendingUpload: { base64, filename: compressed.name } };
 		onChange({ ...d, products });
-		checkFileExists(i, `apps/main-site/public/images/silbo/edge-compute/${file.name}`);
+		checkFileExists(i, `apps/main-site/public/images/silbo/edge-compute/${compressed.name}`);
 	}
 
 	function clearPendingUpload(i) {

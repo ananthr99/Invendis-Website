@@ -47,7 +47,7 @@ function LocationItemEditor({ item, onChange, onRemove }) {
 		const compressed = await compressImage(file, COMPRESS_PRESETS.content);
 		const base64 = await fileToBase64(compressed);
 		const blobUrl = URL.createObjectURL(compressed);
-		const pending = [...(item._pendingImages ?? []), { base64, filename: file.name, blobUrl }];
+		const pending = [...(item._pendingImages ?? []), { base64, filename: compressed.name, blobUrl }];
 		onChange({ ...item, _pendingImages: pending });
 	}
 

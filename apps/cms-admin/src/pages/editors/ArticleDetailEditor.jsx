@@ -90,9 +90,9 @@ function ImageBlockEditor({ block, onChange, token }) {
 		const compressed = await compressImage(file, COMPRESS_PRESETS.content);
 		const base64 = await fileToBase64(compressed);
 		const previewUrl = URL.createObjectURL(compressed);
-		setPreview({ previewUrl, filename: file.name });
-		onChange({ ...block, _pendingUpload: { base64, filename: file.name } });
-		checkFileExists(`apps/main-site/public/images/articles/${file.name}`);
+		setPreview({ previewUrl, filename: compressed.name });
+		onChange({ ...block, _pendingUpload: { base64, filename: compressed.name } });
+		checkFileExists(`apps/main-site/public/images/articles/${compressed.name}`);
 	}
 
 	function renamePending(val) {

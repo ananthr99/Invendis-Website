@@ -38,9 +38,9 @@ export default function HeroResourcesEditor({ data, onChange }) {
 		const compressed = await compressImage(file, COMPRESS_PRESETS.hero);
 		const base64 = await fileToBase64(compressed);
 		const previewUrl = URL.createObjectURL(compressed);
-		setPreview({ previewUrl, filename: file.name });
-		onChange({ ...d, _pendingUpload: { base64, filename: file.name } });
-		checkFileExists(`apps/main-site/public/images/resources/hero/${file.name}`);
+		setPreview({ previewUrl, filename: compressed.name });
+		onChange({ ...d, _pendingUpload: { base64, filename: compressed.name } });
+		checkFileExists(`apps/main-site/public/images/resources/hero/${compressed.name}`);
 	}
 
 	function renamePending(val) {

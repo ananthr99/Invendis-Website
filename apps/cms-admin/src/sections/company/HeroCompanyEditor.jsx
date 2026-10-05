@@ -42,8 +42,8 @@ export default function HeroCompanyEditor({ data, onChange }) {
 		if (blobUrl) URL.revokeObjectURL(blobUrl);
 		const url = URL.createObjectURL(compressed);
 		setBlobUrl(url);
-		onChange({ ...d, _pendingUpload: { base64, filename: file.name } });
-		checkFileExists(`apps/main-site/public/images/company/hero/${file.name}`);
+		onChange({ ...d, _pendingUpload: { base64, filename: compressed.name } });
+		checkFileExists(`apps/main-site/public/images/company/hero/${compressed.name}`);
 	}
 
 	function renamePending(val) {

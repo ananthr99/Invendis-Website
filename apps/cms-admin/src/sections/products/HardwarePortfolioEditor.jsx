@@ -67,8 +67,8 @@ export default function HardwarePortfolioEditor({ data, onChange }) {
 		const previewUrl = URL.createObjectURL(compressed);
 		setPreviews(p => ({ ...p, [i]: previewUrl }));
 		const existing = (d._pendingUploads ?? []).filter(u => u.itemIndex !== i);
-		onChange({ ...d, _pendingUploads: [...existing, { itemIndex: i, base64, filename: file.name }] });
-        checkFileExists(i, `apps/main-site/public/images/products/hardware/${d.items[i]?.key || "_"}/${file.name}`);
+		onChange({ ...d, _pendingUploads: [...existing, { itemIndex: i, base64, filename: compressed.name }] });
+        checkFileExists(i, `apps/main-site/public/images/products/hardware/${d.items[i]?.key || "_"}/${compressed.name}`);
 	}
 
 	function clearPendingUpload(i) {

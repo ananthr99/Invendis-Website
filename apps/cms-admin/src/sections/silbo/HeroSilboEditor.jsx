@@ -60,9 +60,9 @@ export default function HeroSilboEditor({ data, onChange }) {
 		const compressed = await compressImage(file, COMPRESS_PRESETS.hero);
 		const base64 = await fileToBase64(compressed);
 		const previewUrl = URL.createObjectURL(compressed);
-		setPreviews(p => [...p, { previewUrl, filename: file.name }]);
-		onChange({ ...d, _pendingUploads: [...(d._pendingUploads ?? []), { base64, filename: file.name }] });
-		checkFileExists((d._pendingUploads ?? []).length, `apps/main-site/public/images/silbo/hero/${file.name}`);
+		setPreviews(p => [...p, { previewUrl, filename: compressed.name }]);
+		onChange({ ...d, _pendingUploads: [...(d._pendingUploads ?? []), { base64, filename: compressed.name }] });
+		checkFileExists((d._pendingUploads ?? []).length, `apps/main-site/public/images/silbo/hero/${compressed.name}`);
 	}
 
 	function clearPendingUpload(idx) {

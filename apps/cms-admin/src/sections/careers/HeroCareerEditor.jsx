@@ -48,8 +48,8 @@ export default function HeroCareerEditor({ data, onChange }) {
 		const previewUrl = URL.createObjectURL(compressed);
 		if (preview) URL.revokeObjectURL(preview);
 		setPreview(previewUrl);
-		onChange({ ...d, _pendingUpload: { base64, filename: file.name } });
-		checkFileExists(`apps/main-site/public/images/careers/hero/${file.name}`);
+		onChange({ ...d, _pendingUpload: { base64, filename: compressed.name } });
+		checkFileExists(`apps/main-site/public/images/careers/hero/${compressed.name}`);
 	}
 
 	function clearPending() {

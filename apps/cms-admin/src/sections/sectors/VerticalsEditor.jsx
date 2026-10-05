@@ -64,9 +64,9 @@ export default function VerticalsEditor({ data, onChange }) {
 		const existing = (d._pendingUploads ?? []).filter(u => u.itemIndex !== i);
 		onChange({
 			...d,
-			_pendingUploads: [...existing, { itemIndex: i, itemKey: d.items[i]?.key ?? "", base64, filename: file.name }],
+			_pendingUploads: [...existing, { itemIndex: i, itemKey: d.items[i]?.key ?? "", base64, filename: compressed.name }],
 		});
-		checkFileExists(i, `apps/main-site/public/images/sectors/${d.items[i]?.key || "_"}/card/${file.name}`);
+		checkFileExists(i, `apps/main-site/public/images/sectors/${d.items[i]?.key || "_"}/card/${compressed.name}`);
 	}
 
 	function clearPendingUpload(i) {
