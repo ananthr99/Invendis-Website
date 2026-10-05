@@ -1,5 +1,62 @@
 [
   {
+    "timestamp": "2026-10-05T05:21:17.033Z",
+    "userEmail": "ananth.r@invendis.com",
+    "page": "Sectors",
+    "section": null,
+    "changes": [
+      {
+        "section": "verticals",
+        "field": "items",
+        "action": "changed",
+        "label": "#3",
+        "before": {
+          "key": "energy",
+          "image": [
+            "/images/sectors/energy/card/card1.webp",
+            "/images/sectors/energy/card/card2.webp"
+          ],
+          "name": "Smart Energy & Utilities",
+          "description": "Tariff-grade smart meters and IoT-enabled utility management. Automated billing, consumption analytics, and regulatory compliance for utilities, municipalities, and industrial consumers.",
+          "tags": [
+            "Smart Metering",
+            "Utility Billing",
+            "Consumption Analytics",
+            "AMI / AMR",
+            "Grid Monitoring"
+          ],
+          "clients": [
+            "MicroScan",
+            "Savanna Fibre",
+            "Municipal utilities"
+          ]
+        },
+        "after": {
+          "key": "energy",
+          "image": [
+            "/images/sectors/energy/card/card1.webp",
+            "/images/sectors/energy/card/card2.webp",
+            "/images/sectors/energy/card/energycard1.webp"
+          ],
+          "name": "Smart Energy & Utilities",
+          "description": "Tariff-grade smart meters and IoT-enabled utility management. Automated billing, consumption analytics, and regulatory compliance for utilities, municipalities, and industrial consumers.",
+          "tags": [
+            "Smart Metering",
+            "Utility Billing",
+            "Consumption Analytics",
+            "AMI / AMR",
+            "Grid Monitoring"
+          ],
+          "clients": [
+            "MicroScan",
+            "Savanna Fibre",
+            "Municipal utilities"
+          ]
+        }
+      }
+    ]
+  },
+  {
     "timestamp": "2026-10-04T11:28:57.191Z",
     "userEmail": "ananth.r@invendis.com",
     "page": "Company",
