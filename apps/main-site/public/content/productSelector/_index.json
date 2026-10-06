@@ -10,14 +10,38 @@
     "Other"
   ],
   "catColors": {
-    "Intel Based Devices": { "bg": "#FEF2F2", "fg": "#991B1B" },
-    "Router":              { "bg": "#EAF2FB", "fg": "#1260A8" },
-    "Gateway":             { "bg": "#E4F5EE", "fg": "#0F6040" },
-    "Switch":              { "bg": "#FFF3E0", "fg": "#8B5200" },
-    "Energy Meter":        { "bg": "#F9EAF3", "fg": "#7B2563" },
-    "Other":               { "bg": "#EEF0F3", "fg": "#3A4D63" },
-    "PCB":                 { "bg": "#ECFDF5", "fg": "#065F46" },
-    "Outdoor Unit":        { "bg": "#EEF2FF", "fg": "#3730A3" }
+    "Intel Based Devices": {
+      "bg": "#FEF2F2",
+      "fg": "#991B1B"
+    },
+    "Router": {
+      "bg": "#EAF2FB",
+      "fg": "#1260A8"
+    },
+    "Gateway": {
+      "bg": "#E4F5EE",
+      "fg": "#0F6040"
+    },
+    "Switch": {
+      "bg": "#FFF3E0",
+      "fg": "#8B5200"
+    },
+    "Energy Meter": {
+      "bg": "#F9EAF3",
+      "fg": "#7B2563"
+    },
+    "Other": {
+      "bg": "#EEF0F3",
+      "fg": "#3A4D63"
+    },
+    "PCB": {
+      "bg": "#ECFDF5",
+      "fg": "#065F46"
+    },
+    "Outdoor Unit": {
+      "bg": "#EEF2FF",
+      "fg": "#3730A3"
+    }
   },
   "products": [
     {
@@ -649,14 +673,14 @@
       "name": "XC80-1",
       "cat": "Switch",
       "order": 34,
+      "hidden": false,
       "desc": "A compact 8-port Fast Ethernet unmanaged PoE switch with 9–30V DC input and sheet metal DIN-rail body for factory floor device and smart security infrastructure deployments.",
       "cellular_gen": "-",
       "wifi": "-",
       "ports": "8",
       "rs485": "-",
       "rs232": "-",
-      "hidden": false,
-      "image": "/images/product-selector/xc80/xc80.webp",
+      "image": "/images/product-selector/xc80/xc-80-1.webp",
       "use_cases": [
         "Factory Floor Device Connectivity",
         "Smart Security Infrastructure",
