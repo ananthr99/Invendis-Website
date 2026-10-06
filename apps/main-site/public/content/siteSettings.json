@@ -1,78 +1,159 @@
 {
-	"logo": {
-		"src": "/invendis_logo.webp",
-		"srcDark": "/invendis_logo.webp",
-		"alt": "INVENDIS"
-	},
-	"silboBadge": {
-		"label": "SILBO",
-		"href": "/silbo",
-		"src": "/silbo_logo.webp"
-	},
+  "logo": {
+    "src": "/invendis_logo.webp",
+    "srcDark": "/invendis_logo.webp",
+    "alt": "INVENDIS"
+  },
+  "silboBadge": {
+    "label": "SILBO",
+    "href": "/silbo",
+    "src": "/silbo_logo.webp"
+  },
   "makeInIndiaBadge": {
     "src": "/make_in_india.webp",
     "alt": "Make in India"
   },
-	"nav": [
-		{ "label": "Home", "href": "/" },
-		{ "label": "Sectors", "href": "/sectors" },
-		{ "label": "Products", "href": "/products" },
-		{ "label": "SILBO", "href": "/silbo" },
-		{ "label": "Case Studies", "href": "/case-studies" },
-		{ "label": "Resources", "href": "/resources" },
-		{ "label": "Company", "href": "/company" },
-		{ "label": "Gallery", "href": "/gallery" },
-		{ "label": "Contact", "href": "/contact" }
-	],
-	"footerTagline": "Industrial IoT hardware — routers, gateways, switches, and energy meters.",
+  "nav": [
+    {
+      "label": "Home",
+      "href": "/"
+    },
+    {
+      "label": "Sectors",
+      "href": "/sectors"
+    },
+    {
+      "label": "Products",
+      "href": "/products"
+    },
+    {
+      "label": "SILBO",
+      "href": "/silbo"
+    },
+    {
+      "label": "Case Studies",
+      "href": "/case-studies"
+    },
+    {
+      "label": "Resources",
+      "href": "/resources"
+    },
+    {
+      "label": "Company",
+      "href": "/company"
+    },
+    {
+      "label": "Gallery",
+      "href": "/gallery"
+    },
+    {
+      "label": "Contact",
+      "href": "/contact"
+    }
+  ],
+  "footerTagline": "Industrial IoT hardware — routers, gateways, switches, and energy meters.",
   "footerMadeInIndia": "Made in India",
-	"footerLinks": [
-		{
-			"title": "Products",
-			"links": [
-				{ "label": "iSense RMS Controller", "href": "/products#hardware" },
-				{ "label": "Energy Meters", "href": "/products#hardware" },
-				{ "label": "SILBO Routers", "href": "/silbo" },
-				{ "label": "Industrial Gateways", "href": "/products#hardware" },
-				{ "label": "PizGloria Platform", "href": "/products#software" },
-				{ "label": "Mobile App", "href": "/products#software" }
-			]
-		},
-		{
-			"title": "Sectors",
-			"links": [
-				{ "label": "Telecom Infrastructure", "href": "/sectors#telecom" },
-				{ "label": "Solar & Renewables", "href": "/sectors#solar" },
-				{ "label": "Smart Energy", "href": "/sectors#energy" },
-				{ "label": "Industrial Networks", "href": "/sectors#edge" },
-				{ "label": "ESG & Sustainability", "href": "/sectors#esg" }
-			]
-		},
-		{
-			"title": "Company",
-			"links": [
-				{ "label": "About Us", "href": "/company" },
-				{ "label": "Our Journey", "href": "/company#journey" },
-				{ "label": "Case Studies", "href": "/case-studies" },
-				{ "label": "Resources", "href": "/resources" },
-				{ "label": "White Papers", "href": "/resources" },
-				{ "label": "Careers", "href": "/careers" },
-				{ "label": "Contact", "href": "/contact" }
-			]
-		}
-	],
-	"contact": {
-		"email": "sales@invendis.com",
-		"phone": "+91 6361509463",
-		"address": "No. 230, 1st Cross, 38th Main, BOOHBCS Layout, BTM 2nd Stage, Bangalore – 560 068",
-		"website": "www.invendis.com",
-		"websiteAlt": "www.silbonetworks.com"
-	},
-	"social": {
-		"linkedin": "https://www.linkedin.com/company/invendis",
-		"instagram": "https://www.instagram.com/invendistechnologies2007",
-		"facebook": "https://www.facebook.com/Invendistechnology",
-		"twitter": "https://x.com/Invendis_tech"
-	},
-	"whatsapp": "+916351509463"
+  "footerLinks": [
+    {
+      "title": "Products",
+      "links": [
+        {
+          "label": "iSense RMS Controller",
+          "href": "/products#hardware"
+        },
+        {
+          "label": "Energy Meters",
+          "href": "/products#hardware"
+        },
+        {
+          "label": "SILBO Routers",
+          "href": "/silbo"
+        },
+        {
+          "label": "Industrial Gateways",
+          "href": "/products#hardware"
+        },
+        {
+          "label": "PizGloria Platform",
+          "href": "/products#software"
+        },
+        {
+          "label": "Mobile App",
+          "href": "/products#software"
+        }
+      ]
+    },
+    {
+      "title": "Sectors",
+      "links": [
+        {
+          "label": "Telecom Infrastructure",
+          "href": "/sectors#telecom"
+        },
+        {
+          "label": "Solar & Renewables",
+          "href": "/sectors#solar"
+        },
+        {
+          "label": "Smart Energy",
+          "href": "/sectors#energy"
+        },
+        {
+          "label": "Industrial Networks",
+          "href": "/sectors#edge"
+        },
+        {
+          "label": "ESG & Sustainability",
+          "href": "/sectors#esg"
+        }
+      ]
+    },
+    {
+      "title": "Company",
+      "links": [
+        {
+          "label": "About Us",
+          "href": "/company"
+        },
+        {
+          "label": "Our Journey",
+          "href": "/company#journey"
+        },
+        {
+          "label": "Case Studies",
+          "href": "/case-studies"
+        },
+        {
+          "label": "Resources",
+          "href": "/resources"
+        },
+        {
+          "label": "White Papers",
+          "href": "/resources"
+        },
+        {
+          "label": "Careers",
+          "href": "/careers"
+        },
+        {
+          "label": "Contact",
+          "href": "/contact"
+        }
+      ]
+    }
+  ],
+  "contact": {
+    "email": "sales@invendis.com",
+    "phone": "+91 6361509463",
+    "address": "No. 230, 1st Cross, 38th Main, BOOHBCS Layout, BTM 2nd Stage, Bangalore – 560 068",
+    "website": "www.invendis.com",
+    "websiteAlt": "www.silbonetworks.com"
+  },
+  "social": {
+    "linkedin": "https://www.linkedin.com/company/invendis",
+    "instagram": "https://www.instagram.com/invendistechnologies2007",
+    "facebook": "https://www.facebook.com/Invendistechnology",
+    "twitter": "https://x.com/Invendis_tech"
+  },
+  "whatsapp": "+91 6361509463"
 }
