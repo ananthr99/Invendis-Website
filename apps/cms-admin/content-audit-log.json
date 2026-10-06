@@ -1,5 +1,21 @@
 [
   {
+    "timestamp": "2026-10-06T11:53:49.781Z",
+    "userEmail": "ananth.r@invendis.com",
+    "page": "Product Selector",
+    "section": "XC80-1",
+    "changes": [
+      {
+        "section": "XC80-1",
+        "field": "images",
+        "action": "changed",
+        "label": "#0",
+        "before": "/images/product-selector/xc80/xc80.webp",
+        "after": "/images/product-selector/xc80/xc-80-1.webp"
+      }
+    ]
+  },
+  {
     "timestamp": "2026-10-05T11:10:56.576Z",
     "userEmail": "ananth.r@invendis.com",
     "page": "Case Studies",
