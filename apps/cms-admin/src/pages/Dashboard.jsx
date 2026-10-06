@@ -109,6 +109,13 @@ export default function Dashboard() {
 						Activity Log
 					</NavLink>
 					<NavLink
+						to="/content/site-settings"
+						onClick={guardedNavigate("/content/site-settings")}
+						className={({ isActive }) => `admin-sidebar-link${isActive ? " active" : ""}`}
+					>
+						Site Settings
+					</NavLink>
+					<NavLink
 						to="/setup"
 						onClick={guardedNavigate("/setup")}
 						className={({ isActive }) => `admin-sidebar-link${isActive ? " active" : ""}`}

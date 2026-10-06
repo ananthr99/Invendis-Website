@@ -17,6 +17,7 @@ import SilboPageEditor from "./pages/editors/SilboPageEditor.jsx";
 import CareersPageEditor from "./pages/editors/CareersPageEditor.jsx";
 import ProductSelectorEditor from "./pages/editors/ProductSelectorEditor.jsx";
 import LogPage from "./pages/LogPage.jsx";
+import SiteSettingsEditor from "./pages/editors/SiteSettingsEditor.jsx";
 
 export default function App() {
 	return (
@@ -46,6 +47,7 @@ export default function App() {
 				<Route path="content/silbo" element={<SilboPageEditor />} />
 				<Route path="content/careers" element={<CareersPageEditor />} />
 				<Route path="content/product-selector" element={<ProductSelectorEditor />} />
+				<Route path="content/site-settings" element={<SiteSettingsEditor />} />
 				<Route path="log" element={<LogPage />} />
 			</Route>
 		</Routes>
