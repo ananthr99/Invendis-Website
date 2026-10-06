@@ -48,7 +48,7 @@ export default function ProductSelector() {
 
 	function clearFilters() { setSearchParams({}, { replace: true }); }
 	function openModal(id) { setModalId(id); navigate(`/products/product-selector/${id}`); }
-	function closeModal() { setModalId(null); navigate("/products/product-selector", { replace: true }); }
+	function closeModal() { setModalId(null); navigate(`/products/product-selector?${searchParams.toString()}`, { replace: true }); }
 	function toggleCompare(id) {
 		setCompareIds(prev =>
 			prev.includes(id) ? prev.filter(x => x !== id) : prev.length < 3 ? [...prev, id] : prev
