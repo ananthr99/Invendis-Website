@@ -99,7 +99,7 @@ function VariantsTable({ variants, part_datasheets }) {
 								))}
 								<td style={{ padding: "8px 12px" }}>
 									{ds === "contact_us"
-										? <span style={{ fontSize: 12, color: "#E63946" }}>Contact Us</span>
+										? <span style={{ fontSize: 12, color: "#E63946", fontWeight: 600, display: "inline-flex", alignItems: "center", gap: 4 }}>Contact Us</span>
 										: ds
 											? <a href={ds.startsWith("http") ? ds : `${BASE}${ds}`} target="_blank" rel="noopener noreferrer" style={{ fontSize: 12, color: "#1260A8", fontWeight: 600, textDecoration: "none", display: "inline-flex", alignItems: "center", gap: 4 }}>
 												<svg style={{ width: 13, height: 13 }} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5}>

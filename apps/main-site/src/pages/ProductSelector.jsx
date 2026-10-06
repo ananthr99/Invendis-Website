@@ -47,7 +47,7 @@ export default function ProductSelector() {
 	}
 
 	function clearFilters() { setSearchParams({}, { replace: true }); }
-	function openModal(id) { setModalId(id); navigate(`/products/product-selector/${id}`); }
+	function openModal(id) { setModalId(id); navigate(`/products/product-selector/${id}?${searchParams.toString()}`); }
 	function closeModal() { setModalId(null); navigate(`/products/product-selector?${searchParams.toString()}`, { replace: true }); }
 	function toggleCompare(id) {
 		setCompareIds(prev =>
