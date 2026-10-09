@@ -3,7 +3,7 @@ import { useState } from "react";
 const BASE = import.meta.env.BASE_URL.replace(/\/$/, "");
 function siteImg(path) { return path ? BASE + path : path; }
 
-const PER_PAGE_OPTIONS = [5, 10, 15, 20];
+const PER_PAGE_OPTIONS = [6, 12, 18, 24];
 
 function CameraPlaceholder() {
 	return (
@@ -130,7 +130,7 @@ export default function PhotoGallerySection({ data }) {
 	const { eyebrow, title, titleHighlight, categories = [], items = [] } = data ?? {};
 	const [activeFilter, setActiveFilter] = useState("All");
 	const [page, setPage] = useState(1);
-	const [perPage, setPerPage] = useState(10);
+	const [perPage, setPerPage] = useState(6);
 
 	function handleFilterChange(cat) {
 		setActiveFilter(cat);
@@ -219,7 +219,7 @@ export default function PhotoGallerySection({ data }) {
 					Showing {filtered.length === 0 ? 0 : (page - 1) * perPage + 1}–{Math.min(page * perPage, filtered.length)} of {filtered.length} items
 				</p>
 
-				<div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+				<div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
 					{paginated.map((item, i) => (
 						<GalleryCard key={item.id ?? i} item={item} />
 					))}
