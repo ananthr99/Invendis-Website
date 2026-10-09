@@ -74,9 +74,9 @@ export default function GalleryPageEditor() {
 			for (const item of saveForm.photoGallery?.items ?? []) {
 				if (item._pendingUpload) {
 					toast(`Uploading "${item._pendingUpload.filename}"…`, "ok");
-					await uploadImage(`images/gallery/items/${item._pendingUpload.filename}`, item._pendingUpload.base64, { token, message: "CMS: upload gallery image" });
+					await uploadImage(`images/gallery/gallery/${item._pendingUpload.filename}`, item._pendingUpload.base64, { token, message: "CMS: upload gallery image" });
 					const { _pendingUpload, ...rest } = item;
-					updatedItems.push({ ...rest, image: `/images/gallery/items/${item._pendingUpload.filename}` });
+					updatedItems.push({ ...rest, image: `/images/gallery/gallery/${item._pendingUpload.filename}` });
 				} else {
 					updatedItems.push(item);
 				}
