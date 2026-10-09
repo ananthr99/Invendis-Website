@@ -1,0 +1,96 @@
+{
+  "sections": [
+    "hero",
+    "photoGallery",
+    "ctaBanner"
+  ],
+  "hero": {
+    "eyebrow": "Our Gallery",
+    "title": "Moments That",
+    "titleHighlight": "Define Us",
+    "subtitle": "From industry expos to team milestones — a visual journey through the events, achievements, and people that make Invendis.",
+    "image": "/images/gallery/hero/hero-gallery.webp"
+  },
+  "photoGallery": {
+    "eyebrow": "Photo Gallery",
+    "title": "Behind the",
+    "titleHighlight": "Scenes",
+    "categories": [
+      "Events",
+      "Expos & Trade Shows",
+      "Awards",
+      "Team Outings",
+      "Festivals"
+    ],
+    "items": [
+      {
+        "id": "item-1791453738571",
+        "category": "Expos & Trade Shows",
+        "title": "India Mobile Congress 2026",
+        "description": "Invendis participated in India Mobile Congress (IMC) 2026, held from 7–10 October 2026 at the Yashobhoomi Convention Centre, Dwarka, New Delhi. The event highlighted advancements in telecommunications and digital infrastructure, providing an opportunity to present our technology solutions designed to support next-generation connectivity, intelligent networks, and IoT applications.",
+        "image": "/images/gallery/gallery/IMC_Delhi_2026.webp"
+      },
+      {
+        "id": "connected-britain-2026",
+        "category": "Expos & Trade Shows",
+        "title": "Connected Britain 2026",
+        "description": "Invendis participated in Connected Britain 2026, held from 9–10 September 2026. We showcased our Intel-based Edge Computing devices and presented our comprehensive product portfolio, demonstrating how our solutions enable reliable connectivity, efficient data processing, and intelligent edge deployments across diverse industries.",
+        "image": "/images/gallery/gallery/connected-britain-2026.webp"
+      },
+      {
+        "id": "intel-isb-connect-2026",
+        "category": "Events",
+        "title": "Intel ISB Connect 2026",
+        "description": "Invendis showcased its latest Intel-based Edge Computing devices at the Taj Hotel, Bengaluru, on 13 August 2026. The showcase focused on the capabilities, performance, and versatility of our edge computing solutions, demonstrating their potential for industrial automation, AI-driven applications, and real-time data processing.",
+        "image": "/images/gallery/gallery/intel-isb-connect-2026.webp"
+      },
+      {
+        "id": "automation-expo-2026",
+        "category": "Expos & Trade Shows",
+        "title": "Automation Expo 2026",
+        "description": "Invendis participated in Industrial Automation Expo 2026, held from 22–25 July 2026, one of India's major exhibitions dedicated to industrial automation technologies. Our participation highlighted the role of intelligent monitoring, industrial IoT, and connected systems in improving operational efficiency, enabling remote asset management, and advancing industrial digitalization.",
+        "image": "/images/gallery/gallery/automation-expo-2026.webp"
+      },
+      {
+        "id": "elasia-2026",
+        "category": "Expos & Trade Shows",
+        "title": "ElAsia 2026",
+        "description": "Invendis participated in ElAsia 2026, held from 14–17 May 2026. The exhibition brought together innovations in electrical engineering, power systems, and industrial technologies. Our participation highlighted our solutions for smart energy management, remote monitoring, and industrial connectivity, emphasizing their role in enabling efficient, reliable, and intelligent infrastructure.",
+        "image": "/images/gallery/gallery/elasia-2026.webp"
+      },
+      {
+        "id": "embedded-world-2026",
+        "category": "Expos & Trade Shows",
+        "title": "Embedded World Germany 2026",
+        "description": "Invendis participated in Embedded World 2026, held from 10–12 March 2026 in Nuremberg, Germany. As a leading international exhibition dedicated to embedded systems and technologies, the event provided a platform to showcase our advanced embedded computing solutions, highlighting their capabilities in edge computing, industrial IoT, and intelligent automation applications.",
+        "image": "/images/gallery/gallery/embedded-world-germany-2026.webp"
+      },
+      {
+        "id": "intel-alderlake-award",
+        "category": "Awards",
+        "title": "Intel Alderlake Award",
+        "description": "In March 2026, Invendis received an award for successfully designing an Intel Alder Lake Power-On Board in a record time of just three days under the Make in India initiative. This achievement reflects our engineering expertise, rapid prototyping capabilities, and commitment to indigenous technology development, reinforcing our focus on innovation and excellence in embedded hardware design.",
+        "image": "/images/gallery/gallery/intel-alderlake-award.webp"
+      },
+      {
+        "id": "coins-partner-awards-2025",
+        "category": "Awards",
+        "title": "Coins Partner Awards 2025",
+        "description": "Invendis was honoured with the Business Excellence Award at the Coins IT Partner Summit 5.0, held from 15–17 December 2025 in Goa. This recognition marks a significant milestone for Invendis, reflecting our commitment to delivering innovative technology solutions, maintaining strong business partnerships, and consistently driving excellence in the IT and technology industry.",
+        "image": "/images/gallery/gallery/coins-partner-awards-2026.webp"
+      }
+    ]
+  },
+  "ctaBanner": {
+    "title": "Want to Connect with the Invendis Team?",
+    "subtitle": "Reach out to us for partnerships, product inquiries, or to explore IIoT solutions for your business.",
+    "primaryBtn": {
+      "label": "Get in Touch →",
+      "href": "/contact"
+    },
+    "secondaryBtn": {
+      "label": "About Us",
+      "href": "/company"
+    }
+  }
+}
