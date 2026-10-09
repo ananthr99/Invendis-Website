@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 const BASE = import.meta.env.BASE_URL.replace(/\/$/, "");
 function siteImg(path) { return path ? BASE + path : path; }
@@ -132,6 +132,13 @@ export default function PhotoGallerySection({ data }) {
 	const [page, setPage] = useState(1);
 	const [perPage, setPerPage] = useState(6);
 
+	const sectionRef = useRef(null);
+
+	function goToPage(n) {
+		setPage(n);
+		sectionRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+	}
+
 	function handleFilterChange(cat) {
 		setActiveFilter(cat);
 		setPage(1);
@@ -149,7 +156,7 @@ export default function PhotoGallerySection({ data }) {
 	const paginated = filtered.slice((page - 1) * perPage, page * perPage);
 
 	return (
-		<section className="bg-white px-4 py-16 sm:px-8">
+		<section  ref={sectionRef} className="bg-white px-4 py-16 sm:px-8">
 			<div style={{ maxWidth: "1536px", margin: "0 auto" }}>
 				<div style={{ marginBottom: "2rem" }}>
 					{eyebrow && (
@@ -231,7 +238,7 @@ export default function PhotoGallerySection({ data }) {
 					</p>
 				)}
 
-				<Pagination page={page} totalPages={totalPages} onPage={setPage} />
+				<Pagination page={page} totalPages={totalPages} onPage={goToPage} />
 			</div>
 		</section>
 	);
