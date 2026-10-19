@@ -5,7 +5,7 @@
   "order": 2,
   "desc": "This compact, fanless edge computing system is designed for AI inference, networking, and industrial applications, combining an Intel® Core™ N350 processor with flexible expansion for AI accelerators or NVMe storage. Key differentiators include dual Gigabit LAN, multiple display outputs (up to 4K), wide OS support, and robust I/O in a small form factor. It targets edge AI deployments, smart retail, industrial automation, and network security solutions.",
   "cpu": "Intel X7425E/X7433RE/X7835RE/i3-N305/N350 Quad Core/Octa Core with 3.9 GHz turbo frequency",
-  "ram": "Up to 32 GB DDR4 or 64 GB SODIMM DDR5",
+  "ram": "Up to 32 GB DDR4 or 64 GB  DDR 5 SODIMM",
   "storage": "Up to 512 GB SSD and up to 64 GB eMMC (Optional)",
   "cell": "4G/5G",
   "cellular_gen": "5G",
