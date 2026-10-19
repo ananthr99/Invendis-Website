@@ -1,5 +1,45 @@
 [
   {
+    "timestamp": "2026-10-19T09:00:31.545Z",
+    "userEmail": "ananth.r@invendis.com",
+    "page": "Product Selector",
+    "section": "INV-CE-XX",
+    "changes": [
+      {
+        "section": "INV-CE-XX",
+        "field": "storage",
+        "before": "Up to 512 GB SSD and up to 64 GB eMMC",
+        "after": "64 GB (optional)"
+      },
+      {
+        "section": "INV-CE-XX",
+        "field": "cell",
+        "before": "4G/5G",
+        "after": "M.2 4G/5G"
+      },
+      {
+        "section": "INV-CE-XX",
+        "field": "wifi",
+        "before": "WiFi6",
+        "after": "WiFi6  (optional DBDC support) "
+      },
+      {
+        "section": "INV-CE-XX",
+        "field": "additional_specs",
+        "action": "changed",
+        "label": "#0",
+        "before": {
+          "k": "Ethernet Ports",
+          "v": "Gigabit Ethernet (RTL8111H) / 2.5 GbE"
+        },
+        "after": {
+          "k": "Ethernet Ports",
+          "v": "Gigabit Ethernet (RTL8111H)"
+        }
+      }
+    ]
+  },
+  {
     "timestamp": "2026-10-19T08:56:22.148Z",
     "userEmail": "ananth.r@invendis.com",
     "page": "Product Selector",
