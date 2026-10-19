@@ -1,5 +1,25 @@
 [
   {
+    "timestamp": "2026-10-19T09:02:52.036Z",
+    "userEmail": "ananth.r@invendis.com",
+    "page": "Product Selector",
+    "section": "INV-CEA-XX",
+    "changes": [
+      {
+        "section": "INV-CEA-XX",
+        "field": "storage",
+        "before": "Up to 512 GB SSD and 64 GB eMMC",
+        "after": "512 GB  M.2 SATA SSD"
+      },
+      {
+        "section": "INV-CEA-XX",
+        "field": "cell",
+        "before": "Dual M.2 Modem 5G/4G/3G",
+        "after": "Dual M.2 Modem 5G/4G"
+      }
+    ]
+  },
+  {
     "timestamp": "2026-10-19T09:00:31.545Z",
     "userEmail": "ananth.r@invendis.com",
     "page": "Product Selector",
