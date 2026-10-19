@@ -1,5 +1,127 @@
 [
   {
+    "timestamp": "2026-10-19T08:47:08.210Z",
+    "userEmail": "ananth.r@invendis.com",
+    "page": "Product Selector",
+    "section": "ROXX",
+    "changes": [
+      {
+        "section": "ROXX",
+        "field": "part_datasheets",
+        "before": {
+          "RO65": "/assets/datasheets/products/roxx/ro65_Datasheet.pdf",
+          "RO65-2": "/assets/datasheets/products/roxx/ro65-2_Datasheet.pdf",
+          "RO65-1": "/assets/datasheets/products/roxx/ro65-1_Datasheet.pdf",
+          "RO64-2": "/assets/datasheets/products/roxx/ro64-2_Datasheet.pdf",
+          "RO64-1": "/assets/datasheets/products/roxx/ro64-1_Datasheet.pdf"
+        },
+        "after": {
+          "RO65-2": "/assets/datasheets/products/roxx/ro65-2_Datasheet.pdf",
+          "RO65-1": "/assets/datasheets/products/roxx/ro65-1_Datasheet.pdf",
+          "RO64-2": "/assets/datasheets/products/roxx/ro64-2_Datasheet.pdf",
+          "RO64-1": "/assets/datasheets/products/roxx/ro64-1_Datasheet.pdf",
+          "RO60": "/assets/datasheets/products/roxx/ro65_Datasheet.pdf"
+        }
+      },
+      {
+        "section": "ROXX",
+        "field": "variants",
+        "before": {
+          "headers": [
+            "Cellular",
+            "Wi-Fi",
+            "4G/5G",
+            "No. of Modems",
+            "Part Number"
+          ],
+          "rows": [
+            [
+              "✓",
+              "Wi-Fi 6",
+              "5G",
+              "Dual",
+              "RO65-2"
+            ],
+            [
+              "✓",
+              "Wi-Fi 6",
+              "5G",
+              "Single",
+              "RO65-1"
+            ],
+            [
+              "—",
+              "Wi-Fi 6",
+              "5G",
+              "—",
+              "RO65"
+            ],
+            [
+              "✓",
+              "Wi-Fi 6",
+              "4G",
+              "Dual",
+              "RO64-2"
+            ],
+            [
+              "✓",
+              "Wi-Fi 6",
+              "4G",
+              "Single",
+              "RO64-1"
+            ]
+          ]
+        },
+        "after": {
+          "headers": [
+            "Cellular",
+            "Wi-Fi",
+            "4G/5G",
+            "No. of Modems",
+            "Part Number"
+          ],
+          "rows": [
+            [
+              "✓",
+              "Wi-Fi 6",
+              "5G",
+              "Dual",
+              "RO65-2"
+            ],
+            [
+              "✓",
+              "Wi-Fi 6",
+              "5G",
+              "Single",
+              "RO65-1"
+            ],
+            [
+              "—",
+              "Wi-Fi 6",
+              "—",
+              "—",
+              "RO60"
+            ],
+            [
+              "✓",
+              "Wi-Fi 6",
+              "4G",
+              "Dual",
+              "RO64-2"
+            ],
+            [
+              "✓",
+              "Wi-Fi 6",
+              "4G",
+              "Single",
+              "RO64-1"
+            ]
+          ]
+        }
+      }
+    ]
+  },
+  {
     "timestamp": "2026-10-09T04:46:07.853Z",
     "userEmail": "ananth.r@invendis.com",
     "page": "Gallery",
