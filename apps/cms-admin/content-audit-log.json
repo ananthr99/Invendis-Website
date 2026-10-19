@@ -1,5 +1,27 @@
 [
   {
+    "timestamp": "2026-10-19T08:55:55.488Z",
+    "userEmail": "ananth.r@invendis.com",
+    "page": "Product Selector",
+    "section": "INV-CD-XX",
+    "changes": [
+      {
+        "section": "INV-CD-XX",
+        "field": "additional_specs",
+        "action": "changed",
+        "label": "#4",
+        "before": {
+          "k": "PCIe",
+          "v": "2 (for AI Accelerator / NVMe)"
+        },
+        "after": {
+          "k": "PCIe",
+          "v": "m.2 Key M for AI Accelerator or NVME"
+        }
+      }
+    ]
+  },
+  {
     "timestamp": "2026-10-19T08:47:08.210Z",
     "userEmail": "ananth.r@invendis.com",
     "page": "Product Selector",
