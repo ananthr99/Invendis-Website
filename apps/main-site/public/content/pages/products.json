@@ -252,23 +252,33 @@
     "partners": [
       {
         "name": "Intel",
-        "logo": []
+        "logo": [
+          "/images/products/design-partners/intel.webp"
+        ]
       },
       {
         "name": "MediaTek",
-        "logo": []
+        "logo": [
+          "/images/products/design-partners/mediatek.webp"
+        ]
       },
       {
         "name": "Qualcomm",
-        "logo": []
+        "logo": [
+          "/images/products/design-partners/qualcomm.webp"
+        ]
       },
       {
         "name": "Realtek",
-        "logo": []
+        "logo": [
+          "/images/products/design-partners/realtek.webp"
+        ]
       },
       {
         "name": "Renesas",
-        "logo": []
+        "logo": [
+          "/images/products/design-partners/renesas.webp"
+        ]
       }
     ]
   },
