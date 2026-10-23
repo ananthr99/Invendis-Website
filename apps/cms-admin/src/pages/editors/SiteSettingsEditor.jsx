@@ -145,6 +145,14 @@ export default function SiteSettingsEditor() {
 					<label className="admin-label">Address</label>
 					<textarea className="admin-textarea" value={form.contact?.address ?? ""} onChange={e => set("contact.address", e.target.value)} />
 				</div>
+				<div className="admin-field">
+					<label className="admin-label">Website</label>
+					<input className="admin-input" value={form.contact?.website ?? ""} onChange={e => set("contact.website", e.target.value)} placeholder="www.invendis.com" />
+				</div>
+				<div className="admin-field">
+					<label className="admin-label">Website (Alt)</label>
+					<input className="admin-input" value={form.contact?.websiteAlt ?? ""} onChange={e => set("contact.websiteAlt", e.target.value)} placeholder="www.silbonetworks.com" />
+				</div>
 			</div>
 
 			<div className="admin-card" style={{ marginBottom: 20 }}>
