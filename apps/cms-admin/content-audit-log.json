@@ -1,5 +1,223 @@
 [
   {
+    "timestamp": "2026-10-19T09:02:52.036Z",
+    "userEmail": "ananth.r@invendis.com",
+    "page": "Product Selector",
+    "section": "INV-CEA-XX",
+    "changes": [
+      {
+        "section": "INV-CEA-XX",
+        "field": "storage",
+        "before": "Up to 512 GB SSD and 64 GB eMMC",
+        "after": "512 GB  M.2 SATA SSD"
+      },
+      {
+        "section": "INV-CEA-XX",
+        "field": "cell",
+        "before": "Dual M.2 Modem 5G/4G/3G",
+        "after": "Dual M.2 Modem 5G/4G"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-10-19T09:00:31.545Z",
+    "userEmail": "ananth.r@invendis.com",
+    "page": "Product Selector",
+    "section": "INV-CE-XX",
+    "changes": [
+      {
+        "section": "INV-CE-XX",
+        "field": "storage",
+        "before": "Up to 512 GB SSD and up to 64 GB eMMC",
+        "after": "64 GB (optional)"
+      },
+      {
+        "section": "INV-CE-XX",
+        "field": "cell",
+        "before": "4G/5G",
+        "after": "M.2 4G/5G"
+      },
+      {
+        "section": "INV-CE-XX",
+        "field": "wifi",
+        "before": "WiFi6",
+        "after": "WiFi6  (optional DBDC support) "
+      },
+      {
+        "section": "INV-CE-XX",
+        "field": "additional_specs",
+        "action": "changed",
+        "label": "#0",
+        "before": {
+          "k": "Ethernet Ports",
+          "v": "Gigabit Ethernet (RTL8111H) / 2.5 GbE"
+        },
+        "after": {
+          "k": "Ethernet Ports",
+          "v": "Gigabit Ethernet (RTL8111H)"
+        }
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-10-19T08:56:22.148Z",
+    "userEmail": "ananth.r@invendis.com",
+    "page": "Product Selector",
+    "section": "INV-CD-XX",
+    "changes": [
+      {
+        "section": "INV-CD-XX",
+        "field": "ram",
+        "before": "Up to 32 GB DDR4 or 64 GB SODIMM DDR5",
+        "after": "Up to 32 GB DDR4 or 64 GB  DDR 5 SODIMM"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-10-19T08:55:55.488Z",
+    "userEmail": "ananth.r@invendis.com",
+    "page": "Product Selector",
+    "section": "INV-CD-XX",
+    "changes": [
+      {
+        "section": "INV-CD-XX",
+        "field": "additional_specs",
+        "action": "changed",
+        "label": "#4",
+        "before": {
+          "k": "PCIe",
+          "v": "2 (for AI Accelerator / NVMe)"
+        },
+        "after": {
+          "k": "PCIe",
+          "v": "m.2 Key M for AI Accelerator or NVME"
+        }
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-10-19T08:47:08.210Z",
+    "userEmail": "ananth.r@invendis.com",
+    "page": "Product Selector",
+    "section": "ROXX",
+    "changes": [
+      {
+        "section": "ROXX",
+        "field": "part_datasheets",
+        "before": {
+          "RO65": "/assets/datasheets/products/roxx/ro65_Datasheet.pdf",
+          "RO65-2": "/assets/datasheets/products/roxx/ro65-2_Datasheet.pdf",
+          "RO65-1": "/assets/datasheets/products/roxx/ro65-1_Datasheet.pdf",
+          "RO64-2": "/assets/datasheets/products/roxx/ro64-2_Datasheet.pdf",
+          "RO64-1": "/assets/datasheets/products/roxx/ro64-1_Datasheet.pdf"
+        },
+        "after": {
+          "RO65-2": "/assets/datasheets/products/roxx/ro65-2_Datasheet.pdf",
+          "RO65-1": "/assets/datasheets/products/roxx/ro65-1_Datasheet.pdf",
+          "RO64-2": "/assets/datasheets/products/roxx/ro64-2_Datasheet.pdf",
+          "RO64-1": "/assets/datasheets/products/roxx/ro64-1_Datasheet.pdf",
+          "RO60": "/assets/datasheets/products/roxx/ro65_Datasheet.pdf"
+        }
+      },
+      {
+        "section": "ROXX",
+        "field": "variants",
+        "before": {
+          "headers": [
+            "Cellular",
+            "Wi-Fi",
+            "4G/5G",
+            "No. of Modems",
+            "Part Number"
+          ],
+          "rows": [
+            [
+              "✓",
+              "Wi-Fi 6",
+              "5G",
+              "Dual",
+              "RO65-2"
+            ],
+            [
+              "✓",
+              "Wi-Fi 6",
+              "5G",
+              "Single",
+              "RO65-1"
+            ],
+            [
+              "—",
+              "Wi-Fi 6",
+              "5G",
+              "—",
+              "RO65"
+            ],
+            [
+              "✓",
+              "Wi-Fi 6",
+              "4G",
+              "Dual",
+              "RO64-2"
+            ],
+            [
+              "✓",
+              "Wi-Fi 6",
+              "4G",
+              "Single",
+              "RO64-1"
+            ]
+          ]
+        },
+        "after": {
+          "headers": [
+            "Cellular",
+            "Wi-Fi",
+            "4G/5G",
+            "No. of Modems",
+            "Part Number"
+          ],
+          "rows": [
+            [
+              "✓",
+              "Wi-Fi 6",
+              "5G",
+              "Dual",
+              "RO65-2"
+            ],
+            [
+              "✓",
+              "Wi-Fi 6",
+              "5G",
+              "Single",
+              "RO65-1"
+            ],
+            [
+              "—",
+              "Wi-Fi 6",
+              "—",
+              "—",
+              "RO60"
+            ],
+            [
+              "✓",
+              "Wi-Fi 6",
+              "4G",
+              "Dual",
+              "RO64-2"
+            ],
+            [
+              "✓",
+              "Wi-Fi 6",
+              "4G",
+              "Single",
+              "RO64-1"
+            ]
+          ]
+        }
+      }
+    ]
+  },
+  {
     "timestamp": "2026-10-09T04:46:07.853Z",
     "userEmail": "ananth.r@invendis.com",
     "page": "Gallery",
