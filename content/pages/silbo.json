@@ -1,0 +1,244 @@
+{
+  "sections": [
+    "hero",
+    "about",
+    "edgeCompute",
+    "productRange",
+    "deployments",
+    "applications",
+    "techPartners",
+    "ctaBanner"
+  ],
+  "hero": {
+    "eyebrow": "AN INVENDIS BRAND",
+    "brand": "SILBO ®",
+    "title": "Industrial Networking",
+    "titleHighlight": "Built for the Edge",
+    "description": "SILBO delivers rugged routers, gateways, and switches purpose-built for telecom, industrial IoT, and mission-critical edge connectivity.",
+    "primaryBtn": {
+      "label": "Browse All Products →",
+      "href": "/products/product-selector"
+    },
+    "secondaryBtn": {
+      "label": "Talk to Sales",
+      "href": "/contact"
+    },
+    "stats": [
+      {
+        "value": "10+",
+        "label": "Router"
+      },
+      {
+        "value": "16+",
+        "label": "Gateway"
+      },
+      {
+        "value": "10+",
+        "label": "Switch"
+      },
+      {
+        "value": "36+",
+        "label": "Total Products",
+        "highlight": true
+      }
+    ],
+    "image": [
+      "/images/silbo/hero/hero1.webp",
+      "/images/silbo/hero/hero2.webp",
+      "/images/silbo/hero/hero3.webp",
+      "/images/silbo/hero/hero4.webp",
+      "/images/silbo/hero/hero5.webp"
+    ]
+  },
+  "about": {
+    "eyebrow": "ABOUT US",
+    "title": "We Are Silbo",
+    "description": "Introducing SILBO, the product of Invendis Technologies, a trailblazer in manufacturing networking, IoT, and edge computing products tailored to meet diverse industrial needs. SILBO products stand out for their flexibility in adapting to evolving technology and providing seamless deployment solutions, transcending geographical and environmental constraints. Our commitment extends to delivering advanced technologies, such as 5G-ready routers, gateways, and IoT products, equipped with multi-WAN functionality, industrial protocol support, VPN, cloud communication, and a planned integration of SD-WAN to meet market demands.",
+    "offersEyebrow": "WHAT WE OFFER",
+    "offers": [
+      {
+        "icon": "layers",
+        "title": "Innovative Products",
+        "description": "Versatile IoT, M2M, and edge computing hardware and software, adaptable for global deployment on-premises or in the cloud."
+      },
+      {
+        "icon": "shield",
+        "title": "Smart & Secure Sites",
+        "description": "Turns remote site equipment into smart systems, secured with advanced encryption and uninterrupted real-time monitoring."
+      },
+      {
+        "icon": "wifi",
+        "title": "Empower Field Force",
+        "description": "Local, remote, and cloud connectivity that enables effortless remote management of machines and field data."
+      }
+    ]
+  },
+  "edgeCompute": {
+    "eyebrow": "EDGE COMPUTE",
+    "title": "Intel-Powered Edge Devices",
+    "subtitle": "x86 architecture at the industrial edge — full Ubuntu, Windows, or OpenWRT support with integrated 5G and Wi-Fi 6.",
+    "products": [
+      {
+        "model": "INV-CE-XX",
+        "badges": [
+          "Intel",
+          "5G"
+        ],
+        "description": "Rugged, fanless SD-WAN edge appliance for distributed sites. MultiWAN connectivity across Ethernet, 4G/5G and Wi-Fi.",
+        "image": "/images/silbo/edge-compute/inv-ce-xx.webp"
+      },
+      {
+        "model": "INV-CEA-XX",
+        "badges": [
+          "Intel",
+          "5G"
+        ],
+        "description": "Fanless industrial gateway for edge computing with extensive cellular/Wi-Fi expansion and dual isolated serial ports.",
+        "image": "/images/silbo/edge-compute/inv-cea-xx-1.webp"
+      },
+      {
+        "model": "INV-CD-XX",
+        "badges": [
+          "Intel",
+          "5G"
+        ],
+        "description": "Fanless edge computing system for AI inference and industrial networking. Intel Core N350 with AI accelerator expansion.",
+        "image": "/images/silbo/edge-compute/inv-cd-xx.webp"
+      }
+    ]
+  },
+  "productRange": {
+    "eyebrow": "PRODUCT RANGE",
+    "title": "The Complete SILBO Lineup",
+    "categories": [
+      {
+        "icon": "router",
+        "count": "10+",
+        "label": "Routers",
+        "description": "4G/5G, dual-SIM, Wi-Fi 6, SD-WAN and outdoor variants",
+        "link": "//products/product-selector",
+        "linkLabel": "Browse Routers →"
+      },
+      {
+        "icon": "gateway",
+        "count": "16+",
+        "label": "Gateways",
+        "description": "RS485, RS232, DIO, AI inputs for industrial integration",
+        "link": "/products/product-selector",
+        "linkLabel": "Browse Gateways →"
+      },
+      {
+        "icon": "switch",
+        "count": "10+",
+        "label": "Switches",
+        "description": "Managed and unmanaged PoE switches, DIN rail mount",
+        "link": "/products/product-selector",
+        "linkLabel": "Browse Switches →"
+      }
+    ]
+  },
+  "deployments": {
+    "eyebrow": "WHERE SILBO WORKS",
+    "title": "Designed For",
+    "titleHighlight": "Real-World Deployments",
+    "items": [
+      {
+        "icon": "tower",
+        "title": "Telecom Tower Backhaul",
+        "description": "Purpose-built -48V routers and gateways for tower site connectivity with dual-SIM failover and remote NMS management."
+      },
+      {
+        "icon": "network",
+        "title": "SD-WAN & Enterprise WAN",
+        "description": "Intel-based SD-WAN routers with centralised control, traffic prioritisation, and zero-touch provisioning for distributed networks."
+      },
+      {
+        "icon": "factory",
+        "title": "Industrial IoT Edge",
+        "description": "Gateways with RS485, RS232, DIO, and AI inputs for legacy equipment integration and factory-floor data collection."
+      },
+      {
+        "icon": "outdoor",
+        "title": "Remote & Harsh Environments",
+        "description": "IP66/IP67-rated outdoor routers and ODUs for oil, gas, utilities, and solar sites with extreme temperature and weather conditions."
+      }
+    ]
+  },
+  "applications": {
+    "eyebrow": "APPLICATIONS",
+    "title": "Explore All The Use Cases",
+    "viewAllLink": "/sectors",
+    "items": [
+      {
+        "category": "Energy and Utility",
+        "title": "Remote Monitoring Solution for EV Charging Station",
+        "description": "The rapid EV uptake implicates the difficult provision of robust and efficient charging infrastructures. SILBO enables remote visibility and control of charging assets.",
+        "image": "/images/silbo/applications/ev-charging-1.webp"
+      },
+      {
+        "category": "Energy and Utility",
+        "title": "Streamlined EV Charging Infrastructure Monitoring and Management",
+        "description": "In response to the increasing demand for electric vehicle charging infrastructure across India, SILBO delivers the connectivity for deployment at scale.",
+        "image": "/images/silbo/applications/ev-charging-2.webp"
+      },
+      {
+        "category": "Energy and Utility",
+        "title": "Optimizing Battery Swapping Infrastructure",
+        "description": "Organizations increasingly deploying battery swapping stations for 2 and 3 wheelers rely on SILBO for secure, real-time data from mobile and fixed sites.",
+        "image": "/images/silbo/applications/battery-swapping.webp"
+      },
+      {
+        "category": "Food Processing",
+        "title": "IOT-based Monitoring for Efficient Milk Collection & Management",
+        "description": "In the dairy industry, efficient milk collection and management are essential for ensuring product quality and operational efficiency across distributed sites.",
+        "image": "/images/silbo/applications/milk-collection.webp"
+      },
+      {
+        "category": "Energy and Utility",
+        "title": "Remote Battery Monitoring & Proactive Alarm Performance",
+        "description": "Batteries are increasingly critical within the infrastructure landscape, especially those requiring 24/7 uptime.",
+        "image": "/images/silbo/applications/battery-monitoring.webp"
+      }
+    ]
+  },
+  "techPartners": {
+    "eyebrow": "TECHNOLOGY COLLABORATIONS",
+    "title": "Built on",
+    "titleHighlight": "Industry-Leading Silicon",
+    "subtitle": "SILBO products are engineered in collaboration with leading semiconductor partners — combining best-in-class compute, connectivity, and networking silicon.",
+    "partners": [
+      {
+        "name": "Intel",
+        "role": "Edge Compute & x86 Processing"
+      },
+      {
+        "name": "MediaTek",
+        "role": "Industrial Networking SoCs"
+      },
+      {
+        "name": "Realtek",
+        "role": "Network Switching"
+      },
+      {
+        "name": "Qualcomm",
+        "role": "Wireless Connectivity"
+      },
+      {
+        "name": "Telit",
+        "role": "5G Cellular Modules"
+      }
+    ]
+  },
+  "ctaBanner": {
+    "title": "Ready to connect your infrastructure?",
+    "subtitle": "Talk to our team about the right SILBO device for your deployment.",
+    "primaryBtn": {
+      "label": "Contact Us →",
+      "href": "/contact"
+    },
+    "secondaryBtn": {
+      "label": "Browse Products",
+      "href": "/products"
+    }
+  }
+}
