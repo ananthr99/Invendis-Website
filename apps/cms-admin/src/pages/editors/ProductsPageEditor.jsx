@@ -37,13 +37,15 @@ export default function ProductsPageEditor() {
 			(form.hero?._pendingUploads ?? []).length > 0 ||
 			(form.hardwarePortfolio?._pendingUploads ?? []).length > 0 ||
 			(form.silboProducts?._pendingUploads ?? []).length > 0 ||
-			(form.softwarePlatforms?._pendingUploads ?? []).length > 0;
+			(form.softwarePlatforms?._pendingUploads ?? []).length > 0 ||
+			(form.designPartners?._pendingUploads ?? []).length > 0;
 		const cleanForm = {
 			...form,
 			hero: form.hero ? { ...form.hero, _pendingUploads: undefined } : form.hero,
 			hardwarePortfolio: form.hardwarePortfolio ? { ...form.hardwarePortfolio, _pendingUploads: undefined } : form.hardwarePortfolio,
 			silboProducts: form.silboProducts ? { ...form.silboProducts, _pendingUploads: undefined } : form.silboProducts,
 			softwarePlatforms: form.softwarePlatforms ? { ...form.softwarePlatforms, _pendingUploads: undefined } : form.softwarePlatforms,
+			designPartners: form.designPartners ? { ...form.designPartners, _pendingUploads: undefined } : form.designPartners,
 		};
 		setDirty(hasPending || JSON.stringify(original) !== JSON.stringify(cleanForm));
 	}, [form, original]);
@@ -86,6 +88,10 @@ export default function ProductsPageEditor() {
 				...(form.softwarePlatforms?._pendingUploads ?? []).map(u => ({
 					path: `apps/main-site/public/images/products/software/${u.filename}`,
 					label: `Software image "${u.filename}"`,
+				})),
+				...(form.designPartners?._pendingUploads ?? []).map(u => ({
+					path: `apps/main-site/public/images/products/design-partners/${u.filename}`,
+					label: `Design partner logo "${u.filename}"`,
 				})),
 			];
 			for (const { path, label } of conflictChecks) {
@@ -147,6 +153,20 @@ export default function ProductsPageEditor() {
 					items[itemIndex] = { ...items[itemIndex], image: [`/images/products/software/${filename}`] };
 				}
 				saveForm = { ...saveForm, softwarePlatforms: { ...saveForm.softwarePlatforms, items, _pendingUploads: undefined } };
+				setForm(saveForm);
+			}
+
+			// Design partner logo uploads
+			const dpPending = saveForm.designPartners?._pendingUploads ?? [];
+			if (dpPending.length > 0) {
+				toast("Uploading design partner logos…", "ok");
+				const partners = [...(saveForm.designPartners?.partners ?? [])];
+				for (const upload of dpPending) {
+					const { partnerIndex, base64, filename } = upload;
+					await uploadImage(`images/products/design-partners/${filename}`, base64, { token, message: "CMS: upload design partner logo" });
+					partners[partnerIndex] = { ...partners[partnerIndex], logo: [`/images/products/design-partners/${filename}`] };
+				}
+				saveForm = { ...saveForm, designPartners: { ...saveForm.designPartners, partners, _pendingUploads: undefined } };
 				setForm(saveForm);
 			}
 
