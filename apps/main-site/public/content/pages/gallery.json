@@ -24,6 +24,13 @@
     ],
     "items": [
       {
+        "id": "item-1795495911724",
+        "category": "Expos & Trade Shows",
+        "title": "Bangalore Tech Summit",
+        "description": "Embedded World event at Bangalore Tech Summit Nov 17-19",
+        "image": ""
+      },
+      {
         "id": "item-1791453738571",
         "category": "Expos & Trade Shows",
         "title": "India Mobile Congress 2026",
