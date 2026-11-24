@@ -1,5 +1,26 @@
 [
   {
+    "timestamp": "2026-11-24T04:53:07.631Z",
+    "userEmail": "ananth.r@invendis.com",
+    "page": "Gallery",
+    "section": null,
+    "changes": [
+      {
+        "section": "photoGallery",
+        "field": "items",
+        "action": "added",
+        "label": "item-1795495911724",
+        "after": {
+          "id": "item-1795495911724",
+          "category": "Expos & Trade Shows",
+          "title": "Bangalore Tech Summit",
+          "description": "Embedded World event at Bangalore Tech Summit Nov 17-19",
+          "image": ""
+        }
+      }
+    ]
+  },
+  {
     "timestamp": "2026-10-23T08:05:51.196Z",
     "userEmail": "ananth.r@invendis.com",
     "page": "Site Settings",
