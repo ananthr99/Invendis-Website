@@ -1,0 +1,25 @@
+{
+	"id": "iiot-telecom-monitoring",
+	"slug": "iiot-telecom-monitoring",
+	"category": "Technical Article",
+	"title": "IIoT in Telecom: Real-Time Monitoring of Tower Infrastructure",
+	"description": "Discover how Industrial IoT hardware enables remote visibility, predictive maintenance, and energy efficiency across distributed telecom tower sites.",
+	"date": "10 Nov 2025",
+	"readTime": "2 min read",
+	"content": [
+		{ "type": "paragraph", "text": "Telecom tower infrastructure represents one of the most geographically dispersed asset classes in the world. Operators managing thousands of sites face a persistent challenge: how to maintain uptime, control energy costs, and respond to faults — without deploying field engineers for every incident." },
+		{ "type": "heading", "level": 2, "text": "The Case for Remote Monitoring" },
+		{ "type": "paragraph", "text": "A single unplanned outage at a tower site can cascade into network degradation across a broad coverage area. Traditional monitoring — periodic manual inspection and SCADA-based systems — is increasingly inadequate for the density and criticality of modern telecom deployments." },
+		{ "type": "paragraph", "text": "IIoT-based remote monitoring systems address this by delivering continuous, real-time telemetry from every site: generator runtime and fuel levels, rectifier and battery health, environmental sensors (temperature, humidity, intrusion), and energy consumption metrics." },
+		{ "type": "heading", "level": 2, "text": "How Invendis Deploys at Scale" },
+		{ "type": "bulletList", "items": [
+			"iSense RMS Controllers installed at tower sites across India, the Middle East, and Africa",
+			"Data transmitted via LTE/5G with dual-SIM failover to ensure connectivity even when the primary network degrades",
+			"Edge processing locally filters and compresses telemetry before transmission, reducing data costs by up to 60%",
+			"Centralised dashboards via PizGloria platform for fleet-wide visibility and alerting"
+		]},
+		{ "type": "heading", "level": 2, "text": "Predictive Maintenance in Practice" },
+		{ "type": "paragraph", "text": "By analysing historical patterns — battery discharge curves, generator start frequency, rectifier temperature trends — the system can flag sites at risk of failure days before an outage occurs. This predictive capability has been demonstrated to reduce emergency dispatch events by over 40% in large deployments." },
+		{ "type": "callout", "title": "Case in Point", "text": "Invendis systems monitor over 150,000 telecom and energy sites globally, processing millions of data points daily through edge-compute nodes before aggregation in the cloud." }
+	]
+}

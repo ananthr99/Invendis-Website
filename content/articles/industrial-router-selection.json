@@ -1,0 +1,33 @@
+{
+	"id": "industrial-router-selection",
+	"slug": "industrial-router-selection",
+	"category": "Industry Insight",
+	"title": "How to Choose the Right Industrial Router for Remote Site Connectivity",
+	"description": "A practical framework for selecting industrial LTE/5G routers based on environment, bandwidth requirements, redundancy needs, and fleet manageability.",
+	"date": "5 Sept 2025",
+	"readTime": "3 min read",
+	"content": [
+		{ "type": "paragraph", "text": "Selecting an industrial router is rarely just about bandwidth. For remote and unattended sites — telecom towers, substations, solar farms, pipeline monitoring stations — the router is the single point of connectivity between the field and your operations centre. Getting the specification wrong means costly replacements, intermittent monitoring gaps, or exposure to security risk." },
+		{ "type": "heading", "level": 2, "text": "1. Environmental Rating" },
+		{ "type": "paragraph", "text": "Industrial sites impose conditions that consumer and even enterprise networking hardware cannot withstand. Before evaluating any router, confirm its operating temperature range, ingress protection (IP) rating, and vibration tolerance." },
+		{ "type": "bulletList", "items": [
+			"Operating temperature: look for -40°C to +70°C for outdoor or unventilated cabinet deployments",
+			"IP rating: IP30 minimum for indoor cabinets; IP65 or higher for direct outdoor exposure",
+			"Humidity: 95% non-condensing is a common requirement for tropical deployments",
+			"Vibration and shock ratings matter for vehicle-mounted or heavy-industrial installations"
+		]},
+		{ "type": "heading", "level": 2, "text": "2. Cellular Technology and SIM Redundancy" },
+		{ "type": "paragraph", "text": "For most remote sites, LTE is the primary WAN medium. However, the choice between LTE Cat-4, Cat-6, Cat-12, and 5G Sub-6GHz has significant cost and throughput implications. For low-bandwidth telemetry (sensor readings, alarms), Cat-4 is often sufficient. For video surveillance or high-frequency data streaming, Cat-6 or 5G becomes necessary." },
+		{ "type": "callout", "title": "Key Recommendation", "text": "Always specify dual-SIM capability. Single-SIM deployments at remote sites create a single point of failure — when the primary carrier has an outage in a rural area, there is no fallback. Dual-SIM with automatic failover eliminates this risk with minimal cost premium." },
+		{ "type": "heading", "level": 2, "text": "3. Security Architecture" },
+		{ "type": "bulletList", "items": [
+			"Hardware-based firewall with stateful packet inspection",
+			"VPN support (OpenVPN, IPSec, WireGuard) for secure tunnels back to operations centres",
+			"Certificate-based device authentication — avoid shared-key deployments at scale",
+			"Regular firmware update capability via remote management platform"
+		]},
+		{ "type": "heading", "level": 2, "text": "4. Fleet Manageability" },
+		{ "type": "paragraph", "text": "When managing dozens or thousands of routers, the management platform matters as much as the device hardware. Zero-touch provisioning (ZTP), remote configuration rollout, firmware management, and real-time health dashboards are non-negotiable at scale." },
+		{ "type": "paragraph", "text": "Invendis industrial routers are designed and validated for exactly these deployment profiles — from single-site pilot to 10,000-node national rollouts — and integrate natively with PizGloria for centralised lifecycle management." }
+	]
+}
